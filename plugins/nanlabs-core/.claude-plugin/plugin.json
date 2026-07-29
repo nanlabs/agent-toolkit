@@ -1,0 +1,13 @@
+{
+  "name": "nanlabs-core",
+  "version": "0.1.0",
+  "description": "NaNLABS baseline harness: orchestrator, companion, output handshake, PR fallback, knowledge sync, and code-reviewer agent.",
+  "author": {
+    "name": "NaNLABS",
+    "email": "technology@nanlabs.com"
+  },
+  "homepage": "https://github.com/nanlabs/agent-toolkit",
+  "repository": "https://github.com/nanlabs/agent-toolkit",
+  "license": "MIT",
+  "keywords": ["nanlabs", "orchestrator", "core", "harness"]
+}

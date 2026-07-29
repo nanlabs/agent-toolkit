@@ -17,6 +17,7 @@ NaNLABS **skills**, **agents**, **plugins**, and **MCP stubs** for Claude Code, 
 ```text
 /plugin marketplace add nanlabs/agent-toolkit
 /plugin install nanlabs-setup@nanlabs-agent-toolkit
+/plugin install nanlabs-core@nanlabs-agent-toolkit
 ```
 
 Then ask Claude to run setup, or use the `/setup` command from the plugin.
@@ -40,6 +41,7 @@ Installs the grouped tree `skills/<group>/<skill>/` (47 public skills). See [`do
 | --- | --- |
 | Skills | 47 under `skills/<group>/` — [catalog](catalogs/skill-catalog.yaml) |
 | Setup plugin | `nanlabs-setup` (Claude + Cursor manifests) |
+| Core plugin | `nanlabs-core` — orchestrator + companion + handshake + reviewer |
 | Agents | `nanlabs-code-reviewer` (more in Wave 1) |
 | MCP | Public stubs under `mcp/templates/` (env placeholders only) |
 

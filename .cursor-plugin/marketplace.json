@@ -6,7 +6,7 @@
   },
   "metadata": {
     "description": "NaNLABS skills, agents, plugins, and MCP stubs for Cursor",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "pluginRoot": "plugins"
   },
   "plugins": [
@@ -14,6 +14,18 @@
       "name": "nanlabs-setup",
       "source": "nanlabs-setup",
       "description": "Inspect the environment, document missing deps, and guide first-time NaN harness setup (P0 scaffold)"
+    },
+    {
+      "name": "nanlabs-core",
+      "source": "nanlabs-core",
+      "description": "Baseline orchestrator, companion, handshake, PR fallback, knowledge sync, and code-reviewer agent",
+      "version": "0.1.0",
+      "category": "productivity",
+      "tags": [
+        "core",
+        "orchestrator",
+        "nanlabs"
+      ]
     }
   ]
 }
