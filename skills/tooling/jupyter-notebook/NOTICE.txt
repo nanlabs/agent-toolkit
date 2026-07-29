@@ -13,8 +13,7 @@ Modifications by NaNLabs S.A. for distribution via nanlabs/agent-toolkit (migrat
   (`~/.local/share/nanlabs/skills/jupyter-notebook/`).
 - Added the `nan-newnotebook` wrapper script at `~/.local/bin/nan-newnotebook`
   that delegates to the bundled `scripts/new_notebook.py`.
-- Removed the `agents/openai.yaml` manifest in favor of the NaNLABS
-  `skill.json` schema.
+- Removed the `agents/openai.yaml` manifest in favor of standard Agent Skills `SKILL.md` frontmatter.
 - Dropped vendor logo assets (`assets/jupyter*`); kept the two notebook
   templates (`experiment-template.ipynb`, `tutorial-template.ipynb`).
 - Updated `references/notebook-structure.md` to reference the NaNLABS install

@@ -34,7 +34,7 @@ is green before invoking this skill.
 3. **Fetch all threads in one pass.** Run the bundled script:
 
    ```bash
-   python3 ~/.local/share/nanlabs/skills/gh-address-comments/scripts/fetch_comments.py \
+   python3 <skill-root>/scripts/fetch_comments.py \
      > /tmp/pr-comments.json
    ```
 

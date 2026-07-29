@@ -29,7 +29,7 @@ a focused failure snippet, and propose a fix plan before making any change.
 3. **Run the analyzer:**
 
    ```bash
-   python3 ~/.local/share/nanlabs/skills/gh-fix-ci/scripts/inspect_pr_checks.py \
+   python3 <skill-root>/scripts/inspect_pr_checks.py \
      --repo . --pr <number-or-url>
    ```
 

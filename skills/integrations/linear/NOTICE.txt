@@ -12,7 +12,7 @@ Modifications by NaNLabs S.A. for distribution via nanlabs/agent-toolkit (migrat
   `[features].rmcp_client`, `--enable rmcp_client`, references to restarting
   Codex).
 - Removed `metadata.short-description: "Manage Linear issues in Codex"` and
-  `agents/openai.yaml` in favor of the NaNLABS `skill.json` schema.
+  `agents/openai.yaml` in favor of standard Agent Skills `SKILL.md` frontmatter.
 - Replaced the setup section with a tool-agnostic matrix (Claude Code, Cursor,
   OpenCode, Windsurf) that points to the chezmoi-managed MCP template at
   `~/.local/share/nanlabs/mcp/linear/`.

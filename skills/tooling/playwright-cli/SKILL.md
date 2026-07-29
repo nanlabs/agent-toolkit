@@ -32,7 +32,7 @@ wrapper script runs the CLI through `npx`, so a global install is not required.
 ## Wrapper script (set once per shell)
 
 ```bash
-export PWCLI="$HOME/.local/share/nanlabs/skills/playwright-cli/scripts/playwright_cli.sh"
+export PWCLI="<skill-root>/scripts/playwright_cli.sh"
 alias pwcli="$PWCLI"
 pwcli --help
 ```

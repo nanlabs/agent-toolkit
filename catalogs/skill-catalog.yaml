@@ -1,7 +1,7 @@
 # Agent-toolkit skill catalog (public)
-# Layout: skills/<group>/<skill>/SKILL.md
-# Compatible with npx skills nested discovery.
-
+# Layout: skills/<group>/<skill>/SKILL.md  (Agent Skills standard)
+# Canonical skill metadata lives in SKILL.md frontmatter — not skill.json.
+# This catalog is NaNLABS routing/index metadata for orchestrators and humans.
 version: 2
 layout: grouped
 

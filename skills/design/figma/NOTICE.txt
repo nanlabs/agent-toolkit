@@ -18,8 +18,7 @@ Modifications by NaNLabs S.A. for distribution via nanlabs/agent-toolkit (migrat
   `figma-generate-library` as opt-in packs (not bundled by default).
 - Documented secret handling via `~/.config/nanlabs/env.d/figma.env`
   (`FIGMA_OAUTH_TOKEN`, `FIGMA_REGION`).
-- Removed the `agents/openai.yaml` manifest in favor of the NaNLABS
-  `skill.json` schema.
+- Removed the `agents/openai.yaml` manifest in favor of standard Agent Skills `SKILL.md` frontmatter.
 - Dropped vendor logo assets (`assets/figma*`).
 
 Original LICENSE.txt is preserved in this directory.

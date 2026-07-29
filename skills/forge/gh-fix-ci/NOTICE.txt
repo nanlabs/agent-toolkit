@@ -6,12 +6,11 @@ under the Apache License 2.0:
 
   https://github.com/openai/skills (skills/.curated/gh-fix-ci)
 
-Modifications by NaNLabs S.A. for distribution via nanlabs/agent-toolkit (migrated from internal-workstation):
+Modifications by NaNLabs S.A. for distribution via nanlabs/agent-toolkit:
 
-- Replaced `<path-to-skill>` placeholders in the SKILL.md with the chezmoi-
-  managed install location (`~/.local/share/nanlabs/skills/gh-fix-ci/`).
-- Removed Codex-specific guidance and the `agents/openai.yaml` manifest in
-  favor of the NaNLABS `skill.json` schema and `nan-skills` integration.
+- Documented script paths as skill-relative (`scripts/inspect_pr_checks.py`).
+- Removed Codex-specific guidance and the `agents/openai.yaml` manifest;
+  Agent Skills uses `SKILL.md` frontmatter only.
 - Documented hand-off to `github-cli-workflow` for push/merge actions and to
   `nanlabs-planning` for plan structure.
 - Dropped vendor logo assets (`assets/github*`).

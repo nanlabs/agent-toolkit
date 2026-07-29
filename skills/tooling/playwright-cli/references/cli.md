@@ -3,7 +3,7 @@
 Use the wrapper script unless `playwright-cli` is already installed globally:
 
 ```bash
-export PWCLI="$HOME/.local/share/nanlabs/skills/playwright-cli/scripts/playwright_cli.sh"
+export PWCLI="<skill-root>/scripts/playwright_cli.sh"
 "$PWCLI" --help
 ```
 

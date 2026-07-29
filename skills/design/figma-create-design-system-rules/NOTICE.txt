@@ -8,8 +8,7 @@ under the Apache License 2.0:
 
 Modifications by NaNLabs S.A. for distribution via nanlabs/agent-toolkit (migrated from internal-workstation):
 
-- Removed the `agents/openai.yaml` manifest in favor of the NaNLABS
-  `skill.json` schema.
+- Removed the `agents/openai.yaml` manifest in favor of standard Agent Skills `SKILL.md` frontmatter.
 - Updated the supported-agents tables: removed `Codex CLI` and added
   `opencode`, `Gemini CLI`, `GitHub Copilot`, and `Windsurf`. Promoted the
   NaNLABS convention of a single `AGENTS.md` with tool-specific symlinks.
