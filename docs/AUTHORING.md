@@ -1,23 +1,60 @@
 # Authoring guide
 
-## Layout
+This repository follows the open **[Agent Skills](https://agentskills.io/specification)** standard. Do not invent parallel manifests.
+
+## Skill layout (canonical)
+
+```text
+skills/<group>/<skill>/
+├── SKILL.md          # Required: YAML frontmatter + instructions
+├── scripts/          # Optional: executable helpers
+├── references/       # Optional: progressive-disclosure docs
+├── assets/           # Optional: templates / data
+├── LICENSE.txt       # Optional: required when redistributing third-party skills
+└── NOTICE.txt        # Optional: NaNLABS modifications to third-party skills
+```
+
+Grouped under `skills/<group>/` so the tree stays navigable; `npx skills` discovers nested `SKILL.md` (depth ≤ 5).
+
+### `SKILL.md` frontmatter
+
+Required by the Agent Skills spec:
+
+| Field | Required | Notes |
+| --- | --- | --- |
+| `name` | Yes | Kebab-case; must match the parent directory name |
+| `description` | Yes | What it does **and** when to use it (trigger keywords) |
+
+Optional spec fields: `license`, `compatibility`, `metadata`, `allowed-tools`.
+
+### What we do **not** ship
+
+| Artifact | Why it is gone here |
+| --- | --- |
+| `skill.json` | Workstation-only (`nan-skills sync` / ADR-004). Agent Skills + `npx skills` + Claude/Cursor plugins read **`SKILL.md` only**. |
+| `SKILL.md.tmpl` | Chezmoi template; this repo ships the rendered skill. |
+| Per-tool symlink matrices in-repo | Distribution is marketplace / `npx skills`, not home-dir symlinks. |
+
+Repo-level routing metadata lives in `catalogs/skill-catalog.yaml` (orchestrator index), not inside each skill folder.
+
+## Other paths
 
 | Path | Role |
 | --- | --- |
-| `skills/` | Canonical Agent Skills tree (`SKILL.md` + `references/`) |
-| `agents/` | Canonical agent/subagent personas |
+| `agents/` | Agent/subagent personas |
 | `mcp/templates/` | MCP config stubs (placeholders only) |
-| `plugins/<id>/` | Distributable plugin bundles for Claude / Cursor |
-| `catalogs/` | Routing catalogs |
+| `plugins/<id>/` | Claude / Cursor plugin bundles |
+| `catalogs/` | Routing catalogs (`skill-catalog.yaml`, layout map) |
 | `contracts/requirements/` | Dependency/permission contracts (P1+) |
 
 ## Rules
 
-1. Author skills once under `skills/`. For Claude plugin caching limits, also ship the skill **inside** the plugin directory for P0 (`plugins/.../skills/...`). Later waves may automate sync/symlinks.
-2. Every `SKILL.md` needs YAML frontmatter with kebab-case `name` and a clear `description`.
+1. Author skills under `skills/<group>/<skill>/` per the Agent Skills spec. For Claude plugin caching limits, also ship the skill **inside** the plugin directory for P0 (`plugins/.../skills/...`). Later waves may automate sync.
+2. Every `SKILL.md` needs valid YAML frontmatter (`name` + `description`).
 3. Never commit secrets. Use env-var names only in MCP stubs.
 4. Public scrub: read `docs/PUBLIC_CONTENT_POLICY.md` before migrating internal content.
-5. Run local validation before opening a PR:
+5. Keep upstream `LICENSE.txt` / `NOTICE.txt` when redistributing third-party skills.
+6. Run local validation before opening a PR:
 
 ```bash
 bash scripts/validate-repo-structure.sh

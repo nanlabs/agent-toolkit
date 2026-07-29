@@ -1,0 +1,17 @@
+figma-create-new-file (NaNLABS distribution)
+============================================
+
+This skill is derived from the OpenAI "skills" repository, originally licensed
+under the Apache License 2.0:
+
+  https://github.com/openai/skills (skills/.curated/figma-create-new-file)
+
+Modifications by NaNLabs S.A. for distribution via nanlabs/agent-toolkit:
+
+- Removed the `agents/openai.yaml` manifest and `maintainers.yml`; Agent Skills
+  uses `SKILL.md` frontmatter only.
+- Updated cross-references to point to the opt-in `figma-use` pack since it is
+  not bundled by default.
+- Dropped vendor logo assets (`assets/figma*`).
+
+Original LICENSE.txt is preserved in this directory.

@@ -1,0 +1,19 @@
+gh-fix-ci (NaNLABS distribution)
+================================
+
+This skill is derived from the OpenAI "skills" repository, originally licensed
+under the Apache License 2.0:
+
+  https://github.com/openai/skills (skills/.curated/gh-fix-ci)
+
+Modifications by NaNLabs S.A. for distribution via nanlabs/agent-toolkit:
+
+- Documented script paths as skill-relative (`scripts/inspect_pr_checks.py`).
+- Removed Codex-specific guidance and the `agents/openai.yaml` manifest;
+  Agent Skills uses `SKILL.md` frontmatter only.
+- Documented hand-off to `github-cli-workflow` for push/merge actions and to
+  `nanlabs-planning` for plan structure.
+- Dropped vendor logo assets (`assets/github*`).
+
+`scripts/inspect_pr_checks.py` is preserved unmodified.
+Original LICENSE.txt is preserved in this directory.

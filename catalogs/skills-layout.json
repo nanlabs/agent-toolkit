@@ -1,0 +1,307 @@
+{
+  "layout": "skills/<group>/<skill>/SKILL.md",
+  "groups": {
+    "core": [
+      "nanlabs-assistant",
+      "nanlabs-dev-companion",
+      "nanlabs-output-handshake",
+      "nanlabs-pr-fallback",
+      "nanlabs-setup",
+      "nanlabs-workspace-knowledge-sync"
+    ],
+    "data": [
+      "dbt-validation",
+      "snowflake-validation"
+    ],
+    "delivery": [
+      "nanlabs-adr",
+      "nanlabs-agreement",
+      "nanlabs-bug",
+      "nanlabs-decision-log",
+      "nanlabs-development-workflow",
+      "nanlabs-epic",
+      "nanlabs-incident",
+      "nanlabs-management-unit-assessment",
+      "nanlabs-meeting-minutes",
+      "nanlabs-planning",
+      "nanlabs-prd",
+      "nanlabs-project-assessment",
+      "nanlabs-project-assessment-evidence",
+      "nanlabs-spike",
+      "nanlabs-task",
+      "nanlabs-technical-unit-assessment",
+      "nanlabs-trd",
+      "nanlabs-user-story",
+      "nanlabs-work-item"
+    ],
+    "design": [
+      "figma",
+      "figma-code-connect-components",
+      "figma-create-design-system-rules",
+      "figma-create-new-file",
+      "figma-implement-design",
+      "ui-ux-pro-max"
+    ],
+    "forge": [
+      "gh-address-comments",
+      "gh-fix-ci",
+      "github-cli-workflow",
+      "gitlab-cli-workflow"
+    ],
+    "integrations": [
+      "clickup-cli",
+      "linear",
+      "nan-slack-assistant",
+      "slack-cli"
+    ],
+    "ops": [
+      "nanlabs-presentations-reconciliation",
+      "nanlabs-workstation-triage"
+    ],
+    "tooling": [
+      "jupyter-notebook",
+      "playwright-cli"
+    ],
+    "workflow": [
+      "nanlabs-workflow-client-bootstrap",
+      "nanlabs-workflow-generic-project"
+    ]
+  },
+  "skills": [
+    {
+      "name": "nanlabs-assistant",
+      "group": "core",
+      "path": "skills/core/nanlabs-assistant"
+    },
+    {
+      "name": "nanlabs-dev-companion",
+      "group": "core",
+      "path": "skills/core/nanlabs-dev-companion"
+    },
+    {
+      "name": "nanlabs-output-handshake",
+      "group": "core",
+      "path": "skills/core/nanlabs-output-handshake"
+    },
+    {
+      "name": "nanlabs-pr-fallback",
+      "group": "core",
+      "path": "skills/core/nanlabs-pr-fallback"
+    },
+    {
+      "name": "nanlabs-setup",
+      "group": "core",
+      "path": "skills/core/nanlabs-setup"
+    },
+    {
+      "name": "nanlabs-workspace-knowledge-sync",
+      "group": "core",
+      "path": "skills/core/nanlabs-workspace-knowledge-sync"
+    },
+    {
+      "name": "dbt-validation",
+      "group": "data",
+      "path": "skills/data/dbt-validation"
+    },
+    {
+      "name": "snowflake-validation",
+      "group": "data",
+      "path": "skills/data/snowflake-validation"
+    },
+    {
+      "name": "nanlabs-adr",
+      "group": "delivery",
+      "path": "skills/delivery/nanlabs-adr"
+    },
+    {
+      "name": "nanlabs-agreement",
+      "group": "delivery",
+      "path": "skills/delivery/nanlabs-agreement"
+    },
+    {
+      "name": "nanlabs-bug",
+      "group": "delivery",
+      "path": "skills/delivery/nanlabs-bug"
+    },
+    {
+      "name": "nanlabs-decision-log",
+      "group": "delivery",
+      "path": "skills/delivery/nanlabs-decision-log"
+    },
+    {
+      "name": "nanlabs-development-workflow",
+      "group": "delivery",
+      "path": "skills/delivery/nanlabs-development-workflow"
+    },
+    {
+      "name": "nanlabs-epic",
+      "group": "delivery",
+      "path": "skills/delivery/nanlabs-epic"
+    },
+    {
+      "name": "nanlabs-incident",
+      "group": "delivery",
+      "path": "skills/delivery/nanlabs-incident"
+    },
+    {
+      "name": "nanlabs-management-unit-assessment",
+      "group": "delivery",
+      "path": "skills/delivery/nanlabs-management-unit-assessment"
+    },
+    {
+      "name": "nanlabs-meeting-minutes",
+      "group": "delivery",
+      "path": "skills/delivery/nanlabs-meeting-minutes"
+    },
+    {
+      "name": "nanlabs-planning",
+      "group": "delivery",
+      "path": "skills/delivery/nanlabs-planning"
+    },
+    {
+      "name": "nanlabs-prd",
+      "group": "delivery",
+      "path": "skills/delivery/nanlabs-prd"
+    },
+    {
+      "name": "nanlabs-project-assessment",
+      "group": "delivery",
+      "path": "skills/delivery/nanlabs-project-assessment"
+    },
+    {
+      "name": "nanlabs-project-assessment-evidence",
+      "group": "delivery",
+      "path": "skills/delivery/nanlabs-project-assessment-evidence"
+    },
+    {
+      "name": "nanlabs-spike",
+      "group": "delivery",
+      "path": "skills/delivery/nanlabs-spike"
+    },
+    {
+      "name": "nanlabs-task",
+      "group": "delivery",
+      "path": "skills/delivery/nanlabs-task"
+    },
+    {
+      "name": "nanlabs-technical-unit-assessment",
+      "group": "delivery",
+      "path": "skills/delivery/nanlabs-technical-unit-assessment"
+    },
+    {
+      "name": "nanlabs-trd",
+      "group": "delivery",
+      "path": "skills/delivery/nanlabs-trd"
+    },
+    {
+      "name": "nanlabs-user-story",
+      "group": "delivery",
+      "path": "skills/delivery/nanlabs-user-story"
+    },
+    {
+      "name": "nanlabs-work-item",
+      "group": "delivery",
+      "path": "skills/delivery/nanlabs-work-item"
+    },
+    {
+      "name": "figma",
+      "group": "design",
+      "path": "skills/design/figma"
+    },
+    {
+      "name": "figma-code-connect-components",
+      "group": "design",
+      "path": "skills/design/figma-code-connect-components"
+    },
+    {
+      "name": "figma-create-design-system-rules",
+      "group": "design",
+      "path": "skills/design/figma-create-design-system-rules"
+    },
+    {
+      "name": "figma-create-new-file",
+      "group": "design",
+      "path": "skills/design/figma-create-new-file"
+    },
+    {
+      "name": "figma-implement-design",
+      "group": "design",
+      "path": "skills/design/figma-implement-design"
+    },
+    {
+      "name": "ui-ux-pro-max",
+      "group": "design",
+      "path": "skills/design/ui-ux-pro-max"
+    },
+    {
+      "name": "gh-address-comments",
+      "group": "forge",
+      "path": "skills/forge/gh-address-comments"
+    },
+    {
+      "name": "gh-fix-ci",
+      "group": "forge",
+      "path": "skills/forge/gh-fix-ci"
+    },
+    {
+      "name": "github-cli-workflow",
+      "group": "forge",
+      "path": "skills/forge/github-cli-workflow"
+    },
+    {
+      "name": "gitlab-cli-workflow",
+      "group": "forge",
+      "path": "skills/forge/gitlab-cli-workflow"
+    },
+    {
+      "name": "clickup-cli",
+      "group": "integrations",
+      "path": "skills/integrations/clickup-cli"
+    },
+    {
+      "name": "linear",
+      "group": "integrations",
+      "path": "skills/integrations/linear"
+    },
+    {
+      "name": "nan-slack-assistant",
+      "group": "integrations",
+      "path": "skills/integrations/nan-slack-assistant"
+    },
+    {
+      "name": "slack-cli",
+      "group": "integrations",
+      "path": "skills/integrations/slack-cli"
+    },
+    {
+      "name": "nanlabs-presentations-reconciliation",
+      "group": "ops",
+      "path": "skills/ops/nanlabs-presentations-reconciliation"
+    },
+    {
+      "name": "nanlabs-workstation-triage",
+      "group": "ops",
+      "path": "skills/ops/nanlabs-workstation-triage"
+    },
+    {
+      "name": "jupyter-notebook",
+      "group": "tooling",
+      "path": "skills/tooling/jupyter-notebook"
+    },
+    {
+      "name": "playwright-cli",
+      "group": "tooling",
+      "path": "skills/tooling/playwright-cli"
+    },
+    {
+      "name": "nanlabs-workflow-client-bootstrap",
+      "group": "workflow",
+      "path": "skills/workflow/nanlabs-workflow-client-bootstrap"
+    },
+    {
+      "name": "nanlabs-workflow-generic-project",
+      "group": "workflow",
+      "path": "skills/workflow/nanlabs-workflow-generic-project"
+    }
+  ]
+}

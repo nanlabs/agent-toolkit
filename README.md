@@ -25,7 +25,8 @@ npx skills add nanlabs/agent-toolkit -g
 
 | Path | Purpose |
 | --- | --- |
-| `skills/` | Canonical Agent Skills tree |
+| `skills/<group>/<skill>/` | Canonical [Agent Skills](https://agentskills.io/specification) tree (`SKILL.md` only; grouped for `npx skills`) |
+| `catalogs/skill-catalog.yaml` | Public skill index + group map |
 | `plugins/` | Claude / Cursor plugin bundles |
 | `.claude-plugin/` / `.cursor-plugin/` | Marketplace catalogs |
 | `agents/` | Agent personas (populated during migration) |

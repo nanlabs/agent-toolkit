@@ -1,0 +1,18 @@
+gh-address-comments (NaNLABS distribution)
+=========================================
+
+This skill is derived from the OpenAI "skills" repository, originally licensed
+under the Apache License 2.0:
+
+  https://github.com/openai/skills (skills/.curated/gh-address-comments)
+
+Modifications by NaNLabs S.A. for distribution via nanlabs/agent-toolkit:
+
+- Removed Codex-specific guidance (`sandbox_permissions=require_escalated`
+  language, references to `~/.codex/skills`).
+- Removed `agents/openai.yaml`; Agent Skills uses `SKILL.md` frontmatter only.
+- Documented script paths as skill-relative (`scripts/fetch_comments.py`).
+- Documented hand-off to `github-cli-workflow` for push/merge actions.
+- Dropped vendor logo assets (`assets/github*`).
+
+Original LICENSE.txt is preserved in this directory.
