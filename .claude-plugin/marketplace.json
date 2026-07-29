@@ -1,0 +1,22 @@
+{
+  "name": "nanlabs-agent-toolkit",
+  "owner": {
+    "name": "NaNLABS",
+    "email": "technology@nanlabs.com"
+  },
+  "metadata": {
+    "description": "NaNLABS skills, agents, plugins, and MCP stubs for Claude Code and compatible clients",
+    "version": "0.1.0",
+    "pluginRoot": "./plugins"
+  },
+  "plugins": [
+    {
+      "name": "nanlabs-setup",
+      "source": "./plugins/nanlabs-setup",
+      "description": "Inspect the environment, document missing deps, and guide first-time NaN harness setup (P0 scaffold)",
+      "version": "0.1.0",
+      "category": "productivity",
+      "tags": ["setup", "doctor", "onboarding"]
+    }
+  ]
+}

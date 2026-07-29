@@ -1,0 +1,13 @@
+{
+  "name": "nanlabs-setup",
+  "version": "0.1.0",
+  "description": "First-run setup helper for the NaNLABS agent toolkit. Detects missing baseline tools and guides configuration without embedding secrets.",
+  "author": {
+    "name": "NaNLABS",
+    "email": "technology@nanlabs.com"
+  },
+  "homepage": "https://github.com/nanlabs/agent-toolkit",
+  "repository": "https://github.com/nanlabs/agent-toolkit",
+  "license": "MIT",
+  "keywords": ["setup", "doctor", "onboarding", "nanlabs"]
+}

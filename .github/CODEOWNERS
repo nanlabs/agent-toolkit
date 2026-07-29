@@ -1,0 +1,9 @@
+# Default owners for the public agent-toolkit repository.
+* @nanlabs/internal-maintainers @nanlabs/oss-core-team
+
+# Distribution manifests and CI are high-impact.
+/.claude-plugin/ @nanlabs/internal-maintainers @nanlabs/oss-core-team
+/.cursor-plugin/ @nanlabs/internal-maintainers @nanlabs/oss-core-team
+/.github/ @nanlabs/internal-maintainers @nanlabs/oss-core-team
+/plugins/ @nanlabs/internal-maintainers @nanlabs/oss-core-team
+/scripts/ @nanlabs/internal-maintainers @nanlabs/oss-core-team
