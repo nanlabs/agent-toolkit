@@ -1,0 +1,29 @@
+{
+  "$schema": "https://raw.githubusercontent.com/nanlabs/agent-toolkit/main/schemas/skill.schema.json",
+  "name": "nanlabs-decision-log",
+  "version": "1.0.0",
+  "description": "WHAT: Capture lightweight project, product, or operational decisions that do not require a full ADR; includes rationale, date, owner, and references.",
+  "source": "bundled",
+  "author": "nanlabs",
+  "tags": [
+    "nanlabs",
+    "decision-log",
+    "governance",
+    "meeting",
+    "clickup"
+  ],
+  "compatibility": {
+    "universal": {
+      "supported": true
+    },
+    "claude-code": {
+      "supported": true
+    },
+    "pi": {
+      "supported": true
+    },
+    "windsurf": {
+      "supported": true
+    }
+  }
+}

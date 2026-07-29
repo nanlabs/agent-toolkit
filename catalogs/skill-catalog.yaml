@@ -1,7 +1,370 @@
-# Minimal P0 catalog — expanded during content migration.
-version: 1
+# Agent-toolkit skill catalog (public)
+# Layout: skills/<group>/<skill>/SKILL.md
+# Compatible with npx skills nested discovery.
+
+version: 2
+layout: grouped
+
+groups:
+  - id: core
+    path: skills/core
+    description: "Orchestration, setup, companion, and handshake skills"
+  - id: data
+    path: skills/data
+    description: "dbt and Snowflake validation"
+  - id: delivery
+    path: skills/delivery
+    description: "PRD/TRD/ADR, work items, assessments, and delivery process skills"
+  - id: design
+    path: skills/design
+    description: "Figma and UI/UX skills"
+  - id: forge
+    path: skills/forge
+    description: "GitHub/GitLab CLI automation"
+  - id: integrations
+    path: skills/integrations
+    description: "ClickUp, Slack, Linear integrations"
+  - id: ops
+    path: skills/ops
+    description: "Workstation triage and presentations ops"
+  - id: tooling
+    path: skills/tooling
+    description: "Playwright and Jupyter tooling"
+  - id: workflow
+    path: skills/workflow
+    description: "Client delivery workflows and bootstrap"
+
 skills:
-  - id: nanlabs-setup
-    path: skills/nanlabs-setup
-    summary: First-run environment inspection and setup guidance
+  - name: nanlabs-assistant
+    group: core
+    path: skills/core/nanlabs-assistant
     public: true
+    domain: orchestration
+    responsibility: HOW
+    role: orchestrator_and_fallback
+  - name: nanlabs-dev-companion
+    group: core
+    path: skills/core/nanlabs-dev-companion
+    public: true
+    domain: companion
+    responsibility: WHAT
+    role: nanlabs_general_dev_companion
+  - name: nanlabs-output-handshake
+    group: core
+    path: skills/core/nanlabs-output-handshake
+    public: true
+    domain: delivery
+    responsibility: WHAT
+    role: artifact_gate
+  - name: nanlabs-pr-fallback
+    group: core
+    path: skills/core/nanlabs-pr-fallback
+    public: true
+    domain: delivery
+    responsibility: WHAT
+    role: default_pr_template
+  - name: nanlabs-setup
+    group: core
+    path: skills/core/nanlabs-setup
+    public: true
+  - name: nanlabs-workspace-knowledge-sync
+    group: core
+    path: skills/core/nanlabs-workspace-knowledge-sync
+    public: true
+    domain: orchestration
+    responsibility: HOW
+    role: workspace_knowledge_management
+  - name: dbt-validation
+    group: data
+    path: skills/data/dbt-validation
+    public: true
+    domain: data
+    responsibility: HOW
+    role: dbt_checks
+  - name: snowflake-validation
+    group: data
+    path: skills/data/snowflake-validation
+    public: true
+    domain: data
+    responsibility: HOW
+    role: snowflake_checks
+  - name: nanlabs-adr
+    group: delivery
+    path: skills/delivery/nanlabs-adr
+    public: true
+    domain: delivery
+    responsibility: WHAT
+    role: adr_process
+  - name: nanlabs-agreement
+    group: delivery
+    path: skills/delivery/nanlabs-agreement
+    public: true
+    domain: governance
+    responsibility: WHAT
+    role: agreement_document
+  - name: nanlabs-bug
+    group: delivery
+    path: skills/delivery/nanlabs-bug
+    public: true
+    domain: delivery
+    responsibility: WHAT
+    role: bug_template
+  - name: nanlabs-decision-log
+    group: delivery
+    path: skills/delivery/nanlabs-decision-log
+    public: true
+    domain: governance
+    responsibility: WHAT
+    role: lightweight_decision_log
+  - name: nanlabs-development-workflow
+    group: delivery
+    path: skills/delivery/nanlabs-development-workflow
+    public: true
+    domain: delivery
+    responsibility: WHAT
+    role: default_development_workflow
+  - name: nanlabs-epic
+    group: delivery
+    path: skills/delivery/nanlabs-epic
+    public: true
+    domain: delivery
+    responsibility: WHAT
+    role: epic_template
+  - name: nanlabs-incident
+    group: delivery
+    path: skills/delivery/nanlabs-incident
+    public: true
+    domain: operations
+    responsibility: WHAT
+    role: incident_report
+  - name: nanlabs-management-unit-assessment
+    group: delivery
+    path: skills/delivery/nanlabs-management-unit-assessment
+    public: true
+    domain: assessment
+    responsibility: WHAT
+    role: management_unit_assessment
+  - name: nanlabs-meeting-minutes
+    group: delivery
+    path: skills/delivery/nanlabs-meeting-minutes
+    public: true
+    domain: delivery
+    responsibility: WHAT
+    role: meeting_minutes
+  - name: nanlabs-planning
+    group: delivery
+    path: skills/delivery/nanlabs-planning
+    public: true
+    domain: delivery
+    responsibility: WHAT
+    role: planning_and_estimation
+  - name: nanlabs-prd
+    group: delivery
+    path: skills/delivery/nanlabs-prd
+    public: true
+    domain: delivery
+    responsibility: WHAT
+    role: prd_authoring
+  - name: nanlabs-project-assessment
+    group: delivery
+    path: skills/delivery/nanlabs-project-assessment
+    public: true
+    domain: assessment
+    responsibility: WHAT
+    role: project_assessment_router
+  - name: nanlabs-project-assessment-evidence
+    group: delivery
+    path: skills/delivery/nanlabs-project-assessment-evidence
+    public: true
+    domain: assessment
+    responsibility: WHAT
+    role: assessment_evidence_intake
+  - name: nanlabs-spike
+    group: delivery
+    path: skills/delivery/nanlabs-spike
+    public: true
+    domain: delivery
+    responsibility: WHAT
+    role: spike_research_findings
+  - name: nanlabs-task
+    group: delivery
+    path: skills/delivery/nanlabs-task
+    public: true
+    domain: delivery
+    responsibility: WHAT
+    role: task_template
+  - name: nanlabs-technical-unit-assessment
+    group: delivery
+    path: skills/delivery/nanlabs-technical-unit-assessment
+    public: true
+    domain: assessment
+    responsibility: WHAT
+    role: technical_unit_assessment
+  - name: nanlabs-trd
+    group: delivery
+    path: skills/delivery/nanlabs-trd
+    public: true
+    domain: delivery
+    responsibility: WHAT
+    role: trd_authoring
+  - name: nanlabs-user-story
+    group: delivery
+    path: skills/delivery/nanlabs-user-story
+    public: true
+    domain: delivery
+    responsibility: WHAT
+    role: user_story_template
+  - name: nanlabs-work-item
+    group: delivery
+    path: skills/delivery/nanlabs-work-item
+    public: true
+    domain: delivery
+    responsibility: WHAT
+    role: work_item_router
+  - name: figma
+    group: design
+    path: skills/design/figma
+    public: true
+    domain: figma
+    responsibility: HOW
+    role: figma_mcp_entry_point
+  - name: figma-code-connect-components
+    group: design
+    path: skills/design/figma-code-connect-components
+    public: true
+    domain: figma
+    responsibility: HOW
+    role: figma_code_connect
+  - name: figma-create-design-system-rules
+    group: design
+    path: skills/design/figma-create-design-system-rules
+    public: true
+    domain: figma
+    responsibility: HOW
+    role: figma_agents_md_generator
+  - name: figma-create-new-file
+    group: design
+    path: skills/design/figma-create-new-file
+    public: true
+    domain: figma
+    responsibility: HOW
+    role: figma_file_bootstrap
+  - name: figma-implement-design
+    group: design
+    path: skills/design/figma-implement-design
+    public: true
+    domain: figma
+    responsibility: HOW
+    role: figma_design_to_code
+  - name: ui-ux-pro-max
+    group: design
+    path: skills/design/ui-ux-pro-max
+    public: true
+    domain: ui
+    responsibility: HOW
+    role: design_intelligence
+  - name: gh-address-comments
+    group: forge
+    path: skills/forge/gh-address-comments
+    public: true
+    domain: forge
+    responsibility: HOW
+    role: gh_pr_comment_handler
+  - name: gh-fix-ci
+    group: forge
+    path: skills/forge/gh-fix-ci
+    public: true
+    domain: forge
+    responsibility: HOW
+    role: gh_pr_ci_triage
+  - name: github-cli-workflow
+    group: forge
+    path: skills/forge/github-cli-workflow
+    public: true
+    domain: forge
+    responsibility: HOW
+    role: github_pr_automation
+  - name: gitlab-cli-workflow
+    group: forge
+    path: skills/forge/gitlab-cli-workflow
+    public: true
+    domain: forge
+    responsibility: HOW
+    role: gitlab_mr_automation
+  - name: clickup-cli
+    group: integrations
+    path: skills/integrations/clickup-cli
+    public: true
+    domain: clickup
+    responsibility: HOW
+    role: clickup_cli
+  - name: linear
+    group: integrations
+    path: skills/integrations/linear
+    public: true
+    domain: linear
+    responsibility: HOW
+    role: linear_mcp_workflows
+  - name: nan-slack-assistant
+    group: integrations
+    path: skills/integrations/nan-slack-assistant
+    public: true
+    domain: slack
+    responsibility: HOW
+    role: slack_workspace_assistant
+  - name: slack-cli
+    group: integrations
+    path: skills/integrations/slack-cli
+    public: true
+    domain: slack
+    responsibility: HOW
+    role: slack_app_cli
+  - name: nanlabs-presentations-reconciliation
+    group: ops
+    path: skills/ops/nanlabs-presentations-reconciliation
+    public: true
+    domain: learning
+    responsibility: HOW
+    role: presentations_list_maintenance
+  - name: nanlabs-workstation-triage
+    group: ops
+    path: skills/ops/nanlabs-workstation-triage
+    public: true
+    domain: workstation
+    responsibility: HOW
+    role: healthcheck
+  - name: jupyter-notebook
+    group: tooling
+    path: skills/tooling/jupyter-notebook
+    public: true
+    domain: rd
+    responsibility: HOW
+    role: jupyter_notebook_scaffold
+  - name: playwright-cli
+    group: tooling
+    path: skills/tooling/playwright-cli
+    public: true
+    domain: testing
+    responsibility: HOW
+    role: playwright_cli_browser_automation
+  - name: nanlabs-workflow-client-bootstrap
+    group: workflow
+    path: skills/workflow/nanlabs-workflow-client-bootstrap
+    public: true
+    domain: workflow
+    responsibility: WHAT
+    role: client_workflow_generator
+  - name: nanlabs-workflow-generic-project
+    group: workflow
+    path: skills/workflow/nanlabs-workflow-generic-project
+    public: true
+    domain: workflow
+    responsibility: WHAT
+    role: generic_client_delivery
+
+# Not bundled in this public repo (referenced in workstation catalog but absent as skill dirs):
+# - nanlabs-tech-assistant (deferred; remains in internal-workstation only for now)
+# - jira-assistant (external pack)
+# - confluence-assistant (external pack)
+# - nanlabs-agents (agents tree, not skills)
+# - dev-companion-llm (docs/config, not a skill dir)

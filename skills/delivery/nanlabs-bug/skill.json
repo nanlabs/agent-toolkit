@@ -1,0 +1,29 @@
+{
+  "$schema": "https://raw.githubusercontent.com/nanlabs/agent-toolkit/main/schemas/skill.schema.json",
+  "name": "nanlabs-bug",
+  "version": "1.0.0",
+  "description": "WHAT: Draft and review bugs using the NaNLABS Bug Template; classifies whether an issue should be escalated to incident based on production/user impact.",
+  "source": "bundled",
+  "author": "nanlabs",
+  "tags": [
+    "nanlabs",
+    "bug",
+    "incident-triage",
+    "work-item",
+    "clickup"
+  ],
+  "compatibility": {
+    "universal": {
+      "supported": true
+    },
+    "claude-code": {
+      "supported": true
+    },
+    "pi": {
+      "supported": true
+    },
+    "windsurf": {
+      "supported": true
+    }
+  }
+}

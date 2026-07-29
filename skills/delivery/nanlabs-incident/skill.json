@@ -1,0 +1,29 @@
+{
+  "$schema": "https://raw.githubusercontent.com/nanlabs/agent-toolkit/main/schemas/skill.schema.json",
+  "name": "nanlabs-incident",
+  "version": "1.0.0",
+  "description": "WHAT: Draft and review incident reports and RCA notes using NaNLABS Incident Management guidance; includes detection, impact, timeline, RCA, resolution, and follow-ups.",
+  "source": "bundled",
+  "author": "nanlabs",
+  "tags": [
+    "nanlabs",
+    "incident",
+    "rca",
+    "operations",
+    "clickup"
+  ],
+  "compatibility": {
+    "universal": {
+      "supported": true
+    },
+    "claude-code": {
+      "supported": true
+    },
+    "pi": {
+      "supported": true
+    },
+    "windsurf": {
+      "supported": true
+    }
+  }
+}

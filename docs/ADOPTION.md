@@ -24,7 +24,7 @@ P0 prioritizes Claude Code; Cursor packaging is present so the same canonical co
 npx skills add nanlabs/agent-toolkit -g
 ```
 
-This installs the canonical `skills/` tree (including `nanlabs-setup`).
+This installs the canonical grouped tree `skills/<group>/<skill>/` (47 skills, including `nanlabs-setup`).
 
 ## What success looks like
 

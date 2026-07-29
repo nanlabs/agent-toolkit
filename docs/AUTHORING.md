@@ -4,7 +4,7 @@
 
 | Path | Role |
 | --- | --- |
-| `skills/` | Canonical Agent Skills tree (`SKILL.md` + `references/`) |
+| `skills/<group>/<skill>/` | Canonical Agent Skills tree (grouped; `npx skills` depth-2 discovery) |
 | `agents/` | Canonical agent/subagent personas |
 | `mcp/templates/` | MCP config stubs (placeholders only) |
 | `plugins/<id>/` | Distributable plugin bundles for Claude / Cursor |
@@ -13,7 +13,7 @@
 
 ## Rules
 
-1. Author skills once under `skills/`. For Claude plugin caching limits, also ship the skill **inside** the plugin directory for P0 (`plugins/.../skills/...`). Later waves may automate sync/symlinks.
+1. Author skills under `skills/<group>/<skill>/` (see `catalogs/skill-catalog.yaml`). For Claude plugin caching limits, also ship the skill **inside** the plugin directory for P0 (`plugins/.../skills/...`). Later waves may automate sync/symlinks.
 2. Every `SKILL.md` needs YAML frontmatter with kebab-case `name` and a clear `description`.
 3. Never commit secrets. Use env-var names only in MCP stubs.
 4. Public scrub: read `docs/PUBLIC_CONTENT_POLICY.md` before migrating internal content.

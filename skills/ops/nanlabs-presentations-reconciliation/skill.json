@@ -1,0 +1,34 @@
+{
+  "$schema": "https://raw.githubusercontent.com/nanlabs/agent-toolkit/main/schemas/skill.schema.json",
+  "name": "nanlabs-presentations-reconciliation",
+  "version": "1.0.0",
+  "description": "Reconcile the NaNLABS ClickUp Presentations list against Google Calendar Thursday events. Creates missing tasks, updates Video Link, External Minutes, talk type, category, and description fields. Use when the Presentations list needs to be brought up to date after a batch of delivered talks.",
+  "source": "bundled",
+  "author": "nanlabs",
+  "tags": [
+    "nanlabs",
+    "learning",
+    "presentations",
+    "reconciliation",
+    "clickup",
+    "calendar",
+    "maintenance"
+  ],
+  "requires": [
+    "clickup"
+  ],
+  "compatibility": {
+    "universal": {
+      "supported": true
+    },
+    "claude-code": {
+      "supported": true
+    },
+    "pi": {
+      "supported": true
+    },
+    "windsurf": {
+      "supported": true
+    }
+  }
+}

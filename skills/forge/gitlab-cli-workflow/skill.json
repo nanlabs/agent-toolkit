@@ -1,0 +1,32 @@
+{
+  "$schema": "https://raw.githubusercontent.com/nanlabs/agent-toolkit/main/schemas/skill.schema.json",
+  "name": "gitlab-cli-workflow",
+  "version": "1.0.0",
+  "description": "HOW: glab draft MR creation; verify flags via glab help; untracked markdown fallback.",
+  "source": "bundled",
+  "author": "nanlabs",
+  "tags": [
+    "gitlab",
+    "glab",
+    "mr",
+    "draft",
+    "forge"
+  ],
+  "requires": [
+    "glab"
+  ],
+  "compatibility": {
+    "universal": {
+      "supported": true
+    },
+    "claude-code": {
+      "supported": true
+    },
+    "pi": {
+      "supported": true
+    },
+    "windsurf": {
+      "supported": true
+    }
+  }
+}

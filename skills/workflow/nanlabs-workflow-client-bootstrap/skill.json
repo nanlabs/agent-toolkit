@@ -1,0 +1,30 @@
+{
+  "$schema": "https://raw.githubusercontent.com/nanlabs/agent-toolkit/main/schemas/skill.schema.json",
+  "name": "nanlabs-workflow-client-bootstrap",
+  "version": "1.0.0",
+  "description": "WHAT: Interactive interview that stores client delivery context into the user's workspace as packs + knowledge (no client skills).",
+  "source": "bundled",
+  "author": "nanlabs",
+  "tags": [
+    "nanlabs",
+    "workflow",
+    "bootstrap",
+    "client",
+    "onboarding",
+    "delivery"
+  ],
+  "compatibility": {
+    "universal": {
+      "supported": true
+    },
+    "claude-code": {
+      "supported": true
+    },
+    "pi": {
+      "supported": true
+    },
+    "windsurf": {
+      "supported": true
+    }
+  }
+}

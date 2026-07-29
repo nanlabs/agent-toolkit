@@ -1,0 +1,29 @@
+{
+  "$schema": "https://raw.githubusercontent.com/nanlabs/agent-toolkit/main/schemas/skill.schema.json",
+  "name": "nanlabs-agreement",
+  "version": "1.0.0",
+  "description": "WHAT: Capture explicit agreements, terms, parties involved, dates, validity, and linked work items using the NaNLABS Agreement Document structure.",
+  "source": "bundled",
+  "author": "nanlabs",
+  "tags": [
+    "nanlabs",
+    "agreement",
+    "governance",
+    "meeting",
+    "clickup"
+  ],
+  "compatibility": {
+    "universal": {
+      "supported": true
+    },
+    "claude-code": {
+      "supported": true
+    },
+    "pi": {
+      "supported": true
+    },
+    "windsurf": {
+      "supported": true
+    }
+  }
+}
