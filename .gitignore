@@ -1,0 +1,36 @@
+# OS / editor
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/
+*.code-workspace
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Node (if added later)
+node_modules/
+dist/
+coverage/
+
+# Secrets / local env (never commit)
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+credentials.json
+secrets/
+
+# Tool caches
+.claude/
+.cursor/
+.opencode/
+*.log

@@ -1,0 +1,7 @@
+# Minimal P0 catalog — expanded during content migration.
+version: 1
+skills:
+  - id: nanlabs-setup
+    path: skills/nanlabs-setup
+    summary: First-run environment inspection and setup guidance
+    public: true
