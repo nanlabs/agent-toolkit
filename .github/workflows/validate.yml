@@ -40,6 +40,9 @@ jobs:
       - name: Validate skills
         run: python3 scripts/validate-skills.py
 
+      - name: Validate agents
+        run: python3 scripts/validate-agents.py
+
       - name: Secret scan (tracked files)
         run: bash scripts/secret-scan.sh
 

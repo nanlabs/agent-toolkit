@@ -1,3 +1,11 @@
-# Minimal P0 catalog — agents arrive with extract / Wave 1.
+# Agent catalog (public)
+
 version: 1
-agents: []
+
+agents:
+  - name: nanlabs-code-reviewer
+    path: agents/nanlabs-code-reviewer
+    public: true
+    role: code_quality_review
+    description: >-
+      Expert code review for quality, security, and maintainability.

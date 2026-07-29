@@ -29,6 +29,11 @@ required_paths=(
   ".yamllint.yaml"
   "tools/danger/dangerfile.ts"
   "tools/danger/package.json"
+  "docs/P0_FINDINGS.md"
+  "docs/LIFECYCLE.md"
+  "agents/nanlabs-code-reviewer/AGENT.md"
+  "mcp/templates/github/config.template.json"
+  "catalogs/agent-catalog.yaml"
 )
 
 missing=0

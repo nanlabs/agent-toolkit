@@ -1,10 +1,14 @@
 # agent-toolkit
 
-NaNLABS skills, agents, plugins, MCP integrations, and reusable workflows for AI agents across Claude Code, Cursor, Copilot, OpenCode, and other compatible clients.
+[![CI Validate](https://github.com/nanlabs/agent-toolkit/actions/workflows/validate.yml/badge.svg)](https://github.com/nanlabs/agent-toolkit/actions/workflows/validate.yml)
+[![MegaLinter](https://github.com/nanlabs/agent-toolkit/actions/workflows/mega-linter.yml/badge.svg)](https://github.com/nanlabs/agent-toolkit/actions/workflows/mega-linter.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![Agent Skills](https://img.shields.io/badge/Agent%20Skills-compatible-0A7EA4)](https://agentskills.io/specification)
 
-> **Status:** P0 scaffold in progress. Content migration from [`internal-workstation`](https://github.com/nanlabs/internal-workstation) is tracked in GitHub Project [AI Native Workbench](https://github.com/orgs/nanlabs/projects/12).
->
-> **Canonical migration plan:** [`docs/AI_ASSETS_MIGRATION_PLAN.md`](https://github.com/nanlabs/internal-workstation/blob/main/docs/AI_ASSETS_MIGRATION_PLAN.md) (internal workstation repo).
+NaNLABS **skills**, **agents**, **plugins**, and **MCP stubs** for Claude Code, Cursor, GitHub Copilot, OpenCode, and other Agent Skills–compatible clients.
+
+> Public distribution repo (L1.5). Machine provisioning stays in [`internal-workstation`](https://github.com/nanlabs/internal-workstation).  
+> Migration program: GitHub Project [AI Native Workbench](https://github.com/orgs/nanlabs/projects/12) · findings: [`docs/P0_FINDINGS.md`](docs/P0_FINDINGS.md)
 
 ## Install (60 seconds)
 
@@ -15,36 +19,51 @@ NaNLABS skills, agents, plugins, MCP integrations, and reusable workflows for AI
 /plugin install nanlabs-setup@nanlabs-agent-toolkit
 ```
 
-### Any agent (technical)
+Then ask Claude to run setup, or use the `/setup` command from the plugin.
+
+### Any agent (skills.sh / CLI)
 
 ```bash
 npx skills add nanlabs/agent-toolkit -g
 ```
 
+Installs the grouped tree `skills/<group>/<skill>/` (47 public skills). See [`docs/SKILLS.md`](docs/SKILLS.md) and [`docs/LIFECYCLE.md`](docs/LIFECYCLE.md).
+
+### Cursor
+
+- **Local:** load plugins from this repo under `~/.cursor/plugins/local` (see [Cursor plugins docs](https://cursor.com/docs/plugins)).
+- **Team:** import this repository as a Team Marketplace (admin; Teams/Enterprise).
+
+## What's included
+
+| Area | Count / notes |
+| --- | --- |
+| Skills | 47 under `skills/<group>/` — [catalog](catalogs/skill-catalog.yaml) |
+| Setup plugin | `nanlabs-setup` (Claude + Cursor manifests) |
+| Agents | `nanlabs-code-reviewer` (more in Wave 1) |
+| MCP | Public stubs under `mcp/templates/` (env placeholders only) |
+
 ## Repository layout
 
 | Path | Purpose |
 | --- | --- |
-| `skills/<group>/<skill>/` | Canonical [Agent Skills](https://agentskills.io/specification) tree (`SKILL.md` only; grouped for `npx skills`) |
-| `catalogs/skill-catalog.yaml` | Public skill index + group map |
+| `skills/<group>/<skill>/` | Canonical [Agent Skills](https://agentskills.io/specification) tree |
 | `plugins/` | Claude / Cursor plugin bundles |
-| `.claude-plugin/` / `.cursor-plugin/` | Marketplace catalogs |
-| `agents/` | Agent personas (populated during migration) |
-| `mcp/templates/` | MCP stubs (placeholders only) |
-| `scripts/` | Validation and secret scan |
-| `docs/` | Adoption, authoring, public content policy |
+| `.claude-plugin/` · `.cursor-plugin/` | Marketplace catalogs |
+| `agents/` | Agent / subagent personas |
+| `mcp/templates/` | MCP config stubs (no secrets) |
+| `catalogs/` | Skill / agent indexes |
+| `scripts/` | Validation + secret scan |
+| `docs/` | Adoption, lifecycle, authoring, P0 findings |
+| `tools/danger/` | Danger JS (TypeScript) for PR review |
 
 ## Quality bar
 
-This public repository follows NaNLABS quality standards:
-
-- Manifest + skill validation in CI
-- Pre-commit hooks (YAML/JSON/markdown/private-key)
-- MegaLinter v9 (cupcake allowlist: actionlint, shellcheck, markdownlint, yamllint, secretlint)
-- Danger JS (TypeScript) on non-draft PRs
-- Secret scan on tracked files
-- `CODEOWNERS`, Dependabot (Actions + `/tools/danger`)
-- Public content policy enforced in docs + PR template
+- Validate: structure, marketplace manifests, skills, secret-scan
+- Pre-commit (YAML / JSON / markdown / private-key)
+- MegaLinter v9 (cupcake allowlist)
+- Danger JS on non-draft PRs
+- [`docs/PUBLIC_CONTENT_POLICY.md`](docs/PUBLIC_CONTENT_POLICY.md)
 
 ```bash
 bash scripts/validate-repo-structure.sh
@@ -54,15 +73,23 @@ bash scripts/secret-scan.sh
 pre-commit run --all-files
 ```
 
-CI workflows: `.github/workflows/validate.yml`, `mega-linter.yml`, `pr-review.yml`.
+## Docs
+
+| Doc | Topic |
+| --- | --- |
+| [`docs/ADOPTION.md`](docs/ADOPTION.md) | Install paths by client |
+| [`docs/LIFECYCLE.md`](docs/LIFECYCLE.md) | Update / pin / rollback |
+| [`docs/P0_FINDINGS.md`](docs/P0_FINDINGS.md) | Feasibility + lifecycle matrix |
+| [`docs/AUTHORING.md`](docs/AUTHORING.md) | How to add skills/plugins |
+| [`docs/SKILLS.md`](docs/SKILLS.md) | Skill groups + opt-in packs |
 
 ## Contributing
 
-See [`CONTRIBUTING.md`](CONTRIBUTING.md), [`AGENTS.md`](AGENTS.md), and [`docs/AUTHORING.md`](docs/AUTHORING.md).
+See [`CONTRIBUTING.md`](CONTRIBUTING.md) and [`AGENTS.md`](AGENTS.md). Use the PR template; link an issue (`Fixes #N`).
 
 ## Security
 
-See [`SECURITY.md`](SECURITY.md) and [`docs/PUBLIC_CONTENT_POLICY.md`](docs/PUBLIC_CONTENT_POLICY.md).
+[`SECURITY.md`](SECURITY.md) · [`docs/PUBLIC_CONTENT_POLICY.md`](docs/PUBLIC_CONTENT_POLICY.md)
 
 ## License
 
