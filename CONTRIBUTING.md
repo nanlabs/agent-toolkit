@@ -21,6 +21,7 @@ pre-commit install
 bash scripts/validate-repo-structure.sh
 python3 scripts/validate-manifests.py
 python3 scripts/validate-skills.py
+python3 scripts/validate-agents.py
 bash scripts/secret-scan.sh
 pre-commit run --all-files
 ```
