@@ -1,0 +1,57 @@
+# MegaLinter — nanlabs/agent-toolkit
+# Docs/skills-heavy public repo: allowlist only (workstation + skillshouse pattern).
+# Flavor: cupcake (bash/md/yaml/actions/secrets without JS/TF weight).
+
+APPLY_FIXES: none
+SHOW_ELAPSED_TIME: true
+FILEIO_REPORTER: false
+FLAVOR_SUGGESTIONS: false
+PRINT_ALL_FILES: false
+PRINT_ALPACA: false
+
+# Diff-only by default (same as internal-nan-tools). Full scans via workflow_dispatch
+# with VALIDATE_ALL_CODEBASE=true when intentionally debt-scrubbing.
+VALIDATE_ALL_CODEBASE: false
+
+ENABLE_LINTERS:
+  - ACTION_ACTIONLINT
+  - BASH_SHELLCHECK
+  - MARKDOWN_MARKDOWNLINT
+  - YAML_YAMLLINT
+  - REPOSITORY_GIT_DIFF
+  - REPOSITORY_SECRETLINT
+
+DISABLE_LINTERS:
+  - ACTION_ZIZMOR
+  - MARKDOWN_MARKDOWN_LINK_CHECK
+  - SPELL_CSPELL
+  - SPELL_LYCHEE
+  - COPYPASTE_JSCPD
+  - JSON_V8R
+  - YAML_V8R
+  - JSON_PRETTIER
+  - YAML_PRETTIER
+  - REPOSITORY_CHECKOV
+  - REPOSITORY_TRIVY
+  - REPOSITORY_TRIVY_SBOM
+  - REPOSITORY_GITLEAKS
+  - REPOSITORY_KICS
+  - REPOSITORY_OSV_SCANNER
+  - REPOSITORY_GRYPE
+  - REPOSITORY_DEVSKIM
+  - PYTHON_PYLINT
+  - PYTHON_FLAKE8
+  - PYTHON_MYPY
+  - PYTHON_BLACK
+  - PYTHON_ISORT
+  - PYTHON_RUFF
+
+# Align markdownlint with repo config (pre-commit uses the same disables).
+MARKDOWN_MARKDOWNLINT_CONFIG_FILE: .markdownlint.yaml
+MARKDOWN_MARKDOWNLINT_ARGUMENTS: "--disable MD013 MD033 MD041"
+
+# Migrated skill bodies carry historical markdown debt; gate docs/CI/scripts first.
+MARKDOWN_FILTER_REGEX_EXCLUDE: (^|/)skills/
+
+FILTER_REGEX_EXCLUDE: >-
+  (^|/)megalinter-reports/|(^|/)\.git/|(^|/)node_modules/|(^|/)tools/danger/node_modules/|(^|/)pnpm-lock\.yaml$|(^|/).*\\.ipynb$|(^|/)skills/.*/data/.*\\.csv$

@@ -40,8 +40,10 @@ This public repository follows NaNLABS quality standards:
 
 - Manifest + skill validation in CI
 - Pre-commit hooks (YAML/JSON/markdown/private-key)
+- MegaLinter v9 (cupcake allowlist: actionlint, shellcheck, markdownlint, yamllint, secretlint)
+- Danger JS (TypeScript) on non-draft PRs
 - Secret scan on tracked files
-- `CODEOWNERS`, Dependabot for GitHub Actions
+- `CODEOWNERS`, Dependabot (Actions + `/tools/danger`)
 - Public content policy enforced in docs + PR template
 
 ```bash
@@ -49,7 +51,10 @@ bash scripts/validate-repo-structure.sh
 python3 scripts/validate-manifests.py
 python3 scripts/validate-skills.py
 bash scripts/secret-scan.sh
+pre-commit run --all-files
 ```
+
+CI workflows: `.github/workflows/validate.yml`, `mega-linter.yml`, `pr-review.yml`.
 
 ## Contributing
 

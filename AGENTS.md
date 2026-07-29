@@ -27,6 +27,8 @@ python3 scripts/validate-skills.py
 bash scripts/secret-scan.sh
 ```
 
+CI also runs MegaLinter (`mega-linter.yml`) and Danger JS (`pr-review.yml`) on non-draft PRs.
+
 4. Open a PR using `.github/PULL_REQUEST_TEMPLATE.md` and link the issue.
 
 ## Routing
