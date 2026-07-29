@@ -25,7 +25,15 @@ bash scripts/secret-scan.sh
 pre-commit run --all-files
 ```
 
-CI runs the same checks on non-draft pull requests (see `.github/workflows/validate.yml`).
+CI on non-draft PRs:
+
+| Workflow | Job |
+| --- | --- |
+| `validate.yml` | Structure, manifests, skills, secret-scan, pre-commit |
+| `mega-linter.yml` | MegaLinter v9 (cupcake allowlist) |
+| `pr-review.yml` | Danger JS (TypeScript) under `tools/danger/` |
+
+Danger expects the PR template sections and an issue reference (`Fixes #N` / `Refs #N`).
 
 ## Pull requests
 

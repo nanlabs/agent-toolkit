@@ -23,6 +23,12 @@ required_paths=(
   "README.md"
   ".github/CODEOWNERS"
   ".github/workflows/validate.yml"
+  ".github/workflows/mega-linter.yml"
+  ".github/workflows/pr-review.yml"
+  ".mega-linter.yml"
+  ".yamllint.yaml"
+  "tools/danger/dangerfile.ts"
+  "tools/danger/package.json"
 )
 
 missing=0

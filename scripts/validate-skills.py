@@ -53,9 +53,9 @@ def validate_skill(path: Path) -> None:
         fail(f"{rel}: name must be kebab-case alphanumeric, got {name!r}")
     if len(name) > 64:
         fail(f"{rel}: name exceeds 64 characters")
-    # Agent Skills: name must match parent directory (skip plugin mirror copies).
+    # Agent Skills: name must match parent directory.
     parent = path.parent.name
-    if path.parts[-3] != "plugins" and name != parent:
+    if name != parent:
         fail(f"{rel}: frontmatter name {name!r} must match directory {parent!r}")
     if "description:" not in front:
         fail(f"{rel}: frontmatter missing description")

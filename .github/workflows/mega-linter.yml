@@ -1,0 +1,45 @@
+name: MegaLinter
+
+concurrency:
+  group: megalinter-${{ github.workflow }}-${{ github.head_ref || github.ref }}
+  cancel-in-progress: true
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  statuses: write
+  pull-requests: write
+
+jobs:
+  megalinter:
+    name: MegaLinter
+    if: github.event_name != 'pull_request' || github.event.pull_request.draft == false
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+
+      - name: MegaLinter
+        uses: oxsecurity/megalinter/flavors/cupcake@v9
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # Keep false even on main until a dedicated debt-scrub pass; config default
+          # is also false. Override via workflow_dispatch inputs later if needed.
+          VALIDATE_ALL_CODEBASE: false
+
+      - name: Upload MegaLinter reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: megalinter-reports
+          path: megalinter-reports
+          retention-days: 7

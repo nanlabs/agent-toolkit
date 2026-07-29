@@ -34,3 +34,4 @@ secrets/
 .cursor/
 .opencode/
 *.log
+tools/danger/node_modules/

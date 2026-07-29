@@ -1,0 +1,31 @@
+# yamllint configuration for agent-toolkit
+---
+extends: default
+
+rules:
+  line-length:
+    max: 120
+    level: warning
+
+  indentation:
+    spaces: 2
+    indent-sequences: true
+
+  comments:
+    min-spaces-from-content: 1
+
+  # GitHub Actions uses `on:` as a mapping key (YAML 1.1 truthy token).
+  truthy: disable
+
+  document-start: disable
+
+  brackets:
+    max-spaces-inside: 1
+
+  braces:
+    max-spaces-inside: 1
+
+ignore: |
+  megalinter-reports/
+  tools/danger/node_modules/
+  .cursor/
