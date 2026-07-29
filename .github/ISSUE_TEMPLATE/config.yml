@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Internal support channel
+    url: https://nanlabs.com
+    about: Use internal NaNLABS support channels for sensitive or private context.
+  - name: Migration plan (SoT)
+    url: https://github.com/nanlabs/internal-workstation/blob/main/docs/AI_ASSETS_MIGRATION_PLAN.md
+    about: Canonical migration plan for Workstation → agent-toolkit.
