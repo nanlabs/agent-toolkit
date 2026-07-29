@@ -59,7 +59,7 @@ nan-newnotebook --kind tutorial \
 ### Option B — call the script directly
 
 ```bash
-python3 ~/.local/share/nanlabs/skills/jupyter-notebook/scripts/new_notebook.py \
+python3 <skill-root>/scripts/new_notebook.py \
   --kind experiment \
   --title "Compare prompt variants" \
   --out output/jupyter-notebook/compare-prompt-variants.ipynb
@@ -68,7 +68,7 @@ python3 ~/.local/share/nanlabs/skills/jupyter-notebook/scripts/new_notebook.py \
 If you prefer `uv` for a pinned interpreter:
 
 ```bash
-uv run --python 3.12 python ~/.local/share/nanlabs/skills/jupyter-notebook/scripts/new_notebook.py \
+uv run --python 3.12 python <skill-root>/scripts/new_notebook.py \
   --kind tutorial \
   --title "Intro to embeddings"
 ```

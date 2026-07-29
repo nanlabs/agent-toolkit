@@ -10,7 +10,7 @@ wrapper script runs the CLI through `npx`, so a global install is not required.
 
 > Treat this skill as **CLI-first automation**. Do NOT pivot to
 > `@playwright/test` test files unless the user explicitly asks for them — for
-> Playwright tests use [`nanlabs-e2e-runner`](../nanlabs-e2e-runner/SKILL.md).
+> Playwright **test specs** are covered by the `nanlabs-e2e-runner` agent (not bundled as a skill in this repo yet).
 
 ## When to use
 

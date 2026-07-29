@@ -30,5 +30,5 @@ pwcli open https://demo.playwright.dev/todomvc
 
 ## See also
 
-- [`nanlabs-e2e-runner`](../nanlabs-e2e-runner/SKILL.md) — Playwright **test**
+- `nanlabs-e2e-runner` (agent; not bundled here yet) — Playwright **test**
   authoring & execution (different mental model than this skill).

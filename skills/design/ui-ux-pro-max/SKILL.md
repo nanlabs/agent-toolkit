@@ -94,6 +94,5 @@ Search specific domains using the CLI tool below.
 
 | Topic | File |
 | --- | --- |
-| CLI usage and search | `references/usage.md` |
-| Output formats and checklist | `references/delivery.md` |
-| Data assets | `data/` (unchanged) |
+| CLI usage, search, and output formats | `references/usage.md` |
+| Data assets | `data/` |
