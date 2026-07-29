@@ -7,6 +7,7 @@ How to install and use `nanlabs/agent-toolkit`.
 ```text
 /plugin marketplace add nanlabs/agent-toolkit
 /plugin install nanlabs-setup@nanlabs-agent-toolkit
+/plugin install nanlabs-core@nanlabs-agent-toolkit
 ```
 
 Then ask Claude to run setup, or use the `/setup` command shipped with the plugin.
