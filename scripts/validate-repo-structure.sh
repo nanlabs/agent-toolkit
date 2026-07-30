@@ -29,7 +29,7 @@ required_paths=(
   ".github/workflows/pr-review.yml"
   ".mega-linter.yml"
   ".yamllint.yaml"
-  "tools/danger/dangerfile.ts"
+  "tools/danger/dangerfile.js"
   "tools/danger/package.json"
   "docs/P0_FINDINGS.md"
   "docs/LIFECYCLE.md"

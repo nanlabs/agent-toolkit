@@ -5,14 +5,10 @@
   "description": "Danger JS (TypeScript) validation for nanlabs/agent-toolkit pull requests",
   "packageManager": "pnpm@10.12.1",
   "scripts": {
-    "tsc": "tsc",
     "danger": "danger ci"
   },
   "dependencies": {
     "danger": "^13.0.10"
-  },
-  "devDependencies": {
-    "typescript": "^5.9.3"
   },
   "pnpm": {
     "overrides": {
