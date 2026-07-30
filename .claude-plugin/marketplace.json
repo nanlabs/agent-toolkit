@@ -13,8 +13,8 @@
     {
       "name": "nanlabs-setup",
       "source": "./plugins/nanlabs-setup",
-      "description": "Inspect the environment, document missing deps, and guide first-time NaN harness setup (P0 scaffold)",
-      "version": "0.1.0",
+      "description": "Inspect the environment against dependency contracts and guide first-time NaN harness setup (approval before installs)",
+      "version": "0.2.0",
       "category": "productivity",
       "tags": [
         "setup",
