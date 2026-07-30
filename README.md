@@ -42,6 +42,7 @@ Installs the grouped tree `skills/<group>/<skill>/` (47 public skills). See [`do
 | Skills | 47 under `skills/<group>/` — [catalog](catalogs/skill-catalog.yaml) |
 | Setup plugin | `nanlabs-setup` (Claude + Cursor manifests) |
 | Core plugin | `nanlabs-core` — orchestrator + companion + handshake + reviewer |
+| Agents plugin | `nanlabs-agents` — all 16 personas (generated via `gen-surfaces`) |
 | Agents | 16 under `agents/` — [catalog](catalogs/agent-catalog.yaml) |
 | MCP | 6 stubs under `mcp/templates/` — [catalog](catalogs/mcp-catalog.yaml) |
 
@@ -73,6 +74,7 @@ python3 scripts/validate-manifests.py
 python3 scripts/validate-skills.py
 python3 scripts/validate-agents.py
 python3 scripts/validate-mcp.py
+python3 scripts/gen-surfaces.py --check
 bash scripts/secret-scan.sh
 pre-commit run --all-files
 ```

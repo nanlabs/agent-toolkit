@@ -1,0 +1,13 @@
+{
+  "name": "nanlabs-agents",
+  "version": "0.1.0",
+  "description": "NaNLABS agent / subagent personas (architect, reviewers, planner, e2e, and more).",
+  "author": {
+    "name": "NaNLABS",
+    "email": "technology@nanlabs.com"
+  },
+  "homepage": "https://github.com/nanlabs/agent-toolkit",
+  "repository": "https://github.com/nanlabs/agent-toolkit",
+  "license": "MIT",
+  "keywords": ["nanlabs", "agents", "subagents", "review"]
+}

@@ -13,6 +13,8 @@ required_paths=(
   "plugins/nanlabs-setup/skills/nanlabs-setup/SKILL.md"
   "plugins/nanlabs-core/.claude-plugin/plugin.json"
   "plugins/nanlabs-core/skills/nanlabs-assistant/SKILL.md"
+  "plugins/nanlabs-agents/.claude-plugin/plugin.json"
+  "plugins/nanlabs-agents/agents/nanlabs-architect/AGENT.md"
   "skills/core/nanlabs-setup/SKILL.md"
   "catalogs/skill-catalog.yaml"
   "catalogs/skills-layout.json"
