@@ -8,6 +8,8 @@ from __future__ import annotations
 
 import argparse
 import os
+import re
+import shlex
 import shutil
 import subprocess
 import sys
@@ -21,6 +23,9 @@ except ImportError:  # pragma: no cover
 
 ROOT = Path(__file__).resolve().parents[1]
 CONTRACTS = ROOT / "contracts" / "requirements"
+
+# Reject shell metacharacters — verify must be a simple argv command.
+_UNSAFE_VERIFY = re.compile(r"[`$;&|<>(){}\n]|&&|\|\|")
 
 
 def load_contracts(names: list[str] | None) -> list[tuple[Path, dict]]:
@@ -42,10 +47,18 @@ def load_contracts(names: list[str] | None) -> list[tuple[Path, dict]]:
 
 
 def run_verify(cmd: str) -> bool:
+    """Run a contract verify command without a shell."""
+    if _UNSAFE_VERIFY.search(cmd):
+        return False
+    try:
+        argv = shlex.split(cmd)
+    except ValueError:
+        return False
+    if not argv:
+        return False
     try:
         proc = subprocess.run(
-            cmd,
-            shell=True,
+            argv,
             check=False,
             capture_output=True,
             text=True,
@@ -60,11 +73,20 @@ def check_binary(entry: dict) -> tuple[str, str]:
     name = entry["name"]
     required = bool(entry.get("required"))
     verify = entry.get("verify")
-    present = shutil.which(name) is not None
-    if verify and isinstance(verify, str):
-        present = present or run_verify(verify)
-    if present:
-        return "pass", "found"
+    on_path = shutil.which(name) is not None
+
+    if verify and isinstance(verify, str) and verify.strip():
+        if _UNSAFE_VERIFY.search(verify):
+            return "fail", "invalid verify command (shell metacharacters not allowed)"
+        ok = run_verify(verify)
+        if ok:
+            return "pass", "verify ok"
+        if required:
+            return "fail", "verify failed (required)"
+        return "warn", "verify failed (optional)"
+
+    if on_path:
+        return "pass", "found on PATH"
     if required:
         return "fail", "missing (required)"
     return "warn", "missing (optional)"
@@ -86,7 +108,6 @@ def installer_hint(entry: dict) -> str:
     installers = entry.get("installers") or {}
     if not isinstance(installers, dict) or not installers:
         return "_(no installer hint — workstation / manual)_"
-    # Prefer platform-ish keys without detecting OS aggressively
     parts = [f"`{os_name}`: `{cmd}`" for os_name, cmd in sorted(installers.items())]
     return "; ".join(parts)
 

@@ -52,9 +52,10 @@ def mirror_tree(src: Path, dst: Path) -> None:
 
 
 def trees_equal(a: Path, b: Path) -> bool:
+    """Deep compare (content, not just size/mtime)."""
     if not a.is_dir() or not b.is_dir():
         return False
-    cmp = filecmp.dircmp(a, b)
+    cmp = filecmp.dircmp(a, b, shallow=False)
     if cmp.left_only or cmp.right_only or cmp.funny_files or cmp.diff_files:
         return False
     for sub in cmp.common_dirs:

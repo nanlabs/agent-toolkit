@@ -38,4 +38,3 @@ spec:
   setup:
     interactive: true
     never_auto_install: true
-    verification_command: "command -v git && command -v python3"

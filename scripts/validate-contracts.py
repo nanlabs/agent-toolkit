@@ -63,6 +63,15 @@ def validate_binary(entry: object, label: str) -> None:
     installed_by = expect_str(bin_, "installed_by", label)
     if installed_by not in INSTALLED_BY:
         fail(f"{label}.installed_by must be one of {sorted(INSTALLED_BY)}")
+    if "verify" in bin_:
+        verify = bin_["verify"]
+        if not isinstance(verify, str) or not verify.strip():
+            fail(f"{label}.verify must be a non-empty string when set")
+        if __import__("re").search(r"[`$;&|<>(){}\n]|&&|\|\|", verify):
+            fail(
+                f"{label}.verify must be a simple argv command "
+                "(no shell metacharacters)"
+            )
     if "installers" in bin_:
         installers = expect_dict(bin_["installers"], f"{label}.installers")
         for os_name, cmd in installers.items():
@@ -148,6 +157,11 @@ def validate_contract(path: Path) -> None:
             cmd = setup["verification_command"]
             if not isinstance(cmd, str) or not cmd.strip():
                 fail(f"{rel}.spec.setup.verification_command must be a non-empty string")
+            if __import__("re").search(r"[`$;&|<>(){}\n]|&&|\|\|", cmd):
+                fail(
+                    f"{rel}.spec.setup.verification_command must be a simple argv "
+                    "command (no shell metacharacters)"
+                )
 
     print(f"OK: {rel}")
 
