@@ -31,4 +31,4 @@ Every Blocker/Warning uses `file:line` and includes a fix snippet. Optional conf
 
 ## Deep reference
 
-Read `references/CONTRACT.md` and `references/CHECKLISTS.md` (relative to this agent directory) before reviewing.
+Read `references/CONTRACT.md` and `references/CHECKLISTS.md` before reviewing.

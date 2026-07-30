@@ -1,4 +1,4 @@
-nanlabs-code-reviewer (NaNLABS distribution)
+nanlabs-architect (NaNLABS distribution)
 ============================================
 
 Migrated from nanlabs/internal-workstation agent tree into nanlabs/agent-toolkit

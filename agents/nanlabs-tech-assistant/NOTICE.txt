@@ -1,4 +1,4 @@
-nanlabs-code-reviewer (NaNLABS distribution)
+nanlabs-tech-assistant (NaNLABS distribution)
 ============================================
 
 Migrated from nanlabs/internal-workstation agent tree into nanlabs/agent-toolkit
@@ -7,3 +7,8 @@ for public Agent Skills / plugin distribution.
 Modifications:
 - Replaced workstation absolute paths with agent-relative `references/` paths.
 - No intentional behavioral change to the agent contract.
+
+Note:
+- The companion `nanlabs-tech-assistant` *skill* remains workstation-only for now
+  (internal ClickUp procedure corpus). This agent still routes to that skill when
+  present on the host; otherwise use ClickUp / procedure docs available to you.

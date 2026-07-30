@@ -42,8 +42,8 @@ Installs the grouped tree `skills/<group>/<skill>/` (47 public skills). See [`do
 | Skills | 47 under `skills/<group>/` — [catalog](catalogs/skill-catalog.yaml) |
 | Setup plugin | `nanlabs-setup` (Claude + Cursor manifests) |
 | Core plugin | `nanlabs-core` — orchestrator + companion + handshake + reviewer |
-| Agents | `nanlabs-code-reviewer` (more in Wave 1) |
-| MCP | Public stubs under `mcp/templates/` (env placeholders only) |
+| Agents | 16 under `agents/` — [catalog](catalogs/agent-catalog.yaml) |
+| MCP | 6 stubs under `mcp/templates/` — [catalog](catalogs/mcp-catalog.yaml) |
 
 ## Repository layout
 
@@ -54,14 +54,14 @@ Installs the grouped tree `skills/<group>/<skill>/` (47 public skills). See [`do
 | `.claude-plugin/` · `.cursor-plugin/` | Marketplace catalogs |
 | `agents/` | Agent / subagent personas |
 | `mcp/templates/` | MCP config stubs (no secrets) |
-| `catalogs/` | Skill / agent indexes |
+| `catalogs/` | Skill / agent / MCP indexes |
 | `scripts/` | Validation + secret scan |
 | `docs/` | Adoption, lifecycle, authoring, P0 findings |
 | `tools/danger/` | Danger JS (TypeScript) for PR review |
 
 ## Quality bar
 
-- Validate: structure, marketplace manifests, skills, secret-scan
+- Validate: structure, marketplace manifests, skills, agents, MCP stubs, secret-scan
 - Pre-commit (YAML / JSON / markdown / private-key)
 - MegaLinter v9 (cupcake allowlist)
 - Danger JS on non-draft PRs
@@ -71,6 +71,8 @@ Installs the grouped tree `skills/<group>/<skill>/` (47 public skills). See [`do
 bash scripts/validate-repo-structure.sh
 python3 scripts/validate-manifests.py
 python3 scripts/validate-skills.py
+python3 scripts/validate-agents.py
+python3 scripts/validate-mcp.py
 bash scripts/secret-scan.sh
 pre-commit run --all-files
 ```

@@ -1,4 +1,4 @@
-nanlabs-code-reviewer (NaNLABS distribution)
+nanlabs-client-workflow-bootstrap (NaNLABS distribution)
 ============================================
 
 Migrated from nanlabs/internal-workstation agent tree into nanlabs/agent-toolkit
