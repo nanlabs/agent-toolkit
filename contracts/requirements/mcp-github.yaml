@@ -20,4 +20,3 @@ spec:
   setup:
     interactive: true
     never_auto_install: true
-    verification_command: "test -n \"${GITHUB_TOKEN:-}\""
