@@ -29,9 +29,9 @@ Each agent directory contains `AGENT.md` (YAML frontmatter + instructions), opti
 
 ## Install notes
 
-- **Claude Code / Cursor plugins:** ship selected agents under a plugin `agents/` tree (see `plugins/nanlabs-core` for `nanlabs-code-reviewer`).
+- **Claude Code / Cursor plugins:** install `nanlabs-agents` for the full set, or use `nanlabs-core` (includes `nanlabs-code-reviewer` only).
 - **Direct copy:** point your client at `agents/<name>/AGENT.md` per tooling docs.
-- Catalog handoffs may reference skills that live under `skills/` in this repo.
+- Plugin agent trees are generated — edit `agents/` then run `python3 scripts/gen-surfaces.py`.
 
 ## Provenance
 

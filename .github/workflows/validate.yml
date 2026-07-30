@@ -46,6 +46,9 @@ jobs:
       - name: Validate MCP templates
         run: python3 scripts/validate-mcp.py
 
+      - name: Check agent surface drift
+        run: python3 scripts/gen-surfaces.py --check
+
       - name: Secret scan (tracked files)
         run: bash scripts/secret-scan.sh
 

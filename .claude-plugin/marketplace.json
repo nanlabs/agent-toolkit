@@ -6,7 +6,7 @@
   },
   "metadata": {
     "description": "NaNLABS skills, agents, plugins, and MCP stubs for Claude Code and compatible clients",
-    "version": "0.2.0",
+    "version": "0.3.0",
     "pluginRoot": "./plugins"
   },
   "plugins": [
@@ -31,6 +31,19 @@
       "tags": [
         "core",
         "orchestrator",
+        "nanlabs"
+      ]
+    },
+    {
+      "name": "nanlabs-agents",
+      "source": "./plugins/nanlabs-agents",
+      "description": "Full set of NaNLABS agent / subagent personas (reviewers, architect, planner, e2e, \u2026)",
+      "version": "0.1.0",
+      "category": "productivity",
+      "tags": [
+        "agents",
+        "subagents",
+        "review",
         "nanlabs"
       ]
     }
