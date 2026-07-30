@@ -8,6 +8,7 @@ How to install and use `nanlabs/agent-toolkit`.
 /plugin marketplace add nanlabs/agent-toolkit
 /plugin install nanlabs-setup@nanlabs-agent-toolkit
 /plugin install nanlabs-core@nanlabs-agent-toolkit
+/plugin install nanlabs-agents@nanlabs-agent-toolkit
 ```
 
 Then ask Claude to run setup, or use the `/setup` command shipped with the plugin.
@@ -33,8 +34,9 @@ Skill index: [`SKILLS.md`](SKILLS.md) · machine catalog: [`../catalogs/skill-ca
 
 ## Agents and MCP
 
-- Agents: [`../agents/README.md`](../agents/README.md) (16 personas; see agent catalog)
+- Agents: [`../agents/README.md`](../agents/README.md) (16 personas; plugin `nanlabs-agents`)
 - MCP stubs: [`../mcp/templates/README.md`](../mcp/templates/README.md) (6 stubs; env placeholders only)
+- Dependency contracts: [`../contracts/README.md`](../contracts/README.md)
 
 ## What success looks like
 

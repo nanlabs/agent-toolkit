@@ -24,7 +24,19 @@ Before merging content migrated from `internal-workstation`:
 1. Run `bash scripts/secret-scan.sh` and `python3 scripts/validate-skills.py`.
 2. Confirm GitHub secret scanning / push protection remain enabled.
 3. Mark the skill/plugin as `public: true` in `catalogs/skill-catalog.yaml` only after scrub.
-4. If content must stay private, keep it in a private companion marketplace (future) or L2 packs — not here.
+4. If content must stay private, keep it on **workstation**, **L2 packs**, or a **private project marketplace** — not in this public repository.
+
+## Companion marketplace (decision)
+
+**Decision (2026-07-30):** do **not** create a private companion marketplace yet.
+
+| Keep private content in | When |
+| --- | --- |
+| `internal-workstation` (L1 AI home) | Internal-only skills/procedures still dual-railed |
+| L2 / project overlays | Client or initiative-specific packs |
+| Future private marketplace repo | Only if private corpus volume or sharing needs exceed workstation + L2 |
+
+Revisit when cutover (#23) or enterprise packs force multi-team distribution of non-public skills. Until then, scrub-or-exclude is enough for `agent-toolkit`.
 
 ## Reporting
 
