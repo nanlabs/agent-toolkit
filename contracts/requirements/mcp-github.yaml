@@ -1,0 +1,23 @@
+apiVersion: nanlabs.dev/v1
+kind: RequirementContract
+metadata:
+  name: mcp-github
+  description: >-
+    Env contract for the public GitHub MCP stub under mcp/templates/github.
+  appliesTo:
+    - mcp:github
+spec:
+  requirements:
+    binaries: []
+  capabilities:
+    - network.outbound
+    - mcp.client
+    - secrets.env
+  env:
+    - name: GITHUB_TOKEN
+      required: true
+      purpose: GitHub PAT or gh auth token (least privilege)
+  setup:
+    interactive: true
+    never_auto_install: true
+    verification_command: "test -n \"${GITHUB_TOKEN:-}\""

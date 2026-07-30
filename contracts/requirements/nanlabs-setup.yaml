@@ -1,0 +1,41 @@
+apiVersion: nanlabs.dev/v1
+kind: RequirementContract
+metadata:
+  name: nanlabs-setup
+  description: >-
+    Baseline tools required before nanlabs-setup can guide marketplace and
+    plugin installation (Git, Python, OS package manager, AI client).
+  appliesTo:
+    - plugin:nanlabs-setup
+    - skill:nanlabs-setup
+spec:
+  requirements:
+    binaries:
+      - name: git
+        required: true
+        installed_by: workstation
+        verify: git --version
+      - name: python3
+        required: true
+        installed_by: workstation
+        version: ">=3.12"
+        verify: python3 --version
+      - name: claude
+        required: false
+        installed_by: user
+        verify: claude --version
+        installers:
+          macos: "Install Claude Code from https://claude.com/download"
+          linux: "Install Claude Code from https://claude.com/download"
+          windows: "Install Claude Code from https://claude.com/download"
+      - name: cursor
+        required: false
+        installed_by: user
+        verify: cursor --version
+  capabilities:
+    - filesystem.read
+    - subprocess.execute
+  setup:
+    interactive: true
+    never_auto_install: true
+    verification_command: "command -v git && command -v python3"

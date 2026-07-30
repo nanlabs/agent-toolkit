@@ -72,13 +72,20 @@ npx skills add nanlabs/agent-toolkit -g
 
 ## Out of scope (later issues)
 
-- Full dependency contract enforcement (`contracts/requirements/`) — see migration P1.
+- Full auto-install orchestration against every contract — Wave 2 (#20); schema lives in `contracts/requirements/`.
 - Auto-install of arbitrary packages without approval.
 - Telemetry adapters / Onyx knowledge plugins (Part III; conditional).
 - Private/internal NaNLABS-only skills (must stay out of this public repo or scrubbed).
+
+## Contracts
+
+Baseline dependency contract: `contracts/requirements/nanlabs-setup.yaml`.
+Use it when reporting gaps; do not invent installers outside the contract allowlist.
 
 ## References
 
 - `docs/ADOPTION.md`
 - `docs/PUBLIC_CONTENT_POLICY.md`
+- `docs/WAVE0_INVENTORY.md`
+- `contracts/README.md`
 - Migration plan (internal): `nanlabs/internal-workstation` → `docs/AI_ASSETS_MIGRATION_PLAN.md`

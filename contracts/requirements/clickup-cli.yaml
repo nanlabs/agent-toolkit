@@ -1,0 +1,33 @@
+apiVersion: nanlabs.dev/v1
+kind: RequirementContract
+metadata:
+  name: clickup-cli
+  description: >-
+    Optional ClickUp CLI used by the clickup-cli skill (preferred over the
+    legacy ClickUp MCP stub).
+  appliesTo:
+    - skill:clickup-cli
+    - mcp:clickup
+spec:
+  requirements:
+    binaries:
+      - name: clickup
+        required: false
+        installed_by: plugin
+        verify: clickup version
+        installers:
+          macos: brew install triptechtravel/tap/clickup
+          linux: "go install github.com/triptechtravel/clickup-cli/cmd/clickup@latest"
+          windows: "go install github.com/triptechtravel/clickup-cli/cmd/clickup@latest"
+  capabilities:
+    - network.outbound
+    - subprocess.execute
+    - secrets.env
+  env:
+    - name: CLICKUP_API_TOKEN
+      required: false
+      purpose: Legacy MCP only; CLI prefers keyring / clickup auth login
+  setup:
+    interactive: true
+    never_auto_install: false
+    verification_command: clickup auth status

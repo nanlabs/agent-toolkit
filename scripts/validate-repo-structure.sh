@@ -43,6 +43,10 @@ required_paths=(
   "mcp/templates/clickup/config.template.json"
   "catalogs/agent-catalog.yaml"
   "catalogs/mcp-catalog.yaml"
+  "contracts/README.md"
+  "contracts/requirements/nanlabs-setup.yaml"
+  "docs/WAVE0_INVENTORY.md"
+  "docs/adrs/ADR-008-plugins-agent-skills-distribution.md"
 )
 
 missing=0

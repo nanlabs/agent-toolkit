@@ -74,6 +74,7 @@ python3 scripts/validate-manifests.py
 python3 scripts/validate-skills.py
 python3 scripts/validate-agents.py
 python3 scripts/validate-mcp.py
+python3 scripts/validate-contracts.py
 python3 scripts/gen-surfaces.py --check
 bash scripts/secret-scan.sh
 pre-commit run --all-files
@@ -87,6 +88,9 @@ pre-commit run --all-files
 | [`docs/LIFECYCLE.md`](docs/LIFECYCLE.md) | Update / pin / rollback |
 | [`docs/P0_FINDINGS.md`](docs/P0_FINDINGS.md) | Feasibility + lifecycle matrix |
 | [`docs/AUTHORING.md`](docs/AUTHORING.md) | How to add skills/plugins |
+| [`docs/WAVE0_INVENTORY.md`](docs/WAVE0_INVENTORY.md) | H0 inventory + privacy classes |
+| [`docs/adrs/ADR-008-plugins-agent-skills-distribution.md`](docs/adrs/ADR-008-plugins-agent-skills-distribution.md) | Distribution ADR |
+| [`contracts/README.md`](contracts/README.md) | Dependency/permission contracts |
 | [`docs/SKILLS.md`](docs/SKILLS.md) | Skill groups + opt-in packs |
 
 ## Contributing

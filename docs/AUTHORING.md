@@ -45,7 +45,15 @@ Repo-level routing metadata lives in `catalogs/skill-catalog.yaml` (orchestrator
 | `mcp/templates/` | MCP config stubs (placeholders only) |
 | `plugins/<id>/` | Claude / Cursor plugin bundles |
 | `catalogs/` | Routing catalogs (`skill-catalog.yaml`, layout map) |
-| `contracts/requirements/` | Dependency/permission contracts (P1+) |
+| `contracts/requirements/` | Dependency/permission contracts (`RequirementContract` v1) |
+
+## Dependency contracts
+
+See [`contracts/README.md`](../contracts/README.md). Add one YAML file per capability that `nanlabs-setup` should detect/verify. Validate with:
+
+```bash
+python3 scripts/validate-contracts.py
+```
 
 ## Rules
 
@@ -60,6 +68,10 @@ Repo-level routing metadata lives in `catalogs/skill-catalog.yaml` (orchestrator
 bash scripts/validate-repo-structure.sh
 python3 scripts/validate-manifests.py
 python3 scripts/validate-skills.py
+python3 scripts/validate-agents.py
+python3 scripts/validate-mcp.py
+python3 scripts/validate-contracts.py
+python3 scripts/gen-surfaces.py --check
 bash scripts/secret-scan.sh
 pre-commit run --all-files
 ```
