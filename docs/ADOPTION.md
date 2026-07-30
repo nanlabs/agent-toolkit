@@ -37,6 +37,9 @@ Skill index: [`SKILLS.md`](SKILLS.md) · machine catalog: [`../catalogs/skill-ca
 - Agents: [`../agents/README.md`](../agents/README.md) (16 personas; plugin `nanlabs-agents`)
 - MCP stubs: [`../mcp/templates/README.md`](../mcp/templates/README.md) (6 stubs; env placeholders only)
 - Dependency contracts: [`../contracts/README.md`](../contracts/README.md)
+- Solution packs (stubs): [`../packs/README.md`](../packs/README.md)
+- Overlay governance: [`OVERLAY_GOVERNANCE.md`](OVERLAY_GOVERNANCE.md)
+- Telemetry ownership: [`TELEMETRY_CONTRACT.md`](TELEMETRY_CONTRACT.md)
 
 ## What success looks like
 

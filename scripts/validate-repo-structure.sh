@@ -48,6 +48,11 @@ required_paths=(
   "scripts/doctor-contracts.py"
   "docs/WAVE0_INVENTORY.md"
   "docs/adrs/ADR-008-plugins-agent-skills-distribution.md"
+  "docs/OVERLAY_GOVERNANCE.md"
+  "docs/TELEMETRY_CONTRACT.md"
+  "packs/README.md"
+  "packs/project-harness/overlay.yaml"
+  "catalogs/pack-catalog.yaml"
 )
 
 missing=0
