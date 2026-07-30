@@ -46,6 +46,7 @@ Repo-level routing metadata lives in `catalogs/skill-catalog.yaml` (orchestrator
 | `plugins/<id>/` | Claude / Cursor plugin bundles |
 | `catalogs/` | Routing catalogs (`skill-catalog.yaml`, layout map) |
 | `contracts/requirements/` | Dependency/permission contracts (`RequirementContract` v1) |
+| `packs/` | Solution pack stubs (provisional names) |
 
 ## Dependency contracts
 
@@ -61,8 +62,9 @@ python3 scripts/validate-contracts.py
 2. Every `SKILL.md` needs valid YAML frontmatter (`name` + `description`).
 3. Never commit secrets. Use env-var names only in MCP stubs.
 4. Public scrub: read `docs/PUBLIC_CONTENT_POLICY.md` before migrating internal content.
-5. Keep upstream `LICENSE.txt` / `NOTICE.txt` when redistributing third-party skills.
-6. Run local validation before opening a PR:
+5. Project overlays: follow `docs/OVERLAY_GOVERNANCE.md` (credentials remain L1-only).
+6. Keep upstream `LICENSE.txt` / `NOTICE.txt` when redistributing third-party skills.
+7. Run local validation before opening a PR:
 
 ```bash
 bash scripts/validate-repo-structure.sh

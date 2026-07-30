@@ -11,7 +11,9 @@ Snapshot for H0 (baseline decisions). Living document; update when slices change
 | `mcp/templates/` | L1.5 | Public stubs only |
 | `plugins/` | L1.5 | Claude/Cursor bundles |
 | `contracts/` | L1.5 | Dependency/permission contracts for setup |
-| `catalogs/` | L1.5 | Skill / agent / MCP indexes |
+| `packs/` | L1.5 | Solution pack stubs (provisional) |
+| `catalogs/` | L1.5 | Skill / agent / MCP / pack indexes |
+| `plugins/nanlabs-telemetry/` | L1.5 | Docs-only stub until #30 |
 | `internal-workstation` AI home paths | L1 | Until cutover; copy-forward only so far |
 | Secrets / `env.d` | L1 | Never in this repo |
 

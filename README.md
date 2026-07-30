@@ -55,7 +55,9 @@ Installs the grouped tree `skills/<group>/<skill>/` (47 public skills). See [`do
 | `.claude-plugin/` · `.cursor-plugin/` | Marketplace catalogs |
 | `agents/` | Agent / subagent personas |
 | `mcp/templates/` | MCP config stubs (no secrets) |
-| `catalogs/` | Skill / agent / MCP indexes |
+| `packs/` | Outcome-oriented solution pack stubs |
+| `contracts/` | Dependency/permission contracts |
+| `catalogs/` | Skill / agent / MCP / pack indexes |
 | `scripts/` | Validation + secret scan |
 | `docs/` | Adoption, lifecycle, authoring, P0 findings |
 | `tools/danger/` | Danger JS (TypeScript) for PR review |
@@ -89,8 +91,11 @@ pre-commit run --all-files
 | [`docs/P0_FINDINGS.md`](docs/P0_FINDINGS.md) | Feasibility + lifecycle matrix |
 | [`docs/AUTHORING.md`](docs/AUTHORING.md) | How to add skills/plugins |
 | [`docs/WAVE0_INVENTORY.md`](docs/WAVE0_INVENTORY.md) | H0 inventory + privacy classes |
+| [`docs/OVERLAY_GOVERNANCE.md`](docs/OVERLAY_GOVERNANCE.md) | Project overlay checklist |
+| [`docs/TELEMETRY_CONTRACT.md`](docs/TELEMETRY_CONTRACT.md) | L1 policy vs L1.5 adapters |
 | [`docs/adrs/ADR-008-plugins-agent-skills-distribution.md`](docs/adrs/ADR-008-plugins-agent-skills-distribution.md) | Distribution ADR |
 | [`contracts/README.md`](contracts/README.md) | Dependency/permission contracts |
+| [`packs/README.md`](packs/README.md) | Solution packs (provisional stubs) |
 | [`docs/SKILLS.md`](docs/SKILLS.md) | Skill groups + opt-in packs |
 
 ## Contributing
