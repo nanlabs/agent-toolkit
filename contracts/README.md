@@ -46,9 +46,14 @@ Canonical path: `contracts/requirements/<id>.yaml`
 | `verification_command` | Optional post-install check |
 | `never_auto_install` | When true, setup only reports gaps (default for workstation-owned binaries) |
 
-## Rules
+## Doctor (read-only)
 
-1. **No secrets** — only env-var names under `spec.env`.
+```bash
+python3 scripts/doctor-contracts.py --contract nanlabs-setup
+python3 scripts/doctor-contracts.py          # all contracts
+```
+
+Never installs software; prints a Markdown gap/change-report template for `/setup`.
 2. Workstation-owned tools (`git`, `python3`, OS package manager) use `installed_by: workstation` and should set `never_auto_install: true` unless IT policy says otherwise.
 3. Plugin-owned optional tools may propose OS installers; `nanlabs-setup` must ask approval before running them.
 4. Validate with `python3 scripts/validate-contracts.py`.

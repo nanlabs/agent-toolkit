@@ -55,6 +55,9 @@ jobs:
       - name: Validate requirement contracts
         run: python3 scripts/validate-contracts.py
 
+      - name: Doctor baseline contract (read-only)
+        run: python3 scripts/doctor-contracts.py --contract nanlabs-setup
+
       - name: Secret scan (tracked files)
         run: bash scripts/secret-scan.sh
 

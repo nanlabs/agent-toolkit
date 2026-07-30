@@ -45,6 +45,7 @@ required_paths=(
   "catalogs/mcp-catalog.yaml"
   "contracts/README.md"
   "contracts/requirements/nanlabs-setup.yaml"
+  "scripts/doctor-contracts.py"
   "docs/WAVE0_INVENTORY.md"
   "docs/adrs/ADR-008-plugins-agent-skills-distribution.md"
 )

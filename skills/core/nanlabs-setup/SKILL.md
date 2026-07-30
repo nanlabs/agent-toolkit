@@ -2,42 +2,61 @@
 name: nanlabs-setup
 description: >-
   HOW — First-run setup for the NaNLABS agent toolkit. Inspect the local
-  environment, report missing baseline tools (Git, Python, package manager, AI
-  clients), and guide configuration. Never print or store secrets.
+  environment against contracts/requirements, report missing baseline tools,
+  ask approval before installs, and print a change report. Never print or
+  store secrets.
 metadata:
   author: nanlabs
-  version: "0.1.0"
-  status: p0-scaffold
+  version: "0.2.0"
+  status: wave2-doctor
 ---
 
 # NaNLABS Setup
 
-Public P0 scaffold skill for `nanlabs/agent-toolkit`.
+Public setup skill for `nanlabs/agent-toolkit`.
 
 ## Goals
 
-1. Confirm the machine has a **deterministic execution baseline**: Git, a supported Python runtime, and an OS package manager.
-2. Confirm at least one AI client is available (Claude Code preferred for P0).
-3. Explain how to install this marketplace/plugin without requiring chezmoi.
-4. **Never** request, echo, or commit secrets (tokens, PATs, private URLs).
+1. Run the **contract doctor** (read-only) against `contracts/requirements/`.
+2. Confirm the machine has a **deterministic execution baseline**: Git, Python, package manager awareness.
+3. Guide marketplace/plugin install without chezmoi.
+4. Ask **explicit approval** before any system change; never auto-install workstation-owned tools.
+5. **Never** request, echo, or commit secrets.
 
 ## When to use
 
 - User just added the `nanlabs/agent-toolkit` marketplace.
-- User asks to "set up NaN plugins", "/setup", or "what am I missing?".
-- Fresh laptop / existing machine smoke test during the P0 spike.
+- User asks to "set up NaN plugins", `/setup`, or "what am I missing?".
+- Fresh laptop / existing machine smoke test.
 
 ## Hard rules
 
-1. Prefer **read-only inspection** first; ask for explicit approval before installing software.
-2. Use OS-native package managers when proposing installs (`brew`, `winget`, `apt`/`dnf`/`pacman`).
-3. Do not invent private NaNLABS credentials or endpoints.
-4. Point durable process details at public docs in this repo (`docs/ADOPTION.md`, `docs/PUBLIC_CONTENT_POLICY.md`).
-5. Client-specific or internal-only content must not be added to this public repository.
+1. Prefer **read-only inspection** first (`scripts/doctor-contracts.py`).
+2. Ask for explicit approval before installing software.
+3. Only propose installers listed in contracts (`installers.*`); never invent private endpoints.
+4. Do not invent private NaNLABS credentials.
+5. Point durable details at `docs/ADOPTION.md`, `docs/PUBLIC_CONTENT_POLICY.md`, `contracts/README.md`.
 
-## Checklist
+## Procedure
 
-Run (or ask the user to run) and summarize:
+### 1. Doctor (required)
+
+From the repo root (or a clone/checkout of `nanlabs/agent-toolkit`):
+
+```bash
+python3 scripts/doctor-contracts.py --contract nanlabs-setup
+```
+
+Optional deeper checks:
+
+```bash
+python3 scripts/doctor-contracts.py
+python3 scripts/doctor-contracts.py --json
+```
+
+Summarize the Markdown table for the user. If the script exits non-zero, treat required gaps as **blocking**.
+
+### 2. Baseline spot-checks (if doctor unavailable)
 
 ```bash
 command -v git && git --version
@@ -46,41 +65,55 @@ command -v brew || command -v winget || command -v apt-get || command -v pacman 
 command -v claude || command -v cursor || true
 ```
 
-Then report:
+### 3. Approval before installs
 
-| Check | Status | Next step |
-| --- | --- | --- |
-| Git | pass/fail | Install via OS package manager |
-| Python 3.12+ (preferred) | pass/fail | Install via `uv` / OS package manager |
-| Package manager | pass/fail | Document which one is available |
-| Claude Code or Cursor | pass/fail | Install client; then re-run marketplace add |
+For each **fail** / actionable **warn**:
 
-## Install this toolkit
+1. Show the contract `install_hint` / installer line.
+2. Ask: “Approve running this install?” (yes/no).
+3. If `never_auto_install: true` or `installed_by: workstation` — only advise; do not run package managers unless the user insists and understands IT policy.
+4. After any approved change, re-run the doctor and fill the **change report** section.
 
-### Claude Code
+### 4. Install this toolkit
+
+#### Claude Code
 
 ```text
 /plugin marketplace add nanlabs/agent-toolkit
 /plugin install nanlabs-setup@nanlabs-agent-toolkit
+/plugin install nanlabs-core@nanlabs-agent-toolkit
+/plugin install nanlabs-agents@nanlabs-agent-toolkit
 ```
 
-### Any agent (technical)
+#### Any agent (technical)
 
 ```bash
 npx skills add nanlabs/agent-toolkit -g
 ```
 
-## Out of scope (later issues)
+### 5. Propose next (do not auto-install)
 
-- Full auto-install orchestration against every contract — Wave 2 (#20); schema lives in `contracts/requirements/`.
-- Auto-install of arbitrary packages without approval.
-- Telemetry adapters / Onyx knowledge plugins (Part III; conditional).
-- Private/internal NaNLABS-only skills (must stay out of this public repo or scrubbed).
+- Enable integrations when needed (MCP stubs under `mcp/templates/`, `clickup-cli` skill).
+- Point at `docs/LIFECYCLE.md` for pin/update/rollback.
+
+## Change report (print every time)
+
+1. What changed (packages / plugins)
+2. Commands run (**no secrets**)
+3. Doctor verification results
+4. Proposed next packs
 
 ## Contracts
 
-Baseline dependency contract: `contracts/requirements/nanlabs-setup.yaml`.
-Use it when reporting gaps; do not invent installers outside the contract allowlist.
+- Schema: `contracts/README.md`
+- Baseline: `contracts/requirements/nanlabs-setup.yaml`
+- Validator: `python3 scripts/validate-contracts.py`
+
+## Out of scope
+
+- Silent auto-install of arbitrary packages
+- Telemetry adapters / knowledge backends (Part III)
+- Private/internal-only skills (workstation / L2)
 
 ## References
 
@@ -88,4 +121,3 @@ Use it when reporting gaps; do not invent installers outside the contract allowl
 - `docs/PUBLIC_CONTENT_POLICY.md`
 - `docs/WAVE0_INVENTORY.md`
 - `contracts/README.md`
-- Migration plan (internal): `nanlabs/internal-workstation` → `docs/AI_ASSETS_MIGRATION_PLAN.md`

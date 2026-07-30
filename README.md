@@ -40,7 +40,7 @@ Installs the grouped tree `skills/<group>/<skill>/` (47 public skills). See [`do
 | Area | Count / notes |
 | --- | --- |
 | Skills | 47 under `skills/<group>/` — [catalog](catalogs/skill-catalog.yaml) |
-| Setup plugin | `nanlabs-setup` (Claude + Cursor manifests) |
+| Setup plugin | `nanlabs-setup` v0.2 — contract doctor + guided `/setup` |
 | Core plugin | `nanlabs-core` — orchestrator + companion + handshake + reviewer |
 | Agents plugin | `nanlabs-agents` — all 16 personas (generated via `gen-surfaces`) |
 | Agents | 16 under `agents/` — [catalog](catalogs/agent-catalog.yaml) |
