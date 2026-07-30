@@ -3,9 +3,174 @@
 version: 1
 
 agents:
+  - name: nanlabs-architect
+    path: agents/nanlabs-architect
+    public: true
+    role: architect
+    description: >-
+      Software architecture and system design specialist. Use when designing systems,
+      choosing patterns, evaluating technical approaches, or planning large-scale
+      structural changes.
+    triggers: [architecture, system design, trade-off, API design, patterns, migration]
+    handoffs: [nanlabs-planner, nanlabs-code-reviewer, nanlabs-adr]
+    references: [references/CONTRACT.md, references/PATTERNS.md]
+
+  - name: nanlabs-assistant
+    path: agents/nanlabs-assistant
+    public: true
+    role: orchestrator
+    description: >-
+      NaNLABS repo discovery and orchestration. Use when starting work in any NaNLABS or
+      client repo.
+    triggers: [onboarding, repo discovery, routing, conventions]
+    handoffs: [nanlabs-planner, nanlabs-architect, nanlabs-code-reviewer, nanlabs-tech-assistant]
+
+  - name: nanlabs-build-error-resolver
+    path: agents/nanlabs-build-error-resolver
+    public: true
+    role: build
+    description: >-
+      Build and TypeScript error resolution specialist for compilation, type, lint, and
+      CI failures.
+    triggers: [build error, compile, TypeScript error, lint fail, CI fail]
+    handoffs: [nanlabs-typescript-reviewer, gh-fix-ci]
+    references: [references/CONTRACT.md]
+
+  - name: nanlabs-client-workflow-bootstrap
+    path: agents/nanlabs-client-workflow-bootstrap
+    public: true
+    role: bootstrap
+    description: >-
+      Client workflow bootstrap specialist for onboarding delivery skill pairs via
+      structured interview.
+    triggers: [client onboarding, workflow bootstrap, new client skill]
+    handoffs: [nanlabs-workflow-client-bootstrap, github-cli-workflow]
+    references: [references/CONTRACT.md]
+
   - name: nanlabs-code-reviewer
     path: agents/nanlabs-code-reviewer
     public: true
-    role: code_quality_review
+    role: reviewer
     description: >-
-      Expert code review for quality, security, and maintainability.
+      Expert code review for quality, security, and maintainability. Use immediately
+      after significant code changes.
+    triggers: [review, PR, diff, merge, code review]
+    handoffs: [nanlabs-security-reviewer, nanlabs-typescript-reviewer, nanlabs-database-reviewer]
+    references: [references/CHECKLISTS.md, references/CONTRACT.md]
+
+  - name: nanlabs-database-reviewer
+    path: agents/nanlabs-database-reviewer
+    public: true
+    role: database_reviewer
+    description: >-
+      PostgreSQL and database specialist for schema design, query optimization,
+      migrations, and ORM usage.
+    triggers: [PostgreSQL, schema, migration, query, ORM, index]
+    handoffs: [nanlabs-code-reviewer, nanlabs-performance-optimizer]
+    references: [references/CHECKLISTS.md, references/CONTRACT.md]
+
+  - name: nanlabs-docs-lookup
+    path: agents/nanlabs-docs-lookup
+    public: true
+    role: docs
+    description: >-
+      Documentation and API reference specialist for framework docs, library APIs, and
+      configuration options.
+    triggers: [documentation, API reference, how to configure]
+    references: [references/CONTRACT.md]
+
+  - name: nanlabs-e2e-runner
+    path: agents/nanlabs-e2e-runner
+    public: true
+    role: e2e
+    description: Playwright end-to-end testing specialist for writing, debugging, and reviewing E2E tests.
+    triggers: [Playwright, E2E, end to end, browser test]
+    handoffs: [playwright-cli]
+    references: [references/CONTRACT.md]
+
+  - name: nanlabs-performance-optimizer
+    path: agents/nanlabs-performance-optimizer
+    public: true
+    role: performance
+    description: >-
+      Performance analysis and optimization specialist. Use when code is slow, leaks
+      memory, or fails benchmarks.
+    triggers: [slow, performance, benchmark, memory leak, profile]
+    handoffs: [nanlabs-database-reviewer]
+    references: [references/CHECKLISTS.md, references/CONTRACT.md]
+
+  - name: nanlabs-planner
+    path: agents/nanlabs-planner
+    public: true
+    role: planner
+    description: >-
+      Expert planning specialist for complex features and refactoring. Use before
+      significant implementation to break down work, identify risks, and create an
+      actionable plan.
+    triggers: [plan, breakdown, scope, risks, before implementation]
+    handoffs: [nanlabs-architect, nanlabs-planning, nanlabs-assistant]
+    references: [references/CONTRACT.md]
+
+  - name: nanlabs-refactor-cleaner
+    path: agents/nanlabs-refactor-cleaner
+    public: true
+    role: refactor
+    description: >-
+      Dead code cleanup and refactoring specialist. Use when simplifying structure
+      without changing behavior.
+    triggers: [refactor, dead code, simplify, duplication]
+    handoffs: [nanlabs-tdd-guide, nanlabs-code-reviewer]
+    references: [references/CONTRACT.md]
+
+  - name: nanlabs-reference-lookup
+    path: agents/nanlabs-reference-lookup
+    public: true
+    role: reference
+    description: Lookup NaNLABS reference examples from awesome-nan and established ecosystem patterns.
+    triggers: [awesome-nan, example, starter, NaNLABS pattern]
+    handoffs: [nanlabs-assistant]
+    references: [references/CONTRACT.md]
+
+  - name: nanlabs-security-reviewer
+    path: agents/nanlabs-security-reviewer
+    public: true
+    role: security
+    description: >-
+      Vulnerability detection specialist. Use after authentication, data handling, API
+      endpoints, or user-facing functionality.
+    triggers: [security, audit, vulnerability, injection, auth, secrets]
+    handoffs: [nanlabs-code-reviewer, nanlabs-architect]
+    references: [references/CHECKLISTS.md, references/CONTRACT.md]
+
+  - name: nanlabs-tdd-guide
+    path: agents/nanlabs-tdd-guide
+    public: true
+    role: tdd
+    description: >-
+      Test-driven development specialist. Enforces write-tests-first methodology when
+      implementing new features.
+    triggers: [TDD, tests first, red green refactor, test coverage]
+    handoffs: [nanlabs-code-reviewer]
+    references: [references/CONTRACT.md]
+
+  - name: nanlabs-tech-assistant
+    path: agents/nanlabs-tech-assistant
+    public: true
+    role: ops
+    description: >-
+      NaNLABS Technology Assistant for Architecture, M&I, and Learning/R&D operational
+      procedures.
+    triggers: [procedure, NaNLABS process, training, consultancy, infra change]
+    handoffs: [clickup-cli, nanlabs-workflow-generic-project]
+    references: [references/CONTRACT.md]
+
+  - name: nanlabs-typescript-reviewer
+    path: agents/nanlabs-typescript-reviewer
+    public: true
+    role: typescript_reviewer
+    description: >-
+      TypeScript and JavaScript review specialist for type safety, modern patterns, and
+      type complexity.
+    triggers: [TypeScript, types, strict, generics, TS review]
+    handoffs: [nanlabs-code-reviewer, nanlabs-build-error-resolver]
+    references: [references/CHECKLISTS.md, references/CONTRACT.md]

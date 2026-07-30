@@ -28,6 +28,7 @@ Official Claude Code, Cursor, and `npx skills` documentation already defines ins
 | MegaLinter + Danger TS CI | PR [#36](https://github.com/nanlabs/agent-toolkit/pull/36) |
 | Public content policy | `docs/PUBLIC_CONTENT_POLICY.md` |
 | One agent + one MCP stub | `agents/nanlabs-code-reviewer/`, `mcp/templates/github/` |
+| Full agents + MCP stubs | 16 agents under `agents/`; 6 MCP stubs under `mcp/templates/` ([#17](https://github.com/nanlabs/agent-toolkit/issues/17)) |
 
 Deferred intentionally: `nanlabs-tech-assistant` (workstation-only for now).
 

@@ -43,6 +43,9 @@ jobs:
       - name: Validate agents
         run: python3 scripts/validate-agents.py
 
+      - name: Validate MCP templates
+        run: python3 scripts/validate-mcp.py
+
       - name: Secret scan (tracked files)
         run: bash scripts/secret-scan.sh
 

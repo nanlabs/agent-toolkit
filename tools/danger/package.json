@@ -2,17 +2,13 @@
   "name": "agent-toolkit-danger",
   "version": "1.0.0",
   "private": true,
-  "description": "Danger JS (TypeScript) validation for nanlabs/agent-toolkit pull requests",
+  "description": "Danger JS validation for nanlabs/agent-toolkit pull requests",
   "packageManager": "pnpm@10.12.1",
   "scripts": {
-    "tsc": "tsc",
     "danger": "danger ci"
   },
   "dependencies": {
     "danger": "^13.0.10"
-  },
-  "devDependencies": {
-    "typescript": "^7.0.2"
   },
   "pnpm": {
     "overrides": {

@@ -1,9 +1,12 @@
-import { danger, fail, markdown, message, warn } from "danger";
+const { danger, fail, markdown, message, warn } = require("danger");
 
 /**
  * Danger JS rules for nanlabs/agent-toolkit.
  * Aligned with internal-workstation / internal-nan-tools patterns and this
  * repository's .github/PULL_REQUEST_TEMPLATE.md.
+ *
+ * Plain JS so Danger does not need to transpile TypeScript at runtime
+ * (avoids intermittent `ts.transpileModule is not a function` on CI).
  */
 
 const SMALL_PR_FILES = 25;
@@ -28,7 +31,7 @@ const prTitle = danger.github.pr.title ?? "";
 const releasePrTitle =
   /^(version packages|chore: version packages|chore\(release\):|chore: release\b)/i;
 
-const hasIssueReference = (text: string): boolean => {
+const hasIssueReference = (text) => {
   const cleaned = text.replace(/```[\s\S]*?```/g, "").replace(/#ISSUE\b/gi, "");
   const issueReference =
     /\b(?:closes|fixes|resolves|refs|see|related to|part of)\s+(?:#\d+|https:\/\/github\.com\/[\w.-]+\/[\w.-]+\/issues\/\d+)|(?<![#\w])#\d+\b/gim;
@@ -36,14 +39,13 @@ const hasIssueReference = (text: string): boolean => {
 };
 
 /** Match "## Section" and emoji variants like "## 📑 Description". */
-const hasSection = (section: string): boolean => {
+const hasSection = (section) => {
   const heading = section.replace(/^##\s+/, "");
   const escaped = heading.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
   return new RegExp(`^##\\s+(?:\\S+\\s+)?${escaped}\\s*$`, "m").test(prBody);
 };
 
-const isChecklistItemChecked = (item: string): boolean =>
-  prBody.includes(`- [x] ${item}`);
+const isChecklistItemChecked = (item) => prBody.includes(`- [x] ${item}`);
 
 const isIssueReferenceExempt =
   danger.github.pr.user.login.endsWith("[bot]") ||
@@ -80,9 +82,7 @@ templateSections.forEach((section) => {
 
 publicRepoChecklist.forEach((item) => {
   if (!isChecklistItemChecked(item)) {
-    warn(
-      `:lock: Public-repo checklist — please confirm: <i>${item}</i>`,
-    );
+    warn(`:lock: Public-repo checklist — please confirm: <i>${item}</i>`);
   }
 });
 

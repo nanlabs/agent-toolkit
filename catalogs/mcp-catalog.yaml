@@ -1,0 +1,37 @@
+# MCP template catalog (public stubs)
+
+version: 1
+
+templates:
+  - name: clickup
+    path: mcp/templates/clickup
+    public: true
+    required_env: [CLICKUP_API_TOKEN]
+    notes: Legacy / deprecated — prefer clickup-cli skill
+
+  - name: figma
+    path: mcp/templates/figma
+    public: true
+    required_env: [FIGMA_OAUTH_TOKEN, FIGMA_REGION]
+    notes: Remote streamable HTTP
+
+  - name: github
+    path: mcp/templates/github
+    public: true
+    required_env: [GITHUB_TOKEN]
+
+  - name: linear
+    path: mcp/templates/linear
+    public: true
+    required_env: []
+    notes: OAuth remote MCP; no env token in stub
+
+  - name: notion
+    path: mcp/templates/notion
+    public: true
+    required_env: [NOTION_API_TOKEN]
+
+  - name: slack
+    path: mcp/templates/slack
+    public: true
+    required_env: [SLACK_BOT_TOKEN, SLACK_APP_TOKEN]

@@ -33,8 +33,8 @@ Skill index: [`SKILLS.md`](SKILLS.md) · machine catalog: [`../catalogs/skill-ca
 
 ## Agents and MCP
 
-- Agents: [`../agents/README.md`](../agents/README.md) (starts with `nanlabs-code-reviewer`)
-- MCP stubs: [`../mcp/templates/README.md`](../mcp/templates/README.md) (env placeholders only)
+- Agents: [`../agents/README.md`](../agents/README.md) (16 personas; see agent catalog)
+- MCP stubs: [`../mcp/templates/README.md`](../mcp/templates/README.md) (6 stubs; env placeholders only)
 
 ## What success looks like
 
