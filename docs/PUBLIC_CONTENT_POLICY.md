@@ -1,3 +1,18 @@
+> [!IMPORTANT]
+> 📘 **ClickUp Companion**, last synced **2026-08-03**
+>
+> This document is mirrored in ClickUp for cross-team discovery and execution logging:
+>
+> - 📑 **[Practices](https://app.clickup.com/459857/docs/e12h-314297/e12h-155117)**
+>
+> **ClickUp** is the cross-team discovery + execution-log surface.
+> **This repo doc** is the co-located implementation reference (close to the code).
+> When you update one, sync the other and bump the **last synced** date above.
+
+<!-- Internal: ClickUp links require NaNLABS workspace access -->
+
+---
+
 # Public content policy — nanlabs/agent-toolkit
 
 This repository is **public**. Anything merged here is visible on the internet.

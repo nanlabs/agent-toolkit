@@ -1,3 +1,18 @@
+> [!IMPORTANT]
+> 📘 **ClickUp Companion**, last synced **2026-08-03**
+>
+> This document is mirrored in ClickUp for cross-team discovery and execution logging:
+>
+> - 📑 **[AI Assets Migration Milestone](https://app.clickup.com/t/86e2m4d6k)**
+>
+> **ClickUp** is the cross-team discovery + execution-log surface.
+> **This repo doc** is the co-located implementation reference (close to the code).
+> When you update one, sync the other and bump the **last synced** date above.
+
+<!-- Internal: ClickUp links require NaNLABS workspace access -->
+
+---
+
 # P0 findings — agent-toolkit feasibility
 
 > **Status:** Documented evidence pack (compressed P0)  
