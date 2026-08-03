@@ -1,3 +1,17 @@
+> [!IMPORTANT]
+> 📘 **ClickUp Companion**, last synced **2026-08-03**
+>
+> This document is mirrored in ClickUp for cross-team discovery and execution logging:
+> - 📑 **[Decisions and Agreements](https://app.clickup.com/459857/v/li/901713909190)**
+>
+> **ClickUp** is the cross-team discovery + execution-log surface.
+> **This repo doc** is the co-located implementation reference (close to the code).
+> When you update one, sync the other and bump the **last synced** date above.
+
+<!-- Internal: ClickUp links require NaNLABS workspace access -->
+
+---
+
 # ADR-008 — Plugins and Agent Skills as NaN AI asset distribution
 
 - **Status:** Accepted (draft frozen for H0/H1; amend via PR)

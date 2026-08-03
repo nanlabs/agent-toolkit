@@ -1,3 +1,11 @@
+> [!NOTE]
+> 📘 **Repo-Only Doc** — last reviewed **2026-08-03**
+>
+> This document lives only in the repo. It is public-ready and self-contained.
+> If a ClickUp mirror is created later, update this banner with the link.
+
+---
+
 # Skills index
 
 Canonical skills live under `skills/<group>/<skill>/` and follow the
