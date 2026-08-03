@@ -2,6 +2,7 @@
 > 📘 **ClickUp Companion**, last synced **2026-08-03**
 >
 > This document is mirrored in ClickUp for cross-team discovery and execution logging:
+>
 > - 📑 **[Decisions and Agreements](https://app.clickup.com/459857/v/li/901713909190)**
 >
 > **ClickUp** is the cross-team discovery + execution-log surface.
