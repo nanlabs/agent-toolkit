@@ -1,8 +1,8 @@
 > **Note:** Canonical documentation lives under [`docs/`](https://github.com/nanlabs/agent-toolkit/tree/main/docs). This wiki is synced from `docs/wiki/` via GitHub Actions and may lag briefly after merges.
 
-# NaNLABS agent-toolkit Wiki
+# NaNLABS agent-toolkit
 
-Public **L1.5** distribution of NaNLABS skills, agents, and plugins for:
+Public **L1.5** distribution of NaNLABS skills, agents, and plugins.
 
 | Surface | Priority |
 | --- | --- |
@@ -13,6 +13,8 @@ Public **L1.5** distribution of NaNLABS skills, agents, and plugins for:
 
 Machine provisioning stays in [`internal-workstation`](https://github.com/nanlabs/internal-workstation). This repo does **not** ship a consumer CLI, loop runtime, multi-tool profile compiler, or OpenCode/Copilot/Windsurf/Gemini CLI/Pi plugin targets.
 
+---
+
 ## What is included
 
 | Component | Count | Notes |
@@ -22,6 +24,8 @@ Machine provisioning stays in [`internal-workstation`](https://github.com/nanlab
 | Plugins | 2 marketplace | `nanlabs-core` (recommended) · `nanlabs-agents` (optional) |
 | MCP templates | 6 | **Docs-only** stubs — not installed by plugins |
 | Packs | stubs | Outcome packs are provisional (Part II) |
+
+---
 
 ## Quick install
 
@@ -50,13 +54,27 @@ npx skills add nanlabs/agent-toolkit -g
 
 Skills only — no plugins, agents, MCP, or setup automation.
 
+---
+
 ## Navigation
+
+### Getting started
 
 - [Installation](Installation) — all install paths
 - [Scope](Scope) — in / out of product scope
+- [FAQ](FAQ) — common questions
+
+### Reference
+
 - [Skills Reference](Skills-Reference) · [Agents Reference](Agents-Reference)
 - [Plugin Marketplace](Plugin-Marketplace) · [MCP Templates](MCP-Setup)
-- [FAQ](FAQ) · [Contributing](Contributing)
+- [Lifecycle](Lifecycle) · [Cursor Agent CLI](Cursor-Agent-CLI)
+
+### Contributing
+
+- [Contributing](Contributing)
+
+---
 
 ## Repo docs (deep dive)
 
@@ -66,6 +84,7 @@ Skills only — no plugins, agents, MCP, or setup automation.
 | [`docs/RELEASE.md`](https://github.com/nanlabs/agent-toolkit/blob/main/docs/RELEASE.md) | Versions, tags, rollback |
 | [`docs/AUTHORING.md`](https://github.com/nanlabs/agent-toolkit/blob/main/docs/AUTHORING.md) | Add skills / plugins |
 | [`docs/PUBLIC_CONTENT_POLICY.md`](https://github.com/nanlabs/agent-toolkit/blob/main/docs/PUBLIC_CONTENT_POLICY.md) | What may be published |
+| [`README.md`](https://github.com/nanlabs/agent-toolkit/blob/main/README.md) | Hero + architecture artwork |
 
 ## License
 
