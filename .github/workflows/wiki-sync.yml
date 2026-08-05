@@ -1,0 +1,65 @@
+name: Sync Wiki
+
+on:
+  push:
+    branches: [main]
+    paths: ["docs/wiki/**"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: wiki-sync
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+
+      - name: Clone wiki repo
+        run: |
+          set +e
+          out=$(git clone "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.wiki.git" wiki-repo 2>&1)
+          status=$?
+          set -e
+          if [ "$status" -eq 0 ]; then
+            echo "✓ Wiki repo cloned"
+            exit 0
+          fi
+          echo "$out"
+          # Uninitialized wiki typically surfaces as repository-not-found.
+          if echo "$out" | grep -qiE 'Repository not found|not found|does not (exist|appear)|wiki is empty'; then
+            echo "Wiki not initialized yet — skipping sync"
+            echo "To initialize: go to https://github.com/${{ github.repository }}/wiki and create the first page (e.g. Home)"
+            exit 0
+          fi
+          echo "Wiki clone failed with a non-initialization error"
+          exit "$status"
+
+      - name: Sync docs/wiki to GitHub Wiki
+        run: |
+          [ -d wiki-repo ] || exit 0
+          # Delete-aware: drop published pages missing from docs/wiki (keep non-.md wiki assets).
+          # README.md is repo meta — do not publish as a Wiki page.
+          find wiki-repo -maxdepth 1 -type f -name '*.md' -delete
+          shopt -s nullglob
+          for f in docs/wiki/*.md; do
+            base=$(basename "$f")
+            [[ "$base" == "README.md" ]] && continue
+            cp "$f" wiki-repo/
+          done
+          cd wiki-repo
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git diff --cached --quiet && echo "No changes" && exit 0
+          git commit -m "sync: update wiki from docs/wiki [skip ci]"
+          # Retry once on non-fast-forward (serialized concurrency should make this rare).
+          if ! git push; then
+            git pull --rebase --autostash
+            git push
+          fi
+          echo "✓ Wiki synced"
