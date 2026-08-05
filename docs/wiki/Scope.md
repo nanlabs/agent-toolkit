@@ -1,4 +1,4 @@
-# Scope
+# 🎯 Scope
 
 What this repository **is** and **is not**. Inspired by broader agent-toolkit ecosystems, but intentionally smaller for NaNLABS production use.
 

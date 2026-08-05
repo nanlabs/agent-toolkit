@@ -1,0 +1,44 @@
+<svg width="920" height="360" viewBox="0 0 920 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="L1 workstation and L1.5 agent-toolkit layers">
+  <defs>
+    <linearGradient id="panel" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#161b22"/>
+      <stop offset="100%" stop-color="#0d1117"/>
+    </linearGradient>
+    <linearGradient id="focus" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#1a2332"/>
+      <stop offset="50%" stop-color="#21262d"/>
+      <stop offset="100%" stop-color="#1a2332"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="920" height="360" rx="12" fill="#0d1117"/>
+  <text x="460" y="36" text-anchor="middle" fill="#8b949e" font-family="ui-sans-serif, system-ui, Segoe UI, sans-serif" font-size="13" letter-spacing="1">DISTRIBUTION LAYERS</text>
+
+  <!-- L1 -->
+  <rect x="40" y="56" width="840" height="72" rx="10" fill="url(#panel)" stroke="#30363d"/>
+  <text x="64" y="88" fill="#ff6b35" font-family="ui-sans-serif, system-ui, Segoe UI, sans-serif" font-size="14" font-weight="700">L1 · internal-workstation</text>
+  <text x="64" y="110" fill="#8b949e" font-family="ui-sans-serif, system-ui, Segoe UI, sans-serif" font-size="13">Machine provisioning · secrets (env.d) · doctor · chezmoi</text>
+
+  <!-- Arrow -->
+  <path d="M460 136 L460 158" stroke="#484f58" stroke-width="2"/>
+  <path d="M452 150 L460 162 L468 150" fill="none" stroke="#484f58" stroke-width="2"/>
+
+  <!-- L1.5 -->
+  <rect x="40" y="168" width="840" height="100" rx="10" fill="url(#focus)" stroke="#f7c948" stroke-width="1.5"/>
+  <text x="64" y="200" fill="#f7c948" font-family="ui-sans-serif, system-ui, Segoe UI, sans-serif" font-size="14" font-weight="700">L1.5 · nanlabs/agent-toolkit (this repo)</text>
+  <text x="64" y="222" fill="#c9d1d9" font-family="ui-sans-serif, system-ui, Segoe UI, sans-serif" font-size="13">Public skills · agents · Claude/Cursor plugins · MCP docs stubs · catalogs</text>
+  <text x="64" y="246" fill="#8b949e" font-family="ui-sans-serif, system-ui, Segoe UI, sans-serif" font-size="12">Marketplace: nanlabs-core (recommended) · nanlabs-agents (optional)</text>
+
+  <!-- Surfaces -->
+  <text x="64" y="300" fill="#8b949e" font-family="ui-sans-serif, system-ui, Segoe UI, sans-serif" font-size="12" font-weight="600">EQUAL-PRIORITY SURFACES</text>
+  <g font-family="ui-sans-serif, system-ui, Segoe UI, sans-serif" font-size="12" font-weight="600">
+    <rect x="64" y="312" width="180" height="30" rx="8" fill="#21262d" stroke="#30363d"/>
+    <text x="154" y="331" text-anchor="middle" fill="#ff6b35">Claude</text>
+    <rect x="258" y="312" width="180" height="30" rx="8" fill="#21262d" stroke="#30363d"/>
+    <text x="348" y="331" text-anchor="middle" fill="#f7c948">Claude Code</text>
+    <rect x="452" y="312" width="180" height="30" rx="8" fill="#21262d" stroke="#30363d"/>
+    <text x="542" y="331" text-anchor="middle" fill="#58a6ff">Cursor IDE</text>
+    <rect x="646" y="312" width="200" height="30" rx="8" fill="#21262d" stroke="#30363d"/>
+    <text x="746" y="331" text-anchor="middle" fill="#7ee787">Cursor Agent CLI</text>
+  </g>
+</svg>

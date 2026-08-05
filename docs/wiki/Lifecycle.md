@@ -1,4 +1,4 @@
-# Lifecycle — update, pin, rollback
+# 🔄 Lifecycle — update, pin, rollback
 
 Canonical: [`docs/LIFECYCLE.md`](https://github.com/nanlabs/agent-toolkit/blob/main/docs/LIFECYCLE.md) · release policy: [`docs/RELEASE.md`](https://github.com/nanlabs/agent-toolkit/blob/main/docs/RELEASE.md).
 

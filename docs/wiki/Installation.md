@@ -1,4 +1,4 @@
-# Installation
+# 📦 Installation
 
 Equal-priority surfaces: **Claude · Claude Code · Cursor IDE · Cursor Agent CLI**.
 

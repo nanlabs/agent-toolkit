@@ -53,3 +53,4 @@ See `.github/CODEOWNERS`.
 - Repo docs: `docs/` (index: `docs/README.md`)
 - GitHub Wiki source: `docs/wiki/` — synced to the wiki on push to `main` (see `.github/workflows/wiki-sync.yml`). Initialize the wiki once on GitHub before the first sync succeeds.
 - Prefer editing `docs/wiki/` in PRs rather than the wiki UI.
+- README artwork lives under `static/` (NaNLABS dark + orange/gold palette).

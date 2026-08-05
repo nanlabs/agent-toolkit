@@ -1,4 +1,4 @@
-# Cursor Agent CLI
+# ⌨️ Cursor Agent CLI
 
 **Priority:** equal with Claude, Claude Code, and Cursor IDE.  
 **Status:** partially certified — see repo [`docs/CURSOR_CLI.md`](https://github.com/nanlabs/agent-toolkit/blob/main/docs/CURSOR_CLI.md) for the live matrix.

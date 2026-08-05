@@ -1,4 +1,4 @@
-# MCP templates
+# 🔗 MCP templates
 
 Templates live under [`mcp/templates/`](https://github.com/nanlabs/agent-toolkit/tree/main/mcp/templates).
 

@@ -1,4 +1,4 @@
-# FAQ
+# ❓ FAQ
 
 ## Is this only for Claude Code?
 
