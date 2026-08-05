@@ -5,14 +5,16 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Agent Skills](https://img.shields.io/badge/Agent%20Skills-compatible-0A7EA4)](https://agentskills.io/specification)
 
-NaNLABS **skills**, **agents**, and **plugins** for **Claude**, **Claude Code**, **Cursor IDE**, and **Cursor Agent CLI** — equal product priority. Portable skills also install via the Agent Skills CLI (skills-only).
+NaNLABS **skills**, **agents**, and **plugins** for **Claude**, **Claude Code**, **Cursor IDE**, and **Cursor Agent CLI** (equal product priority).
 
-> Public distribution repo (L1.5). Machine provisioning stays in [`internal-workstation`](https://github.com/nanlabs/internal-workstation).  
-> Production certification: GitHub Project [AI Native Workbench](https://github.com/orgs/nanlabs/projects/12) · epic [#19](https://github.com/nanlabs/agent-toolkit/issues/19)
+> Public **L1.5** distribution. Machine provisioning stays in [`internal-workstation`](https://github.com/nanlabs/internal-workstation).  
+> Docs index: [`docs/README.md`](docs/README.md) · Wiki source: [`docs/wiki/`](docs/wiki/) · Scope: [`docs/SCOPE.md`](docs/SCOPE.md)
 
-**Equal-priority surfaces:** Claude · Claude Code · Cursor IDE · Cursor Agent CLI  
-**Skills-only path:** Agent Skills CLI installs **skills only** (not plugins, agents, MCP, or setup automation) — used where plugins are unavailable (including some Claude surfaces)  
-**Out of scope as plugin targets:** OpenCode, GitHub Copilot, Windsurf, Gemini CLI, Pi, and others (portable skills may still work there)
+| Skills | Agents | Plugins | MCP |
+| --- | --- | --- | --- |
+| 47 | 16 | `nanlabs-core` + `nanlabs-agents` | Docs-only templates |
+
+**Out of scope as plugin targets:** OpenCode, Copilot, Windsurf, Gemini CLI, Pi, … (skills may still work via `npx skills`). No consumer CLI / loop runtime in this repo.
 
 ## Install
 
@@ -23,72 +25,56 @@ NaNLABS **skills**, **agents**, and **plugins** for **Claude**, **Claude Code**,
 /plugin install nanlabs-core@nanlabs-agent-toolkit
 ```
 
-Then run **`/nanlabs-core:setup`** or ask Claude to run the bundled setup skill.
-
-Optional: `/plugin install nanlabs-agents@nanlabs-agent-toolkit` for the full agent roster.
+Then **`/nanlabs-core:setup`**. Optional: `/plugin install nanlabs-agents@nanlabs-agent-toolkit`.
 
 ### Cursor IDE
 
-- **Local:** load plugins from this repo under `~/.cursor/plugins/local` (see [Cursor plugins docs](https://cursor.com/docs/plugins)).
-- **Team:** import this repository as a Team Marketplace (admin; Teams/Enterprise).
+- **Local:** `~/.cursor/plugins/local` ([docs](https://cursor.com/docs/plugins))
+- **Team:** import this repo as a Team Marketplace
 
-Install **`nanlabs-core`** (recommended). Optionally **`nanlabs-agents`**.
+Install **`nanlabs-core`** (recommended).
 
 ### Cursor Agent CLI
 
-Same priority as Cursor IDE. Component parity is tracked in [`docs/CURSOR_CLI.md`](docs/CURSOR_CLI.md) — fill the matrix with evidence on your pinned CLI version; do not assume IDE behavior.
+Equal priority with Cursor IDE. See [`docs/CURSOR_CLI.md`](docs/CURSOR_CLI.md).
 
 ```bash
 agent --version || cursor agent --version || true
-# Load local plugin dir / enabled_plugins per your CLI build, then list skills, commands, and agents
+agent plugin marketplace add https://github.com/nanlabs/agent-toolkit
+# Prefer --plugin-dir for local smoke; see docs/CURSOR_CLI.md
 ```
 
-### Skills-only (any Agent Skills–compatible client)
+### Skills-only
 
 ```bash
 npx skills add nanlabs/agent-toolkit -g
 ```
 
-Installs the grouped tree `skills/<group>/<skill>/` (47 public skills) only — **not** Claude/Cursor plugins, agents, MCP, or setup automation. See [`docs/SKILLS.md`](docs/SKILLS.md) and [`docs/LIFECYCLE.md`](docs/LIFECYCLE.md).
-
-### MCP templates
-
-`mcp/templates/` are **docs-only** stubs. Marketplace plugins do **not** install MCP integrations today.
+Skills **only** — not plugins, agents, MCP, or setup automation.
 
 ## What's included
 
-| Area | Count / notes |
+| Area | Notes |
 | --- | --- |
-| Skills | 47 under `skills/<group>/` — [catalog](catalogs/skill-catalog.yaml) |
-| Core plugin | `nanlabs-core` v0.2 — recommended install: harness + bundled setup doctor + `/nanlabs-core:setup` |
-| Agents plugin | `nanlabs-agents` (optional) — all 16 personas (generated via `gen-surfaces`) |
-| Agents | 16 under `agents/` — [catalog](catalogs/agent-catalog.yaml) |
-| MCP templates | Docs-only under `mcp/templates/` (not installed by plugins) |
+| Skills | 47 under `skills/<group>/` — [catalog](catalogs/skill-catalog.yaml) · [index](docs/SKILLS.md) |
+| Core plugin | `nanlabs-core` v0.2 — harness + setup doctor + `/nanlabs-core:setup` |
+| Agents plugin | `nanlabs-agents` (optional) — 16 personas via `gen-surfaces` |
+| MCP | Docs-only under `mcp/templates/` |
 
 ## Repository layout
 
 | Path | Purpose |
 | --- | --- |
-| `skills/<group>/<skill>/` | Canonical [Agent Skills](https://agentskills.io/specification) tree |
-| `plugins/` | Claude / Cursor plugin bundles |
+| `skills/<group>/<skill>/` | Canonical Agent Skills tree |
+| `plugins/` | Claude / Cursor bundles |
 | `.claude-plugin/` · `.cursor-plugin/` | Marketplace catalogs |
-| `agents/` | Agent / subagent personas (canonical) |
-| `products/` | Plugin assembler inputs (`plugins.yaml`) |
-| `mcp/templates/` | MCP config stubs (no secrets) |
-| `packs/` | Outcome-oriented solution pack stubs |
-| `contracts/` | Dependency/permission contracts |
-| `catalogs/` | Skill / agent / MCP / pack indexes |
-| `scripts/` | Validation + secret scan |
-| `docs/` | Adoption, lifecycle, authoring, P0 findings |
-| `tools/danger/` | Danger JS (TypeScript) for PR review |
+| `agents/` | Canonical personas |
+| `products/plugins.yaml` | Plugin version + assembly SoT |
+| `mcp/templates/` | MCP stubs (no secrets) |
+| `docs/` · `docs/wiki/` | Repo docs + GitHub Wiki source |
+| `scripts/` | Validation + `gen-surfaces` |
 
 ## Quality bar
-
-- Validate: structure, marketplace manifests, skills, agents, MCP stubs, secret-scan
-- Pre-commit (YAML / JSON / markdown / private-key)
-- MegaLinter v9 (cupcake allowlist)
-- Danger JS on non-draft PRs
-- [`docs/PUBLIC_CONTENT_POLICY.md`](docs/PUBLIC_CONTENT_POLICY.md)
 
 ```bash
 bash scripts/validate-repo-structure.sh
@@ -106,25 +92,19 @@ pre-commit run --all-files
 
 | Doc | Topic |
 | --- | --- |
-| [`docs/ADOPTION.md`](docs/ADOPTION.md) | Install paths by surface |
-| [`docs/CURSOR_CLI.md`](docs/CURSOR_CLI.md) | Cursor Agent CLI parity matrix (partially certified) |
+| [`docs/README.md`](docs/README.md) | Full index |
+| [`docs/ADOPTION.md`](docs/ADOPTION.md) | Install paths |
+| [`docs/SCOPE.md`](docs/SCOPE.md) | In / out of scope |
+| [`docs/FAQ.md`](docs/FAQ.md) | FAQ |
+| [`docs/CURSOR_CLI.md`](docs/CURSOR_CLI.md) | Cursor Agent CLI matrix |
 | [`docs/LIFECYCLE.md`](docs/LIFECYCLE.md) | Update / pin / rollback |
-| [`docs/RELEASE.md`](docs/RELEASE.md) | Version SoT, tags, changelog, rollback |
-| [`docs/PILOT_CHECKLIST.md`](docs/PILOT_CHECKLIST.md) | Production pilot journeys (#9) |
-| [`docs/P0_FINDINGS.md`](docs/P0_FINDINGS.md) | Feasibility + lifecycle matrix |
-| [`docs/AUTHORING.md`](docs/AUTHORING.md) | How to add skills/plugins |
-| [`docs/AGENT_AUDIT.md`](docs/AGENT_AUDIT.md) | Core vs optional agents inventory |
-| [`docs/WAVE0_INVENTORY.md`](docs/WAVE0_INVENTORY.md) | H0 inventory + privacy classes |
-| [`docs/OVERLAY_GOVERNANCE.md`](docs/OVERLAY_GOVERNANCE.md) | Project overlay checklist |
-| [`docs/TELEMETRY_CONTRACT.md`](docs/TELEMETRY_CONTRACT.md) | L1 policy vs L1.5 adapters |
-| [`docs/adrs/ADR-008-plugins-agent-skills-distribution.md`](docs/adrs/ADR-008-plugins-agent-skills-distribution.md) | Distribution ADR |
-| [`contracts/README.md`](contracts/README.md) | Dependency/permission contracts |
-| [`packs/README.md`](packs/README.md) | Solution packs (provisional stubs) |
-| [`docs/SKILLS.md`](docs/SKILLS.md) | Skill groups + opt-in packs |
+| [`docs/RELEASE.md`](docs/RELEASE.md) | Tags / changelog |
+| [`docs/AUTHORING.md`](docs/AUTHORING.md) | Add skills/plugins |
+| [`docs/PUBLIC_CONTENT_POLICY.md`](docs/PUBLIC_CONTENT_POLICY.md) | Public safety |
 
 ## Contributing
 
-See [`CONTRIBUTING.md`](CONTRIBUTING.md) and [`AGENTS.md`](AGENTS.md). Use the PR template; link an issue (`Fixes #N`).
+[`CONTRIBUTING.md`](CONTRIBUTING.md) · [`AGENTS.md`](AGENTS.md) · PR template · link an issue (`Fixes #N` / `Refs #N`).
 
 ## Security
 

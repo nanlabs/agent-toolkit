@@ -10,6 +10,8 @@
 
 How to install and use `nanlabs/agent-toolkit`.
 
+Also see [SCOPE.md](SCOPE.md), [FAQ.md](FAQ.md), and the [wiki source](wiki/) (companion PR: wiki sync).
+
 **Equal-priority surfaces:** Claude · Claude Code · Cursor IDE · Cursor Agent CLI.  
 **Skills-only** installs skills alone (needed on some Claude surfaces and any Agent Skills client). Cursor Agent CLI certification evidence lives in [`CURSOR_CLI.md`](CURSOR_CLI.md) — evidence gap ≠ lower product priority.
 

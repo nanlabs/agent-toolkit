@@ -17,7 +17,7 @@
 
 > **Status:** Documented evidence pack (compressed P0)  
 > **Date:** 2026-07-29  
-> **Related:** [#5](https://github.com/nanlabs/agent-toolkit/issues/5), [#8](https://github.com/nanlabs/agent-toolkit/issues/8), [#10](https://github.com/nanlabs/agent-toolkit/issues/10)  
+> **Related:** epic [#19](https://github.com/nanlabs/agent-toolkit/issues/19), smoke [#8](https://github.com/nanlabs/agent-toolkit/issues/8), pilots [#9](https://github.com/nanlabs/agent-toolkit/issues/9)  
 > **Plan SoT:** [AI_ASSETS_MIGRATION_PLAN.md](https://github.com/nanlabs/internal-workstation/blob/main/docs/AI_ASSETS_MIGRATION_PLAN.md) (private workstation repo)
 
 ## Verdict (HP0)
@@ -32,13 +32,13 @@ Official Claude Code, Cursor, and `npx skills` documentation already defines ins
 | Public repo can host marketplace + skills | **Pass** (#32, #34, #36) |
 | Lifecycle matrix fillable from vendor docs | **Pass** (see below) |
 | Live smoke on NaNLABS machines | **Operator checklist** (Appendix A) |
-| Non-tech `/setup` journey | **Deferred** to [#9](https://github.com/nanlabs/agent-toolkit/issues/9) / [#20](https://github.com/nanlabs/agent-toolkit/issues/20) |
+| Non-tech setup journey | **Operator / pilot** — [#9](https://github.com/nanlabs/agent-toolkit/issues/9) |
 
 ## What shipped before this doc
 
 | Deliverable | Evidence |
 | --- | --- |
-| Marketplace + `nanlabs-setup` plugin | PR [#32](https://github.com/nanlabs/agent-toolkit/pull/32) |
+| Marketplace + setup (now inside `nanlabs-core`) | PR [#32](https://github.com/nanlabs/agent-toolkit/pull/32); lineup [#71](https://github.com/nanlabs/agent-toolkit/pull/71) |
 | 47 public skills (grouped Agent Skills layout) | PR [#34](https://github.com/nanlabs/agent-toolkit/pull/34) |
 | MegaLinter + Danger TS CI | PR [#36](https://github.com/nanlabs/agent-toolkit/pull/36) |
 | Public content policy | `docs/PUBLIC_CONTENT_POLICY.md` |
@@ -63,7 +63,7 @@ Operator-facing commands also live in [`LIFECYCLE.md`](LIFECYCLE.md). Primary so
 | Concern | Behavior | Notes for NaNLABS |
 | --- | --- | --- |
 | **Install marketplace** | `/plugin marketplace add nanlabs/agent-toolkit` | Public git repo; no private auth for this catalog |
-| **Install plugin** | `/plugin install nanlabs-setup@nanlabs-agent-toolkit` | Scopes: user / project / local |
+| **Install plugin** | `/plugin install nanlabs-core@nanlabs-agent-toolkit` | Scopes: user / project / local; setup via `/nanlabs-core:setup` |
 | **Update discovery** | `/plugin marketplace update` then `/plugin update` | Third-party auto-update **default off** |
 | **Auto-update** | Per-marketplace toggle; org can set `autoUpdate` on `extraKnownMarketplaces` | Prefer **off** for team until pin policy exists |
 | **Pin** | Set `version` in `plugin.json` **or** omit → every git SHA is a version | Recommend explicit semver for releases; SHA for fast iteration |
@@ -96,7 +96,7 @@ Operator-facing commands also live in [`LIFECYCLE.md`](LIFECYCLE.md). Primary so
 
 1. **Canonical content** = Agent Skills `SKILL.md` (no workstation `skill.json`).
 2. **Grouped layout** `skills/<group>/<skill>/` for navigability + CLI discovery.
-3. **Claude-first** for org distribution; Cursor team marketplace when admin capacity exists.
+3. **Equal priority** for Claude · Claude Code · Cursor IDE · Cursor Agent CLI; skills-only where plugins unavailable.
 4. **Versioning:** ship `version` on published plugins; bump on every user-facing change.
 5. **Auto-update:** leave third-party marketplaces at vendor default (off) until ops agrees.
 6. **Workstation** remains L1 provisioner; do not delete skill SoT until Wave 3–4.
@@ -106,7 +106,7 @@ Operator-facing commands also live in [`LIFECYCLE.md`](LIFECYCLE.md). Primary so
 | Risk | Mitigation |
 | --- | --- |
 | Cursor team marketplace not yet configured for NaNLABS | Track under Wave 2 / admin task; skills CLI covers tech users |
-| Non-tech `/setup` incomplete | [#20](https://github.com/nanlabs/agent-toolkit/issues/20), pilot [#9](https://github.com/nanlabs/agent-toolkit/issues/9) |
+| Non-tech setup journey | Pilot [#9](https://github.com/nanlabs/agent-toolkit/issues/9); setup ships in `nanlabs-core` |
 | Soft public scrub (`~/.local/share/nanlabs`, ClickUp URLs) | Follow-up scrub PRs; policy in `PUBLIC_CONTENT_POLICY.md` |
 | Skills lockfile CLI still evolving | Prefer git tags + marketplace pin for Claude |
 
