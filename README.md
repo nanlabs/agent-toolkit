@@ -1,22 +1,71 @@
+<div align="center">
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="static/hero-banner.svg">
+  <source media="(prefers-color-scheme: light)" srcset="static/hero-banner.svg">
+  <img alt="NaNLABS agent-toolkit" src="static/hero-banner.svg" width="880">
+</picture>
+
 # agent-toolkit
 
-[![CI Validate](https://github.com/nanlabs/agent-toolkit/actions/workflows/validate.yml/badge.svg)](https://github.com/nanlabs/agent-toolkit/actions/workflows/validate.yml)
-[![MegaLinter](https://github.com/nanlabs/agent-toolkit/actions/workflows/mega-linter.yml/badge.svg)](https://github.com/nanlabs/agent-toolkit/actions/workflows/mega-linter.yml)
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![Agent Skills](https://img.shields.io/badge/Agent%20Skills-compatible-0A7EA4)](https://agentskills.io/specification)
+### NaNLABS skills, agents, and plugins — L1.5 distribution
 
-NaNLABS **skills**, **agents**, and **plugins** for **Claude**, **Claude Code**, **Cursor IDE**, and **Cursor Agent CLI** (equal product priority).
+<p><strong>Claude · Claude Code · Cursor IDE · Cursor Agent CLI</strong> — equal product priority</p>
 
-> Public **L1.5** distribution. Machine provisioning stays in [`internal-workstation`](https://github.com/nanlabs/internal-workstation).  
-> Docs index: [`docs/README.md`](docs/README.md) · Wiki source: [`docs/wiki/`](docs/wiki/) · Scope: [`docs/SCOPE.md`](docs/SCOPE.md)
+<p>
+  <a href="docs/README.md">Docs</a> ·
+  <a href="docs/wiki/Home.md">Wiki source</a> ·
+  <a href="docs/ADOPTION.md">Adoption</a> ·
+  <a href="docs/SCOPE.md">Scope</a> ·
+  <a href="CONTRIBUTING.md">Contributing</a>
+</p>
 
-| Skills | Agents | Plugins | MCP |
-| --- | --- | --- | --- |
-| 47 | 16 | `nanlabs-core` + `nanlabs-agents` | Docs-only templates |
+<br>
 
-**Out of scope as plugin targets:** OpenCode, Copilot, Windsurf, Gemini CLI, Pi, … (skills may still work via `npx skills`). No consumer CLI / loop runtime in this repo.
+<p>
+  <a href="https://github.com/nanlabs/agent-toolkit/actions/workflows/validate.yml"><img src="https://img.shields.io/github/actions/workflow/status/nanlabs/agent-toolkit/validate.yml?branch=main&style=for-the-badge&label=validate&labelColor=0d1117&color=58a6ff" alt="Validate"/></a>
+  <a href="https://github.com/nanlabs/agent-toolkit/actions/workflows/mega-linter.yml"><img src="https://img.shields.io/github/actions/workflow/status/nanlabs/agent-toolkit/mega-linter.yml?branch=main&style=for-the-badge&label=megalinter&labelColor=0d1117&color=f7c948" alt="MegaLinter"/></a>
+  <a href="https://agentskills.io/specification"><img src="https://img.shields.io/badge/Agent%20Skills-compatible-7ee787?style=for-the-badge&labelColor=0d1117" alt="Agent Skills"/></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-ff6b35?style=for-the-badge&labelColor=0d1117" alt="MIT"/></a>
+</p>
 
-## Install
+<p>
+  <img src="https://img.shields.io/badge/skills-47-ff6b35?style=for-the-badge&labelColor=0d1117" alt="47 skills"/>
+  <img src="https://img.shields.io/badge/agents-16-58a6ff?style=for-the-badge&labelColor=0d1117" alt="16 agents"/>
+  <img src="https://img.shields.io/badge/plugins-2-f7c948?style=for-the-badge&labelColor=0d1117" alt="2 plugins"/>
+  <img src="https://img.shields.io/badge/MCP-docs--only-8b949e?style=for-the-badge&labelColor=0d1117" alt="MCP docs-only"/>
+</p>
+
+<p>
+  <img src="https://img.shields.io/badge/Claude-equal-ff6b35?style=for-the-badge&labelColor=0d1117" alt="Claude"/>
+  <img src="https://img.shields.io/badge/Claude%20Code-equal-f7c948?style=for-the-badge&labelColor=0d1117" alt="Claude Code"/>
+  <img src="https://img.shields.io/badge/Cursor%20IDE-equal-58a6ff?style=for-the-badge&labelColor=0d1117" alt="Cursor IDE"/>
+  <img src="https://img.shields.io/badge/Cursor%20Agent%20CLI-equal-7ee787?style=for-the-badge&labelColor=0d1117" alt="Cursor Agent CLI"/>
+</p>
+
+</div>
+
+---
+
+## What is agent-toolkit?
+
+Public **L1.5** distribution of NaNLABS AI capabilities: Agent Skills, agent personas, and Claude/Cursor marketplace plugins. Machine provisioning stays in [`internal-workstation`](https://github.com/nanlabs/internal-workstation) (L1).
+
+Smaller than multi-tool personal forks: **no** consumer CLI, loop runtime, or OpenCode/Copilot/Windsurf/Gemini/Pi plugin targets. Portable skills may still work via `npx skills`.
+
+<div align="center">
+  <img alt="L1 and L1.5 architecture" src="static/architecture.svg" width="820">
+</div>
+
+## Highlights
+
+- **Equal-priority surfaces** — Claude, Claude Code, Cursor IDE, and Cursor Agent CLI
+- **Recommended plugin** — `nanlabs-core` with bundled setup (`/nanlabs-core:setup`)
+- **Optional roster** — `nanlabs-agents` for all 16 personas
+- **Honest MCP** — templates under `mcp/templates/` are docs-only
+- **CI quality bar** — manifests, skills-ref, Claude validate, MegaLinter, Danger
+
+## Quick install
 
 ### Claude Code
 
@@ -25,32 +74,41 @@ NaNLABS **skills**, **agents**, and **plugins** for **Claude**, **Claude Code**,
 /plugin install nanlabs-core@nanlabs-agent-toolkit
 ```
 
-Then **`/nanlabs-core:setup`**. Optional: `/plugin install nanlabs-agents@nanlabs-agent-toolkit`.
+Then run **`/nanlabs-core:setup`**. Optional: `/plugin install nanlabs-agents@nanlabs-agent-toolkit`.
 
-### Cursor IDE
+<details>
+<summary><strong>Cursor IDE</strong></summary>
 
-- **Local:** `~/.cursor/plugins/local` ([docs](https://cursor.com/docs/plugins))
-- **Team:** import this repo as a Team Marketplace
+- **Local:** load from `~/.cursor/plugins/local` ([Cursor plugins](https://cursor.com/docs/plugins))
+- **Team:** import this repository as a Team Marketplace
 
-Install **`nanlabs-core`** (recommended).
+Install **`nanlabs-core`** (recommended), optionally **`nanlabs-agents`**.
 
-### Cursor Agent CLI
+</details>
 
-Equal priority with Cursor IDE. See [`docs/CURSOR_CLI.md`](docs/CURSOR_CLI.md).
+<details>
+<summary><strong>Cursor Agent CLI</strong> — equal priority; see certification matrix</summary>
 
 ```bash
 agent --version || cursor agent --version || true
 agent plugin marketplace add https://github.com/nanlabs/agent-toolkit
-# Prefer --plugin-dir for local smoke; see docs/CURSOR_CLI.md
+# Prefer --plugin-dir for local smoke — docs/CURSOR_CLI.md
 ```
 
-### Skills-only
+</details>
+
+<details>
+<summary><strong>Skills-only</strong> — Agent Skills CLI (skills alone)</summary>
 
 ```bash
 npx skills add nanlabs/agent-toolkit -g
 ```
 
-Skills **only** — not plugins, agents, MCP, or setup automation.
+Does **not** install plugins, agents, MCP, or setup automation.
+
+</details>
+
+Full paths: [`docs/ADOPTION.md`](docs/ADOPTION.md) · lifecycle: [`docs/LIFECYCLE.md`](docs/LIFECYCLE.md)
 
 ## What's included
 
@@ -65,14 +123,27 @@ Skills **only** — not plugins, agents, MCP, or setup automation.
 
 | Path | Purpose |
 | --- | --- |
-| `skills/<group>/<skill>/` | Canonical Agent Skills tree |
-| `plugins/` | Claude / Cursor bundles |
+| `skills/<group>/<skill>/` | Canonical [Agent Skills](https://agentskills.io/specification) tree |
+| `plugins/` | Claude / Cursor plugin bundles |
 | `.claude-plugin/` · `.cursor-plugin/` | Marketplace catalogs |
 | `agents/` | Canonical personas |
 | `products/plugins.yaml` | Plugin version + assembly SoT |
 | `mcp/templates/` | MCP stubs (no secrets) |
 | `docs/` · `docs/wiki/` | Repo docs + GitHub Wiki source |
+| `static/` | README artwork |
 | `scripts/` | Validation + `gen-surfaces` |
+
+## Start here
+
+| Need | Go to |
+| --- | --- |
+| Install by surface | [Adoption](docs/ADOPTION.md) |
+| In / out of scope | [Scope](docs/SCOPE.md) |
+| Common questions | [FAQ](docs/FAQ.md) |
+| Cursor Agent CLI matrix | [CURSOR_CLI](docs/CURSOR_CLI.md) |
+| Docs map | [docs/README.md](docs/README.md) |
+| Add a skill / plugin | [Authoring](docs/AUTHORING.md) |
+| Public safety | [Public content policy](docs/PUBLIC_CONTENT_POLICY.md) |
 
 ## Quality bar
 
@@ -88,23 +159,11 @@ bash scripts/secret-scan.sh
 pre-commit run --all-files
 ```
 
-## Docs
-
-| Doc | Topic |
-| --- | --- |
-| [`docs/README.md`](docs/README.md) | Full index |
-| [`docs/ADOPTION.md`](docs/ADOPTION.md) | Install paths |
-| [`docs/SCOPE.md`](docs/SCOPE.md) | In / out of scope |
-| [`docs/FAQ.md`](docs/FAQ.md) | FAQ |
-| [`docs/CURSOR_CLI.md`](docs/CURSOR_CLI.md) | Cursor Agent CLI matrix |
-| [`docs/LIFECYCLE.md`](docs/LIFECYCLE.md) | Update / pin / rollback |
-| [`docs/RELEASE.md`](docs/RELEASE.md) | Tags / changelog |
-| [`docs/AUTHORING.md`](docs/AUTHORING.md) | Add skills/plugins |
-| [`docs/PUBLIC_CONTENT_POLICY.md`](docs/PUBLIC_CONTENT_POLICY.md) | Public safety |
-
 ## Contributing
 
-[`CONTRIBUTING.md`](CONTRIBUTING.md) · [`AGENTS.md`](AGENTS.md) · PR template · link an issue (`Fixes #N` / `Refs #N`).
+See [`CONTRIBUTING.md`](CONTRIBUTING.md) and [`AGENTS.md`](AGENTS.md). Use the PR template; link an issue (`Fixes #N` / `Refs #N`).
+
+Wiki pages are edited under [`docs/wiki/`](docs/wiki/) and synced to the GitHub Wiki on `main`.
 
 ## Security
 
