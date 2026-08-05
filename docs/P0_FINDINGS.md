@@ -22,7 +22,7 @@
 
 ## Verdict (HP0)
 
-**Go — with a short live smoke checklist** (not a multi-week POC).
+**Conditional go — packaging exists; live org smoke across Claude Code, Cursor IDE, and Cursor Agent CLI still required** (epic #19).
 
 Official Claude Code, Cursor, and `npx skills` documentation already defines install / update / pin / uninstall behavior. Packaging in this repo (`marketplace.json`, skills tree, CI) is past the “toy scaffold” stage. Remaining P0 work is **org smoke + UX evidence**, not architectural discovery.
 
@@ -115,8 +115,8 @@ Operator-facing commands also live in [`LIFECYCLE.md`](LIFECYCLE.md). Primary so
 Run once on a disposable profile / machine and paste results into a comment on [#8](https://github.com/nanlabs/agent-toolkit/issues/8):
 
 - [ ] Claude: marketplace add `nanlabs/agent-toolkit`
-- [ ] Claude: install `nanlabs-setup@nanlabs-agent-toolkit`
-- [ ] Claude: `/setup` or ask agent to run setup skill; sees Git/Python/package-manager notes
+- [ ] Claude: install `nanlabs-core@nanlabs-agent-toolkit`
+- [ ] Claude: `/nanlabs-core:setup` or setup skill; sees Git/Python/package-manager notes
 - [ ] Claude: marketplace update + plugin update (or confirm “already latest”)
 - [ ] `npx skills add nanlabs/agent-toolkit -g -y` lists expected skills
 - [ ] (Optional) Cursor local plugin load from clone / team marketplace import

@@ -19,19 +19,19 @@
 
 Short operator guide for distributing `nanlabs/agent-toolkit`. Full evidence and sources: [`P0_FINDINGS.md`](P0_FINDINGS.md).
 
-## Claude Code (primary)
+## Claude Code
 
 ```text
 /plugin marketplace add nanlabs/agent-toolkit
-/plugin install nanlabs-setup@nanlabs-agent-toolkit
+/plugin install nanlabs-core@nanlabs-agent-toolkit
 ```
 
 | Action | Command / mechanism |
 | --- | --- |
 | Refresh catalog | `/plugin marketplace update nanlabs-agent-toolkit` |
-| Update plugin | `/plugin update nanlabs-setup` then `/reload-plugins` if prompted |
-| Disable | `/plugin disable nanlabs-setup` |
-| Uninstall | `/plugin uninstall nanlabs-setup` |
+| Update plugin | `/plugin update nanlabs-core` then `/reload-plugins` if prompted |
+| Disable | `/plugin disable nanlabs-core` |
+| Uninstall | `/plugin uninstall nanlabs-core` |
 | Pin | Set `"version": "x.y.z"` in `plugins/.../plugin.json` and bump to release |
 | Rollback | Revert version / pin marketplace source to prior git SHA, then marketplace update |
 
@@ -48,12 +48,25 @@ npx skills remove <skill-name> -g
 
 Project-scope installs can write `skills-lock.json` for reproducibility (CLI restore commands are evolving — see upstream `vercel-labs/skills`).
 
-## Cursor
+## Cursor IDE
 
 1. **Local test:** copy or symlink a plugin under `~/.cursor/plugins/local/<name>` and reload.
 2. **Team:** Dashboard → Plugins → import this GitHub repo (Teams/Enterprise admin).
 3. Modes: Default Off / Default On / Required.
 4. Updates: Refresh or enable Auto Refresh (GitHub App).
+
+Install **`nanlabs-core`** (recommended); optionally **`nanlabs-agents`**. Setup: `/nanlabs-core:setup` when the IDE surfaces plugin commands.
+
+## Cursor Agent CLI
+
+Equal priority with Cursor IDE. Record binary/version, load plugins per CLI support, and update [`CURSOR_CLI.md`](CURSOR_CLI.md).
+
+```bash
+agent --version || cursor agent --version || true
+bash scripts/smoke/preflight.sh
+```
+
+Paste CLI matrix results on GitHub issue #58 / #8.
 
 ## MCP stubs
 
@@ -66,4 +79,4 @@ Templates under `mcp/templates/` use `${ENV_VAR}` placeholders only. Never commi
 bash scripts/smoke/preflight.sh
 ```
 
-Paste live Claude/Cursor marketplace results on GitHub issue #8.
+Paste live Claude Code / Cursor IDE / Cursor Agent CLI results on GitHub issue #8 (CLI matrix: #58).
