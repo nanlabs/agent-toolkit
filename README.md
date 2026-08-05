@@ -5,12 +5,16 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Agent Skills](https://img.shields.io/badge/Agent%20Skills-compatible-0A7EA4)](https://agentskills.io/specification)
 
-NaNLABS **skills**, **agents**, and **plugins** for **Claude Code** and **Cursor**. Portable skills also install via the Agent Skills CLI (skills-only).
+NaNLABS **skills**, **agents**, and **plugins** for **Claude**, **Claude Code**, **Cursor IDE**, and **Cursor Agent CLI** — equal product priority. Portable skills also install via the Agent Skills CLI (skills-only).
 
 > Public distribution repo (L1.5). Machine provisioning stays in [`internal-workstation`](https://github.com/nanlabs/internal-workstation).  
-> Migration program: GitHub Project [AI Native Workbench](https://github.com/orgs/nanlabs/projects/12) · findings: [`docs/P0_FINDINGS.md`](docs/P0_FINDINGS.md)
+> Production certification: GitHub Project [AI Native Workbench](https://github.com/orgs/nanlabs/projects/12) · epic [#19](https://github.com/nanlabs/agent-toolkit/issues/19)
 
-## Install (60 seconds)
+**Equal-priority surfaces:** Claude · Claude Code · Cursor IDE · Cursor Agent CLI  
+**Skills-only path:** Agent Skills CLI installs **skills only** (not plugins, agents, MCP, or setup automation) — used where plugins are unavailable (including some Claude surfaces)  
+**Out of scope as plugin targets:** OpenCode, GitHub Copilot, Windsurf, Gemini CLI, Pi, and others (portable skills may still work there)
+
+## Install
 
 ### Claude Code
 
@@ -23,18 +27,33 @@ Then run **`/nanlabs-core:setup`** or ask Claude to run the bundled setup skill.
 
 Optional: `/plugin install nanlabs-agents@nanlabs-agent-toolkit` for the full agent roster.
 
-### Any agent (skills.sh / CLI)
+### Cursor IDE
+
+- **Local:** load plugins from this repo under `~/.cursor/plugins/local` (see [Cursor plugins docs](https://cursor.com/docs/plugins)).
+- **Team:** import this repository as a Team Marketplace (admin; Teams/Enterprise).
+
+Install **`nanlabs-core`** (recommended). Optionally **`nanlabs-agents`**.
+
+### Cursor Agent CLI
+
+Same priority as Cursor IDE. Component parity is tracked in [`docs/CURSOR_CLI.md`](docs/CURSOR_CLI.md) — fill the matrix with evidence on your pinned CLI version; do not assume IDE behavior.
+
+```bash
+agent --version || cursor agent --version || true
+# Load local plugin dir / enabled_plugins per your CLI build, then list skills, commands, and agents
+```
+
+### Skills-only (any Agent Skills–compatible client)
 
 ```bash
 npx skills add nanlabs/agent-toolkit -g
 ```
 
-Installs the grouped tree `skills/<group>/<skill>/` (47 public skills). See [`docs/SKILLS.md`](docs/SKILLS.md) and [`docs/LIFECYCLE.md`](docs/LIFECYCLE.md).
+Installs the grouped tree `skills/<group>/<skill>/` (47 public skills) only — **not** Claude/Cursor plugins, agents, MCP, or setup automation. See [`docs/SKILLS.md`](docs/SKILLS.md) and [`docs/LIFECYCLE.md`](docs/LIFECYCLE.md).
 
-### Cursor
+### MCP templates
 
-- **Local:** load plugins from this repo under `~/.cursor/plugins/local` (see [Cursor plugins docs](https://cursor.com/docs/plugins)).
-- **Team:** import this repository as a Team Marketplace (admin; Teams/Enterprise).
+`mcp/templates/` are **docs-only** stubs. Marketplace plugins do **not** install MCP integrations today.
 
 ## What's included
 
@@ -87,8 +106,8 @@ pre-commit run --all-files
 
 | Doc | Topic |
 | --- | --- |
-| [`docs/ADOPTION.md`](docs/ADOPTION.md) | Install paths by client |
-| [`docs/CURSOR_CLI.md`](docs/CURSOR_CLI.md) | Cursor CLI parity matrix (beta) |
+| [`docs/ADOPTION.md`](docs/ADOPTION.md) | Install paths by surface |
+| [`docs/CURSOR_CLI.md`](docs/CURSOR_CLI.md) | Cursor Agent CLI parity matrix |
 | [`docs/LIFECYCLE.md`](docs/LIFECYCLE.md) | Update / pin / rollback |
 | [`docs/RELEASE.md`](docs/RELEASE.md) | Version SoT, tags, changelog, rollback |
 | [`docs/PILOT_CHECKLIST.md`](docs/PILOT_CHECKLIST.md) | Production pilot journeys (#9) |

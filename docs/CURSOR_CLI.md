@@ -1,8 +1,9 @@
-# Cursor CLI certification matrix
+# Cursor Agent CLI certification matrix
 
-**Status:** **beta / uncertified** for NaNLABS plugins until smoke evidence is recorded below.
+**Product priority:** equal with Claude, Claude Code, and Cursor IDE.  
+**Certification status:** matrix below is **uncertified** until smoke evidence is recorded — that is an evidence gap, not a priority demotion.
 
-Cursor IDE and Cursor CLI are separate surfaces. Do not assume IDE plugin components load identically in the CLI.
+Cursor IDE and Cursor Agent CLI are separate runtimes. Do not assume IDE plugin components load identically in the CLI.
 
 ## Component matrix
 
@@ -26,7 +27,7 @@ Record exact binary (`agent` / `cursor agent`) and version:
 
 ```bash
 # Example — adjust to your installed CLI entrypoint
-agent --version || true
+agent --version || cursor agent --version || true
 # Load local plugin dir if supported by your CLI build, then:
 #   list skills / commands / agents and capture output
 ```
@@ -35,4 +36,6 @@ Community history includes plugin-skill parity gaps between IDE and CLI; re-veri
 
 ## Product rule
 
-Until this matrix has at least skills + commands evidenced `pass` on a pinned CLI version, README must label Cursor CLI as **beta**, not Tier-1 production.
+1. **Priority:** Cursor Agent CLI ships at the same priority as Claude, Claude Code, and Cursor IDE.
+2. **Honesty:** until skills + commands are evidenced `pass` on a pinned CLI version, label support **uncertified / in-progress** in release notes — never “out of scope”, “candidate”, or “nice-to-have”.
+3. **Blocking:** production certification epic [#19](https://github.com/nanlabs/agent-toolkit/issues/19) requires CLI matrix progress alongside Claude and Cursor IDE evidence.

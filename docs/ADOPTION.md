@@ -10,7 +10,10 @@
 
 How to install and use `nanlabs/agent-toolkit`.
 
-## Claude Code (recommended)
+**Equal-priority surfaces:** Claude · Claude Code · Cursor IDE · Cursor Agent CLI.  
+**Skills-only** installs skills alone (needed on some Claude surfaces and any Agent Skills client). Cursor Agent CLI certification evidence lives in [`CURSOR_CLI.md`](CURSOR_CLI.md) — evidence gap ≠ lower product priority.
+
+## Claude Code
 
 ```text
 /plugin marketplace add nanlabs/agent-toolkit
@@ -29,7 +32,7 @@ Optional full agent roster:
 
 Lifecycle (update / pin / rollback): [`LIFECYCLE.md`](LIFECYCLE.md).
 
-## Cursor
+## Cursor IDE
 
 1. **Local development:** place or symlink a plugin under `~/.cursor/plugins/local/` and reload the window.
 2. **Team:** import this repository as a Team Marketplace (org admin; Teams or Enterprise).
@@ -40,7 +43,16 @@ Marketplace entries use only `name`, `source`, `description`, and optional `minC
 
 See [Cursor plugins](https://cursor.com/docs/plugins).
 
-## Any agent (technical)
+## Cursor Agent CLI
+
+Same product priority as Cursor IDE. Do not assume IDE plugin components load identically in the CLI.
+
+1. Pin and record the CLI binary/version (`agent` / `cursor agent`).
+2. Load plugins the same way your org supports (`--plugin-dir`, settings `enabled_plugins`, or marketplace).
+3. Fill the component matrix in [`CURSOR_CLI.md`](CURSOR_CLI.md) with pass/fail/partial evidence.
+4. Treat unknown cells as **uncertified**, not deprioritized.
+
+## Skills-only
 
 ```bash
 npx skills add nanlabs/agent-toolkit -g
@@ -55,7 +67,7 @@ Skill index: [`SKILLS.md`](SKILLS.md) · machine catalog: [`../catalogs/skill-ca
 ## Agents and MCP
 
 - Agents: [`../agents/README.md`](../agents/README.md) (16 personas; plugin `nanlabs-agents`)
-- MCP stubs: [`../mcp/templates/README.md`](../mcp/templates/README.md) (6 stubs; env placeholders only)
+- MCP stubs: [`../mcp/templates/README.md`](../mcp/templates/README.md) (docs-only; env placeholders only)
 - Dependency contracts: [`../contracts/README.md`](../contracts/README.md)
 - Solution packs (stubs): [`../packs/README.md`](../packs/README.md)
 - Overlay governance: [`OVERLAY_GOVERNANCE.md`](OVERLAY_GOVERNANCE.md)
@@ -65,8 +77,18 @@ Skill index: [`SKILLS.md`](SKILLS.md) · machine catalog: [`../catalogs/skill-ca
 
 - Marketplace add succeeds without private-repo auth for this public repository.
 - `nanlabs-core` is installed; `/nanlabs-core:setup` runs the bundled doctor without a git checkout.
+- Cursor IDE and Cursor Agent CLI each have recorded install + smoke evidence (CLI matrix in [`CURSOR_CLI.md`](CURSOR_CLI.md)).
 - `npx skills` discovers nested skills under `skills/<group>/`.
 - No secrets were required to install the plugin or skills themselves.
+
+## Troubleshooting
+
+| Symptom | Check |
+| --- | --- |
+| Setup can’t find doctor scripts | Use marketplace `nanlabs-core` ≥ 0.2.0 (bundles doctor); avoid relying on a git checkout |
+| Cursor marketplace import fails | Ensure `.cursor-plugin/marketplace.json` passes official schema |
+| Expected MCP tools missing | MCP templates are docs-only; configure MCP separately |
+| CLI skills/commands missing | Re-check [`CURSOR_CLI.md`](CURSOR_CLI.md) on the pinned CLI version — IDE ≠ CLI |
 
 ## Related docs
 
