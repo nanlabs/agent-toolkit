@@ -1,6 +1,6 @@
 > **Note:** Canonical documentation lives under [`docs/`](https://github.com/nanlabs/agent-toolkit/tree/main/docs). This wiki is synced from `docs/wiki/` via GitHub Actions and may lag briefly after merges.
 
-# NaNLABS agent-toolkit
+# 🏠 NaNLABS agent-toolkit
 
 Public **L1.5** distribution of NaNLABS skills, agents, and plugins.
 
