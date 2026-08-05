@@ -5,7 +5,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Agent Skills](https://img.shields.io/badge/Agent%20Skills-compatible-0A7EA4)](https://agentskills.io/specification)
 
-NaNLABS **skills**, **agents**, **plugins**, and **MCP stubs** for Claude Code, Cursor, GitHub Copilot, OpenCode, and other Agent Skills–compatible clients.
+NaNLABS **skills**, **agents**, and **plugins** for **Claude Code** and **Cursor**. Portable skills also install via the Agent Skills CLI (skills-only).
 
 > Public distribution repo (L1.5). Machine provisioning stays in [`internal-workstation`](https://github.com/nanlabs/internal-workstation).  
 > Migration program: GitHub Project [AI Native Workbench](https://github.com/orgs/nanlabs/projects/12) · findings: [`docs/P0_FINDINGS.md`](docs/P0_FINDINGS.md)
@@ -44,7 +44,7 @@ Installs the grouped tree `skills/<group>/<skill>/` (47 public skills). See [`do
 | Core plugin | `nanlabs-core` — orchestrator + companion + handshake + reviewer |
 | Agents plugin | `nanlabs-agents` — all 16 personas (generated via `gen-surfaces`) |
 | Agents | 16 under `agents/` — [catalog](catalogs/agent-catalog.yaml) |
-| MCP | 6 stubs under `mcp/templates/` — [catalog](catalogs/mcp-catalog.yaml) |
+| MCP templates | Docs-only under `mcp/templates/` (not installed by plugins) |
 
 ## Repository layout
 
