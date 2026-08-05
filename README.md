@@ -88,6 +88,7 @@ pre-commit run --all-files
 | --- | --- |
 | [`docs/ADOPTION.md`](docs/ADOPTION.md) | Install paths by client |
 | [`docs/LIFECYCLE.md`](docs/LIFECYCLE.md) | Update / pin / rollback |
+| [`docs/RELEASE.md`](docs/RELEASE.md) | Version SoT, tags, changelog, rollback |
 | [`docs/P0_FINDINGS.md`](docs/P0_FINDINGS.md) | Feasibility + lifecycle matrix |
 | [`docs/AUTHORING.md`](docs/AUTHORING.md) | How to add skills/plugins |
 | [`docs/WAVE0_INVENTORY.md`](docs/WAVE0_INVENTORY.md) | H0 inventory + privacy classes |
