@@ -5,7 +5,7 @@ Canonical sources:
   agents/<name>/AGENT.md (+ references/, NOTICE.txt)
   skills/core/<skill>/...
   products/plugins.yaml (versions + plugin metadata)
-  catalogs/agent-target-map.yaml (Claude/Cursor/OpenCode frontmatter overlays)
+  catalogs/agent-target-map.yaml (Claude/Cursor frontmatter overlays)
 
 Generated surfaces:
   plugins/<id>/agents/<name>.md          # flat agent files (Claude + Cursor discovery)
@@ -101,10 +101,7 @@ def merge_target_frontmatter(name: str, target_map: dict[str, Any]) -> dict[str,
         out["description"] = str(claude["description"])
     if tools := claude.get("tools"):
         out["tools"] = str(tools)
-    if mode := claude.get("opencode_mode"):
-        out["opencode_mode"] = str(mode)
-    if color := claude.get("opencode_color"):
-        out["opencode_color"] = str(color)
+    # OpenCode fields are intentionally not emitted (out of NaNLABS production scope).
     return out
 
 
@@ -123,7 +120,7 @@ def render_plugin_agent(
     front["name"] = name
     front["description"] = description
     lines = ["---"]
-    for key in ("name", "description", "tools", "opencode_mode", "opencode_color"):
+    for key in ("name", "description", "tools"):
         if key in front:
             lines.append(f"{key}: {front[key]}")
     lines.append("---")

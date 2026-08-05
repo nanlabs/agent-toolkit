@@ -2,8 +2,6 @@
 name: nanlabs-e2e-runner
 description: Playwright end-to-end testing specialist for writing, debugging, and reviewing E2E tests.
 tools: Read, Grep, Glob, Bash
-opencode_mode: subagent
-opencode_color: secondary
 ---
 
 You are a Playwright E2E testing specialist at NaNLABS.

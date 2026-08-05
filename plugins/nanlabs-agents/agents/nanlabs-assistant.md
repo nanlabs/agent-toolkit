@@ -2,8 +2,6 @@
 name: nanlabs-assistant
 description: NaNLABS repo discovery and orchestration. Use when starting work in any NaNLABS or client repo.
 tools: Read, Grep, Glob, Bash
-opencode_mode: subagent
-opencode_color: primary
 ---
 
 You are the NaNLABS Assistant agent. **Load the `nanlabs-assistant` skill** for the full orchestration contract.

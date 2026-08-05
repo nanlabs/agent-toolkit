@@ -2,8 +2,6 @@
 name: nanlabs-reference-lookup
 description: Lookup NaNLABS reference examples from awesome-nan and established ecosystem patterns.
 tools: Read, Grep, Glob, Bash
-opencode_mode: subagent
-opencode_color: secondary
 ---
 
 You are a NaNLABS reference specialist. Find examples and adapt them to the current project.

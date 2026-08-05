@@ -6,8 +6,6 @@ version: 1
 defaults:
   claude:
     tools: "Read, Grep, Glob, Bash"
-    opencode_mode: subagent
-    opencode_color: accent
   cursor:
     # Plugin agent .md files ship name + description; title is UI-only for Cursor rules.
     title_from: description
@@ -15,7 +13,6 @@ defaults:
 agents:
   nanlabs-assistant:
     claude:
-      opencode_color: primary
     cursor:
       title: NaNLABS repo discovery and orchestration
 
@@ -49,37 +46,31 @@ agents:
 
   nanlabs-refactor-cleaner:
     claude:
-      opencode_color: secondary
     cursor:
       title: Dead code cleanup and refactoring
 
   nanlabs-performance-optimizer:
     claude:
-      opencode_color: secondary
     cursor:
       title: Performance analysis and optimization
 
   nanlabs-build-error-resolver:
     claude:
-      opencode_color: secondary
     cursor:
       title: Build and TypeScript error resolution
 
   nanlabs-e2e-runner:
     claude:
-      opencode_color: secondary
     cursor:
       title: Playwright end-to-end testing
 
   nanlabs-docs-lookup:
     claude:
-      opencode_color: secondary
     cursor:
       title: Documentation and API reference lookup
 
   nanlabs-reference-lookup:
     claude:
-      opencode_color: secondary
     cursor:
       title: NaNLABS reference examples lookup
 
