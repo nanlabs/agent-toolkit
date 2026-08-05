@@ -56,7 +56,10 @@ jobs:
         run: python3 scripts/validate-contracts.py
 
       - name: Doctor baseline contract (read-only)
-        run: python3 scripts/doctor-contracts.py --contract nanlabs-setup
+        run: python3 scripts/doctor-contracts.py --contract nanlabs-core
+
+      - name: Doctor bundled in nanlabs-core plugin (read-only)
+        run: python3 plugins/nanlabs-core/scripts/doctor-contracts.py --contract nanlabs-core
 
       - name: Secret scan (tracked files)
         run: bash scripts/secret-scan.sh

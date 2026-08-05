@@ -16,11 +16,12 @@ NaNLABS **skills**, **agents**, and **plugins** for **Claude Code** and **Cursor
 
 ```text
 /plugin marketplace add nanlabs/agent-toolkit
-/plugin install nanlabs-setup@nanlabs-agent-toolkit
 /plugin install nanlabs-core@nanlabs-agent-toolkit
 ```
 
-Then ask Claude to run setup, or use the `/setup` command from the plugin.
+Then run **`/nanlabs-core:setup`** or ask Claude to run the bundled setup skill.
+
+Optional: `/plugin install nanlabs-agents@nanlabs-agent-toolkit` for the full agent roster.
 
 ### Any agent (skills.sh / CLI)
 
@@ -40,9 +41,8 @@ Installs the grouped tree `skills/<group>/<skill>/` (47 public skills). See [`do
 | Area | Count / notes |
 | --- | --- |
 | Skills | 47 under `skills/<group>/` — [catalog](catalogs/skill-catalog.yaml) |
-| Setup plugin | `nanlabs-setup` v0.2 — contract doctor + guided `/setup` |
-| Core plugin | `nanlabs-core` — orchestrator + companion + handshake + reviewer |
-| Agents plugin | `nanlabs-agents` — all 16 personas (flat `agents/*.md` via `gen-surfaces`) |
+| Core plugin | `nanlabs-core` v0.2 — recommended install: harness + bundled setup doctor + `/nanlabs-core:setup` |
+| Agents plugin | `nanlabs-agents` (optional) — all 16 personas (generated via `gen-surfaces`) |
 | Agents | 16 under `agents/` — [catalog](catalogs/agent-catalog.yaml) |
 | MCP templates | Docs-only under `mcp/templates/` (not installed by plugins) |
 

@@ -1,13 +1,12 @@
 apiVersion: nanlabs.dev/v1
 kind: RequirementContract
 metadata:
-  name: nanlabs-setup
+  name: nanlabs-core
   description: >-
-    DEPRECATED — superseded by nanlabs-core.yaml. Kept for one release cycle.
-    Baseline tools required before setup can guide marketplace and plugin
-    installation (Git, Python, OS package manager, AI client).
+    Baseline tools required before nanlabs-core can guide marketplace and
+    plugin installation (Git, Python, OS package manager, AI client).
   appliesTo:
-    - plugin:nanlabs-setup
+    - plugin:nanlabs-core
     - skill:nanlabs-setup
 spec:
   requirements:
