@@ -29,7 +29,7 @@ jobs:
           python-version: "3.12"
 
       - name: Install Python deps
-        run: pip install pyyaml
+        run: pip install pyyaml jsonschema
 
       - name: Install ripgrep
         run: sudo apt-get update && sudo apt-get install -y ripgrep
@@ -79,3 +79,59 @@ jobs:
 
       - name: Run pre-commit
         run: pre-commit run --all-files
+
+  skills-ref:
+    name: Agent Skills upstream validator
+    if: github.event_name != 'pull_request' || github.event.pull_request.draft == false
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Validate all canonical skills
+        run: |
+          set -euo pipefail
+          fail=0
+          while IFS= read -r -d '' skill; do
+            dir=$(dirname "$skill")
+            echo "skills-ref: $dir"
+            npx --yes skills-ref validate "$dir" || fail=1
+          done < <(find skills -type f -name SKILL.md -print0 | sort -z)
+          exit $fail
+
+  claude-plugin-validate:
+    name: Claude plugin validate
+    if: github.event_name != 'pull_request' || github.event.pull_request.draft == false
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+      - name: Setup Claude Code CLI
+        run: |
+          curl -fsSL https://claude.ai/install.sh | bash
+          echo "$HOME/.local/bin" >> "$GITHUB_PATH"
+      - name: Validate plugins (non-strict always; strict when supported)
+        run: |
+          set -euo pipefail
+          claude --version || true
+          for p in plugins/nanlabs-setup plugins/nanlabs-core plugins/nanlabs-agents; do
+            if [[ -d "$p" ]]; then
+              echo "validate $p"
+              claude plugin validate "$p"
+            fi
+          done
+          echo "Attempting --strict (may fail until #52 lands)"
+          strict_fail=0
+          for p in plugins/nanlabs-core plugins/nanlabs-agents; do
+            if [[ -d "$p" ]]; then
+              claude plugin validate --strict "$p" || strict_fail=1
+            fi
+          done
+          # Soft gate until assembler lands: report but do not fail the job yet.
+          # Flip to exit $strict_fail once #52 is on main.
+          if [[ $strict_fail -ne 0 ]]; then
+            echo "::warning::claude plugin validate --strict failed (tracked by #52/#57)"
+          fi

@@ -90,6 +90,7 @@ pre-commit run --all-files
 | [`docs/LIFECYCLE.md`](docs/LIFECYCLE.md) | Update / pin / rollback |
 | [`docs/P0_FINDINGS.md`](docs/P0_FINDINGS.md) | Feasibility + lifecycle matrix |
 | [`docs/AUTHORING.md`](docs/AUTHORING.md) | How to add skills/plugins |
+| [`docs/AGENT_AUDIT.md`](docs/AGENT_AUDIT.md) | Core vs optional agents inventory |
 | [`docs/WAVE0_INVENTORY.md`](docs/WAVE0_INVENTORY.md) | H0 inventory + privacy classes |
 | [`docs/OVERLAY_GOVERNANCE.md`](docs/OVERLAY_GOVERNANCE.md) | Project overlay checklist |
 | [`docs/TELEMETRY_CONTRACT.md`](docs/TELEMETRY_CONTRACT.md) | L1 policy vs L1.5 adapters |
