@@ -3,20 +3,15 @@ version: 1
 
 marketplace:
   metadata:
-    version: "0.3.0"
-    description: "NaNLABS skills, agents, plugins, and MCP stubs for Claude Code, Cursor, and compatible clients"
+    version: "0.4.0"
+    description: "NaNLABS skills, agents, and plugins for Claude Code and Cursor IDE"
 
 plugins:
-  nanlabs-setup:
+  nanlabs-core:
     version: "0.2.0"
-    description: "Inspect the environment against dependency contracts and guide first-time NaN harness setup (approval before installs)"
+    description: "Recommended install: setup/onboarding, orchestrator, companion, handshake, PR fallback, knowledge sync, and code-reviewer agent"
     skills:
       - skills/core/nanlabs-setup
-
-  nanlabs-core:
-    version: "0.1.0"
-    description: "Baseline orchestrator, companion, handshake, PR fallback, knowledge sync, and code-reviewer agent"
-    skills:
       - skills/core/nanlabs-assistant
       - skills/core/nanlabs-dev-companion
       - skills/core/nanlabs-output-handshake
@@ -27,5 +22,5 @@ plugins:
 
   nanlabs-agents:
     version: "0.1.0"
-    description: "Full set of NaNLABS agent / subagent personas (reviewers, architect, planner, e2e, …)"
+    description: "Optional full set of NaNLABS agent / subagent personas (reviewers, architect, planner, e2e, …)"
     agents: all

@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
-"""Read-only doctor: evaluate contracts/requirements against the local machine.
+"""Read-only doctor bundled with nanlabs-core: evaluate plugin contracts locally.
 
 Never installs software. Prints a Markdown change/gap report for /setup.
+Self-contained — no agent-toolkit repo checkout required when installed via marketplace.
 """
 
 from __future__ import annotations
@@ -21,8 +22,8 @@ except ImportError:  # pragma: no cover
     print("ERROR: PyYAML is required (pip install pyyaml)", file=sys.stderr)
     raise SystemExit(1)
 
-ROOT = Path(__file__).resolve().parents[1]
-CONTRACTS = ROOT / "contracts" / "requirements"
+PLUGIN_ROOT = Path(__file__).resolve().parents[1]
+CONTRACTS = PLUGIN_ROOT / "contracts" / "requirements"
 
 # Reject shell metacharacters — verify must be a simple argv command.
 _UNSAFE_VERIFY = re.compile(r"[`$;&|<>(){}\n]|&&|\|\|")
@@ -118,7 +119,7 @@ def main() -> None:
         "--contract",
         action="append",
         dest="contracts",
-        help="Limit to contract id (repeatable). Default: all.",
+        help="Limit to contract id (repeatable). Default: all bundled contracts.",
     )
     parser.add_argument(
         "--json",
@@ -128,7 +129,7 @@ def main() -> None:
     args = parser.parse_args()
     contracts = load_contracts(args.contracts)
     if not contracts:
-        print("ERROR: no contracts found", file=sys.stderr)
+        print(f"ERROR: no contracts found under {CONTRACTS}", file=sys.stderr)
         raise SystemExit(1)
 
     report_rows: list[dict] = []
@@ -185,7 +186,7 @@ def main() -> None:
 
     print("# Setup doctor report")
     print()
-    print("Read-only check against `contracts/requirements/`. **No installs performed.**")
+    print("Read-only check against bundled `contracts/requirements/`. **No installs performed.**")
     print()
     print("| Contract | Kind | Name | Status | Detail | Next |")
     print("| --- | --- | --- | --- | --- | --- |")

@@ -1,5 +1,5 @@
 > [!NOTE]
-> 📘 **Repo-Only Doc** — last reviewed **2026-08-03**
+> 📘 **Repo-Only Doc** — last reviewed **2026-08-05**
 >
 > This document lives only in the repo. It is public-ready and self-contained.
 > If a ClickUp mirror is created later, update this banner with the link.
@@ -14,12 +14,18 @@ How to install and use `nanlabs/agent-toolkit`.
 
 ```text
 /plugin marketplace add nanlabs/agent-toolkit
-/plugin install nanlabs-setup@nanlabs-agent-toolkit
 /plugin install nanlabs-core@nanlabs-agent-toolkit
+```
+
+Invoke setup via the **namespaced** plugin command: **`/nanlabs-core:setup`**, or ask Claude to run the bundled `nanlabs-setup` skill.
+
+Optional full agent roster:
+
+```text
 /plugin install nanlabs-agents@nanlabs-agent-toolkit
 ```
 
-Then ask Claude to run setup, or use the `/setup` command shipped with the plugin.
+> **Deprecated:** `nanlabs-setup` as a separate plugin is no longer in the marketplace. Setup ships inside `nanlabs-core` (v0.2.0+).
 
 Lifecycle (update / pin / rollback): [`LIFECYCLE.md`](LIFECYCLE.md).
 
@@ -27,6 +33,10 @@ Lifecycle (update / pin / rollback): [`LIFECYCLE.md`](LIFECYCLE.md).
 
 1. **Local development:** place or symlink a plugin under `~/.cursor/plugins/local/` and reload the window.
 2. **Team:** import this repository as a Team Marketplace (org admin; Teams or Enterprise).
+
+Install **`nanlabs-core`** (recommended). Optionally install **`nanlabs-agents`**.
+
+Marketplace entries use only `name`, `source`, `description`, and optional `minClientVersions` per the official Cursor schema.
 
 See [Cursor plugins](https://cursor.com/docs/plugins).
 
@@ -37,6 +47,8 @@ npx skills add nanlabs/agent-toolkit -g
 ```
 
 Installs the grouped tree `skills/<group>/<skill>/` (47 skills, including `nanlabs-setup`).
+
+Skills-only installs do **not** bundle the contract doctor; use baseline spot-checks in the skill or clone the repo for full validation.
 
 Skill index: [`SKILLS.md`](SKILLS.md) · machine catalog: [`../catalogs/skill-catalog.yaml`](../catalogs/skill-catalog.yaml).
 
@@ -52,7 +64,7 @@ Skill index: [`SKILLS.md`](SKILLS.md) · machine catalog: [`../catalogs/skill-ca
 ## What success looks like
 
 - Marketplace add succeeds without private-repo auth for this public repository.
-- `nanlabs-setup` is available and can report Git / Python / package-manager presence.
+- `nanlabs-core` is installed; `/nanlabs-core:setup` runs the bundled doctor without a git checkout.
 - `npx skills` discovers nested skills under `skills/<group>/`.
 - No secrets were required to install the plugin or skills themselves.
 

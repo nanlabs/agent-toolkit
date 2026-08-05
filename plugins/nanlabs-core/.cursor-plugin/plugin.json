@@ -1,7 +1,7 @@
 {
   "name": "nanlabs-core",
-  "version": "0.1.0",
-  "description": "Baseline orchestrator, companion, handshake, PR fallback, knowledge sync, and code-reviewer agent",
+  "version": "0.2.0",
+  "description": "Recommended install: setup/onboarding, orchestrator, companion, handshake, PR fallback, knowledge sync, and code-reviewer agent",
   "author": {
     "name": "NaNLABS",
     "email": "technology@nanlabs.com"
@@ -13,6 +13,7 @@
     "nanlabs",
     "orchestrator",
     "core",
+    "setup",
     "harness"
   ]
 }
