@@ -37,6 +37,13 @@ def main() -> None:
             fail(f"{rel}: name {name!r} must match directory {path.parent.name!r}")
         if "description:" not in match.group(1):
             fail(f"{rel}: frontmatter missing description")
+        forbidden = ("opencode_mode", "opencode_color", "cursor_title", "tools")
+        for key in forbidden:
+            if re.search(rf"^{re.escape(key)}:", match.group(1), re.MULTILINE):
+                fail(
+                    f"{rel}: canonical frontmatter must not include {key!r} "
+                    f"(use catalogs/agent-target-map.yaml)"
+                )
         print(f"OK: {rel}")
     print(f"OK: validated {len(paths)} agent file(s)")
 

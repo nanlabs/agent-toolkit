@@ -56,7 +56,9 @@ Repo-level routing metadata lives in `catalogs/skill-catalog.yaml` (orchestrator
 
 | Path | Role |
 | --- | --- |
-| `agents/` | Agent/subagent personas |
+| `agents/` | Agent/subagent personas (canonical `agents/<name>/AGENT.md`) |
+| `products/plugins.yaml` | Plugin + marketplace version source of truth (synced by gen-surfaces) |
+| `catalogs/agent-target-map.yaml` | Target-specific agent frontmatter overlays |
 | `mcp/templates/` | MCP config stubs (placeholders only) |
 | `plugins/<id>/` | Claude / Cursor plugin bundles |
 | `catalogs/` | Routing catalogs (`skill-catalog.yaml`, layout map) |
@@ -73,7 +75,7 @@ python3 scripts/validate-contracts.py
 
 ## Rules
 
-1. Author skills under `skills/<group>/<skill>/` per the Agent Skills spec. For Claude plugin caching limits, also ship the skill **inside** the plugin directory for P0 (`plugins/.../skills/...`). Later waves may automate sync.
+1. Author skills under `skills/<group>/<skill>/` per the Agent Skills spec. Core plugin skills are mirrored from `skills/core/` via `scripts/gen-surfaces.py` (see `products/plugins.yaml`).
 2. Every `SKILL.md` needs valid YAML frontmatter (`name` + `description`).
 3. Never commit secrets. Use env-var names only in MCP stubs.
 4. Public scrub: read `docs/PUBLIC_CONTENT_POLICY.md` before migrating internal content.

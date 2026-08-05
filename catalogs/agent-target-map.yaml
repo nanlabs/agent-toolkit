@@ -1,0 +1,92 @@
+# Target-specific agent frontmatter mappings (maintainer-owned).
+# Canonical agents/<name>/AGENT.md stays neutral (name + description only).
+
+version: 1
+
+defaults:
+  claude:
+    tools: "Read, Grep, Glob, Bash"
+    opencode_mode: subagent
+    opencode_color: accent
+  cursor:
+    # Plugin agent .md files ship name + description; title is UI-only for Cursor rules.
+    title_from: description
+
+agents:
+  nanlabs-assistant:
+    claude:
+      opencode_color: primary
+    cursor:
+      title: NaNLABS repo discovery and orchestration
+
+  nanlabs-architect:
+    cursor:
+      title: System design and architecture
+
+  nanlabs-planner:
+    cursor:
+      title: Feature planning and task breakdown
+
+  nanlabs-code-reviewer:
+    cursor:
+      title: Code quality review for NaNLABS repos
+
+  nanlabs-security-reviewer:
+    cursor:
+      title: Security vulnerability review
+
+  nanlabs-typescript-reviewer:
+    cursor:
+      title: TypeScript and JavaScript type safety review
+
+  nanlabs-database-reviewer:
+    cursor:
+      title: PostgreSQL and database review
+
+  nanlabs-tdd-guide:
+    cursor:
+      title: Test-driven development guide
+
+  nanlabs-refactor-cleaner:
+    claude:
+      opencode_color: secondary
+    cursor:
+      title: Dead code cleanup and refactoring
+
+  nanlabs-performance-optimizer:
+    claude:
+      opencode_color: secondary
+    cursor:
+      title: Performance analysis and optimization
+
+  nanlabs-build-error-resolver:
+    claude:
+      opencode_color: secondary
+    cursor:
+      title: Build and TypeScript error resolution
+
+  nanlabs-e2e-runner:
+    claude:
+      opencode_color: secondary
+    cursor:
+      title: Playwright end-to-end testing
+
+  nanlabs-docs-lookup:
+    claude:
+      opencode_color: secondary
+    cursor:
+      title: Documentation and API reference lookup
+
+  nanlabs-reference-lookup:
+    claude:
+      opencode_color: secondary
+    cursor:
+      title: NaNLABS reference examples lookup
+
+  nanlabs-client-workflow-bootstrap:
+    cursor:
+      title: Client workspace bootstrap
+
+  nanlabs-tech-assistant:
+    cursor:
+      title: NaNLABS internal operational procedures

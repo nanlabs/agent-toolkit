@@ -5,7 +5,7 @@
     "email": "technology@nanlabs.com"
   },
   "metadata": {
-    "description": "NaNLABS skills, agents, plugins, and MCP stubs for Cursor",
+    "description": "NaNLABS skills, agents, plugins, and MCP stubs for Claude Code, Cursor, and compatible clients",
     "version": "0.3.0",
     "pluginRoot": "plugins"
   },
@@ -13,33 +13,17 @@
     {
       "name": "nanlabs-setup",
       "source": "nanlabs-setup",
-      "description": "Inspect the environment against dependency contracts and guide first-time NaN harness setup (approval before installs)",
-      "version": "0.2.0"
+      "description": "Inspect the environment against dependency contracts and guide first-time NaN harness setup (approval before installs)"
     },
     {
       "name": "nanlabs-core",
       "source": "nanlabs-core",
-      "description": "Baseline orchestrator, companion, handshake, PR fallback, knowledge sync, and code-reviewer agent",
-      "version": "0.1.0",
-      "category": "productivity",
-      "tags": [
-        "core",
-        "orchestrator",
-        "nanlabs"
-      ]
+      "description": "Baseline orchestrator, companion, handshake, PR fallback, knowledge sync, and code-reviewer agent"
     },
     {
       "name": "nanlabs-agents",
       "source": "nanlabs-agents",
-      "description": "Full set of NaNLABS agent / subagent personas (reviewers, architect, planner, e2e, \u2026)",
-      "version": "0.1.0",
-      "category": "productivity",
-      "tags": [
-        "agents",
-        "subagents",
-        "review",
-        "nanlabs"
-      ]
+      "description": "Full set of NaNLABS agent / subagent personas (reviewers, architect, planner, e2e, \u2026)"
     }
   ]
 }
