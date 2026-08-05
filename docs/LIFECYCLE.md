@@ -1,3 +1,5 @@
+> Also see [RELEASE.md](RELEASE.md) for tags, changelog, and rollback policy.
+
 > [!IMPORTANT]
 > 📘 **ClickUp Companion**, last synced **2026-08-03**
 >
