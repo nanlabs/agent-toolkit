@@ -12,7 +12,6 @@ defaults:
 
 agents:
   nanlabs-assistant:
-    claude:
     cursor:
       title: NaNLABS repo discovery and orchestration
 
@@ -45,32 +44,26 @@ agents:
       title: Test-driven development guide
 
   nanlabs-refactor-cleaner:
-    claude:
     cursor:
       title: Dead code cleanup and refactoring
 
   nanlabs-performance-optimizer:
-    claude:
     cursor:
       title: Performance analysis and optimization
 
   nanlabs-build-error-resolver:
-    claude:
     cursor:
       title: Build and TypeScript error resolution
 
   nanlabs-e2e-runner:
-    claude:
     cursor:
       title: Playwright end-to-end testing
 
   nanlabs-docs-lookup:
-    claude:
     cursor:
       title: Documentation and API reference lookup
 
   nanlabs-reference-lookup:
-    claude:
     cursor:
       title: NaNLABS reference examples lookup
 
