@@ -1,4 +1,4 @@
-# Skills reference
+# 🛠️ Skills reference
 
 47 public skills under `skills/<group>/<skill>/SKILL.md` ([Agent Skills](https://agentskills.io/specification)).
 

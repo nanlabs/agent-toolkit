@@ -1,4 +1,4 @@
-# Contributing
+# 🤝 Contributing
 
 Canonical: [`CONTRIBUTING.md`](https://github.com/nanlabs/agent-toolkit/blob/main/CONTRIBUTING.md) · agent contract: [`AGENTS.md`](https://github.com/nanlabs/agent-toolkit/blob/main/AGENTS.md).
 

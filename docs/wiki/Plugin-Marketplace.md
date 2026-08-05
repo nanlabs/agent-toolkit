@@ -1,4 +1,4 @@
-# Plugin marketplace
+# 🔌 Plugin marketplace
 
 Marketplace catalogs:
 

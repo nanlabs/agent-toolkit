@@ -15,7 +15,7 @@ Machine provisioning stays in [`internal-workstation`](https://github.com/nanlab
 
 ---
 
-## What is included
+## ✨ What is included
 
 | Component | Count | Notes |
 | --- | --- | --- |
@@ -27,7 +27,7 @@ Machine provisioning stays in [`internal-workstation`](https://github.com/nanlab
 
 ---
 
-## Quick install
+## 🚀 Quick install
 
 ### Claude Code
 
@@ -56,27 +56,27 @@ Skills only — no plugins, agents, MCP, or setup automation.
 
 ---
 
-## Navigation
+## 📚 Navigation
 
 ### Getting started
 
-- [Installation](Installation) — all install paths
-- [Scope](Scope) — in / out of product scope
-- [FAQ](FAQ) — common questions
+- [📦 Installation](Installation) — all install paths
+- [🎯 Scope](Scope) — in / out of product scope
+- [❓ FAQ](FAQ) — common questions
 
 ### Reference
 
-- [Skills Reference](Skills-Reference) · [Agents Reference](Agents-Reference)
-- [Plugin Marketplace](Plugin-Marketplace) · [MCP Templates](MCP-Setup)
-- [Lifecycle](Lifecycle) · [Cursor Agent CLI](Cursor-Agent-CLI)
+- [🛠️ Skills](Skills-Reference) · [🤖 Agents](Agents-Reference)
+- [🔌 Plugin Marketplace](Plugin-Marketplace) · [🔗 MCP Templates](MCP-Setup)
+- [🔄 Lifecycle](Lifecycle) · [⌨️ Cursor Agent CLI](Cursor-Agent-CLI)
 
 ### Contributing
 
-- [Contributing](Contributing)
+- [🤝 Contributing](Contributing)
 
 ---
 
-## Repo docs (deep dive)
+## 📖 Repo docs (deep dive)
 
 | Doc | Topic |
 | --- | --- |
