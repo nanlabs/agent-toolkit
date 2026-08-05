@@ -2,7 +2,7 @@
 
 Claude Code / Cursor plugin bundling all public agent personas from `agents/`.
 
-Canonical bodies live under repository-root `agents/`. This plugin tree is
+Canonical bodies live under repository-root `agents/`. Core skills live under `skills/core/`. This plugin tree is
 **generated** by:
 
 ```bash
@@ -10,8 +10,9 @@ python3 scripts/gen-surfaces.py
 python3 scripts/gen-surfaces.py --check   # CI drift gate
 ```
 
-Do not hand-edit files under `plugins/nanlabs-agents/agents/` — change
-`agents/<name>/` and regenerate.
+Do not hand-edit files under `plugins/nanlabs-agents/agents/` or `plugins/nanlabs-agents/resources/` — change
+`agents/<name>/` and regenerate. Agent files are flat `agents/<name>.md` (Claude/Cursor discovery-safe); references
+ship under `resources/agents/<name>/`.
 
 ## Install
 

@@ -5,7 +5,7 @@
     "email": "technology@nanlabs.com"
   },
   "metadata": {
-    "description": "NaNLABS skills, agents, plugins, and MCP stubs for Claude Code and compatible clients",
+    "description": "NaNLABS skills, agents, plugins, and MCP stubs for Claude Code, Cursor, and compatible clients",
     "version": "0.3.0",
     "pluginRoot": "./plugins"
   },

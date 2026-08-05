@@ -22,7 +22,8 @@ Snapshot for H0 (baseline decisions). Living document; update when slices change
 | Path | Owner layer | Notes |
 | --- | --- | --- |
 | `skills/` | L1.5 (this repo) | Agent Skills canonical tree |
-| `agents/` | L1.5 | Personas; mirrored to `plugins/nanlabs-agents` via `gen-surfaces` |
+| `agents/` | L1.5 | Personas; assembled to flat `plugins/*/agents/*.md` via `gen-surfaces` |
+| `products/plugins.yaml` | L1.5 | Plugin version + skill/agent mapping SoT for assembler |
 | `mcp/templates/` | L1.5 | Public stubs only |
 | `plugins/` | L1.5 | Claude/Cursor bundles |
 | `contracts/` | L1.5 | Dependency/permission contracts for setup |

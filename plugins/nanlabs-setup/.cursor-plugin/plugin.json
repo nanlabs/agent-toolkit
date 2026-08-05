@@ -1,7 +1,7 @@
 {
   "name": "nanlabs-setup",
   "version": "0.2.0",
-  "description": "Inspect the environment against dependency contracts, guide first-time NaN harness setup with approval before installs",
+  "description": "Inspect the environment against dependency contracts and guide first-time NaN harness setup (approval before installs)",
   "author": {
     "name": "NaNLABS",
     "email": "technology@nanlabs.com"

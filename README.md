@@ -42,7 +42,7 @@ Installs the grouped tree `skills/<group>/<skill>/` (47 public skills). See [`do
 | Skills | 47 under `skills/<group>/` — [catalog](catalogs/skill-catalog.yaml) |
 | Setup plugin | `nanlabs-setup` v0.2 — contract doctor + guided `/setup` |
 | Core plugin | `nanlabs-core` — orchestrator + companion + handshake + reviewer |
-| Agents plugin | `nanlabs-agents` — all 16 personas (generated via `gen-surfaces`) |
+| Agents plugin | `nanlabs-agents` — all 16 personas (flat `agents/*.md` via `gen-surfaces`) |
 | Agents | 16 under `agents/` — [catalog](catalogs/agent-catalog.yaml) |
 | MCP templates | Docs-only under `mcp/templates/` (not installed by plugins) |
 
@@ -53,7 +53,8 @@ Installs the grouped tree `skills/<group>/<skill>/` (47 public skills). See [`do
 | `skills/<group>/<skill>/` | Canonical [Agent Skills](https://agentskills.io/specification) tree |
 | `plugins/` | Claude / Cursor plugin bundles |
 | `.claude-plugin/` · `.cursor-plugin/` | Marketplace catalogs |
-| `agents/` | Agent / subagent personas |
+| `agents/` | Agent / subagent personas (canonical) |
+| `products/` | Plugin assembler inputs (`plugins.yaml`) |
 | `mcp/templates/` | MCP config stubs (no secrets) |
 | `packs/` | Outcome-oriented solution pack stubs |
 | `contracts/` | Dependency/permission contracts |
