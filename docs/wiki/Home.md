@@ -11,7 +11,7 @@ Public **L1.5** distribution of NaNLABS skills, agents, and plugins for:
 | Cursor IDE | Equal |
 | Cursor Agent CLI | Equal |
 
-Machine provisioning stays in [`internal-workstation`](https://github.com/nanlabs/internal-workstation). This repo does **not** ship a consumer CLI, loop runtime, multi-tool profile compiler, or OpenCode/Copilot/Windsurf/Pi plugin targets.
+Machine provisioning stays in [`internal-workstation`](https://github.com/nanlabs/internal-workstation). This repo does **not** ship a consumer CLI, loop runtime, multi-tool profile compiler, or OpenCode/Copilot/Windsurf/Gemini CLI/Pi plugin targets.
 
 ## What is included
 

@@ -13,12 +13,18 @@ pre-commit install
 
 ## Validate
 
+Match CI (`.github/workflows/validate.yml`) as closely as practical:
+
 ```bash
 bash scripts/validate-repo-structure.sh
 python3 scripts/validate-manifests.py
 python3 scripts/validate-skills.py
 python3 scripts/validate-agents.py
+python3 scripts/validate-mcp.py
 python3 scripts/gen-surfaces.py --check
+python3 scripts/validate-contracts.py
+python3 scripts/doctor-contracts.py --contract nanlabs-core
+python3 plugins/nanlabs-core/scripts/doctor-contracts.py --contract nanlabs-core
 bash scripts/secret-scan.sh
 pre-commit run --all-files
 ```

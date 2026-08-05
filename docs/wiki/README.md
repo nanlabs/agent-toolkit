@@ -2,7 +2,9 @@
 
 Markdown here is the **source of truth** for the [GitHub Wiki](https://github.com/nanlabs/agent-toolkit/wiki).
 
-On push to `main` (paths under `docs/wiki/**`), [`.github/workflows/wiki-sync.yml`](../../.github/workflows/wiki-sync.yml) copies `*.md` into the wiki git repo.
+This `README.md` stays in the git tree for contributors; the sync workflow **does not** publish it as a Wiki page.
+
+On push to `main` (paths under `docs/wiki/**`), [`.github/workflows/wiki-sync.yml`](https://github.com/nanlabs/agent-toolkit/blob/main/.github/workflows/wiki-sync.yml) copies `*.md` into the wiki git repo.
 
 ## First-time setup
 
