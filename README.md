@@ -107,7 +107,7 @@ pre-commit run --all-files
 | Doc | Topic |
 | --- | --- |
 | [`docs/ADOPTION.md`](docs/ADOPTION.md) | Install paths by surface |
-| [`docs/CURSOR_CLI.md`](docs/CURSOR_CLI.md) | Cursor Agent CLI parity matrix |
+| [`docs/CURSOR_CLI.md`](docs/CURSOR_CLI.md) | Cursor Agent CLI parity matrix (partially certified) |
 | [`docs/LIFECYCLE.md`](docs/LIFECYCLE.md) | Update / pin / rollback |
 | [`docs/RELEASE.md`](docs/RELEASE.md) | Version SoT, tags, changelog, rollback |
 | [`docs/PILOT_CHECKLIST.md`](docs/PILOT_CHECKLIST.md) | Production pilot journeys (#9) |
