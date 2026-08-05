@@ -1,5 +1,9 @@
 #!/usr/bin/env python3
-"""Validate Claude + Cursor marketplace/plugin manifests for agent-toolkit."""
+"""Validate Claude + Cursor marketplace/plugin manifests for agent-toolkit.
+
+Cursor manifests are checked against pinned official schemas under
+schemas/cursor/ (from cursor/plugins). Claude checks remain structural.
+"""
 
 from __future__ import annotations
 
@@ -8,6 +12,15 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
+
+try:
+    import jsonschema
+except ImportError:  # pragma: no cover
+    print(
+        "ERROR: jsonschema is required. Install with: pip install jsonschema",
+        file=sys.stderr,
+    )
+    raise SystemExit(1)
 
 
 def fail(msg: str) -> None:
@@ -63,12 +76,27 @@ def validate_claude_marketplace() -> None:
             )
 
 
-def validate_cursor_marketplace() -> None:
-    path = ROOT / ".cursor-plugin" / "marketplace.json"
-    data = expect_dict(load_json(path), str(path.relative_to(ROOT)))
+def validate_cursor_official_schemas() -> None:
+    marketplace_schema = expect_dict(
+        load_json(ROOT / "schemas" / "cursor" / "marketplace.schema.json"),
+        "schemas/cursor/marketplace.schema.json",
+    )
+    plugin_schema = expect_dict(
+        load_json(ROOT / "schemas" / "cursor" / "plugin.schema.json"),
+        "schemas/cursor/plugin.schema.json",
+    )
+    marketplace_path = ROOT / ".cursor-plugin" / "marketplace.json"
+    marketplace = load_json(marketplace_path)
+    try:
+        jsonschema.validate(marketplace, marketplace_schema)
+    except jsonschema.ValidationError as exc:
+        fail(
+            f"Cursor marketplace fails official schema "
+            f"({marketplace_path.relative_to(ROOT)}): {exc.message}"
+        )
+
+    data = expect_dict(marketplace, str(marketplace_path.relative_to(ROOT)))
     expect_str(data, "name", "cursor marketplace")
-    owner = expect_dict(data.get("owner"), "cursor marketplace.owner")
-    expect_str(owner, "name", "cursor marketplace.owner")
     metadata = expect_dict(data.get("metadata") or {}, "cursor marketplace.metadata")
     plugin_root = metadata.get("pluginRoot", "plugins")
     if not isinstance(plugin_root, str):
@@ -84,19 +112,30 @@ def validate_cursor_marketplace() -> None:
         if not source_path.is_dir():
             fail(f"cursor plugin source missing for {name}: {plugin_root}/{source}")
         manifest = source_path / ".cursor-plugin" / "plugin.json"
-        plugin_data = expect_dict(load_json(manifest), str(manifest.relative_to(ROOT)))
-        expect_str(plugin_data, "name", str(manifest.relative_to(ROOT)))
-        if plugin_data["name"] != name:
+        plugin_data = load_json(manifest)
+        try:
+            jsonschema.validate(plugin_data, plugin_schema)
+        except jsonschema.ValidationError as exc:
+            fail(
+                f"Cursor plugin.json fails official schema "
+                f"({manifest.relative_to(ROOT)}): {exc.message}"
+            )
+        plugin_obj = expect_dict(plugin_data, str(manifest.relative_to(ROOT)))
+        expect_str(plugin_obj, "name", str(manifest.relative_to(ROOT)))
+        if plugin_obj["name"] != name:
             fail(
                 f"cursor plugin name mismatch: marketplace={name} "
-                f"plugin.json={plugin_data['name']}"
+                f"plugin.json={plugin_obj['name']}"
             )
 
 
 def main() -> None:
     validate_claude_marketplace()
-    validate_cursor_marketplace()
-    print("OK: marketplace and plugin manifests validated")
+    validate_cursor_official_schemas()
+    print(
+        "OK: marketplace and plugin manifests validated "
+        "(incl. official Cursor schemas)"
+    )
 
 
 if __name__ == "__main__":
