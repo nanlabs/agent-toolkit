@@ -87,6 +87,7 @@ pre-commit run --all-files
 | Doc | Topic |
 | --- | --- |
 | [`docs/ADOPTION.md`](docs/ADOPTION.md) | Install paths by client |
+| [`docs/CURSOR_CLI.md`](docs/CURSOR_CLI.md) | Cursor CLI parity matrix (beta) |
 | [`docs/LIFECYCLE.md`](docs/LIFECYCLE.md) | Update / pin / rollback |
 | [`docs/P0_FINDINGS.md`](docs/P0_FINDINGS.md) | Feasibility + lifecycle matrix |
 | [`docs/AUTHORING.md`](docs/AUTHORING.md) | How to add skills/plugins |
