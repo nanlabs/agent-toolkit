@@ -7,10 +7,37 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.0] — 2026-08-05
+
+First distribution tag aligned with **`nanlabs-core` 0.2.0** (marketplace metadata `0.4.0`).
+
 ### Added
 
-- Release policy (`docs/RELEASE.md`) for marketplace content versioning and rollback.
+- Production plugin lineup: marketplace ships **`nanlabs-core`** + **`nanlabs-agents`** only; setup/doctor bundled in core (`/nanlabs-core:setup`).
+- Deterministic `scripts/gen-surfaces.py` assembler (agents + skill mirror + versions from `products/plugins.yaml`).
+- Official Cursor marketplace/plugin schemas under `schemas/cursor/` + CI validation.
+- CI: Agent Skills upstream validator, Claude plugin validate, contracts doctor.
+- Docs: `RELEASE.md`, `CURSOR_CLI.md`, `SCOPE.md`, `FAQ.md`, pilot/smoke checklists, wiki source + sync workflow.
+- README hero / architecture artwork (`static/`).
+- MCP templates reclassified as docs-only; GitHub stub uses official server package.
+
+### Changed
+
+- Equal-priority product surfaces: Claude · Claude Code · Cursor IDE · Cursor Agent CLI.
+- Flat plugin agent files (`plugins/*/agents/*.md`); references under `resources/`.
+- Neutral canonical agent frontmatter (target map at build).
+
+### Deprecated
+
+- Standalone `nanlabs-setup` marketplace plugin (directory retained with `DEPRECATION.md`).
 
 ### Fixed
 
-- (Track productionization PRs as they merge.)
+- Cursor marketplace entries pass official `additionalProperties: false` schema.
+- Claude `plugin validate --strict` agent layout (no nested `references` as agents).
+
+## [0.1.0] — 2026-07-29
+
+### Added
+
+- Initial public marketplace scaffold, skills tree, CI (MegaLinter + Danger), early plugins.

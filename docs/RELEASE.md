@@ -48,10 +48,12 @@ Maintain `CHANGELOG.md` at repo root (Keep a Changelog style). Each release sect
 
 Before calling a tag “production”:
 
-- [ ] Official Cursor marketplace schema validation
-- [ ] `claude plugin validate --strict` on shipped plugins
-- [ ] Live smoke checklist ([LIFECYCLE.md](LIFECYCLE.md) / issue #8)
-- [ ] No secrets in tree
+- [x] Official Cursor marketplace schema validation (CI)
+- [x] `claude plugin validate --strict` on shipped plugins (CI)
+- [ ] Live smoke checklist ([LIFECYCLE.md](LIFECYCLE.md) / issue #8) — operator evidence in progress
+- [x] No secrets in tree
+
+`v0.2.0` is the **first distribution tag** (packaging complete). Full “production certified” still tracks epic #19 + issues #8/#9/#58.
 
 ## Schema pins
 
