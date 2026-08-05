@@ -56,3 +56,12 @@ Project-scope installs can write `skills-lock.json` for reproducibility (CLI res
 ## MCP stubs
 
 Templates under `mcp/templates/` use `${ENV_VAR}` placeholders only. Never commit tokens. See each template README.
+
+
+## Local preflight
+
+```bash
+bash scripts/smoke/preflight.sh
+```
+
+Paste live Claude/Cursor marketplace results on GitHub issue #8.
