@@ -1,5 +1,5 @@
 > [!NOTE]
-> 📘 **Repo-Only Doc** — last reviewed **2026-08-03**
+> 📘 **Repo-Only Doc** — last reviewed **2026-08-05**
 >
 > This document lives only in the repo. It is public-ready and self-contained.
 > If a ClickUp mirror is created later, update this banner with the link.

@@ -22,6 +22,7 @@ bash scripts/validate-repo-structure.sh
 python3 scripts/validate-manifests.py
 python3 scripts/validate-skills.py
 python3 scripts/validate-agents.py
+python3 scripts/gen-surfaces.py --check
 bash scripts/secret-scan.sh
 pre-commit run --all-files
 ```
@@ -46,3 +47,9 @@ Danger expects the PR template sections and an issue reference (`Fixes #N` / `Re
 ## Code owners
 
 See `.github/CODEOWNERS`.
+
+## Documentation
+
+- Repo docs: `docs/` (index: `docs/README.md`)
+- GitHub Wiki source: `docs/wiki/` — synced to the wiki on push to `main` (see `.github/workflows/wiki-sync.yml`). Initialize the wiki once on GitHub before the first sync succeeds.
+- Prefer editing `docs/wiki/` in PRs rather than the wiki UI.
