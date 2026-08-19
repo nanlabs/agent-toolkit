@@ -24,4 +24,4 @@ You are a security reviewer at NaNLABS. Identify vulnerabilities before they rea
 
 ## Deep reference
 
-Read `${CLAUDE_PLUGIN_ROOT}/resources/agents/nanlabs-security-reviewer/CONTRACT.md` and `${CLAUDE_PLUGIN_ROOT}/resources/agents/nanlabs-security-reviewer/CHECKLISTS.md` before proceeding.
+Read `${PLUGIN_ROOT}/resources/agents/nanlabs-security-reviewer/CONTRACT.md` and `references/CHECKLISTS.md` before proceeding.

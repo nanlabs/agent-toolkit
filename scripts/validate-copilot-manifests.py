@@ -83,6 +83,15 @@ def repo_surface_skills(cfgs: dict[str, dict[str, Any]]) -> list[Path]:
     return out
 
 
+def resolved_plugin_agent_names(cfg: dict[str, Any]) -> list[str]:
+    agents_cfg = cfg.get("agents")
+    if agents_cfg == "all":
+        return sorted(p.name for p in (ROOT / "agents").iterdir() if (p / "AGENT.md").is_file())
+    if isinstance(agents_cfg, list):
+        return sorted(str(name) for name in agents_cfg)
+    return []
+
+
 def validate_plugin_cli_surfaces(cfgs: dict[str, dict[str, Any]]) -> None:
     for plugin_id, cfg in sorted(cfgs.items()):
         plugin_root = PLUGINS_ROOT / plugin_id
@@ -111,23 +120,9 @@ def validate_plugin_cli_surfaces(cfgs: dict[str, dict[str, Any]]) -> None:
             if not (plugin_root / "agents").is_dir():
                 fail(f"{plugin_root.relative_to(ROOT)}/plugin.json declares agents/ but directory is missing")
 
-        agents_cfg = cfg.get("agents")
-        if agents_cfg == "all":
-            source_agents = [
-                p for p in (plugin_root / "agents").glob("*.md") if p.is_file() and not p.name.endswith(".agent.md")
-            ]
-        elif isinstance(agents_cfg, list):
-            source_agents = [
-                plugin_root / "agents" / f"{name}.md"
-                for name in agents_cfg
-            ]
-        else:
-            source_agents = []
-
-        for src in source_agents:
-            if not src.is_file():
-                fail(f"missing Copilot agent source: {src.relative_to(ROOT)}")
-            dst = src.with_name(f"{src.stem}.agent.md")
+        agent_names = resolved_plugin_agent_names(cfg)
+        for name in agent_names:
+            dst = plugin_root / "agents" / f"{name}.agent.md"
             if not dst.is_file():
                 fail(f"missing Copilot agent file: {dst.relative_to(ROOT)}")
 

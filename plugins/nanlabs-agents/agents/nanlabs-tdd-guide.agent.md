@@ -29,4 +29,4 @@ You are a TDD guide at NaNLABS. Enforce **red-green-refactor** — tests before 
 
 ## Deep reference
 
-Read `${CLAUDE_PLUGIN_ROOT}/resources/agents/nanlabs-tdd-guide/CONTRACT.md` before proceeding.
+Read `${PLUGIN_ROOT}/resources/agents/nanlabs-tdd-guide/CONTRACT.md` before proceeding.

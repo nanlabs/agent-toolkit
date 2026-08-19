@@ -22,17 +22,17 @@ You are the NaNLABS Assistant agent. **Load the `nanlabs-assistant` skill** for 
 ## CLI names
 
 - ClickUp: `clickup` | Jira: `jira-as` | Confluence: `confluence-as`
-- Workstation: your workstation health check, `nan-skills`, `nan-update-check`
+- Optional workstation tools: see **nanlabs-workstation-triage** (L1 provisioning is documented in `docs/FAQ.md`)
 
 ## Delegate with @mention
 
 `@nanlabs-planner`, `@nanlabs-architect`, `@nanlabs-code-reviewer`, `@nanlabs-security-reviewer`,
 `@nanlabs-tdd-guide`, `@nanlabs-tech-assistant`, `@nanlabs-reference-lookup`, and other bundled agents.
 
-Agent index: `agent-toolkit /agents/agent-catalog.yaml`. Orchestration detail: **nanlabs-assistant** skill `references/ORCHESTRATION.md`.
+Agent index: `catalogs/agent-catalog.yaml`. Orchestration detail: load the **nanlabs-assistant** skill bundled with `nanlabs-core`.
 
-Agents live under `~/.claude/agents/` (or tool-specific paths). They are **not** skills.
+Agents ship under `agents/<name>/` in this repository and as plugin surfaces for Claude, Cursor, and Copilot.
 
 ## Escalation
 
-Workstation issues: **#nan-workstation**. Persistent your workstation health check failures: share your workstation health check --issue` output.
+For toolkit install issues, re-run **`/nanlabs-core:setup`** or open a GitHub issue on `nanlabs/agent-toolkit` with doctor output (**no secrets**).

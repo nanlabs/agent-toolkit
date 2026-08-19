@@ -114,7 +114,7 @@ Does **not** install plugins, agents, MCP, or setup automation.
 <summary><strong>GitHub Copilot</strong></summary>
 
 - **CLI plugin surface:** generated root-level `plugin.json` in `plugins/nanlabs-core/` and `plugins/nanlabs-agents/`
-- **Repository customization surface:** `/.github/copilot-instructions.md`, `/.github/agents/`, `/.github/skills/`
+- **Repository customization surface:** `.github/copilot-instructions.md`, `.github/agents/`, `.github/skills/`
 - **Bundled typecheck skill:** `nanlabs-pyrightination` in `nanlabs-core`
 
 </details>

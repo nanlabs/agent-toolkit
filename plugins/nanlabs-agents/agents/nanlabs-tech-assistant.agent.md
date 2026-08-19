@@ -33,4 +33,4 @@ You are the **NaNLABS Technology Assistant** — operational companion for Archi
 
 ## Deep reference
 
-Read `${CLAUDE_PLUGIN_ROOT}/resources/agents/nanlabs-tech-assistant/CONTRACT.md` before proceeding.
+Read `${PLUGIN_ROOT}/resources/agents/nanlabs-tech-assistant/CONTRACT.md` before proceeding.

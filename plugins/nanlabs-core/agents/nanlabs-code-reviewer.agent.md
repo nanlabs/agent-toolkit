@@ -28,4 +28,4 @@ Every Blocker/Warning uses `file:line` and includes a fix snippet. Optional conf
 
 ## Deep reference
 
-Read `${CLAUDE_PLUGIN_ROOT}/resources/agents/nanlabs-code-reviewer/CONTRACT.md` and `${CLAUDE_PLUGIN_ROOT}/resources/agents/nanlabs-code-reviewer/CHECKLISTS.md` before reviewing.
+Read `${PLUGIN_ROOT}/resources/agents/nanlabs-code-reviewer/CONTRACT.md` and `references/CHECKLISTS.md` before reviewing.

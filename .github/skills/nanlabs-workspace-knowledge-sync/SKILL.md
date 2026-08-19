@@ -19,15 +19,29 @@ The orchestrator session accumulates knowledge through work. This skill ensures 
 
 ---
 
+## Consent and data classification (required)
+
+Before syncing **anything** to a knowledge base — especially on **client repositories**:
+
+1. **Ask the user** whether the item is approved for persistence outside the current session.
+2. **Classify** the content: public-safe, internal-only, client-confidential, or unknown.
+3. **Default to no sync** when classification is unknown or the repo is client-scoped unless the user explicitly approves.
+4. **Redact** secrets, private URLs, credentials, client identifiers, and unredacted ticket/customer details before writing.
+5. Follow `docs/PUBLIC_CONTENT_POLICY.md` and repository `AGENTS.md` when present.
+
+Never persist ClickUp space IDs, list IDs, custom fields, or process details from client engagements without explicit approval.
+
+---
+
 ## Trigger Points (Automatic)
 
-Orchestrators (including nanlabs-tech-assistant, when installed from workstation) may invoke this skill automatically when:
+Orchestrators may invoke this skill automatically **only after** the consent and classification checks above pass:
 
 | Situation | What to Sync | Target File |
 |-----------|--------------|-------------|
 | Discovery of new skill/tool | Skill name, purpose, usage pattern | `knowledge/skills/discovered.md` |
-| New ClickUp pattern | Space IDs, list IDs, custom fields discovered | `knowledge/processes/clickup/` |
-| New process pattern | Process steps, roles, tools | `knowledge/processes/general.md` |
+| New ClickUp pattern (approved, redacted) | Non-sensitive routing metadata only | `knowledge/processes/clickup/` |
+| New process pattern | Process steps, roles, tools (no client secrets) | `knowledge/processes/general.md` |
 | Key decision made | Decision, rationale, outcome | `knowledge/learnings/general.md` |
 | Pending follow-up | Task description, context | `knowledge/todos/pending.md` |
 | User teaches something | Information, preference | Relevant knowledge file |
@@ -139,4 +153,4 @@ The skill uses these environment variables:
 
 ---
 
-Base directory: `skills/core/nanlabs-workspace-knowledge-sync` (in this repo) or the agent-local install path after `npx skills add`
+Base directory: `skills/core/nanlabs-workspace-knowledge-sync` (in this repo) or the agent-local install path after `npx skills@1.5.23 add`

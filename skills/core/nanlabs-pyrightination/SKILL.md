@@ -18,8 +18,8 @@ with **Pyright**, but does not want speculative refactors or automatic fixes.
 ## Goals
 
 1. Detect whether Pyright can run from the current environment.
-2. Prefer **Python ecosystem** execution via `uvx --from pyright pyright`.
-3. Fall back to `npx --yes pyright` only when the Python-first path is unavailable.
+2. Prefer **Python ecosystem** execution via `uvx --from pyright==1.1.413 pyright`.
+3. Fall back to `npx --yes pyright@1.1.413` only when the Python-first path is unavailable.
 4. Produce a **report**: error count, warning count, most affected files, and a
    short remediation order.
 5. Do **not** auto-fix code unless the user explicitly asks for a follow-up change.
@@ -36,14 +36,14 @@ with **Pyright**, but does not want speculative refactors or automatic fixes.
 2. Keep the original Pyright output available if the user asks for it, but summarize the key findings.
 3. Prefer the toolchain already available in the repo/environment.
 4. Never invent config flags; use `pyrightconfig.json` / `pyproject.toml` if the repo already defines them.
-5. If Pyright is not available, explain the missing runtime (`uvx` or `npx`) and ask before proposing install steps.
+5. If Pyright is not available, explain the missing runtime (`uvx` or pinned `npx pyright@1.1.413`) and ask before proposing install steps.
 
 ## Preferred execution order
 
 ### 1. Python-first path
 
 ```bash
-uvx --from pyright pyright --outputjson
+uvx --from pyright==1.1.413 pyright --outputjson
 ```
 
 Use this when `uvx` is available. It avoids a permanent install while staying in
@@ -64,7 +64,7 @@ pyright --outputjson
 ### 3. Node fallback
 
 ```bash
-npx --yes pyright --outputjson
+npx --yes pyright@1.1.413 --outputjson
 ```
 
 Use only when the Python-first path is unavailable and Node tooling exists.

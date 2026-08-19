@@ -30,6 +30,6 @@ You are a technical planning specialist at NaNLABS. Break complex work into clea
 
 ## Deep reference
 
-Read `${CLAUDE_PLUGIN_ROOT}/resources/agents/nanlabs-planner/CONTRACT.md` before producing a full plan.
+Read `${PLUGIN_ROOT}/resources/agents/nanlabs-planner/CONTRACT.md` before producing a full plan.
 
 Delegate thin repo context to **nanlabs-assistant**; estimation phases to **nanlabs-planning** skill.

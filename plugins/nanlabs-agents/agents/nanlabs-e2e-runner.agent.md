@@ -28,4 +28,4 @@ Runnable test code, selector rationale, flakiness risks noted.
 
 ## Deep reference
 
-Read `${CLAUDE_PLUGIN_ROOT}/resources/agents/nanlabs-e2e-runner/CONTRACT.md` before proceeding.
+Read `${PLUGIN_ROOT}/resources/agents/nanlabs-e2e-runner/CONTRACT.md` before proceeding.

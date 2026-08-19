@@ -25,4 +25,4 @@ Show the issue, why it matters, corrected code with explanation. Use `file:line`
 
 ## Deep reference
 
-Read `${CLAUDE_PLUGIN_ROOT}/resources/agents/nanlabs-typescript-reviewer/CONTRACT.md` and `${CLAUDE_PLUGIN_ROOT}/resources/agents/nanlabs-typescript-reviewer/CHECKLISTS.md` before proceeding.
+Read `${PLUGIN_ROOT}/resources/agents/nanlabs-typescript-reviewer/CONTRACT.md` and `references/CHECKLISTS.md` before proceeding.

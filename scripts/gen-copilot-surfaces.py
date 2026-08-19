@@ -18,6 +18,7 @@ from __future__ import annotations
 import argparse
 import filecmp
 import json
+import re
 import shutil
 import sys
 from pathlib import Path
@@ -31,7 +32,10 @@ except ImportError as exc:  # pragma: no cover
 ROOT = Path(__file__).resolve().parents[1]
 PRODUCTS = ROOT / "products" / "plugins.yaml"
 PLUGINS_ROOT = ROOT / "plugins"
+AGENTS_ROOT = ROOT / "agents"
+TARGET_MAP = ROOT / "catalogs" / "agent-target-map.yaml"
 REPO_GITHUB = ROOT / ".github"
+FRONTMATTER_RE = re.compile(r"\A---\n(.*?)\n---\n", re.DOTALL)
 OWNER_NAME = "NaNLABS"
 OWNER_EMAIL = "technology@nanlabs.com"
 REPOSITORY_URL = "https://github.com/nanlabs/agent-toolkit"
@@ -77,15 +81,93 @@ def skill_source_paths(cfg: dict[str, Any]) -> list[Path]:
     return out
 
 
-def plugin_agent_markdown_paths(plugin_id: str) -> list[Path]:
-    agents_dir = PLUGINS_ROOT / plugin_id / "agents"
-    if not agents_dir.is_dir():
-        return []
-    return sorted(
+def agent_dirs() -> list[Path]:
+    dirs = sorted(
         p
-        for p in agents_dir.glob("*.md")
-        if p.is_file() and p.suffix == ".md" and not p.name.endswith(".agent.md")
+        for p in AGENTS_ROOT.iterdir()
+        if p.is_dir() and (p / "AGENT.md").is_file()
     )
+    if not dirs:
+        fail("no agents found under agents/")
+    return dirs
+
+
+def parse_agent(path: Path) -> tuple[dict[str, str], str]:
+    text = path.read_text(encoding="utf-8")
+    match = FRONTMATTER_RE.match(text)
+    if not match:
+        fail(f"{path.relative_to(ROOT)}: missing YAML frontmatter")
+    body = text[match.end() :]
+    front: dict[str, str] = {}
+    for line in match.group(1).splitlines():
+        if not line.strip() or line.lstrip().startswith("#"):
+            continue
+        if ":" not in line:
+            continue
+        key, value = line.split(":", 1)
+        front[key.strip()] = value.strip().strip("\"'")
+    return front, body
+
+
+def merge_target_frontmatter(name: str, target_map: dict[str, Any]) -> dict[str, str]:
+    defaults = target_map.get("defaults") or {}
+    claude_defaults = defaults.get("claude") or {}
+    agent_overrides = (target_map.get("agents") or {}).get(name) or {}
+    claude = {**claude_defaults, **(agent_overrides.get("claude") or {})}
+    out: dict[str, str] = {"name": name}
+    if "description" in claude:
+        out["description"] = str(claude["description"])
+    if tools := claude.get("tools"):
+        out["tools"] = str(tools)
+    return out
+
+
+def rewrite_copilot_reference_paths(body: str, agent_name: str) -> str:
+    prefix = f"${{PLUGIN_ROOT}}/resources/agents/{agent_name}/"
+    body = re.sub(
+        r"(?m)^(\s*-\s*)`references/",
+        rf"\1`{prefix}",
+        body,
+    )
+    body = re.sub(
+        r"Read `references/",
+        f"Read `{prefix}",
+        body,
+    )
+    return body
+
+
+def render_copilot_plugin_agent(
+    name: str,
+    description: str,
+    body: str,
+    target_map: dict[str, Any],
+) -> str:
+    front = merge_target_frontmatter(name, target_map)
+    front["name"] = name
+    front["description"] = description
+    lines = ["---"]
+    for key in ("name", "description", "tools"):
+        if key in front:
+            lines.append(f"{key}: {front[key]}")
+    lines.append("---")
+    lines.append("")
+    rewritten = rewrite_copilot_reference_paths(body, name).lstrip("\n")
+    return normalize_text("\n".join(lines) + "\n" + rewritten)
+
+
+def plugin_agent_names(products: dict[str, Any]) -> dict[str, list[str]]:
+    all_agents = [p.name for p in agent_dirs()]
+    out: dict[str, list[str]] = {}
+    for plugin_id, cfg in (products.get("plugins") or {}).items():
+        agents_cfg = cfg.get("agents")
+        if agents_cfg == "all":
+            out[plugin_id] = all_agents
+        elif isinstance(agents_cfg, list):
+            out[plugin_id] = [str(name) for name in agents_cfg]
+        else:
+            out[plugin_id] = []
+    return out
 
 
 def canonical_agent_path(agent_name: str) -> Path:
@@ -151,6 +233,8 @@ def build_plugin_manifest(plugin_id: str, cfg: dict[str, Any]) -> dict[str, Any]
 
 
 def sync_plugin_cli_surfaces(products: dict[str, Any], *, check: bool) -> None:
+    target_map = load_yaml(TARGET_MAP)
+    agents_by_plugin = plugin_agent_names(products)
     for plugin_id in plugin_ids(products):
         cfg = plugin_cfg(products, plugin_id)
         plugin_root = PLUGINS_ROOT / plugin_id
@@ -164,10 +248,14 @@ def sync_plugin_cli_surfaces(products: dict[str, Any], *, check: bool) -> None:
         else:
             write_text(manifest_path, manifest_text)
 
-        md_agents = plugin_agent_markdown_paths(plugin_id)
-        expected_agent_files = {f"{p.stem}.agent.md" for p in md_agents}
+        agent_names = agents_by_plugin.get(plugin_id, [])
+        if not agent_names:
+            continue
+
+        expected_agent_files = {f"{name}.agent.md" for name in agent_names}
+        agents_dir = plugin_root / "agents"
         if check:
-            existing = {p.name for p in plugin_root.glob("agents/*.agent.md")}
+            existing = {p.name for p in agents_dir.glob("*.agent.md")} if agents_dir.is_dir() else set()
             if existing != expected_agent_files:
                 fail(
                     f"{plugin_id} Copilot agent drift: "
@@ -175,17 +263,23 @@ def sync_plugin_cli_surfaces(products: dict[str, Any], *, check: bool) -> None:
                     f"missing={sorted(expected_agent_files - existing)}"
                 )
         else:
-            for existing in plugin_root.glob("agents/*.agent.md"):
+            agents_dir.mkdir(parents=True, exist_ok=True)
+            for existing in agents_dir.glob("*.agent.md"):
                 if existing.name not in expected_agent_files:
                     existing.unlink()
 
-        for md_path in md_agents:
-            copilot_path = md_path.with_name(f"{md_path.stem}.agent.md")
-            content = md_path.read_text(encoding="utf-8")
+        for name in agent_names:
+            canonical = canonical_agent_path(name)
+            front, body = parse_agent(canonical)
+            description = front.get("description")
+            if not description:
+                fail(f"agents/{name}/AGENT.md: missing description")
+            rendered = render_copilot_plugin_agent(name, description, body, target_map)
+            copilot_path = agents_dir / f"{name}.agent.md"
             if check:
-                ensure_file_equals(copilot_path, content)
+                ensure_file_equals(copilot_path, rendered)
             else:
-                write_text(copilot_path, content)
+                write_text(copilot_path, rendered)
 
 
 def repo_surface_skill_sources(products: dict[str, Any]) -> list[Path]:

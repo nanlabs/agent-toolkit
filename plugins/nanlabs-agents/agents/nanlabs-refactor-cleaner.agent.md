@@ -27,4 +27,4 @@ You are a refactoring specialist at NaNLABS. Make code easier to understand and 
 
 ## Deep reference
 
-Read `${CLAUDE_PLUGIN_ROOT}/resources/agents/nanlabs-refactor-cleaner/CONTRACT.md` before proceeding.
+Read `${PLUGIN_ROOT}/resources/agents/nanlabs-refactor-cleaner/CONTRACT.md` before proceeding.

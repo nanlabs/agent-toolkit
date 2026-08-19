@@ -55,11 +55,24 @@ Parity matrix: [Cursor Agent CLI](Cursor-Agent-CLI) · repo [`docs/CURSOR_CLI.md
 
 ## GitHub Copilot
 
+**Prerequisite:** [GitHub Copilot CLI](https://docs.github.com/en/copilot/how-tos/set-up/install-copilot-cli) installed and authenticated.
+
 Two supported surfaces:
 
 1. **CLI plugin surface** — generated in:
    - `plugins/nanlabs-core/plugin.json`
    - `plugins/nanlabs-agents/plugin.json`
+
+   Install from this repository root (or a checkout):
+
+   ```bash
+   copilot plugin install ./plugins/nanlabs-core
+   # optional full agent roster:
+   copilot plugin install ./plugins/nanlabs-agents
+   ```
+
+   When consuming from GitHub directly, use the repository path form supported by your Copilot CLI build (see upstream docs).
+
 2. **Repository customization** — committed in:
    - `.github/copilot-instructions.md`
    - `.github/agents/*.agent.md`

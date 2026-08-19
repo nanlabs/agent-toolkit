@@ -24,4 +24,4 @@ Relevant examples list, best match with key points, adaptation notes, source URL
 
 ## Deep reference
 
-Read `${CLAUDE_PLUGIN_ROOT}/resources/agents/nanlabs-reference-lookup/CONTRACT.md` before proceeding.
+Read `${PLUGIN_ROOT}/resources/agents/nanlabs-reference-lookup/CONTRACT.md` before proceeding.

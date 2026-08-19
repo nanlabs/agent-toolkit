@@ -6,7 +6,7 @@ Portable repository customization surface for `nanlabs/agent-toolkit`.
 
 - Baseline product: `nanlabs-core`
 - Repository: `https://github.com/nanlabs/agent-toolkit`
-- Product description: Recommended install: setup/onboarding, orchestrator, companion, handshake, PR fallback, knowledge sync, and code-reviewer agent
+- Product description: Recommended install: setup/onboarding, orchestrator, companion, handshake, Pyright report-only typing, PR fallback, knowledge sync, and code-reviewer agent
 
 ## Public repository rules
 

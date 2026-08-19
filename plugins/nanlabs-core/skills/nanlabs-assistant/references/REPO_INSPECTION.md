@@ -2,14 +2,14 @@
 
 Concrete paths and globs to use after reading `SKILL.md`. Prefer **Glob** / **Read** on the **opened repo root**.
 
-## 0. Quick Onboarding Check (for new developers)
+## 0. Quick onboarding check (new contributors)
 
-When entering `internal-workstation` or a new client repo, first check:
+When entering a new repository:
 
-1. **Validate setup**: Run `nan-doctor` (if available on the machine)
-2. **Quick start**: Read `README.md` → `docs/wiki/TECHNICAL_QUICKSTART.md`
-3. **AI tooling**: Confirm skills exist in `~/.local/share/nanlabs/skills/`
-4. **Help**: If lost, ask **#nan-workstation** or run `nan-update-check`
+1. **Validate toolkit setup** — run **`/nanlabs-core:setup`** or `python3 scripts/doctor-contracts.py --contract nanlabs-core` when this repo is checked out
+2. **Quick start** — read `README.md`, then `docs/ADOPTION.md` when present
+3. **AI tooling** — confirm `nanlabs-core` (or skills-only install) is available in the active client
+4. **Help** — read `docs/FAQ.md` or open an issue on `nanlabs/agent-toolkit` (**no secrets** in tickets)
 
 ## 1. README.md
 

@@ -9,7 +9,7 @@
 
 NaNLABS production distribution for AI coding assistants — **smaller** than multi-tool personal forks (no consumer CLI, no loop runtime, no 6-IDE profile compiler).
 
-## Equal-priority surfaces
+## Production surfaces
 
 | Surface | Support |
 | --- | --- |

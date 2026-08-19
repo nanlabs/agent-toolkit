@@ -27,4 +27,4 @@ You are a build error resolver at NaNLABS. Fix compilation, type, lint, and CI f
 
 ## Deep reference
 
-Read `${CLAUDE_PLUGIN_ROOT}/resources/agents/nanlabs-build-error-resolver/CONTRACT.md` before proceeding.
+Read `${PLUGIN_ROOT}/resources/agents/nanlabs-build-error-resolver/CONTRACT.md` before proceeding.

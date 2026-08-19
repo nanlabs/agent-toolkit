@@ -23,7 +23,7 @@ If there is no `.gitlab/merge_request_templates/`, you may use the same Markdown
 
 ## What not to do
 
-- Do not **assume** a PR is always in ClickUp; the canonical **guidelines** live in ClickUp, the **file** the user points to is wherever they said in the handshake.
+- Do not **assume** a PR tracker; prefer the repository's PR template when present, otherwise `references/pr-body-default.md` after the handshake.
 
 
 ## Default guardrails
@@ -34,7 +34,7 @@ If there is no `.gitlab/merge_request_templates/`, you may use the same Markdown
 ## References
 
 - `references/pr-body-default.md`, local copy of the default body
-- [ClickUp: Guidelines for Creating PRs](https://app.clickup.com/459857/v/dc/e12h-247177?page=e12h-103657)
+- `.github/PULL_REQUEST_TEMPLATE.md` in this repo when contributing here
 - `nanlabs-development-workflow`, default PR validation and DoD expectations
 - `github-cli-workflow`, draft PR creation
 - `gitlab-cli-workflow`, GitLab MRs

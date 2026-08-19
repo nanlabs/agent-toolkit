@@ -26,4 +26,4 @@ Current metric, evidence of bottleneck, proposed fix, verification steps, trade-
 
 ## Deep reference
 
-Read `${CLAUDE_PLUGIN_ROOT}/resources/agents/nanlabs-performance-optimizer/CONTRACT.md` and `${CLAUDE_PLUGIN_ROOT}/resources/agents/nanlabs-performance-optimizer/CHECKLISTS.md` before proceeding.
+Read `${PLUGIN_ROOT}/resources/agents/nanlabs-performance-optimizer/CONTRACT.md` and `references/CHECKLISTS.md` before proceeding.

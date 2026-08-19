@@ -9,7 +9,7 @@ marketplace:
 plugins:
   nanlabs-core:
     version: "0.2.0"
-    description: "Recommended install: setup/onboarding, orchestrator, companion, handshake, PR fallback, knowledge sync, and code-reviewer agent"
+    description: "Recommended install: setup/onboarding, orchestrator, companion, handshake, Pyright report-only typing, PR fallback, knowledge sync, and code-reviewer agent"
     skills:
       - skills/core/nanlabs-setup
       - skills/core/nanlabs-assistant

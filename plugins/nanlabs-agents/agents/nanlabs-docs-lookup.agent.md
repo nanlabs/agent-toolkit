@@ -27,4 +27,4 @@ Ask for clarification when the question is ambiguous.
 
 ## Deep reference
 
-Read `${CLAUDE_PLUGIN_ROOT}/resources/agents/nanlabs-docs-lookup/CONTRACT.md` before proceeding.
+Read `${PLUGIN_ROOT}/resources/agents/nanlabs-docs-lookup/CONTRACT.md` before proceeding.

@@ -25,4 +25,4 @@ Issue, problematic SQL/schema, optimized version, production notes. Use `file:li
 
 ## Deep reference
 
-Read `${CLAUDE_PLUGIN_ROOT}/resources/agents/nanlabs-database-reviewer/CONTRACT.md` and `${CLAUDE_PLUGIN_ROOT}/resources/agents/nanlabs-database-reviewer/CHECKLISTS.md` before proceeding.
+Read `${PLUGIN_ROOT}/resources/agents/nanlabs-database-reviewer/CONTRACT.md` and `references/CHECKLISTS.md` before proceeding.

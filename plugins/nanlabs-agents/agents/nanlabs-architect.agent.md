@@ -34,7 +34,7 @@ Prefer simple solutions over clever ones. When uncertain, surface the trade-off 
 
 ## Deep reference (read before detailed design work)
 
-- `${CLAUDE_PLUGIN_ROOT}/resources/agents/nanlabs-architect/CONTRACT.md` — read before proceeding (methodology, anti-patterns, output contract)
-- `${CLAUDE_PLUGIN_ROOT}/resources/agents/nanlabs-architect/PATTERNS.md` — SOLID, Clean Architecture, patterns catalog
+- `${PLUGIN_ROOT}/resources/agents/nanlabs-architect/CONTRACT.md` — read before proceeding (methodology, anti-patterns, output contract)
+- `${PLUGIN_ROOT}/resources/agents/nanlabs-architect/PATTERNS.md` — SOLID, Clean Architecture, patterns catalog
 
 Use **nanlabs-adr** skill when a durable decision record is needed.

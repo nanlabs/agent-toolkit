@@ -16,8 +16,9 @@ Default **orchestrator and fallback** for NaNLABS agent work in any repository.
 
 - `references/ORCHESTRATION.md` — routing algorithm and delegation phrasing
 - `references/REPO_INSPECTION.md` — path checklist and globs
-- `~/.local/share/nanlabs/skills/skill-catalog.yaml` — domain, WHAT vs HOW, triggers, `depends_on`
-- `references/DEVELOPER_ONBOARDING.md` — workstation setup only (not general repo work)
+- `catalogs/skill-catalog.yaml` — domain, WHAT vs HOW, triggers, `depends_on` (repo default)
+- Optional fallback after workstation install: `~/.local/share/nanlabs/skills/skill-catalog.yaml`
+- `references/DEVELOPER_ONBOARDING.md` — toolkit setup only (not general repo work)
 
 ## Hard rules
 
