@@ -95,16 +95,20 @@ def canonical_agent_path(agent_name: str) -> Path:
     return path
 
 
+def normalize_text(content: str) -> str:
+    return content.rstrip("\n") + "\n"
+
+
 def write_text(path: Path, content: str) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(content, encoding="utf-8")
+    path.write_text(normalize_text(content), encoding="utf-8")
 
 
 def ensure_file_equals(path: Path, expected: str) -> None:
     if not path.is_file():
         fail(f"missing {path.relative_to(ROOT)}")
-    current = path.read_text(encoding="utf-8")
-    if current != expected:
+    current = normalize_text(path.read_text(encoding="utf-8"))
+    if current != normalize_text(expected):
         fail(f"drift: {path.relative_to(ROOT)}")
 
 
@@ -241,10 +245,9 @@ def build_repo_instructions(products: dict[str, Any]) -> str:
             "- `docs/ADOPTION.md`",
             "- `docs/LIFECYCLE.md`",
             "- `products/plugins.yaml`",
-            "",
         ]
     )
-    return "\n".join(lines) + "\n"
+    return normalize_text("\n".join(lines))
 
 
 def sync_repo_surface(products: dict[str, Any], *, check: bool) -> None:
