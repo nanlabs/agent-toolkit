@@ -2,11 +2,11 @@
 
 ## Is this only for Claude Code?
 
-No. Equal-priority surfaces are **Claude**, **Claude Code**, **Cursor IDE**, and **Cursor Agent CLI**. Skills-only (`npx skills`) covers additional Agent Skills–compatible clients without plugin support.
+No. Production surfaces are **Claude**, **Claude Code**, **Cursor IDE**, **Cursor Agent CLI**, and **GitHub Copilot**. Skills-only (`npx skills`) covers additional Agent Skills–compatible clients without plugin support.
 
 ## How is this different from `ulises-jeremias/agent-toolkit`?
 
-That project is a broader multi-tool toolkit (CLI, loops, many targets). **`nanlabs/agent-toolkit`** is the NaNLABS production L1.5 distribution: fewer surfaces, no consumer CLI/loops compiler, focused on Claude + Cursor (+ skills-only).
+That project is a broader multi-tool toolkit (CLI, loops, many targets). **`nanlabs/agent-toolkit`** is the NaNLABS production L1.5 distribution: fewer surfaces, no consumer CLI/loops compiler, focused on Claude + Cursor + GitHub Copilot (+ skills-only).
 
 ## Do I need `internal-workstation`?
 

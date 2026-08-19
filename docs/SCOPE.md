@@ -17,18 +17,21 @@ NaNLABS production distribution for AI coding assistants — **smaller** than mu
 | Claude Code | Marketplace plugins + skills |
 | Cursor IDE | Plugins (local / team marketplace) |
 | Cursor Agent CLI | Equal priority; certify in [CURSOR_CLI.md](CURSOR_CLI.md) |
+| GitHub Copilot | CLI plugin manifests + repository customization |
 
 ## In scope
 
 - Agent Skills (`skills/<group>/`)
 - Agent personas (`agents/`) + flat plugin assembly (`gen-surfaces`)
 - Plugins: `nanlabs-core`, `nanlabs-agents`
+- GitHub Copilot CLI manifests and repo-scoped `.github/` customization
+- `nanlabs-pyrightination` as a report-only typing skill in `nanlabs-core`
 - MCP **docs-only** templates
 - CI validators, contracts, catalogs, release policy docs
 
 ## Out of scope (plugin targets)
 
-OpenCode, GitHub Copilot, Windsurf, Gemini CLI, Pi, etc. Portable skills may still work via `npx skills`.
+OpenCode, Windsurf, Gemini CLI, Pi, etc. Portable skills may still work via `npx skills`.
 
 ## Out of scope (product)
 

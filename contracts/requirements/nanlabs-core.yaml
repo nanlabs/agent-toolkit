@@ -4,7 +4,8 @@ metadata:
   name: nanlabs-core
   description: >-
     Baseline tools required before nanlabs-core can guide marketplace and
-    plugin installation (Git, Python, OS package manager, AI client).
+    plugin installation, setup diagnostics, and Pyright reporting (Git, Python,
+    OS package manager, AI client).
   appliesTo:
     - plugin:nanlabs-core
     - skill:nanlabs-setup
@@ -32,6 +33,22 @@ spec:
         required: false
         installed_by: user
         verify: cursor --version
+      - name: uvx
+        required: false
+        installed_by: user
+        verify: uvx --version
+        installers:
+          macos: "Install uv from https://docs.astral.sh/uv/getting-started/installation/"
+          linux: "Install uv from https://docs.astral.sh/uv/getting-started/installation/"
+          windows: "Install uv from https://docs.astral.sh/uv/getting-started/installation/"
+      - name: npx
+        required: false
+        installed_by: user
+        verify: npx --version
+        installers:
+          macos: "Install Node.js from https://nodejs.org/ or your package manager"
+          linux: "Install Node.js from https://nodejs.org/ or your package manager"
+          windows: "Install Node.js from https://nodejs.org/ or winget/choco"
   capabilities:
     - filesystem.read
     - subprocess.execute

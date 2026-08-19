@@ -1,6 +1,6 @@
 # 📦 Installation
 
-Equal-priority surfaces: **Claude · Claude Code · Cursor IDE · Cursor Agent CLI**.
+Production surfaces: **Claude · Claude Code · Cursor IDE · Cursor Agent CLI · GitHub Copilot**.
 
 Canonical long-form: [`docs/ADOPTION.md`](https://github.com/nanlabs/agent-toolkit/blob/main/docs/ADOPTION.md) · lifecycle: [`docs/LIFECYCLE.md`](https://github.com/nanlabs/agent-toolkit/blob/main/docs/LIFECYCLE.md).
 
@@ -52,6 +52,27 @@ agent --plugin-dir /path/to/agent-toolkit/plugins/nanlabs-core \
 ```
 
 Parity matrix: [Cursor Agent CLI](Cursor-Agent-CLI) · repo [`docs/CURSOR_CLI.md`](https://github.com/nanlabs/agent-toolkit/blob/main/docs/CURSOR_CLI.md).
+
+## GitHub Copilot
+
+Two supported surfaces:
+
+1. **CLI plugin surface** — generated in:
+   - `plugins/nanlabs-core/plugin.json`
+   - `plugins/nanlabs-agents/plugin.json`
+2. **Repository customization** — committed in:
+   - `.github/copilot-instructions.md`
+   - `.github/agents/*.agent.md`
+   - `.github/skills/*/SKILL.md`
+
+The recommended baseline remains `nanlabs-core`, which also bundles the
+report-only `nanlabs-pyrightination` skill for Python type-check reporting.
+
+Honesty rules:
+
+- Hooks are not bundled for Copilot yet.
+- MCP is still configured separately.
+- Repository customization is repo-scoped, not a machine-global install.
 
 ## Skills-only (Agent Skills CLI)
 

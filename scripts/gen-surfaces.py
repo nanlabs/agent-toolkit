@@ -188,7 +188,9 @@ def sync_agent_surfaces(
     if check:
         if not agents_dir.is_dir():
             fail(f"missing {agents_dir.relative_to(ROOT)} — run scripts/gen-surfaces.py")
-        actual_md = {p.name for p in agents_dir.glob("*.md")}
+        actual_md = {
+            p.name for p in agents_dir.glob("*.md") if not p.name.endswith(".agent.md")
+        }
         stale = actual_md - expected_md
         missing = expected_md - actual_md
         if stale or missing:
@@ -207,7 +209,11 @@ def sync_agent_surfaces(
         for path in list(agents_dir.iterdir()):
             if path.is_dir():
                 shutil.rmtree(path)
-            elif path.suffix == ".md" and path.name not in expected_md:
+            elif (
+                path.suffix == ".md"
+                and not path.name.endswith(".agent.md")
+                and path.name not in expected_md
+            ):
                 path.unlink()
         for path in list(resources_root.iterdir()):
             if path.is_dir() and path.name not in agent_names:

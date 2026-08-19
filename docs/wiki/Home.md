@@ -10,8 +10,9 @@ Public **L1.5** distribution of NaNLABS skills, agents, and plugins.
 | Claude Code | Equal |
 | Cursor IDE | Equal |
 | Cursor Agent CLI | Equal |
+| GitHub Copilot | Supported |
 
-Machine provisioning stays in [`internal-workstation`](https://github.com/nanlabs/internal-workstation). This repo does **not** ship a consumer CLI, loop runtime, multi-tool profile compiler, or OpenCode/Copilot/Windsurf/Gemini CLI/Pi plugin targets.
+Machine provisioning stays in [`internal-workstation`](https://github.com/nanlabs/internal-workstation). This repo does **not** ship a consumer CLI, loop runtime, multi-tool profile compiler, or OpenCode/Windsurf/Gemini CLI/Pi plugin targets.
 
 ---
 
@@ -19,11 +20,11 @@ Machine provisioning stays in [`internal-workstation`](https://github.com/nanlab
 
 | Component | Count | Notes |
 | --- | --- | --- |
-| Skills | 47 | Agent Skills tree under `skills/<group>/` |
+| Skills | 48 | Agent Skills tree under `skills/<group>/` |
 | Agents | 16 | Canonical personas; flat plugin surfaces via `gen-surfaces` |
 | Plugins | 2 marketplace | `nanlabs-core` (recommended) · `nanlabs-agents` (optional) |
 | MCP templates | 6 | **Docs-only** stubs — not installed by plugins |
-| Packs | stubs | Outcome packs are provisional (Part II) |
+| Copilot | 2 surfaces | CLI plugin manifests + repository customization |
 
 ---
 
@@ -53,6 +54,11 @@ npx skills add nanlabs/agent-toolkit -g
 ```
 
 Skills only — no plugins, agents, MCP, or setup automation.
+
+### GitHub Copilot
+
+CLI plugin manifests are generated in `plugins/nanlabs-core/` and `plugins/nanlabs-agents/`.
+Repository customization lives under `.github/copilot-instructions.md`, `.github/agents/`, and `.github/skills/`.
 
 ---
 

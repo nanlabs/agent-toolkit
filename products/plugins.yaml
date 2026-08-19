@@ -15,6 +15,7 @@ plugins:
       - skills/core/nanlabs-assistant
       - skills/core/nanlabs-dev-companion
       - skills/core/nanlabs-output-handshake
+      - skills/core/nanlabs-pyrightination
       - skills/core/nanlabs-pr-fallback
       - skills/core/nanlabs-workspace-knowledge-sync
     agents:

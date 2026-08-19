@@ -9,7 +9,7 @@
 
 Consumer-facing and maintainer docs for `nanlabs/agent-toolkit` (**L1.5**). Machine provisioning stays in [`internal-workstation`](https://github.com/nanlabs/internal-workstation).
 
-**Equal-priority surfaces:** Claude · Claude Code · Cursor IDE · Cursor Agent CLI.
+**Production surfaces:** Claude · Claude Code · Cursor IDE · Cursor Agent CLI · GitHub Copilot.
 
 ## Documentation model
 
@@ -58,7 +58,7 @@ Consumer-facing and maintainer docs for `nanlabs/agent-toolkit` (**L1.5**). Mach
 | --- | --- |
 | [`../catalogs/`](../catalogs/) | Skill / agent / MCP indexes |
 | [`../contracts/`](../contracts/) | Dependency contracts |
-| [`../packs/`](../packs/) | Outcome pack stubs (Part II) |
+| GitHub issues `#24`, `#25`, `#28` | Future outcome-pack discovery and implementation |
 | [`../mcp/templates/`](../mcp/templates/) | MCP docs-only stubs |
 
 ## GitHub Wiki

@@ -56,6 +56,13 @@ skills:
     domain: delivery
     responsibility: WHAT
     role: artifact_gate
+  - name: nanlabs-pyrightination
+    group: core
+    path: skills/core/nanlabs-pyrightination
+    public: true
+    domain: tooling
+    responsibility: HOW
+    role: python_typecheck_reporting
   - name: nanlabs-pr-fallback
     group: core
     path: skills/core/nanlabs-pr-fallback

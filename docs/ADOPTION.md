@@ -12,7 +12,7 @@ How to install and use `nanlabs/agent-toolkit`.
 
 Also see [SCOPE.md](SCOPE.md), [FAQ.md](FAQ.md), and the [wiki source](wiki/) (companion PR: wiki sync).
 
-**Equal-priority surfaces:** Claude · Claude Code · Cursor IDE · Cursor Agent CLI.  
+**Production surfaces:** Claude · Claude Code · Cursor IDE · Cursor Agent CLI · GitHub Copilot.  
 **Skills-only** installs skills alone (needed on some Claude surfaces and any Agent Skills client). Cursor Agent CLI certification evidence lives in [`CURSOR_CLI.md`](CURSOR_CLI.md) — evidence gap ≠ lower product priority.
 
 ## Claude Code
@@ -54,13 +54,34 @@ Same product priority as Cursor IDE. Do not assume IDE plugin components load id
 3. Fill the component matrix in [`CURSOR_CLI.md`](CURSOR_CLI.md) with pass/fail/partial evidence.
 4. Treat unknown cells as **uncertified**, not deprioritized.
 
+## GitHub Copilot
+
+Two supported surfaces:
+
+1. **CLI plugin surface** — generated root-level `plugin.json` in:
+   - `plugins/nanlabs-core/`
+   - `plugins/nanlabs-agents/`
+2. **Repository customization** — committed under:
+   - `.github/copilot-instructions.md`
+   - `.github/agents/*.agent.md`
+   - `.github/skills/*/SKILL.md`
+
+The recommended baseline remains **`nanlabs-core`**. It now includes the
+report-only `nanlabs-pyrightination` skill for Python type-checking guidance.
+
+Current honesty rules:
+
+- Hooks are **not** shipped for Copilot yet.
+- MCP remains configured separately; the repo does not claim bundled Copilot MCP support.
+- Repository customization is repo-scoped, not a global machine install.
+
 ## Skills-only
 
 ```bash
 npx skills add nanlabs/agent-toolkit -g
 ```
 
-Installs the grouped tree `skills/<group>/<skill>/` (47 skills, including `nanlabs-setup`).
+Installs the grouped tree `skills/<group>/<skill>/` (48 skills, including `nanlabs-setup` and `nanlabs-pyrightination`).
 
 Skills-only installs do **not** bundle the contract doctor; use baseline spot-checks in the skill or clone the repo for full validation.
 
@@ -71,7 +92,7 @@ Skill index: [`SKILLS.md`](SKILLS.md) · machine catalog: [`../catalogs/skill-ca
 - Agents: [`../agents/README.md`](../agents/README.md) (16 personas; plugin `nanlabs-agents`)
 - MCP stubs: [`../mcp/templates/README.md`](../mcp/templates/README.md) (docs-only; env placeholders only)
 - Dependency contracts: [`../contracts/README.md`](../contracts/README.md)
-- Solution packs (stubs): [`../packs/README.md`](../packs/README.md)
+- Future outcome packs are tracked in GitHub issues `#24`, `#25`, and `#28` rather than placeholder directories in this repo
 - Overlay governance: [`OVERLAY_GOVERNANCE.md`](OVERLAY_GOVERNANCE.md)
 - Telemetry ownership: [`TELEMETRY_CONTRACT.md`](TELEMETRY_CONTRACT.md)
 
