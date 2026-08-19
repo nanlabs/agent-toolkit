@@ -10,7 +10,7 @@
 
 ### NaNLABS skills, agents, and plugins — L1.5 distribution
 
-<p><strong>Claude · Claude Code · Cursor IDE · Cursor Agent CLI</strong> — equal product priority</p>
+<p><strong>Claude · Claude Code · Cursor IDE · Cursor Agent CLI · GitHub Copilot</strong> — production distribution surfaces</p>
 
 <p>
   <a href="docs/README.md">Docs</a> ·
@@ -30,7 +30,7 @@
 </p>
 
 <p>
-  <img src="https://img.shields.io/badge/skills-47-ff6b35?style=for-the-badge&labelColor=0d1117" alt="47 skills"/>
+  <img src="https://img.shields.io/badge/skills-48-ff6b35?style=for-the-badge&labelColor=0d1117" alt="48 skills"/>
   <img src="https://img.shields.io/badge/agents-16-58a6ff?style=for-the-badge&labelColor=0d1117" alt="16 agents"/>
   <img src="https://img.shields.io/badge/plugins-2-f7c948?style=for-the-badge&labelColor=0d1117" alt="2 plugins"/>
   <img src="https://img.shields.io/badge/MCP-docs--only-8b949e?style=for-the-badge&labelColor=0d1117" alt="MCP docs-only"/>
@@ -49,9 +49,9 @@
 
 ## What is agent-toolkit?
 
-Public **L1.5** distribution of NaNLABS AI capabilities: Agent Skills, agent personas, and Claude/Cursor marketplace plugins. Machine provisioning stays in [`internal-workstation`](https://github.com/nanlabs/internal-workstation) (L1).
+Public **L1.5** distribution of NaNLABS AI capabilities: Agent Skills, agent personas, Claude/Cursor marketplace plugins, and GitHub Copilot surfaces. Machine provisioning stays in [`internal-workstation`](https://github.com/nanlabs/internal-workstation) (L1).
 
-Smaller than multi-tool personal forks: **no** consumer CLI, loop runtime, or OpenCode/Copilot/Windsurf/Gemini/Pi plugin targets. Portable skills may still work via `npx skills`.
+Smaller than multi-tool personal forks: **no** consumer CLI, loop runtime, or OpenCode/Windsurf/Gemini/Pi plugin targets. Portable skills may still work via `npx skills`.
 
 <div align="center">
   <img alt="L1 and L1.5 architecture" src="static/architecture.svg" width="820">
@@ -60,8 +60,10 @@ Smaller than multi-tool personal forks: **no** consumer CLI, loop runtime, or Op
 ## Highlights
 
 - **Equal-priority surfaces** — Claude, Claude Code, Cursor IDE, and Cursor Agent CLI
+- **GitHub Copilot support** — CLI plugin manifests and repository customization under `.github/`
 - **Recommended plugin** — `nanlabs-core` with bundled setup (`/nanlabs-core:setup`)
 - **Optional roster** — `nanlabs-agents` for all 16 personas
+- **Python typing** — `nanlabs-pyrightination` ships in `nanlabs-core`
 - **Honest MCP** — templates under `mcp/templates/` are docs-only
 - **CI quality bar** — manifests, skills-ref, Claude validate, MegaLinter, Danger
 
@@ -108,15 +110,25 @@ Does **not** install plugins, agents, MCP, or setup automation.
 
 </details>
 
+<details>
+<summary><strong>GitHub Copilot</strong></summary>
+
+- **CLI plugin surface:** generated root-level `plugin.json` in `plugins/nanlabs-core/` and `plugins/nanlabs-agents/`
+- **Repository customization surface:** `.github/copilot-instructions.md`, `.github/agents/`, `.github/skills/`
+- **Bundled typecheck skill:** `nanlabs-pyrightination` in `nanlabs-core`
+
+</details>
+
 Full paths: [`docs/ADOPTION.md`](docs/ADOPTION.md) · lifecycle: [`docs/LIFECYCLE.md`](docs/LIFECYCLE.md)
 
 ## What's included
 
 | Area | Notes |
 | --- | --- |
-| Skills | 47 under `skills/<group>/` — [catalog](catalogs/skill-catalog.yaml) · [index](docs/SKILLS.md) |
+| Skills | 48 under `skills/<group>/` — [catalog](catalogs/skill-catalog.yaml) · [index](docs/SKILLS.md) |
 | Core plugin | `nanlabs-core` v0.2 — harness + setup doctor + `/nanlabs-core:setup` |
 | Agents plugin | `nanlabs-agents` (optional) — 16 personas via `gen-surfaces` |
+| Copilot | CLI plugin manifests + repository customization surface under `.github/` |
 | MCP | Docs-only under `mcp/templates/` |
 
 ## Repository layout
@@ -124,8 +136,9 @@ Full paths: [`docs/ADOPTION.md`](docs/ADOPTION.md) · lifecycle: [`docs/LIFECYCL
 | Path | Purpose |
 | --- | --- |
 | `skills/<group>/<skill>/` | Canonical [Agent Skills](https://agentskills.io/specification) tree |
-| `plugins/` | Claude / Cursor plugin bundles |
+| `plugins/` | Claude / Cursor plugin bundles + Copilot CLI manifests |
 | `.claude-plugin/` · `.cursor-plugin/` | Marketplace catalogs |
+| `.github/copilot-instructions.md` · `.github/agents/` · `.github/skills/` | GitHub Copilot repository customization |
 | `agents/` | Canonical personas |
 | `products/plugins.yaml` | Plugin version + assembly SoT |
 | `mcp/templates/` | MCP stubs (no secrets) |

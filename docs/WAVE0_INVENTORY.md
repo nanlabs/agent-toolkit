@@ -27,9 +27,7 @@ Snapshot for H0 (baseline decisions). Living document; update when slices change
 | `mcp/templates/` | L1.5 | Public stubs only |
 | `plugins/` | L1.5 | Claude/Cursor bundles |
 | `contracts/` | L1.5 | Dependency/permission contracts for setup |
-| `packs/` | L1.5 | Solution pack stubs (provisional) |
-| `catalogs/` | L1.5 | Skill / agent / MCP / pack indexes |
-| `plugins/nanlabs-telemetry/` | L1.5 | Docs-only stub until #30 |
+| `catalogs/` | L1.5 | Skill / agent / MCP indexes |
 | `internal-workstation` AI home paths | L1 | Until cutover; copy-forward only so far |
 | Secrets / `env.d` | L1 | Never in this repo |
 
@@ -59,6 +57,7 @@ Snapshot for H0 (baseline decisions). Living document; update when slices change
 | Visibility | **Public** + scrub policy |
 | Slices | Skills → agents/MCP → plugins → contracts (done through Wave 1 foundation) |
 | Telemetry boundary | L1 policy; L1.5 adapters later — no endpoints/keys here |
+| Outcome packs | Track in GitHub issues (#24 / #25 / #28), not placeholder directories |
 | Knowledge RAG | Post-cutover / Part III |
 | Private companion marketplace | **Deferred** — see `PUBLIC_CONTENT_POLICY.md` |
 

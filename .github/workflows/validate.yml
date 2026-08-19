@@ -32,10 +32,18 @@ jobs:
         run: pip install pyyaml jsonschema
 
       - name: Install ripgrep
-        run: sudo apt-get update && sudo apt-get install -y ripgrep
+        run: |
+          if command -v rg >/dev/null 2>&1; then
+            rg --version
+          else
+            sudo apt-get install -y ripgrep
+          fi
 
       - name: Validate repository structure
         run: bash scripts/validate-repo-structure.sh
+
+      - name: Validate no placeholder directories remain
+        run: python3 scripts/validate-no-placeholders.py
 
       - name: Validate marketplace manifests
         run: python3 scripts/validate-manifests.py
@@ -49,8 +57,11 @@ jobs:
       - name: Validate MCP templates
         run: python3 scripts/validate-mcp.py
 
-      - name: Check agent surface drift
+      - name: Check Claude and Cursor surface drift
         run: python3 scripts/gen-surfaces.py --check
+
+      - name: Check Copilot surface drift
+        run: python3 scripts/gen-copilot-surfaces.py --check
 
       - name: Validate requirement contracts
         run: python3 scripts/validate-contracts.py

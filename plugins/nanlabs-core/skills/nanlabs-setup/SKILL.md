@@ -66,7 +66,7 @@ Summarize the Markdown table for the user. If the script exits non-zero, treat r
 ```bash
 command -v git && git --version
 command -v python3 && python3 --version
-command -v brew || command -v winget || command -v apt-get || command -v pacman || true
+command -v brew || command -v winget || command -v apt-get || command -v dnf || command -v pacman || true
 command -v claude || command -v cursor || true
 ```
 
@@ -101,7 +101,7 @@ Optional:
 #### Any agent (skills-only)
 
 ```bash
-npx skills add nanlabs/agent-toolkit -g
+npx skills@1.5.23 add nanlabs/agent-toolkit -g
 ```
 
 Skills-only installs do not bundle the doctor; use spot-checks or a repo clone.

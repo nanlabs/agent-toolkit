@@ -1,6 +1,6 @@
 # Skill orchestration (NaNLABS)
 
-Authoritative routing lives with the **nanlabs-assistant** skill. This file is a short operational guide; **`~/.local/share/nanlabs/skills/skill-catalog.yaml`** is the machine-readable index (domain, WHAT vs HOW, triggers, `depends_on`).
+Authoritative routing lives with the **nanlabs-assistant** skill. This file is a short operational guide; **`catalogs/skill-catalog.yaml`** is the default machine-readable index (domain, WHAT vs HOW, triggers, `depends_on`). After a workstation install, an optional copy may also exist at `~/.local/share/nanlabs/skills/skill-catalog.yaml`.
 
 ## Role of this skill
 
@@ -15,7 +15,7 @@ Do **not** duplicate full procedures owned by Jira, ClickUp, forge, or data skil
 
 1. **Read** `skill-catalog.yaml` (same directory as bundled skills) and note **responsibility**: **WHAT** = workflow phases and gates; **HOW** = CLI and automation steps.
 2. **Classify** the user request:
-   - **Setup/onboarding** (new dev, validate install) → cite `nan-doctor`, `docs/wiki/TECHNICAL_QUICKSTART.md`
+   - **Setup/onboarding** (new dev, validate install) → **nanlabs-setup** / `/nanlabs-core:setup`, `docs/ADOPTION.md`
    - **Client/account overlay** (explicit engagement mention, ticket prefix, or repo path context) → load the **workspace pack overlay** (see below), then proceed with **nanlabs-dev-companion** + **nanlabs-workflow-generic-project** (WHAT). Do **not** mix multiple workflow drivers on the same task.
    - **Generic NaNLABS/client delivery** → **nanlabs-dev-companion** (companion framing) + **nanlabs-workflow-generic-project** (WHAT).
    - **Planning / estimation / capacity** → **nanlabs-planning** (after output handshake for final notes).
@@ -37,7 +37,7 @@ Do **not** duplicate full procedures owned by Jira, ClickUp, forge, or data skil
    - **Figma design → code** → start from **figma** / **figma-implement-design**; **figma-code-connect-components** for Code Connect; **figma-create-design-system-rules** for `AGENTS.md`/rules files; **figma-create-new-file** for new files. Heavy canvas/plugin flows (**figma-use**, **figma-generate-design**) are opt-in packs — see `docs/SKILLS.md`.
    - **Terminal browser automation** (snapshot/click, not test specs) → **playwright-cli**. **Playwright test suites** → **nanlabs-e2e-runner**.
    - **Scaffold or refactor `.ipynb`** → **jupyter-notebook** (**nan-newnotebook** wrapper).
-   - **Workstation install / health / pasteable diagnostics** → **nanlabs-workstation-triage** (**nan-doctor**, **`nan-doctor --issue`**).
+   - **Workstation install / health / pasteable diagnostics** → **nanlabs-workstation-triage** (optional; L1 provisioning is out of scope for this repo)
    - **dbt checks** → **dbt-validation**; **Snowflake checks** → **snowflake-validation** (read-only; never claim success without creds).
 3. **Delegate** with one explicit line in the reply, e.g. *Applying **nanlabs-workflow-generic-project** for phases; using **github-cli-workflow** for draft PR.*
 4. **If uncertain**, ask which engagement context applies before heavy work, then fall back to this skill’s discovery pass.
@@ -79,14 +79,16 @@ Agents carry **methodology and output contracts**; skills carry **procedures and
 | Client delivery bootstrap | `nanlabs-client-workflow-bootstrap` | `nanlabs-workflow-client-bootstrap` |
 | Repo discovery / routing | `nanlabs-assistant` | this skill |
 
-Machine-readable index: `~/.local/share/nanlabs/agents/agent-catalog.yaml`. Canonical bodies and `references/CONTRACT.md` live under `~/.local/share/nanlabs/agents/<name>/`.
+Machine-readable index: `catalogs/agent-catalog.yaml`. Canonical bodies and `references/CONTRACT.md` live under `agents/<name>/` in this repository.
 
-## Installed paths (after `chezmoi apply`)
+## Installed paths (reference)
 
 | Asset | Path |
 | --- | --- |
-| Catalog | `~/.local/share/nanlabs/skills/skill-catalog.yaml` |
-| Agent catalog | `~/.local/share/nanlabs/agents/agent-catalog.yaml` |
-| Agent personas | `~/.local/share/nanlabs/agents/<name>/AGENT.md` |
-| This orchestrator | `~/.local/share/nanlabs/skills/nanlabs-assistant/SKILL.md` |
-| Repo inspection detail | `~/.local/share/nanlabs/skills/nanlabs-assistant/references/REPO_INSPECTION.md` |
+| Skill catalog (repo default) | `catalogs/skill-catalog.yaml` |
+| Agent catalog | `catalogs/agent-catalog.yaml` |
+| Agent personas (canonical) | `agents/<name>/AGENT.md` |
+| This orchestrator | `skills/core/nanlabs-assistant/SKILL.md` |
+| Repo inspection detail | `skills/core/nanlabs-assistant/references/REPO_INSPECTION.md` |
+
+Optional workstation mirror paths after L1 install: `~/.local/share/nanlabs/skills/` and `~/.local/share/nanlabs/agents/`.

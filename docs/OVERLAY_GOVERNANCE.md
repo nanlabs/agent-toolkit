@@ -30,7 +30,7 @@ governance checklist so overlays do not fork incompatible ecosystems.
 
 ## Required metadata (`overlay.yaml`)
 
-Place at the root of a project overlay repo or under `packs/<id>/`:
+Place at the root of a project overlay repo:
 
 ```yaml
 apiVersion: nanlabs.dev/v1
@@ -73,9 +73,8 @@ spec:
 
 ## Example composition
 
-See [`packs/project-harness/`](../packs/project-harness/) — a **stub** solution
-pack that documents how a project composes platform capabilities without
-shipping credentials.
+Future outcome-pack work is tracked in GitHub issue `#24`. This repository no
+longer keeps stub pack directories as overlay examples.
 
 Typical stack:
 
@@ -92,4 +91,4 @@ Org marketplace (agent-toolkit)
 
 - [`TELEMETRY_CONTRACT.md`](TELEMETRY_CONTRACT.md) — L1 installs adapters; overlays do not embed endpoints
 - [`PUBLIC_CONTENT_POLICY.md`](PUBLIC_CONTENT_POLICY.md)
-- [`../packs/README.md`](../packs/README.md)
+- GitHub issue `#24`

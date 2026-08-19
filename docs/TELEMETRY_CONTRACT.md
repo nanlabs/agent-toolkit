@@ -35,8 +35,8 @@ cutover blocker.
 
 ## L1.5 may ship
 
-- Versioned adapter code / hooks under `plugins/nanlabs-telemetry/` or
-  `packages/` (when implemented).
+- Versioned adapter code / hooks under `packages/` or a future dedicated plugin
+  (when implemented under #30).
 - Documentation of supported clients and required **env-var names**.
 - Capability declarations in `contracts/requirements/` (future).
 
@@ -73,10 +73,11 @@ print values.
 2. L1 installs the org-approved adapter version from L1.5.
 3. AI client restarts; doctor probes endpoint reachability without dumping tokens.
 
-## Stub location
+## Current repository state
 
-Docs-only stub: [`plugins/nanlabs-telemetry/README.md`](../plugins/nanlabs-telemetry/README.md).
-Not registered in marketplaces until a real adapter ships (#30).
+Telemetry remains **documentation-only** in this repository.
+No `nanlabs-telemetry` plugin directory is kept in-tree until a real adapter
+ships under #30.
 
 ## Related
 

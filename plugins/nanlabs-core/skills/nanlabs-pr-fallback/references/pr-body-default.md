@@ -1,8 +1,8 @@
 # Default pull-request body (NaNLABS)
 
-**Source of truth in ClickUp:** [Guidelines for Creating Pull Requests](https://app.clickup.com/459857/v/dc/e12h-247177?page=e12h-103657) (doc `e12h-247177`).
-
 Use this when the **repository has no** `.github/PULL_REQUEST_TEMPLATE` / `.github/PULL_REQUEST_TEMPLATE.md` (or team-approved replacement). If a repo template exists, **follow the repo** instead.
+
+For `nanlabs/agent-toolkit` itself, prefer [`.github/PULL_REQUEST_TEMPLATE.md`](../../../../.github/PULL_REQUEST_TEMPLATE.md).
 
 ```markdown
 ## Description

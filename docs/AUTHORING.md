@@ -63,7 +63,7 @@ Repo-level routing metadata lives in `catalogs/skill-catalog.yaml` (orchestrator
 | `plugins/<id>/` | Claude / Cursor plugin bundles |
 | `catalogs/` | Routing catalogs (`skill-catalog.yaml`, layout map) |
 | `contracts/requirements/` | Dependency/permission contracts (`RequirementContract` v1) |
-| `packs/` | Solution pack stubs (provisional names) |
+| GitHub issues `#24`, `#25`, `#28` | Future outcome-pack discovery / implementation |
 
 ## Dependency contracts
 

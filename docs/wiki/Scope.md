@@ -2,7 +2,7 @@
 
 What this repository **is** and **is not**. Inspired by broader agent-toolkit ecosystems, but intentionally smaller for NaNLABS production use.
 
-## In scope (equal priority)
+## In scope (production surfaces)
 
 | Surface | Role |
 | --- | --- |
@@ -10,19 +10,22 @@ What this repository **is** and **is not**. Inspired by broader agent-toolkit ec
 | Claude Code | Marketplace plugins + skills |
 | Cursor IDE | Plugins (local / team marketplace) |
 | Cursor Agent CLI | Same priority; certify via matrix (`docs/CURSOR_CLI.md`) |
+| GitHub Copilot | CLI manifests + repository customization |
 
 ## In scope (content)
 
 - Agent Skills (`SKILL.md`) under `skills/<group>/`
 - Agent personas under `agents/`
 - Claude + Cursor plugin bundles (`nanlabs-core`, `nanlabs-agents`)
+- GitHub Copilot CLI manifests + `.github/` repository surface
+- `nanlabs-pyrightination` as a report-only typing skill in `nanlabs-core`
 - MCP **templates** (docs-only stubs)
 - Validation scripts + CI gates
 - Dependency contracts for setup/doctor
 
 ## Explicitly out of scope (plugin targets)
 
-OpenCode, GitHub Copilot, Windsurf, Gemini CLI, Pi, and similar — portable skills may still work via `npx skills`; we do **not** maintain plugin/profile targets for them.
+OpenCode, Windsurf, Gemini CLI, Pi, and similar — portable skills may still work via `npx skills`; we do **not** maintain plugin/profile targets for them.
 
 ## Explicitly out of scope (product features)
 

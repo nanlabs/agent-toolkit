@@ -5,6 +5,7 @@
       "nanlabs-assistant",
       "nanlabs-dev-companion",
       "nanlabs-output-handshake",
+      "nanlabs-pyrightination",
       "nanlabs-pr-fallback",
       "nanlabs-setup",
       "nanlabs-workspace-knowledge-sync"
@@ -82,6 +83,11 @@
       "name": "nanlabs-output-handshake",
       "group": "core",
       "path": "skills/core/nanlabs-output-handshake"
+    },
+    {
+      "name": "nanlabs-pyrightination",
+      "group": "core",
+      "path": "skills/core/nanlabs-pyrightination"
     },
     {
       "name": "nanlabs-pr-fallback",

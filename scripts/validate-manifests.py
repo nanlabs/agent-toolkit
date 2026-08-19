@@ -8,6 +8,7 @@ schemas/cursor/ (from cursor/plugins). Claude checks remain structural.
 from __future__ import annotations
 
 import json
+import subprocess
 import sys
 from pathlib import Path
 
@@ -132,9 +133,13 @@ def validate_cursor_official_schemas() -> None:
 def main() -> None:
     validate_claude_marketplace()
     validate_cursor_official_schemas()
+    subprocess.run(
+        [sys.executable, str(ROOT / "scripts" / "validate-copilot-manifests.py")],
+        check=True,
+    )
     print(
         "OK: marketplace and plugin manifests validated "
-        "(incl. official Cursor schemas)"
+        "(Claude, Cursor, and Copilot surfaces)"
     )
 
 
