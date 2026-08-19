@@ -71,6 +71,14 @@ agents:
     cursor:
       title: Client workspace bootstrap
 
-  nanlabs-tech-assistant:
+  nanlabs-devcompanion-lead:
     cursor:
-      title: NaNLABS internal operational procedures
+      title: Dev Companion team lead
+
+  nanlabs-forge-pr:
+    cursor:
+      title: Forge PR/MR specialist
+
+  nanlabs-data-validator:
+    cursor:
+      title: Data validation specialist

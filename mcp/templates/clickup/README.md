@@ -1,30 +1,45 @@
-# ClickUp MCP template (legacy stub)
+# ClickUp MCP Template
 
-> **Deprecated for new setups** — Prefer the [`clickup` CLI](https://triptechtravel.github.io/clickup-cli/) and the `clickup-cli` skill in this repo (`skills/` catalog) over the ClickUp MCP server.
-
-This directory keeps a **legacy** config stub for reference only. Public-safe: env placeholders only.
+> **Deprecated** — The ClickUp MCP server is no longer the recommended integration.
+> Use the [`clickup` CLI](https://triptechtravel.github.io/clickup-cli/) instead.
+> The workstation installs the global skill at `~/.local/share/nanlabs/skills/clickup-cli/SKILL.md`.
 
 ## Why the CLI is preferred
 
 | | ClickUp MCP | `clickup` CLI |
-| --- | --- | --- |
-| Token cost | High — verbose JSON blobs | Lower — structured `--json` / `--jq` |
-| Auth | Server process + API token in config | Keyring / `--with-token` for CI |
-| Git integration | None | Task IDs from branch names |
-| Maintenance | External daemon | Single binary |
+|---|---|---|
+| Token cost | High — MCP responses are verbose JSON blobs | Low — structured `--json`/`--jq` output, ~90% less noise with `rtk` |
+| Auth | Requires server process + API token in config | Token stored in system keyring; CI via `--with-token` |
+| Git integration | None | Auto-detects task IDs from branch names |
+| Maintenance | External server process to keep running | Single binary, no daemon |
 
-## Legacy environment variables
+## Migration
 
-| Variable | Purpose |
-| --- | --- |
-| `CLICKUP_API_TOKEN` | ClickUp personal API token (legacy MCP only) |
+Remove the ClickUp MCP server from your agent config and install the CLI instead:
 
-## Usage (legacy only)
+```bash
+# Install (macOS/Linux with Homebrew)
+brew install triptechtravel/tap/clickup
 
-1. Prefer installing the CLI and the `clickup-cli` skill instead of this MCP.
-2. If you must use the MCP: copy `config.template.json`, export `CLICKUP_API_TOKEN`, optionally run `./wrapper.sh`.
-3. Never commit the token.
+# Install (go)
+go install github.com/triptechtravel/clickup-cli/cmd/clickup@latest
 
-## Provenance
+# Authenticate
+clickup auth login
 
-Adapted from `nanlabs/internal-workstation` MCP templates for public distribution in `agent-toolkit`.
+# Select default space
+clickup space select
+```
+
+The `clickup-cli` skill is deployed by chezmoi at `~/.local/share/nanlabs/skills/clickup-cli/` and linked globally for Claude Code, Cursor, Copilot, OpenCode, and pi.
+
+## Legacy reference
+
+The MCP config template and wrapper script are kept below for reference only.
+Do not use them for new setups.
+
+### Required environment variables (legacy)
+
+- `CLICKUP_API_TOKEN`
+
+Use `config.template.json` and `wrapper.sh` as legacy examples only.

@@ -1,13 +1,16 @@
 > [!NOTE]
-> 📘 **Repo-Only Doc** — last reviewed **2026-08-05**
+> 📘 **Repo-Only Doc** — last reviewed **2026-08-19**
 >
 > This document lives only in the repo. It is public-ready and self-contained.
+
+> [!IMPORTANT]
+> **L1 ↔ L1.5** — This **public** repo is L1.5 (skills, agents, plugins). **L1 machine provisioning** (`chezmoi`, `nan-*` CLI, internal-only skills) is in **`nanlabs/internal-workstation`** — **private**; NaNLABS GitHub org access required. Workstation bridge: [`docs/ADOPTION.md`](ADOPTION.md#workstation-cutover-internal-workstation).
 
 ---
 
 # Documentation
 
-Consumer-facing and maintainer docs for `nanlabs/agent-toolkit` (**L1.5**). Machine provisioning stays in [`internal-workstation`](https://github.com/nanlabs/internal-workstation).
+Consumer-facing and maintainer docs for `nanlabs/agent-toolkit` (**L1.5**). Machine provisioning stays in **`nanlabs/internal-workstation`** (**private**).
 
 **Production surfaces:** Claude · Claude Code · Cursor IDE · Cursor Agent CLI · GitHub Copilot.
 

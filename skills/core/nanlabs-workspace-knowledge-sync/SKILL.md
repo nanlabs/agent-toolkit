@@ -3,8 +3,7 @@ name: nanlabs-workspace-knowledge-sync
 description: >-
   Syncs knowledge to the internal-ai-workspace knowledge base. Use when the assistant
   discovers new patterns, learns user preferences, or identifies information worth
-  preserving for future sessions. Can be triggered manually or by orchestrators
-  (e.g. nanlabs-tech-assistant when that skill is available).
+  preserving for future sessions. Can be triggered manually or by orchestrators.
 ---
 
 # NaNLABS Workspace Knowledge Sync
@@ -103,7 +102,7 @@ Assistant: → Use knowledge-sync to preserve the pattern
 
 ## Integration with orchestrators
 
-When available, nanlabs-tech-assistant (workstation) checks for these automatic sync opportunities:
+Orchestrators (`nanlabs-assistant`, dev-companion lead) may check for these automatic sync opportunities:
 
 1. **After task creation/update** → Sync initiative info
 2. **After discovering space/list IDs** → Sync to ClickUp knowledge

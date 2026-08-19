@@ -75,7 +75,7 @@ Agents carry **methodology and output contracts**; skills carry **procedures and
 | New feature with tests-first | `nanlabs-tdd-guide` | — |
 | Type-heavy review | `nanlabs-typescript-reviewer` | — |
 | Schema / query / migration | `nanlabs-database-reviewer` | — |
-| Internal NaNLABS procedures | `nanlabs-tech-assistant` (workstation-only for now) | not bundled in agent-toolkit yet |
+| Internal NaNLABS ClickUp ops | `clickup-cli` | integrations |
 | Client delivery bootstrap | `nanlabs-client-workflow-bootstrap` | `nanlabs-workflow-client-bootstrap` |
 | Repo discovery / routing | `nanlabs-assistant` | this skill |
 

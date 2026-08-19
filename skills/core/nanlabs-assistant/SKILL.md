@@ -86,7 +86,7 @@ Full routing lives in `references/ORCHESTRATION.md` and `skill-catalog.yaml`. On
 - Forge → **github-cli-workflow** / **gitlab-cli-workflow**; PR comments → **gh-address-comments**; CI → **gh-fix-ci**
 - Tickets → **clickup-cli** or external jira/confluence packs
 - Workstation health → **nanlabs-workstation-triage**
-- Internal procedures → **nanlabs-tech-assistant** (still workstation-only; not bundled in this repo yet)
+- Internal ClickUp operations → **clickup-cli**
 
 State the active workflow and tool skills by name when making non-trivial routing decisions.
 
@@ -98,9 +98,8 @@ Invoke subagents with **@mention** in your message (not the skill tool):
 `@nanlabs-architect`, `@nanlabs-build-error-resolver`, `@nanlabs-database-reviewer`,
 `@nanlabs-performance-optimizer`, `@nanlabs-typescript-reviewer`, `@nanlabs-e2e-runner`,
 `@nanlabs-refactor-cleaner`, `@nanlabs-reference-lookup`
-(and `@nanlabs-tech-assistant` when provisioned from workstation — not shipped here yet)
 
-Deployed under `~/.claude/agents/`, `~/.config/opencode/agents/`, or tool-specific rules paths.
+Deployed under Claude/Cursor plugins from `nanlabs/agent-toolkit` or Agent Skills install paths.
 
 ## Safety
 

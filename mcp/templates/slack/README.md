@@ -1,20 +1,8 @@
-# Slack MCP template (stub)
-
-Public-safe MCP stub. **No secrets** — use env-var substitution only.
+# Slack MCP Template
 
 ## Required environment variables
 
-| Variable | Purpose |
-| --- | --- |
-| `SLACK_BOT_TOKEN` | Bot token (`xoxb-…`) for the Slack app |
-| `SLACK_APP_TOKEN` | App-level token (`xapp-…`) when required by the server |
+- `SLACK_BOT_TOKEN`
+- `SLACK_APP_TOKEN`
 
-## Usage
-
-1. Copy `config.template.json` into your MCP client config (shape varies by client).
-2. Export both tokens (never commit them).
-3. Optionally run `./wrapper.sh` as a local launcher example.
-
-## Provenance
-
-Adapted from `nanlabs/internal-workstation` MCP templates for public distribution in `agent-toolkit`.
+Use `config.template.json` and `wrapper.sh` as baseline examples.

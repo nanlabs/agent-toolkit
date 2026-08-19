@@ -28,7 +28,7 @@ You are the NaNLABS Assistant agent. **Load the `nanlabs-assistant` skill** for 
 ## Delegate with @mention
 
 `@nanlabs-planner`, `@nanlabs-architect`, `@nanlabs-code-reviewer`, `@nanlabs-security-reviewer`,
-`@nanlabs-tdd-guide`, `@nanlabs-tech-assistant`, `@nanlabs-reference-lookup`, and other bundled agents.
+`@nanlabs-tdd-guide`, `@nanlabs-reference-lookup`, and other bundled agents.
 
 Agent index: `catalogs/agent-catalog.yaml`. Orchestration detail: load the **nanlabs-assistant** skill bundled with `nanlabs-core`.
 
