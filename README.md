@@ -45,11 +45,16 @@
 
 </div>
 
+> [!IMPORTANT]
+> **L1.5 distribution (public)** — This repository ships NaNLABS skills, agents, and plugins for Claude, Cursor, Copilot, and Agent Skills clients.
+>
+> **Machine provisioning (L1)** lives in **`nanlabs/internal-workstation`** — a **private** NaNLABS repository (org access required). Employees install the workstation via chezmoi, then run **`nan-ai-enable`** to pin this repo. See [Workstation cutover](docs/ADOPTION.md#workstation-cutover-internal-workstation) in Adoption.
+
 ---
 
 ## What is agent-toolkit?
 
-Public **L1.5** distribution of NaNLABS AI capabilities: Agent Skills, agent personas, Claude/Cursor marketplace plugins, and GitHub Copilot surfaces. Machine provisioning stays in [`internal-workstation`](https://github.com/nanlabs/internal-workstation) (L1).
+Public **L1.5** distribution of NaNLABS AI capabilities: Agent Skills, agent personas, Claude/Cursor marketplace plugins, and GitHub Copilot surfaces. Machine provisioning stays in **`nanlabs/internal-workstation`** (L1, **private**).
 
 Smaller than multi-tool personal forks: **no** consumer CLI, loop runtime, or OpenCode/Windsurf/Gemini/Pi plugin targets. Portable skills may still work via `npx skills`.
 

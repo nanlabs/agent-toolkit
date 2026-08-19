@@ -96,6 +96,19 @@ Skill index: [`SKILLS.md`](SKILLS.md) · machine catalog: [`../catalogs/skill-ca
 - Overlay governance: [`OVERLAY_GOVERNANCE.md`](OVERLAY_GOVERNANCE.md)
 - Telemetry ownership: [`TELEMETRY_CONTRACT.md`](TELEMETRY_CONTRACT.md)
 
+## Workstation cutover (`internal-workstation`)
+
+> [!IMPORTANT]
+> **L1 ↔ L1.5** — **`nanlabs/internal-workstation`** is **private** (NaNLABS org access). It provisions chezmoi, `nan-*` CLI, and **`nanlabs-tech-assistant`** only. Cross-domain assets live **here** (public `nanlabs/agent-toolkit`).
+
+As of the Wave 3 thin workstation cutover, **`nanlabs/internal-workstation` no longer bundles cross-domain skills**. NaNLABS machines use:
+
+- **`nan-ai-enable`** — pins `NAN_AGENT_TOOLKIT_VERSION` (default `v0.2.0`) and runs `npx skills add`
+- **Claude/Cursor plugins** — same flows documented above
+- **Workstation-only:** `nanlabs-tech-assistant` skill (internal procedures) remains in the workstation repo
+
+Install guide (private repo — clone with org access): `docs/AGENT_TOOLKIT.md` in **internal-workstation** (not linkable for external readers without access).
+
 ## What success looks like
 
 - Marketplace add succeeds without private-repo auth for this public repository.
