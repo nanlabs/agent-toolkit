@@ -32,7 +32,12 @@ jobs:
         run: pip install pyyaml jsonschema
 
       - name: Install ripgrep
-        run: sudo apt-get update && sudo apt-get install -y ripgrep
+        run: |
+          if command -v rg >/dev/null 2>&1; then
+            rg --version
+          else
+            sudo apt-get install -y ripgrep
+          fi
 
       - name: Validate repository structure
         run: bash scripts/validate-repo-structure.sh
