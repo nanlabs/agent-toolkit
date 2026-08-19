@@ -23,7 +23,7 @@ agents:
       NaNLABS repo discovery and orchestration. Use when starting work in any NaNLABS or
       client repo.
     triggers: [onboarding, repo discovery, routing, conventions]
-    handoffs: [nanlabs-planner, nanlabs-architect, nanlabs-code-reviewer, nanlabs-tech-assistant]
+    handoffs: [nanlabs-planner, nanlabs-architect, nanlabs-code-reviewer]
 
   - name: nanlabs-build-error-resolver
     path: agents/nanlabs-build-error-resolver
@@ -153,16 +153,29 @@ agents:
     handoffs: [nanlabs-code-reviewer]
     references: [references/CONTRACT.md]
 
-  - name: nanlabs-tech-assistant
-    path: agents/nanlabs-tech-assistant
+  - name: nanlabs-data-validator
+    path: agents/nanlabs-data-validator
     public: true
-    role: ops
-    description: >-
-      NaNLABS Technology Assistant for Architecture, M&I, and Learning/R&D operational
-      procedures.
-    triggers: [procedure, NaNLABS process, training, consultancy, infra change]
-    handoffs: [clickup-cli, nanlabs-workflow-generic-project]
-    references: [references/CONTRACT.md]
+    role: data
+    description: Run dbt and Snowflake validation via NaNLABS HOW skills and report evidence.
+    triggers: [dbt, snowflake, data validation, warehouse]
+    handoffs: [dbt-validation, snowflake-validation]
+
+  - name: nanlabs-devcompanion-lead
+    path: agents/nanlabs-devcompanion-lead
+    public: true
+    role: orchestrator
+    description: Dev Companion team lead orchestration for background queue worker workflows.
+    triggers: [dev companion, queue, background job]
+    handoffs: [nanlabs-dev-companion, nanlabs-workflow-generic-project, nanlabs-forge-pr, nanlabs-data-validator]
+
+  - name: nanlabs-forge-pr
+    path: agents/nanlabs-forge-pr
+    public: true
+    role: forge
+    description: Create draft PR/MR via github-cli-workflow or gitlab-cli-workflow.
+    triggers: [pull request, merge request, draft PR, gh pr]
+    handoffs: [github-cli-workflow, gitlab-cli-workflow]
 
   - name: nanlabs-typescript-reviewer
     path: agents/nanlabs-typescript-reviewer

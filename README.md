@@ -31,7 +31,7 @@
 
 <p>
   <img src="https://img.shields.io/badge/skills-48-ff6b35?style=for-the-badge&labelColor=0d1117" alt="48 skills"/>
-  <img src="https://img.shields.io/badge/agents-16-58a6ff?style=for-the-badge&labelColor=0d1117" alt="16 agents"/>
+  <img src="https://img.shields.io/badge/agents-18-58a6ff?style=for-the-badge&labelColor=0d1117" alt="18 agents"/>
   <img src="https://img.shields.io/badge/plugins-2-f7c948?style=for-the-badge&labelColor=0d1117" alt="2 plugins"/>
   <img src="https://img.shields.io/badge/MCP-docs--only-8b949e?style=for-the-badge&labelColor=0d1117" alt="MCP docs-only"/>
 </p>
