@@ -29,7 +29,7 @@ jobs:
           fetch-depth: 0
 
       - name: MegaLinter
-        uses: oxsecurity/megalinter/flavors/cupcake@v9
+        uses: oxsecurity/megalinter/flavors/cupcake@v10
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           # Keep false even on main until a dedicated debt-scrub pass; config default
