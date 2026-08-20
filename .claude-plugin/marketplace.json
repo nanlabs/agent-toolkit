@@ -6,7 +6,7 @@
   },
   "metadata": {
     "description": "NaNLABS skills, agents, and plugins for Claude Code and Cursor IDE",
-    "version": "0.4.0",
+    "version": "0.5.0",
     "pluginRoot": "./plugins"
   },
   "plugins": [
@@ -14,7 +14,7 @@
       "name": "nanlabs-core",
       "source": "./plugins/nanlabs-core",
       "description": "Recommended install: setup/onboarding, orchestrator, companion, handshake, Pyright report-only typing, PR fallback, knowledge sync, and code-reviewer agent",
-      "version": "0.2.0",
+      "version": "0.3.0",
       "category": "productivity",
       "tags": [
         "core",
@@ -27,7 +27,7 @@
       "name": "nanlabs-agents",
       "source": "./plugins/nanlabs-agents",
       "description": "Optional full set of NaNLABS agent / subagent personas (reviewers, architect, planner, e2e, \u2026)",
-      "version": "0.1.0",
+      "version": "0.2.0",
       "category": "productivity",
       "tags": [
         "agents",

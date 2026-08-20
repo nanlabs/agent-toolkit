@@ -30,7 +30,6 @@ Or install **`nanlabs-core`** (bundles core skills + setup) via Claude/Cursor pl
 
 | Name | Notes |
 | --- | --- |
-| `nanlabs-tech-assistant` | Remains on `internal-workstation` for now |
 | Some Figma opt-in packs | Documented as related; not in this tree |
 | Jira/Confluence assistants | External packs |
 

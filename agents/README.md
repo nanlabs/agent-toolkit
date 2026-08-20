@@ -4,7 +4,7 @@ Canonical agent / subagent personas for Claude Code, Cursor, OpenCode, and compa
 
 Machine-readable index: [`catalogs/agent-catalog.yaml`](../catalogs/agent-catalog.yaml).
 
-## Bundled (16)
+## Bundled (18)
 
 | Agent | Role |
 | --- | --- |
@@ -23,7 +23,9 @@ Machine-readable index: [`catalogs/agent-catalog.yaml`](../catalogs/agent-catalo
 | `nanlabs-docs-lookup` | Framework / API docs lookup |
 | `nanlabs-reference-lookup` | NaNLABS examples / starters |
 | `nanlabs-client-workflow-bootstrap` | Client workflow onboarding |
-| `nanlabs-tech-assistant` | Internal ops procedures (skill corpus may be host-only) |
+| `nanlabs-devcompanion-lead` | Dev-companion queue / plan lead |
+| `nanlabs-forge-pr` | Draft PR / MR from current branch |
+| `nanlabs-data-validator` | Data / ETL contract checks |
 
 Each agent directory contains `AGENT.md` (YAML frontmatter: `name` + `description` only), optional `references/`, and `NOTICE.txt`. Target-specific fields (Claude `tools`, OpenCode/Cursor UI metadata) live in [`catalogs/agent-target-map.yaml`](../catalogs/agent-target-map.yaml) and are applied by `scripts/gen-surfaces.py` when building plugin agent files.
 
@@ -35,4 +37,4 @@ Each agent directory contains `AGENT.md` (YAML frontmatter: `name` + `descriptio
 
 ## Provenance
 
-Copy-forward from `nanlabs/internal-workstation` with public-safe path scrubbing. Workstation copies remain until cutover. See each agent's `NOTICE.txt`.
+Canonical source is this repository. Plugin surfaces are generated — see each agent's `NOTICE.txt` for provenance.

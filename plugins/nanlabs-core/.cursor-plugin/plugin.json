@@ -1,6 +1,6 @@
 {
   "name": "nanlabs-core",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Recommended install: setup/onboarding, orchestrator, companion, handshake, Pyright report-only typing, PR fallback, knowledge sync, and code-reviewer agent",
   "author": {
     "name": "NaNLABS",
