@@ -1,0 +1,76 @@
+name: Epic
+description: Large body of work grouping related stories, tasks, and bugs
+title: "[Epic]: "
+type: Epic
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this template for multi-issue initiatives. Aligns with NaNLABS `nanlabs-epic` skill.
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary
+      description: What is this epic about?
+      placeholder: Epic description...
+    validations:
+      required: true
+  - type: textarea
+    id: objectives
+    attributes:
+      label: Objectives
+      description: Main goals or outcomes expected from the epic.
+      value: |
+        - Objective 1
+        - Objective 2
+    validations:
+      required: true
+  - type: textarea
+    id: success-criteria
+    attributes:
+      label: Success Criteria
+      description: Conditions that define success of the epic.
+      value: |
+        - Success criterion 1
+        - Success criterion 2
+    validations:
+      required: true
+  - type: textarea
+    id: related-tasks
+    attributes:
+      label: Related Tasks
+      description: Child stories/tasks/bugs (links or planned titles).
+      value: |
+        - Task 1: Description
+        - Task 2: Description
+    validations:
+      required: false
+  - type: textarea
+    id: stakeholders
+    attributes:
+      label: Stakeholders
+      description: People interested in input or outcome.
+      value: |
+        - Product Owner:
+        - Tech Lead:
+    validations:
+      required: false
+  - type: textarea
+    id: additional
+    attributes:
+      label: Additional Information
+      value: |
+        - Estimated Effort:
+        - Assigned To:
+        - Due Date:
+    validations:
+      required: false
+  - type: checkboxes
+    id: review
+    attributes:
+      label: Review
+      options:
+        - label: Destination confirmed (GitHub Issues / Project board)
+          required: false
+        - label: Human review required before implementation
+          required: false

@@ -1,0 +1,102 @@
+name: Bug Report
+description: Report a defect that can be handled through normal development workflow
+title: "[Bug]: "
+type: Bug
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Aligns with NaNLABS `nanlabs-bug` skill. Use **Incident** if this is impacting production/live users now.
+  - type: checkboxes
+    id: search
+    attributes:
+      label: Is there an existing issue for this?
+      options:
+        - label: I have searched the existing issues
+          required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: Describe the bug
+      description: Clear and concise description of the problem.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Steps to Reproduce
+      value: |
+        1. Step 1
+        2. Step 2
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected Result
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual Result
+      description: Include errors, stack traces, and relevant logs.
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment Details
+      value: |
+        | Field | Value |
+        | --- | --- |
+        | Environment | Dev / QA / UAT / Production |
+        | Browser |  |
+        | Device / OS |  |
+        | App Version |  |
+        | User Role |  |
+      render: markdown
+    validations:
+      required: false
+  - type: textarea
+    id: diagnostics
+    attributes:
+      label: Diagnostics and Observations
+      description: Screenshots, console errors, external system behavior, last known good version.
+    validations:
+      required: false
+  - type: textarea
+    id: acceptance-criteria
+    attributes:
+      label: Acceptance Criteria
+      value: |
+        - [ ] Expected behavior is working and manually verified
+        - [ ] Original reproduction steps no longer reproduce the bug
+        - [ ] Fix was tested in the relevant environment
+        - [ ] Resolution evidence was added
+        - [ ] Documentation or user guidance was updated if needed
+    validations:
+      required: false
+  - type: dropdown
+    id: severity
+    attributes:
+      label: Severity
+      options:
+        - Critical
+        - High
+        - Medium
+        - Low
+        - Unknown
+    validations:
+      required: false
+  - type: textarea
+    id: additional
+    attributes:
+      label: Additional Information
+      value: |
+        - Estimated Effort:
+        - Assigned To:
+        - Due Date:
+    validations:
+      required: false

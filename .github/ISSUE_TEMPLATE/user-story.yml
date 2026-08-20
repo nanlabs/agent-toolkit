@@ -1,0 +1,62 @@
+name: User Story
+description: User-centered requirement with business value and acceptance criteria
+title: "[User Story]: "
+type: User Story
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Aligns with NaNLABS `nanlabs-user-story` skill. Prefer this over Task when the work is user-facing.
+  - type: textarea
+    id: story
+    attributes:
+      label: User Story
+      description: As a / I want / so that
+      value: |
+        **As a** [persona], **I want** [capability], **so that** [business value].
+    validations:
+      required: true
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary
+      description: Short context for the story.
+    validations:
+      required: true
+  - type: textarea
+    id: technical-notes
+    attributes:
+      label: Technical Notes
+      value: |
+        - Technical note 1
+        - Technical note 2
+    validations:
+      required: false
+  - type: textarea
+    id: acceptance-criteria
+    attributes:
+      label: Acceptance Criteria
+      value: |
+        - [ ] Criterion 1
+        - [ ] Criterion 2
+    validations:
+      required: true
+  - type: textarea
+    id: additional
+    attributes:
+      label: Additional Information
+      value: |
+        - Estimated Effort:
+        - Assigned To:
+        - Due Date:
+    validations:
+      required: false
+  - type: checkboxes
+    id: review
+    attributes:
+      label: Review
+      options:
+        - label: Destination confirmed
+          required: false
+        - label: Human review required
+          required: false
