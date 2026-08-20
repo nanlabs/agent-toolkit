@@ -1,6 +1,6 @@
 name: Epic
 description: Large body of work grouping related stories, tasks, and bugs
-title: "[Epic]: "
+title: '[Epic]: '
 type: Epic
 body:
   - type: markdown

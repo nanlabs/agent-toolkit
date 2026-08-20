@@ -1,6 +1,6 @@
 name: User Story
 description: User-centered requirement with business value and acceptance criteria
-title: "[User Story]: "
+title: '[User Story]: '
 type: User Story
 body:
   - type: markdown

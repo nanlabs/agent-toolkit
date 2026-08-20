@@ -1,6 +1,6 @@
 name: Bug Report
 description: Report a defect that can be handled through normal development workflow
-title: "[Bug]: "
+title: '[Bug]: '
 type: Bug
 labels: [bug]
 body:

@@ -1,6 +1,6 @@
 name: Spike
 description: Time-boxed research or feasibility exploration
-title: "[Spike]: "
+title: '[Spike]: '
 type: Spike
 body:
   - type: markdown

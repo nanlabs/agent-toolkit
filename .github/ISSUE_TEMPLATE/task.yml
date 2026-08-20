@@ -1,6 +1,6 @@
 name: Task
 description: Technical or operational work that is not a user story
-title: "[Task]: "
+title: '[Task]: '
 type: Task
 body:
   - type: markdown

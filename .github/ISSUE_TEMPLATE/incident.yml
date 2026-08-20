@@ -1,6 +1,6 @@
 name: Incident
 description: Unplanned production or user-impacting event needing immediate response
-title: "[Incident]: "
+title: '[Incident]: '
 type: Incident
 body:
   - type: markdown
