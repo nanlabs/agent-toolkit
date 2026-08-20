@@ -7,6 +7,24 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.3.0] — 2026-08-20
+
+Sole-source distribution: skills, agents, plugins, and MCP templates live **here**. `internal-workstation` provisions machines only.
+
+### Added
+
+- Agents: `nanlabs-devcompanion-lead`, `nanlabs-forge-pr`, `nanlabs-data-validator`.
+- MCP templates under `mcp/templates/` (ClickUp, GitHub, Slack, Notion, Linear, Figma).
+
+### Removed
+
+- Agent `nanlabs-tech-assistant` (procedure pack was never public; persona removed to match zero-bundled workstation).
+
+### Changed
+
+- `nanlabs-core` **0.3.0**, `nanlabs-agents` **0.2.0**, marketplace metadata **0.5.0**.
+- Adoption / README: workstation is L1 (chezmoi + `nan-ai-enable`); this repo is L1.5.
+
 ## [0.2.0] — 2026-08-05
 
 First distribution tag aligned with **`nanlabs-core` 0.2.0** (marketplace metadata `0.4.0`).

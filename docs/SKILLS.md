@@ -39,7 +39,6 @@ this repository (yet). Install or provision them separately when needed.
 | `figma-use` | opt-in pack | Figma Plugin API / canvas writes |
 | `figma-generate-design` | opt-in pack | Full-screen generation in Figma; needs `figma-use` |
 | `figma-generate-library` | opt-in pack | Library generate/import |
-| `nanlabs-tech-assistant` | skill | Remains on `internal-workstation` for now |
 | `nanlabs-e2e-runner` | agent | Playwright **test** authoring (agents wave) |
 | `jira-assistant` / `confluence-assistant` | external packs | Not part of this public tree |
 

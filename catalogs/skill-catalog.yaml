@@ -369,8 +369,7 @@ skills:
     responsibility: WHAT
     role: generic_client_delivery
 
-# Not bundled in this public repo (referenced in workstation catalog but absent as skill dirs):
-# - nanlabs-tech-assistant (deferred; remains in internal-workstation only for now)
+# Not bundled in this public repo (referenced elsewhere but absent as skill dirs):
 # - jira-assistant (external pack)
 # - confluence-assistant (external pack)
 # - nanlabs-agents (agents tree, not skills)
