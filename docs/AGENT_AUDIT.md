@@ -19,7 +19,9 @@ Inventory for issue [#62](https://github.com/nanlabs/agent-toolkit/issues/62). U
 | nanlabs-docs-lookup | no | yes | |
 | nanlabs-reference-lookup | no | yes | |
 | nanlabs-client-workflow-bootstrap | no | yes | |
-| nanlabs-tech-assistant | no | yes | Persona public; procedure skill may stay workstation-only |
+| nanlabs-devcompanion-lead | no | yes | Queue / plan lead |
+| nanlabs-forge-pr | no | yes | Draft PR / MR |
+| nanlabs-data-validator | no | yes | Data / ETL contracts |
 
 ## Skills gate
 

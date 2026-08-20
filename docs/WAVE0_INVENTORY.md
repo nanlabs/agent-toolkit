@@ -36,7 +36,7 @@ Snapshot for H0 (baseline decisions). Living document; update when slices change
 | Class | Examples | Where it lives |
 | --- | --- | --- |
 | **Public** | Generic skills, agents, MCP stubs, setup/core plugins | `agent-toolkit` |
-| **Internal process** | ClickUp procedure corpus (`nanlabs-tech-assistant` skill) | Workstation only (for now) |
+| **Internal process** | ClickUp procedure corpus (historical `nanlabs-tech-assistant`) | **Removed** — not public; not bundled on workstation |
 | **Client / NDA** | Client packs, credentials, private URLs | L2 / L3 overlays — never public |
 | **Machine secret** | Tokens, PATs | L1 env — names only in contracts/MCP stubs |
 
