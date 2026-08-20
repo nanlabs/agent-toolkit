@@ -45,7 +45,7 @@ Official Claude Code, Cursor, and `npx skills` documentation already defines ins
 | One agent + one MCP stub | `agents/nanlabs-code-reviewer/`, `mcp/templates/github/` |
 | Full agents + MCP stubs | 16 agents under `agents/`; 6 MCP stubs under `mcp/templates/` ([#17](https://github.com/nanlabs/agent-toolkit/issues/17)) |
 
-Deferred intentionally: `nanlabs-tech-assistant` (workstation-only for now).
+Removed (2026-08-20): `nanlabs-tech-assistant` is not in this repo and is not bundled on workstation.
 
 ## Lifecycle matrix (documented)
 
