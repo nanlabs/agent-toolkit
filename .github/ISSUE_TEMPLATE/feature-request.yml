@@ -1,9 +1,13 @@
----
-name: 🚀 Feature Request
-description: Propose a skill, agent, plugin, pack, contract, or distribution capability
-title: "[FEATURE]: short issue description"
-labels: [feature-request, enhancement]
+name: Feature Request
+description: Request, idea, or new functionality
+title: '[Feature]: '
+type: Feature
+labels: [enhancement]
 body:
+  - type: markdown
+    attributes:
+      value: |
+        Maps to org issue type **Feature**. For structured delivery work prefer Epic / User Story / Task templates.
   - type: textarea
     id: description
     attributes:
@@ -11,7 +15,6 @@ body:
       description: A clear and concise description of the proposed feature.
     validations:
       required: true
-
   - type: textarea
     id: use-case
     attributes:
@@ -19,7 +22,6 @@ body:
       description: Why do you need this feature?
     validations:
       required: true
-
   - type: textarea
     id: solution
     attributes:
@@ -27,27 +29,23 @@ body:
       description: Suggest how to implement the change. Include sketches or references.
     validations:
       required: false
-
   - type: textarea
     id: acceptance-criteria
     attributes:
       label: Acceptance Criteria
-      description: How will maintainers know this is complete?
       value: |
         - [ ] Expected behavior implemented
-        - [ ] Tests or validation docs updated
-        - [ ] No secrets in plugin content
+        - [ ] Tests or validation updated
+        - [ ] Docs updated if needed
     validations:
       required: false
-
   - type: textarea
     id: other
     attributes:
       label: Other Information
-      description: Alternatives, related issues, migration-plan section links, etc.
+      description: Alternatives, related issues, links, etc.
     validations:
       required: false
-
   - type: checkboxes
     id: ack
     attributes:
@@ -57,11 +55,3 @@ body:
           required: false
         - label: This feature might incur a breaking change
           required: false
-
-  - type: checkboxes
-    id: public-safety
-    attributes:
-      label: Public issue checklist
-      options:
-        - label: This request does not include secrets or private project / client data
-          required: true

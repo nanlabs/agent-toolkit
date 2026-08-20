@@ -1,0 +1,87 @@
+name: Spike
+description: Time-boxed research or feasibility exploration
+title: '[Spike]: '
+type: Spike
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Aligns with NaNLABS `nanlabs-spike` skill. Capture findings, tradeoffs, and next steps.
+  - type: textarea
+    id: purpose
+    attributes:
+      label: Purpose
+      description: What this spike aims to explore, validate, or clarify.
+    validations:
+      required: true
+  - type: textarea
+    id: findings
+    attributes:
+      label: Findings and Conclusions
+      description: Include architecture fit notes if applicable.
+    validations:
+      required: false
+  - type: textarea
+    id: strategy
+    attributes:
+      label: High-Level Implementation Strategy
+      value: |
+        - Component/layer 1:
+        - Component/layer 2:
+    validations:
+      required: false
+  - type: textarea
+    id: security
+    attributes:
+      label: Security, Governance, or Compliance Considerations
+      value: |
+        - Access controls:
+        - Auditability:
+        - Sensitive data handling:
+    validations:
+      required: false
+  - type: textarea
+    id: start-small
+    attributes:
+      label: Start Small, Scale Fast
+      value: |
+        - First safe step:
+        - Deferred work:
+    validations:
+      required: false
+  - type: textarea
+    id: tradeoffs
+    attributes:
+      label: Research Notes / Tradeoffs
+      value: |
+        | Option | Pros | Cons | Notes |
+        | --- | --- | --- | --- |
+        | A | TBD | TBD | TBD |
+        | B | TBD | TBD | TBD |
+      render: markdown
+    validations:
+      required: false
+  - type: textarea
+    id: open-questions
+    attributes:
+      label: Open Questions
+      value: |
+        1. Question one? Status: Open / Answered
+        2. Question two? Status: Open / Answered
+    validations:
+      required: false
+  - type: textarea
+    id: references
+    attributes:
+      label: References
+    validations:
+      required: false
+  - type: checkboxes
+    id: review
+    attributes:
+      label: Review
+      options:
+        - label: Destination confirmed
+          required: false
+        - label: Human review required
+          required: false

@@ -1,0 +1,53 @@
+name: Task
+description: Technical or operational work that is not a user story
+title: '[Task]: '
+type: Task
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Aligns with NaNLABS `nanlabs-task` skill. Use User Story for user-facing requirements; Bug for defects.
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary
+      description: What needs to be done?
+    validations:
+      required: true
+  - type: textarea
+    id: technical-notes
+    attributes:
+      label: Technical Notes
+      value: |
+        - Technical note 1
+        - Technical note 2
+    validations:
+      required: false
+  - type: textarea
+    id: acceptance-criteria
+    attributes:
+      label: Acceptance Criteria
+      value: |
+        - [ ] Criterion 1
+        - [ ] Criterion 2
+    validations:
+      required: true
+  - type: textarea
+    id: additional
+    attributes:
+      label: Additional Information
+      value: |
+        - Estimated Effort:
+        - Assigned To:
+        - Due Date:
+    validations:
+      required: false
+  - type: checkboxes
+    id: review
+    attributes:
+      label: Review
+      options:
+        - label: Destination confirmed
+          required: false
+        - label: Human review required
+          required: false
