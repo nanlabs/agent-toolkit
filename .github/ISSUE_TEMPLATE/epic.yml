@@ -1,12 +1,12 @@
 name: Epic
 description: Large body of work grouping related stories, tasks, and bugs
-title: '[Epic]: '
+title: "[Epic]: "
 type: Epic
 body:
   - type: markdown
     attributes:
       value: |
-        Use this template for multi-issue initiatives. Aligns with NaNLABS `nanlabs-epic` skill.
+        Use for **single-repo delivery** grouping stories/tasks/bugs. For cross-repo program umbrellas use **Initiative**. Aligns with `nanlabs-epic` skill.
   - type: textarea
     id: summary
     attributes:
@@ -39,7 +39,7 @@ body:
     id: related-tasks
     attributes:
       label: Related Tasks
-      description: Child stories/tasks/bugs (links or planned titles).
+      description: Child stories/tasks/bugs (links or planned titles). Do not nest Epic under Epic — use Initiative as parent instead.
       value: |
         - Task 1: Description
         - Task 2: Description

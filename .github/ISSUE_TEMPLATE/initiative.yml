@@ -1,0 +1,69 @@
+name: Initiative
+description: Program-level umbrella spanning Epics across one or more repos
+title: "[Initiative]: "
+type: Initiative
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use for **cross-repo / program outcomes**. Child issues must be **Epics** (one per delivering repo or major delivery stream).
+
+        Rules:
+        - Never nest Epic under Epic — only Initiative → Epic → work items
+        - Prefer phase labels / User Stories under an Epic instead of phase-Epics
+  - type: textarea
+    id: outcome
+    attributes:
+      label: Outcome
+      description: What program outcome does this Initiative deliver?
+      placeholder: When done, the org can…
+    validations:
+      required: true
+  - type: textarea
+    id: repos-in-scope
+    attributes:
+      label: Repos in scope
+      description: Repositories that will own child Epics.
+      value: |
+        - nanlabs/
+        - nanlabs/
+    validations:
+      required: true
+  - type: textarea
+    id: success-metrics
+    attributes:
+      label: Success metrics
+      description: How we know the Initiative is done.
+      value: |
+        - Metric 1
+        - Metric 2
+    validations:
+      required: true
+  - type: textarea
+    id: child-epics
+    attributes:
+      label: Child Epics
+      description: Links or planned Epic titles (one delivery Epic per repo/stream).
+      value: |
+        - [ ] Epic (repo A): …
+        - [ ] Epic (repo B): …
+    validations:
+      required: false
+  - type: textarea
+    id: stakeholders
+    attributes:
+      label: Stakeholders
+      value: |
+        - Sponsor:
+        - Tech Lead:
+    validations:
+      required: false
+  - type: checkboxes
+    id: review
+    attributes:
+      label: Review
+      options:
+        - label: Confirmed this is a program umbrella (not a single-repo Epic)
+          required: false
+        - label: Child work will be Epics → Stories/Tasks (no Epic-under-Epic)
+          required: false
