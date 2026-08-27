@@ -1,22 +1,21 @@
 <div align="center">
 
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="static/hero-banner.svg">
-  <source media="(prefers-color-scheme: light)" srcset="static/hero-banner.svg">
-  <img alt="NaNLABS agent-toolkit" src="static/hero-banner.svg" width="880">
-</picture>
+<table>
+  <tr>
+    <td width="170" align="center" valign="middle">
+      <a href="https://github.com/nanlabs/.github/blob/main/profile/octonan.png">
+        <img alt="NaNLABS Octonan mascot" src="https://raw.githubusercontent.com/nanlabs/.github/main/profile/octonan.png" width="140">
+      </a>
+    </td>
+    <td align="left" valign="middle">
+      <h1>agent-toolkit</h1>
+      <p><strong>NaNLABS skills, agents, and plugins</strong><br>L1.5 distribution</p>
+      <p>Claude · Claude Code · Cursor IDE · Cursor Agent CLI · GitHub Copilot</p>
+    </td>
+  </tr>
+</table>
 
-<a href="https://github.com/nanlabs/.github/blob/main/profile/octonan.png">
-  <img alt="NaNLABS Octonan mascot" src="https://raw.githubusercontent.com/nanlabs/.github/main/profile/octonan.png" width="150">
-</a>
-
-# agent-toolkit
-
-## NaNLABS skills, agents, and plugins — L1.5 distribution
-
-<p><strong>Claude · Claude Code · Cursor IDE · Cursor Agent CLI · GitHub Copilot</strong> — production distribution surfaces</p>
-
-<sub>Brand asset: <a href="https://github.com/nanlabs/.github/blob/main/profile/octonan.png">NaNLABS Octonan</a>, from the public <code>nanlabs/.github</code> repository.</sub>
+<p><sub>Brand asset: <a href="https://github.com/nanlabs/.github/blob/main/profile/octonan.png">NaNLABS Octonan</a>, from the public <code>nanlabs/.github</code> repository.</sub></p>
 
 <p>
   <a href="docs/README.md">Docs</a> ·
@@ -29,25 +28,25 @@
 <br>
 
 <p>
-  <a href="https://github.com/nanlabs/agent-toolkit/actions/workflows/validate.yml"><img src="https://img.shields.io/github/actions/workflow/status/nanlabs/agent-toolkit/validate.yml?branch=main&style=for-the-badge&label=validate&labelColor=0d1117&color=58a6ff" alt="Validate"/></a>
-  <a href="https://github.com/nanlabs/agent-toolkit/actions/workflows/mega-linter.yml"><img src="https://img.shields.io/github/actions/workflow/status/nanlabs/agent-toolkit/mega-linter.yml?branch=main&style=for-the-badge&label=megalinter&labelColor=0d1117&color=f7c948" alt="MegaLinter"/></a>
-  <a href="https://agentskills.io/specification"><img src="https://img.shields.io/badge/Agent%20Skills-compatible-7ee787?style=for-the-badge&labelColor=0d1117" alt="Agent Skills"/></a>
-  <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-ff6b35?style=for-the-badge&labelColor=0d1117" alt="MIT"/></a>
+  <a href="https://github.com/nanlabs/agent-toolkit/actions/workflows/validate.yml"><img src="https://img.shields.io/github/actions/workflow/status/nanlabs/agent-toolkit/validate.yml?branch=main&label=validate&color=58a6ff" alt="Validate"/></a>
+  <a href="https://github.com/nanlabs/agent-toolkit/actions/workflows/mega-linter.yml"><img src="https://img.shields.io/github/actions/workflow/status/nanlabs/agent-toolkit/mega-linter.yml?branch=main&label=megalinter&color=f7c948" alt="MegaLinter"/></a>
+  <a href="https://agentskills.io/specification"><img src="https://img.shields.io/badge/Agent%20Skills-compatible-7ee787" alt="Agent Skills compatible"/></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-ff6b35" alt="MIT license"/></a>
 </p>
 
 <p>
-  <img src="https://img.shields.io/badge/skills-48-ff6b35?style=for-the-badge&labelColor=0d1117" alt="48 skills"/>
-  <img src="https://img.shields.io/badge/agents-18-58a6ff?style=for-the-badge&labelColor=0d1117" alt="18 agents"/>
-  <img src="https://img.shields.io/badge/plugins-2-f7c948?style=for-the-badge&labelColor=0d1117" alt="2 plugins"/>
-  <img src="https://img.shields.io/badge/MCP-docs--only-8b949e?style=for-the-badge&labelColor=0d1117" alt="MCP docs-only"/>
+  <img src="https://img.shields.io/badge/skills-48-ff6b35" alt="48 skills"/>
+  <img src="https://img.shields.io/badge/agents-18-58a6ff" alt="18 agents"/>
+  <img src="https://img.shields.io/badge/plugins-2-f7c948" alt="2 plugins"/>
+  <img src="https://img.shields.io/badge/MCP-docs--only-8b949e" alt="MCP docs-only"/>
 </p>
 
 <p>
-  <img src="https://img.shields.io/badge/Claude-equal-ff6b35?style=for-the-badge&labelColor=0d1117" alt="Claude"/>
-  <img src="https://img.shields.io/badge/Claude%20Code-equal-f7c948?style=for-the-badge&labelColor=0d1117" alt="Claude Code"/>
-  <img src="https://img.shields.io/badge/Cursor%20IDE-equal-58a6ff?style=for-the-badge&labelColor=0d1117" alt="Cursor IDE"/>
-  <img src="https://img.shields.io/badge/Cursor%20Agent%20CLI-equal-7ee787?style=for-the-badge&labelColor=0d1117" alt="Cursor Agent CLI"/>
-  <img src="https://img.shields.io/badge/GitHub%20Copilot-equal-8b949e?style=for-the-badge&labelColor=0d1117" alt="GitHub Copilot"/>
+  <img src="https://img.shields.io/badge/Claude-equal-ff6b35" alt="Claude"/>
+  <img src="https://img.shields.io/badge/Claude%20Code-equal-f7c948" alt="Claude Code"/>
+  <img src="https://img.shields.io/badge/Cursor%20IDE-equal-58a6ff" alt="Cursor IDE"/>
+  <img src="https://img.shields.io/badge/Cursor%20Agent%20CLI-equal-7ee787" alt="Cursor Agent CLI"/>
+  <img src="https://img.shields.io/badge/GitHub%20Copilot-equal-8b949e" alt="GitHub Copilot"/>
 </p>
 
 </div>
