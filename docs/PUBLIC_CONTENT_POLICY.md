@@ -1,15 +1,11 @@
-> [!IMPORTANT]
-> 📘 **ClickUp Companion**, last synced **2026-08-03**
+> [!NOTE]
+> 📘 **ClickUp Companion**, last synced **2026-08-27**
 >
-> This document is mirrored in ClickUp for cross-team discovery and execution logging:
->
-> - 📑 **[Practices](https://app.clickup.com/459857/docs/e12h-314297/e12h-155117)**
+> This document is mirrored in the NaNLABS internal ClickUp workspace for cross-team discovery and execution logging.
 >
 > **ClickUp** is the cross-team discovery + execution-log surface.
 > **This repo doc** is the co-located implementation reference (close to the code).
 > When you update one, sync the other and bump the **last synced** date above.
-
-<!-- Internal: ClickUp links require NaNLABS workspace access -->
 
 ---
 
@@ -21,6 +17,7 @@ This repository is **public**. Anything merged here is visible on the internet.
 
 - Generic skills, agents, plugins, and MCP **stubs** that help NaNLABS (and the community) work with AI clients.
 - Documentation that does not expose private process, client names under NDA, or internal URLs.
+- Generic ClickUp integration guidance is allowed, but direct internal workspace/document URLs are forbidden.
 - Env-var **names** and placeholder contracts (for example `${CLICKUP_API_TOKEN}`).
 - Open-source licenses and attributed third-party excerpts that are redistribution-safe.
 
@@ -34,9 +31,13 @@ This repository is **public**. Anything merged here is visible on the internet.
 
 ## Review gate
 
+`validate-public-content.py` uses an intentionally empty allowlist. Any reviewed
+exception must name the exact tracked path and forbidden pattern and include a
+documented reason in the validator source.
+
 Before merging content migrated from `internal-workstation`:
 
-1. Run `bash scripts/secret-scan.sh` and `python3 scripts/validate-skills.py`.
+1. Run `bash scripts/secret-scan.sh`, `python3 scripts/validate-skills.py`, and `python3 scripts/validate-public-content.py`.
 2. Confirm GitHub secret scanning / push protection remain enabled.
 3. Mark the skill/plugin as `public: true` in `catalogs/skill-catalog.yaml` only after scrub.
 4. If content must stay private, keep it on **workstation**, **L2 packs**, or a **private project marketplace** — not in this public repository.

@@ -1,8 +1,8 @@
 > [!NOTE]
-> 📘 **Repo-Only Doc** — last reviewed **2026-08-19**
+> 📘 **Repo-Only Doc** — last reviewed **2026-08-27**
 >
 > This document lives only in the repo. It is public-ready and self-contained.
-
+>
 > [!IMPORTANT]
 > **L1 ↔ L1.5** — This **public** repo is L1.5 (skills, agents, plugins). **L1 machine provisioning** (`chezmoi`, `nan-*` CLI, internal-only skills) is in **`nanlabs/internal-workstation`** — **private**; NaNLABS GitHub org access required. Workstation bridge: [`docs/ADOPTION.md`](ADOPTION.md#workstation-cutover-internal-workstation).
 
@@ -32,6 +32,7 @@ Consumer-facing and maintainer docs for `nanlabs/agent-toolkit` (**L1.5**). Mach
 | [FAQ.md](FAQ.md) | Common questions |
 | [LIFECYCLE.md](LIFECYCLE.md) | Update / pin / rollback |
 | [CURSOR_CLI.md](CURSOR_CLI.md) | Cursor Agent CLI certification matrix |
+| [AGENT_PLUGINS.md](AGENT_PLUGINS.md) | Portable versus native plugin surfaces |
 | [wiki/Home.md](wiki/Home.md) | Wiki landing (synced) |
 
 ## Operators / certification
@@ -39,7 +40,7 @@ Consumer-facing and maintainer docs for `nanlabs/agent-toolkit` (**L1.5**). Mach
 | Doc | Topic |
 | --- | --- |
 | [RELEASE.md](RELEASE.md) | Version SoT, tags, changelog |
-| [PILOT_CHECKLIST.md](PILOT_CHECKLIST.md) | Production pilots (#9) |
+| [PILOT_CHECKLIST.md](PILOT_CHECKLIST.md) | Production pilots (closed #9 checklist) |
 | [P0_FINDINGS.md](P0_FINDINGS.md) | Feasibility + lifecycle matrix |
 | [WAVE0_INVENTORY.md](WAVE0_INVENTORY.md) | H0 inventory + privacy |
 

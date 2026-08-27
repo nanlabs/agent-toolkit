@@ -111,7 +111,6 @@ Use `references/default-template.md` for the technical unit scorecard.
 
 ## References
 
-- `references/clickup-urls.md` - canonical technical indicator pages
 - `references/default-template.md` - default technical unit template
 - `references/example-frontend-assessment.md` — example scorecard for a frontend unit with evidence links and maturity scores
 - `nanlabs-project-assessment-evidence` - evidence map

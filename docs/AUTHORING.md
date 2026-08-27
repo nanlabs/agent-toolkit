@@ -1,15 +1,11 @@
-> [!IMPORTANT]
-> 📘 **ClickUp Companion**, last synced **2026-08-03**
+> [!NOTE]
+> 📘 **ClickUp Companion**, last synced **2026-08-27**
 >
-> This document is mirrored in ClickUp for cross-team discovery and execution logging:
->
-> - 📑 **[Skill Authoring Guide](https://app.clickup.com/459857/docs/e12h-314297/e12h-156957)**
+> This document is mirrored in the NaNLABS internal ClickUp workspace for cross-team discovery and execution logging.
 >
 > **ClickUp** is the cross-team discovery + execution-log surface.
 > **This repo doc** is the co-located implementation reference (close to the code).
 > When you update one, sync the other and bump the **last synced** date above.
-
-<!-- Internal: ClickUp links require NaNLABS workspace access -->
 
 ---
 
@@ -86,18 +82,25 @@ python3 scripts/validate-contracts.py
 ```bash
 bash scripts/validate-repo-structure.sh
 python3 scripts/validate-manifests.py
+python3 scripts/validate-agent-plugins.py
+python3 scripts/validate-public-content.py
 python3 scripts/validate-skills.py
 python3 scripts/validate-agents.py
 python3 scripts/validate-mcp.py
 python3 scripts/validate-contracts.py
 python3 scripts/gen-surfaces.py --check
+python3 scripts/gen-copilot-surfaces.py --check
 bash scripts/secret-scan.sh
 pre-commit run --all-files
 ```
 
 ## Adding a plugin
 
-1. Create `plugins/<plugin-id>/.claude-plugin/plugin.json` and `.cursor-plugin/plugin.json`.
-2. Register it in `.claude-plugin/marketplace.json` and `.cursor-plugin/marketplace.json`.
-3. Keep plugin `name` fields identical across marketplace entries and plugin manifests.
-4. Update catalogs when the plugin exposes new skills/agents.
+1. Register the plugin in `products/plugins.yaml` and create its
+   `plugins/<plugin-id>/` root.
+2. Create `plugins/<plugin-id>/.claude-plugin/plugin.json` and `.cursor-plugin/plugin.json` for native clients.
+3. Register it in `.claude-plugin/marketplace.json` and `.cursor-plugin/marketplace.json`.
+4. Keep plugin `name` fields identical across marketplace entries and plugin manifests.
+5. Update catalogs when the plugin exposes new skills/agents.
+6. Run `python3 scripts/gen-copilot-surfaces.py` to generate the portable
+   manifest and Copilot surfaces, then run the local validation commands below.

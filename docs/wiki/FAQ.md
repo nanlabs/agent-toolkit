@@ -18,13 +18,13 @@ MCP templates under `mcp/templates/` are **docs-only**. Plugins do not install M
 
 ## Where did `nanlabs-setup` go?
 
-Merged into **`nanlabs-core`** (v0.2+). Use `/nanlabs-core:setup`. The old plugin directory may remain with a deprecation notice but is not in the marketplace catalog.
+Merged into **`nanlabs-core`** (v0.3.0+). Use `/nanlabs-core:setup`. The old plugin directory may remain with a deprecation notice but is not in the marketplace catalog.
 
 ## Skills-only vs plugins?
 
 | | Skills-only | Plugins (`nanlabs-core`) |
 | --- | --- | --- |
-| Skills | Yes | Yes (bundled subset + full tree via skills CLI) |
+| Skills | Yes (48 via `npx skills`) | Yes (7 bundled skills) |
 | Agents | No | Core reviewer; full roster via `nanlabs-agents` |
 | Setup doctor | No | Yes (`/nanlabs-core:setup`) |
 | MCP | No | No (docs-only either way) |
@@ -35,4 +35,4 @@ Yes — prefer marketplace/skills install without copying private NaN paths. Fol
 
 ## Cursor Agent CLI vs Cursor IDE?
 
-Separate runtimes. CLI is equal **priority**; certification is tracked in [Cursor Agent CLI](Cursor-Agent-CLI). Prefer `--plugin-dir` until interactive `/plugins` install is fully evidenced.
+Separate runtimes. CLI is equal **priority**; certification is tracked in [Cursor Agent CLI](Cursor-Agent-CLI). Prefer `--plugin-dir` until interactive marketplace installation is evidenced for the pinned CLI build.

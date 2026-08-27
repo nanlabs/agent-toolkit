@@ -61,7 +61,7 @@ nan-doctor --clickup-dry-run
 nan-doctor --clickup
 ```
 
-One task per machine in [Workstation Inventory](https://app.clickup.com/459857/v/l/li/901714155258). Never paste API tokens into tickets, auth is via `clickup auth login` only.
+One task per machine in the Workstation Inventory (ClickUp list ID `901714155258`). Never paste API tokens into tickets, auth is via `clickup auth login` only.
 
 ## Profile and check groups
 

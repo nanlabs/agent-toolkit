@@ -18,10 +18,10 @@ Use this skill to keep the **ClickUp Presentations list** (`Learning / R&D` spac
 
 | Item | Value |
 |------|-------|
-| ClickUp list | [Presentations](https://app.clickup.com/459857/v/li/901702403034) (list ID `901702403034`) |
+| ClickUp list | Presentations (list ID `901702403034`) |
 | ClickUp space | Learning / R&D (space ID `90170461556`) |
 | Google Calendar | `ulises.cornejo@nan-labs.com`, Thursdays 12–13hs |
-| Official procedure | [NaNLABS Presentation Management](https://app.clickup.com/459857/docs/e12h-276597/e12h-127757) |
+| Official procedure | NaNLABS Presentation Management (ask internally for the current ClickUp link) |
 
 ## Custom Fields Reference
 

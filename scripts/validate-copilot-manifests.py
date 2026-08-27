@@ -3,7 +3,6 @@
 
 from __future__ import annotations
 
-import json
 import sys
 from pathlib import Path
 from typing import Any
@@ -32,25 +31,6 @@ def load_yaml(path: Path) -> dict[str, Any]:
     if not isinstance(data, dict):
         fail(f"{path.relative_to(ROOT)} must be a mapping")
     return data
-
-
-def load_json(path: Path) -> dict[str, Any]:
-    if not path.is_file():
-        fail(f"missing required file: {path.relative_to(ROOT)}")
-    try:
-        data = json.loads(path.read_text(encoding="utf-8"))
-    except json.JSONDecodeError as exc:
-        fail(f"invalid JSON in {path.relative_to(ROOT)}: {exc}")
-    if not isinstance(data, dict):
-        fail(f"{path.relative_to(ROOT)} must be a JSON object")
-    return data
-
-
-def expect_str(obj: dict[str, Any], key: str, label: str) -> str:
-    value = obj.get(key)
-    if not isinstance(value, str) or not value.strip():
-        fail(f"{label}.{key} must be a non-empty string")
-    return value
 
 
 def plugin_cfgs(products: dict[str, Any]) -> dict[str, dict[str, Any]]:
@@ -97,28 +77,6 @@ def validate_plugin_cli_surfaces(cfgs: dict[str, dict[str, Any]]) -> None:
         plugin_root = PLUGINS_ROOT / plugin_id
         if not plugin_root.is_dir():
             fail(f"missing plugin root: {plugin_root.relative_to(ROOT)}")
-
-        manifest = load_json(plugin_root / "plugin.json")
-        if expect_str(manifest, "name", f"{plugin_root.relative_to(ROOT)}/plugin.json") != plugin_id:
-            fail(f"{plugin_root.relative_to(ROOT)}/plugin.json.name must match {plugin_id}")
-        expect_str(manifest, "version", f"{plugin_root.relative_to(ROOT)}/plugin.json")
-        expect_str(manifest, "description", f"{plugin_root.relative_to(ROOT)}/plugin.json")
-
-        author = manifest.get("author")
-        if not isinstance(author, dict):
-            fail(f"{plugin_root.relative_to(ROOT)}/plugin.json.author must be an object")
-        expect_str(author, "name", f"{plugin_root.relative_to(ROOT)}/plugin.json.author")
-        expect_str(author, "url", f"{plugin_root.relative_to(ROOT)}/plugin.json.author")
-        if "skills" in manifest:
-            if manifest.get("skills") != "skills/":
-                fail(f"{plugin_root.relative_to(ROOT)}/plugin.json.skills must equal 'skills/'")
-            if not (plugin_root / "skills").is_dir():
-                fail(f"{plugin_root.relative_to(ROOT)}/plugin.json declares skills/ but directory is missing")
-        if "agents" in manifest:
-            if manifest.get("agents") != "agents/":
-                fail(f"{plugin_root.relative_to(ROOT)}/plugin.json.agents must equal 'agents/'")
-            if not (plugin_root / "agents").is_dir():
-                fail(f"{plugin_root.relative_to(ROOT)}/plugin.json declares agents/ but directory is missing")
 
         agent_names = resolved_plugin_agent_names(cfg)
         for name in agent_names:

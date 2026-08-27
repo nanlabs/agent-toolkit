@@ -18,7 +18,6 @@ Use for formal agreements or commitments made during meetings or project discuss
 ## References
 
 - `references/default-template.md`
-- `references/clickup-urls.md`
 - `references/example-api-versioning.md` — example agreement covering semantic versioning and deprecation policy
 - `nanlabs-meeting-minutes`
 - `nanlabs-decision-log`

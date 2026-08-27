@@ -30,7 +30,7 @@ Optional full agent roster:
 /plugin install nanlabs-agents@nanlabs-agent-toolkit
 ```
 
-> `nanlabs-setup` as a **separate** marketplace plugin is deprecated. Setup ships inside `nanlabs-core` (v0.2+).
+> `nanlabs-setup` as a **separate** marketplace plugin is deprecated. Setup ships inside `nanlabs-core` (v0.3.0+).
 
 ## Cursor IDE
 
@@ -44,12 +44,22 @@ See [Cursor plugins](https://cursor.com/docs/plugins).
 Same product priority as Cursor IDE. Do not assume IDE behavior.
 
 ```bash
-agent --version || cursor agent --version || true
+agent --version
 agent plugin marketplace add https://github.com/nanlabs/agent-toolkit
+```
+
+`marketplace add` registers the catalog; it does not install a plugin. Use
+`--plugin-dir` for the documented local load and smoke path:
+
+```bash
 agent --plugin-dir /path/to/agent-toolkit/plugins/nanlabs-core \
   -p --mode ask --output-format text \
   "List skills and slash commands from the loaded plugin"
 ```
+
+The repository snapshot does not certify a non-interactive CLI marketplace
+install. Use Cursor's interactive plugin dashboard or Team Marketplace for
+marketplace installation.
 
 Parity matrix: [Cursor Agent CLI](Cursor-Agent-CLI) · repo [`docs/CURSOR_CLI.md`](https://github.com/nanlabs/agent-toolkit/blob/main/docs/CURSOR_CLI.md).
 
@@ -59,19 +69,22 @@ Parity matrix: [Cursor Agent CLI](Cursor-Agent-CLI) · repo [`docs/CURSOR_CLI.md
 
 Two supported surfaces:
 
-1. **CLI plugin surface** — generated in:
+1. **CLI plugin surface** — Agent Plugins v1.0.0 portable manifests generated in:
    - `plugins/nanlabs-core/plugin.json`
    - `plugins/nanlabs-agents/plugin.json`
+   Copilot uses `agents/` and `skills/` as the default component paths in
+   additive Open Plugin Spec mode.
 
-   Install from this repository root (or a checkout):
+   Install directly from GitHub, or use the equivalent path in a checkout:
 
    ```bash
-   copilot plugin install ./plugins/nanlabs-core
+   copilot plugin install nanlabs/agent-toolkit:plugins/nanlabs-core
    # optional full agent roster:
-   copilot plugin install ./plugins/nanlabs-agents
+   copilot plugin install nanlabs/agent-toolkit:plugins/nanlabs-agents
    ```
 
-   When consuming from GitHub directly, use the repository path form supported by your Copilot CLI build (see upstream docs).
+   The `OWNER/REPO:PATH` form is documented in the
+   [Copilot CLI plugin reference](https://docs.github.com/en/copilot/reference/copilot-cli-reference/cli-plugin-reference).
 
 2. **Repository customization** — committed in:
    - `.github/copilot-instructions.md`
@@ -93,7 +106,9 @@ Honesty rules:
 npx skills add nanlabs/agent-toolkit -g
 ```
 
-Installs `skills/<group>/<skill>/` only. Does **not** install plugins, agents, MCP, or `/nanlabs-core:setup`.
+Uses the [`vercel-labs/skills`](https://github.com/vercel-labs/skills) CLI to
+install `skills/<group>/<skill>/` only. Does **not** install plugins, agents,
+MCP, or `/nanlabs-core:setup`.
 
 ## Verify
 

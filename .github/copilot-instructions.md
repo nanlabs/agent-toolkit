@@ -34,5 +34,6 @@ Portable repository customization surface for `nanlabs/agent-toolkit`.
 - `README.md`
 - `AGENTS.md`
 - `docs/ADOPTION.md`
+- `docs/AGENT_PLUGINS.md`
 - `docs/LIFECYCLE.md`
 - `products/plugins.yaml`

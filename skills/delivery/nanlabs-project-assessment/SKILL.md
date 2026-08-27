@@ -80,7 +80,6 @@ Typical outputs are:
 
 ## References
 
-- `references/clickup-urls.md` - canonical process and indicator links
 - `references/default-template.md` - default assessment report template
 - `references/example-platform-assessment.md` — example multi-unit assessment with evidence map and scores
 - `nanlabs-project-assessment-evidence` - evidence map and source-by-source intake

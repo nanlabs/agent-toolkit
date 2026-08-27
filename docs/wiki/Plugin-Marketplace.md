@@ -11,8 +11,8 @@ Version SoT: [`products/plugins.yaml`](https://github.com/nanlabs/agent-toolkit/
 
 | Plugin | Version (see SoT) | Contents |
 | --- | --- | --- |
-| `nanlabs-core` | 0.2.x | Setup/onboarding, orchestrator skills, `/nanlabs-core:setup`, `nanlabs-code-reviewer` |
-| `nanlabs-agents` | 0.1.x | Full agent roster |
+| `nanlabs-core` | 0.3.1 | Setup/onboarding, orchestrator skills, `/nanlabs-core:setup`, `nanlabs-code-reviewer` |
+| `nanlabs-agents` | 0.2.1 | Full agent roster |
 
 Deprecated: standalone `nanlabs-setup` (not listed in marketplace).
 
@@ -25,7 +25,21 @@ Deprecated: standalone `nanlabs-setup` (not listed in marketplace).
 
 ## Cursor
 
-Team Marketplace import or local `~/.cursor/plugins/local`. Cursor Agent CLI: see [Cursor Agent CLI](Cursor-Agent-CLI).
+Team Marketplace import or local `~/.cursor/plugins/local`. Cursor Agent CLI
+can register the catalog with `agent plugin marketplace add`, but the
+repository's evidence snapshot does not certify a non-interactive plugin
+install; use `--plugin-dir` for local CLI loading. See [Cursor Agent CLI](Cursor-Agent-CLI).
+
+## GitHub Copilot CLI
+
+Install a plugin directly from this repository (or use the same subdirectory
+path in a checkout):
+
+```bash
+copilot plugin install nanlabs/agent-toolkit:plugins/nanlabs-core
+# optional full agent roster:
+copilot plugin install nanlabs/agent-toolkit:plugins/nanlabs-agents
+```
 
 ## Building / validating
 

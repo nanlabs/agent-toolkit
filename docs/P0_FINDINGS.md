@@ -1,15 +1,13 @@
-> [!IMPORTANT]
-> 📘 **ClickUp Companion**, last synced **2026-08-03**
+> [!NOTE]
+> 📘 **ClickUp Companion**, last synced **2026-08-27**
 >
-> This document is mirrored in ClickUp for cross-team discovery and execution logging:
->
-> - 📑 **[AI Assets Migration Milestone](https://app.clickup.com/t/86e2m4d6k)**
+> This document is mirrored in the NaNLABS internal ClickUp workspace for cross-team discovery and execution logging.
 >
 > **ClickUp** is the cross-team discovery + execution-log surface.
 > **This repo doc** is the co-located implementation reference (close to the code).
 > When you update one, sync the other and bump the **last synced** date above.
-
-<!-- Internal: ClickUp links require NaNLABS workspace access -->
+> [!WARNING]
+> **HISTORICAL SNAPSHOT — 2026-07-29:** Evidence in this file is frozen at that date. Issues #8, #9, and #58 are now **CLOSED**, and v0.3.0 is published. For current status, use [RELEASE.md](RELEASE.md), [CURSOR_CLI.md](CURSOR_CLI.md), and the current GitHub issues.
 
 ---
 

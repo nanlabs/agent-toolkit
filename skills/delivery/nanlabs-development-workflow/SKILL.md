@@ -34,7 +34,6 @@ Backlog -> Ready TODO/TODO -> In Progress -> Blocked (if needed) -> Ready for Re
 
 ## References
 
-- `references/clickup-urls.md` - canonical Best Practices pages
 - `references/default-template.md` - default lifecycle and validation checklist
 - `references/example-default-delivery-flow.md` - example delivery flow with DoR/DoD checklist
 - `nanlabs-pr-fallback` - default PR/MR body when a repo lacks templates

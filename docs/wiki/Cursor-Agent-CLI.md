@@ -1,7 +1,7 @@
 # ⌨️ Cursor Agent CLI
 
 **Priority:** equal with Claude, Claude Code, and Cursor IDE.  
-**Status:** partially certified — see repo [`docs/CURSOR_CLI.md`](https://github.com/nanlabs/agent-toolkit/blob/main/docs/CURSOR_CLI.md) for the live matrix.
+**Status:** certified for documented load/add paths; see repo [`docs/CURSOR_CLI.md`](https://github.com/nanlabs/agent-toolkit/blob/main/docs/CURSOR_CLI.md) for the live matrix.
 
 ## Quick smoke
 
@@ -17,12 +17,12 @@ agent --plugin-dir /path/to/agent-toolkit/plugins/nanlabs-core \
 
 On CLI `2026.07.23-e383d2b` with `--plugin-dir`:
 
-- Skills from `nanlabs-core` (6)
+- Skills from `nanlabs-core` (7)
 - Commands `/nanlabs-core:setup`, `/nanlabs-core:core-help`
-- Agents from core + full roster with `nanlabs-agents`
+- Agents from core + full 18-agent roster with `nanlabs-agents`
 - Marketplace **add** works
 
-Still partial: interactive `/plugins` install UX; sandbox/`--force` exercise.
+Known limitation: this CLI build does not expose non-interactive marketplace `plugin install`; use `--plugin-dir` or IDE/Team installation. Sandbox/`--force` behavior is documented in the repo matrix.
 
 ## Rule
 

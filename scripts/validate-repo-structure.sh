@@ -58,17 +58,23 @@ required_paths=(
   "mcp/templates/clickup/config.template.json"
   "catalogs/agent-catalog.yaml"
   "catalogs/mcp-catalog.yaml"
+  "schemas/agent-plugins/README.md"
+  "schemas/agent-plugins/1.0.0/plugin.schema.json"
+  "schemas/agent-plugins/1.0.0/mcp.schema.json"
   "contracts/README.md"
   "contracts/requirements/nanlabs-setup.yaml"
   "contracts/requirements/nanlabs-core.yaml"
   "scripts/gen-copilot-surfaces.py"
   "scripts/validate-no-placeholders.py"
   "scripts/validate-copilot-manifests.py"
+  "scripts/validate-agent-plugins.py"
+  "scripts/validate-public-content.py"
   "scripts/doctor-contracts.py"
   "docs/WAVE0_INVENTORY.md"
   "docs/adrs/ADR-008-plugins-agent-skills-distribution.md"
   "docs/OVERLAY_GOVERNANCE.md"
   "docs/TELEMETRY_CONTRACT.md"
+  "docs/AGENT_PLUGINS.md"
 )
 
 missing=0

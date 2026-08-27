@@ -6,7 +6,7 @@
   },
   "metadata": {
     "description": "NaNLABS skills, agents, and plugins for Claude Code and Cursor IDE",
-    "version": "0.5.0",
+    "version": "0.5.1",
     "pluginRoot": "plugins"
   },
   "plugins": [

@@ -6,7 +6,8 @@ Lightweight release model for a **content marketplace** repository (no CLI packa
 
 | Artifact | Authoritative version |
 | --- | --- |
-| Each plugin | `plugins/<id>/.claude-plugin/plugin.json` → `version` (mirror in `.cursor-plugin/plugin.json`) |
+| Portable plugin manifest | `plugins/<id>/plugin.json` → Agent Plugins v1.0.0 metadata |
+| Each native plugin | `plugins/<id>/.claude-plugin/plugin.json` → `version` (mirror in `.cursor-plugin/plugin.json`) |
 | Marketplace metadata | `.claude-plugin/marketplace.json` / `.cursor-plugin/marketplace.json` → `metadata.version` (catalog revision; optional) |
 | Git | Annotated tag `vX.Y.Z` matching the **default recommended plugin** (`nanlabs-core`) when cutting a distribution release |
 
@@ -50,11 +51,11 @@ Before calling a tag “production”:
 
 - [x] Official Cursor marketplace schema validation (CI)
 - [x] `claude plugin validate --strict` on shipped plugins (CI)
-- [ ] Live smoke checklist ([LIFECYCLE.md](LIFECYCLE.md) / issue #8) — operator evidence in progress
+- [x] Live smoke checklist ([LIFECYCLE.md](LIFECYCLE.md)) — issue #8 is closed; operator evidence is retained in that issue
 - [x] No secrets in tree
 
-`v0.2.0` is the **first distribution tag** (packaging complete). Full “production certified” still tracks epic #19 + issues #8/#9/#58.
+`v0.3.1` is the current distribution release (`nanlabs-core` 0.3.1, `nanlabs-agents` 0.2.1, marketplace metadata 0.5.1). Issues #8, #9, and #58 are closed.
 
 ## Schema pins
 
-Cursor official schemas live under `schemas/cursor/` with an upstream commit note. Refresh intentionally; do not hand-edit schema JSON.
+Cursor official schemas live under `schemas/cursor/` with an upstream commit note. Agent Plugins schemas are pinned under `schemas/agent-plugins/`. Refresh intentionally; do not hand-edit schema JSON.

@@ -6,11 +6,17 @@
   <img alt="NaNLABS agent-toolkit" src="static/hero-banner.svg" width="880">
 </picture>
 
+<a href="https://github.com/nanlabs/.github/blob/main/profile/octonan.png">
+  <img alt="NaNLABS Octonan mascot" src="https://raw.githubusercontent.com/nanlabs/.github/main/profile/octonan.png" width="150">
+</a>
+
 # agent-toolkit
 
-### NaNLABS skills, agents, and plugins — L1.5 distribution
+## NaNLABS skills, agents, and plugins — L1.5 distribution
 
 <p><strong>Claude · Claude Code · Cursor IDE · Cursor Agent CLI · GitHub Copilot</strong> — production distribution surfaces</p>
+
+<sub>Brand asset: <a href="https://github.com/nanlabs/.github/blob/main/profile/octonan.png">NaNLABS Octonan</a>, from the public <code>nanlabs/.github</code> repository.</sub>
 
 <p>
   <a href="docs/README.md">Docs</a> ·
@@ -41,6 +47,7 @@
   <img src="https://img.shields.io/badge/Claude%20Code-equal-f7c948?style=for-the-badge&labelColor=0d1117" alt="Claude Code"/>
   <img src="https://img.shields.io/badge/Cursor%20IDE-equal-58a6ff?style=for-the-badge&labelColor=0d1117" alt="Cursor IDE"/>
   <img src="https://img.shields.io/badge/Cursor%20Agent%20CLI-equal-7ee787?style=for-the-badge&labelColor=0d1117" alt="Cursor Agent CLI"/>
+  <img src="https://img.shields.io/badge/GitHub%20Copilot-equal-8b949e?style=for-the-badge&labelColor=0d1117" alt="GitHub Copilot"/>
 </p>
 
 </div>
@@ -64,10 +71,10 @@ Smaller than multi-tool personal forks: **no** consumer CLI, loop runtime, or Op
 
 ## Highlights
 
-- **Equal-priority surfaces** — Claude, Claude Code, Cursor IDE, and Cursor Agent CLI
-- **GitHub Copilot support** — CLI plugin manifests and repository customization under `.github/`
+- **Equal-priority surfaces** — Claude, Claude Code, Cursor IDE, Cursor Agent CLI, and GitHub Copilot
+- **GitHub Copilot support** — Agent Plugins manifests and repository customization under `.github/`
 - **Recommended plugin** — `nanlabs-core` with bundled setup (`/nanlabs-core:setup`)
-- **Optional roster** — `nanlabs-agents` for all 16 personas
+- **Optional roster** — `nanlabs-agents` for all 18 personas
 - **Python typing** — `nanlabs-pyrightination` ships in `nanlabs-core`
 - **Honest MCP** — templates under `mcp/templates/` are docs-only
 - **CI quality bar** — manifests, skills-ref, Claude validate, MegaLinter, Danger
@@ -86,8 +93,8 @@ Then run **`/nanlabs-core:setup`**. Optional: `/plugin install nanlabs-agents@na
 <details>
 <summary><strong>Cursor IDE</strong></summary>
 
-- **Local:** load from `~/.cursor/plugins/local` ([Cursor plugins](https://cursor.com/docs/plugins))
-- **Team:** import this repository as a Team Marketplace
+- **Local:** copy or symlink `plugins/nanlabs-core` under `~/.cursor/plugins/local/`, then reload the window ([Cursor plugins](https://cursor.com/docs/plugins))
+- **Team:** an org admin imports this repository as a Team Marketplace
 
 Install **`nanlabs-core`** (recommended), optionally **`nanlabs-agents`**.
 
@@ -97,10 +104,12 @@ Install **`nanlabs-core`** (recommended), optionally **`nanlabs-agents`**.
 <summary><strong>Cursor Agent CLI</strong> — equal priority; see certification matrix</summary>
 
 ```bash
-agent --version || cursor agent --version || true
+agent --version
 agent plugin marketplace add https://github.com/nanlabs/agent-toolkit
-# Prefer --plugin-dir for local smoke — docs/CURSOR_CLI.md
 ```
+
+`marketplace add` registers the catalog; it does not install a plugin. For the
+documented local load path, use `--plugin-dir` (see [`docs/CURSOR_CLI.md`](docs/CURSOR_CLI.md)).
 
 </details>
 
@@ -111,14 +120,23 @@ agent plugin marketplace add https://github.com/nanlabs/agent-toolkit
 npx skills add nanlabs/agent-toolkit -g
 ```
 
-Does **not** install plugins, agents, MCP, or setup automation.
+Uses the [`vercel-labs/skills`](https://github.com/vercel-labs/skills) CLI to
+install the canonical Agent Skills tree. It does **not** install plugins,
+agents, MCP, or setup automation.
 
 </details>
 
 <details>
 <summary><strong>GitHub Copilot</strong></summary>
 
-- **CLI plugin surface:** generated root-level `plugin.json` in `plugins/nanlabs-core/` and `plugins/nanlabs-agents/`
+- **CLI plugin surface:** install a plugin from this repository or a checkout:
+
+  ```bash
+  copilot plugin install nanlabs/agent-toolkit:plugins/nanlabs-core
+  # optional full agent roster:
+  copilot plugin install nanlabs/agent-toolkit:plugins/nanlabs-agents
+  ```
+
 - **Repository customization surface:** `.github/copilot-instructions.md`, `.github/agents/`, `.github/skills/`
 - **Bundled typecheck skill:** `nanlabs-pyrightination` in `nanlabs-core`
 
@@ -131,9 +149,9 @@ Full paths: [`docs/ADOPTION.md`](docs/ADOPTION.md) · lifecycle: [`docs/LIFECYCL
 | Area | Notes |
 | --- | --- |
 | Skills | 48 under `skills/<group>/` — [catalog](catalogs/skill-catalog.yaml) · [index](docs/SKILLS.md) |
-| Core plugin | `nanlabs-core` v0.2 — harness + setup doctor + `/nanlabs-core:setup` |
-| Agents plugin | `nanlabs-agents` (optional) — 16 personas via `gen-surfaces` |
-| Copilot | CLI plugin manifests + repository customization surface under `.github/` |
+| Core plugin | `nanlabs-core` v0.3.1 — harness + setup doctor + `/nanlabs-core:setup` |
+| Agents plugin | `nanlabs-agents` v0.2.1 (optional) — 18 personas via `gen-surfaces` |
+| Copilot | Agent Plugins manifests + repository customization surface under `.github/` |
 | MCP | Docs-only under `mcp/templates/` |
 
 ## Repository layout
@@ -141,12 +159,12 @@ Full paths: [`docs/ADOPTION.md`](docs/ADOPTION.md) · lifecycle: [`docs/LIFECYCL
 | Path | Purpose |
 | --- | --- |
 | `skills/<group>/<skill>/` | Canonical [Agent Skills](https://agentskills.io/specification) tree |
-| `plugins/` | Claude / Cursor plugin bundles + Copilot CLI manifests |
+| `plugins/` | Claude / Cursor plugin bundles + portable Agent Plugins manifests |
 | `.claude-plugin/` · `.cursor-plugin/` | Marketplace catalogs |
 | `.github/copilot-instructions.md` · `.github/agents/` · `.github/skills/` | GitHub Copilot repository customization |
 | `agents/` | Canonical personas |
 | `products/plugins.yaml` | Plugin version + assembly SoT |
-| `mcp/templates/` | MCP stubs (no secrets) |
+| `mcp/templates/` | MCP configuration stubs (docs-only; no runtime server) |
 | `docs/` · `docs/wiki/` | Repo docs + GitHub Wiki source |
 | `static/` | README artwork |
 | `scripts/` | Validation + `gen-surfaces` |
@@ -168,11 +186,14 @@ Full paths: [`docs/ADOPTION.md`](docs/ADOPTION.md) · lifecycle: [`docs/LIFECYCL
 ```bash
 bash scripts/validate-repo-structure.sh
 python3 scripts/validate-manifests.py
+python3 scripts/validate-agent-plugins.py
+python3 scripts/validate-public-content.py
 python3 scripts/validate-skills.py
 python3 scripts/validate-agents.py
 python3 scripts/validate-mcp.py
 python3 scripts/validate-contracts.py
 python3 scripts/gen-surfaces.py --check
+python3 scripts/gen-copilot-surfaces.py --check
 bash scripts/secret-scan.sh
 pre-commit run --all-files
 ```

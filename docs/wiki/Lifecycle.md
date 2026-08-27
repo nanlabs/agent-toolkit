@@ -17,7 +17,15 @@ Refresh / Auto Refresh on Team Marketplace; for local installs re-copy or re-sym
 
 ## Cursor Agent CLI
 
-Re-run marketplace update / `--plugin-dir` against a tagged commit. Record CLI version in the certification matrix.
+`agent plugin marketplace add` registers a catalog; it does not install a
+plugin. Use `--plugin-dir` against a tagged checkout for local CLI loading and
+record the CLI version in the certification matrix.
+
+## GitHub Copilot CLI
+
+Use `copilot plugin update <name>` and `copilot plugin uninstall <name>`.
+Reinstall directly from GitHub with
+`copilot plugin install nanlabs/agent-toolkit:plugins/nanlabs-core`.
 
 ## Skills-only
 

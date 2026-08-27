@@ -1,5 +1,5 @@
 > [!NOTE]
-> 📘 **Repo-Only Doc** — last reviewed **2026-08-05**
+> 📘 **Repo-Only Doc** — last reviewed **2026-08-27**
 >
 > This document lives only in the repo. It is public-ready and self-contained.
 
@@ -17,14 +17,14 @@ NaNLABS production distribution for AI coding assistants — **smaller** than mu
 | Claude Code | Marketplace plugins + skills |
 | Cursor IDE | Plugins (local / team marketplace) |
 | Cursor Agent CLI | Equal priority; certify in [CURSOR_CLI.md](CURSOR_CLI.md) |
-| GitHub Copilot | CLI plugin manifests + repository customization |
+| GitHub Copilot | Agent Plugins portable manifests + repository customization |
 
 ## In scope
 
 - Agent Skills (`skills/<group>/`)
 - Agent personas (`agents/`) + flat plugin assembly (`gen-surfaces`)
 - Plugins: `nanlabs-core`, `nanlabs-agents`
-- GitHub Copilot CLI manifests and repo-scoped `.github/` customization
+- Agent Plugins v1.0.0 portable manifests and repo-scoped `.github/` customization for GitHub Copilot
 - `nanlabs-pyrightination` as a report-only typing skill in `nanlabs-core`
 - MCP **docs-only** templates
 - CI validators, contracts, catalogs, release policy docs
