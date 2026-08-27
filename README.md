@@ -1,23 +1,21 @@
-<picture>
-  <source media="(prefers-color-scheme: dark)" alt="NaNLABS Octonan mascot" align="left" width="175px" srcset="https://github.com/nanlabs/.github/blob/main/profile/octonan.png?raw=true"/>
-  <img alt="NaNLABS Octonan mascot" align="left" width="175px" src="https://github.com/nanlabs/.github/blob/main/profile/octonan.png?raw=true"/>
-</picture>
+<div align="center">
 
 # agent-toolkit
 
-## NaNLABS skills, agents, and plugins — L1.5 distribution
+**NaNLABS skills, agents, and plugins — L1.5 distribution**
 
-<p><strong>Claude · Claude Code · Cursor IDE · Cursor Agent CLI · GitHub Copilot</strong><br>Production distribution surfaces</p>
+</div>
 
-<p><sub>Brand asset: <a href="https://github.com/nanlabs/.github/blob/main/profile/octonan.png">NaNLABS Octonan</a>, from the public <code>nanlabs/.github</code> repository.</sub></p>
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://github.com/nanlabs/.github/blob/main/profile/octonan.png?raw=true"/>
+  <img alt="NaNLABS Octonan mascot" align="left" width="150" src="https://github.com/nanlabs/.github/blob/main/profile/octonan.png?raw=true"/>
+</picture>
 
-<p>
-  <a href="docs/README.md">Docs</a> ·
-  <a href="docs/wiki/Home.md">Wiki source</a> ·
-  <a href="docs/ADOPTION.md">Adoption</a> ·
-  <a href="docs/SCOPE.md">Scope</a> ·
-  <a href="CONTRIBUTING.md">Contributing</a>
-</p>
+**Production surfaces:** Claude · Claude Code · Cursor IDE · Cursor Agent CLI · GitHub Copilot
+
+<sub>Brand asset: [NaNLABS Octonan](https://github.com/nanlabs/.github/blob/main/profile/octonan.png), from the public `nanlabs/.github` repository.</sub>
+
+[Docs](docs/README.md) · [Wiki source](docs/wiki/Home.md) · [Adoption](docs/ADOPTION.md) · [Scope](docs/SCOPE.md) · [Contributing](CONTRIBUTING.md)
 
 <br clear="left">
 
