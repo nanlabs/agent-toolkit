@@ -1,19 +1,13 @@
-<div align="center">
+<picture>
+  <source media="(prefers-color-scheme: dark)" alt="NaNLABS Octonan mascot" align="left" width="175px" srcset="https://github.com/nanlabs/.github/blob/main/profile/octonan.png?raw=true"/>
+  <img alt="NaNLABS Octonan mascot" align="left" width="175px" src="https://github.com/nanlabs/.github/blob/main/profile/octonan.png?raw=true"/>
+</picture>
 
-<table>
-  <tr>
-    <td width="170" align="center" valign="middle">
-      <a href="https://github.com/nanlabs/.github/blob/main/profile/octonan.png">
-        <img alt="NaNLABS Octonan mascot" src="https://raw.githubusercontent.com/nanlabs/.github/main/profile/octonan.png" width="140">
-      </a>
-    </td>
-    <td align="left" valign="middle">
-      <h1>agent-toolkit</h1>
-      <p><strong>NaNLABS skills, agents, and plugins</strong><br>L1.5 distribution</p>
-      <p>Claude · Claude Code · Cursor IDE · Cursor Agent CLI · GitHub Copilot</p>
-    </td>
-  </tr>
-</table>
+# agent-toolkit
+
+## NaNLABS skills, agents, and plugins — L1.5 distribution
+
+<p><strong>Claude · Claude Code · Cursor IDE · Cursor Agent CLI · GitHub Copilot</strong><br>Production distribution surfaces</p>
 
 <p><sub>Brand asset: <a href="https://github.com/nanlabs/.github/blob/main/profile/octonan.png">NaNLABS Octonan</a>, from the public <code>nanlabs/.github</code> repository.</sub></p>
 
@@ -25,7 +19,9 @@
   <a href="CONTRIBUTING.md">Contributing</a>
 </p>
 
-<br>
+<br clear="left">
+
+<div align="center">
 
 <p>
   <a href="https://github.com/nanlabs/agent-toolkit/actions/workflows/validate.yml"><img src="https://img.shields.io/github/actions/workflow/status/nanlabs/agent-toolkit/validate.yml?branch=main&label=validate&color=58a6ff" alt="Validate"/></a>
