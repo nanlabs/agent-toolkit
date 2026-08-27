@@ -12,7 +12,7 @@
 
 # agent-toolkit
 
-### NaNLABS skills, agents, and plugins — L1.5 distribution
+## NaNLABS skills, agents, and plugins — L1.5 distribution
 
 <p><strong>Claude · Claude Code · Cursor IDE · Cursor Agent CLI · GitHub Copilot</strong> — production distribution surfaces</p>
 
@@ -149,8 +149,8 @@ Full paths: [`docs/ADOPTION.md`](docs/ADOPTION.md) · lifecycle: [`docs/LIFECYCL
 | Area | Notes |
 | --- | --- |
 | Skills | 48 under `skills/<group>/` — [catalog](catalogs/skill-catalog.yaml) · [index](docs/SKILLS.md) |
-| Core plugin | `nanlabs-core` v0.3.0 — harness + setup doctor + `/nanlabs-core:setup` |
-| Agents plugin | `nanlabs-agents` v0.2.0 (optional) — 18 personas via `gen-surfaces` |
+| Core plugin | `nanlabs-core` v0.3.1 — harness + setup doctor + `/nanlabs-core:setup` |
+| Agents plugin | `nanlabs-agents` v0.2.1 (optional) — 18 personas via `gen-surfaces` |
 | Copilot | Agent Plugins manifests + repository customization surface under `.github/` |
 | MCP | Docs-only under `mcp/templates/` |
 

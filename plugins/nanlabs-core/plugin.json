@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "nanlabs-core",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Recommended install: setup/onboarding, orchestrator, companion, handshake, Pyright report-only typing, PR fallback, knowledge sync, and code-reviewer agent",
   "author": {
     "name": "NaNLABS",

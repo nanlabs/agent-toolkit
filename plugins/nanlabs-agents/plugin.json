@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "nanlabs-agents",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Optional full set of NaNLABS agent / subagent personas (reviewers, architect, planner, e2e, \u2026)",
   "author": {
     "name": "NaNLABS",

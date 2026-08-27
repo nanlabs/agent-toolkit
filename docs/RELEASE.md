@@ -51,10 +51,10 @@ Before calling a tag “production”:
 
 - [x] Official Cursor marketplace schema validation (CI)
 - [x] `claude plugin validate --strict` on shipped plugins (CI)
-- [x] Live smoke checklist ([LIFECYCLE.md](LIFECYCLE.md) / issue #8) — issue closed; evidence retained in the operator docs
+- [x] Live smoke checklist ([LIFECYCLE.md](LIFECYCLE.md)) — issue #8 is closed; operator evidence is retained in that issue
 - [x] No secrets in tree
 
-`v0.3.0` is the current distribution release (`nanlabs-core` 0.3.0, `nanlabs-agents` 0.2.0, marketplace metadata 0.5.0). Issues #8, #9, and #58 are closed; maintainers may cut a PATCH after this documentation hardening pass.
+`v0.3.1` is the current distribution release (`nanlabs-core` 0.3.1, `nanlabs-agents` 0.2.1, marketplace metadata 0.5.1). Issues #8, #9, and #58 are closed.
 
 ## Schema pins
 

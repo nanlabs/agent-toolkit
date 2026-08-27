@@ -1,5 +1,5 @@
 > Also see [RELEASE.md](RELEASE.md) for tags, changelog, and rollback policy.
-
+>
 > [!NOTE]
 > 📘 **ClickUp Companion**, last synced **2026-08-27**
 >
@@ -85,7 +85,6 @@ Use the GitHub repository subdirectory specification to reinstall a plugin:
 Templates under `mcp/templates/` use `${ENV_VAR}` placeholders only. No MCP
 server is shipped by this repository, and plugin installation does not register
 one. Never commit tokens; see each template README for separate client setup.
-
 
 ## Local preflight
 

@@ -39,8 +39,8 @@ spec:
   requires:
     agentToolkit: ">=0.3.0"   # marketplace / repo tag guidance
     plugins:
-      - nanlabs-core@0.3.0
-      - nanlabs-agents@0.2.0
+      - nanlabs-core@0.3.1
+      - nanlabs-agents@0.2.1
   composes:
     packs:
       - engineering-workflow

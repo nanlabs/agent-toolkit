@@ -36,7 +36,7 @@ Optional: install `nanlabs-agents` for the full agent roster.
 
 | Area | Notes |
 | --- | --- |
-| Skills | `nanlabs-assistant`, `nanlabs-dev-companion`, `nanlabs-output-handshake`, `nanlabs-pr-fallback`, `nanlabs-workspace-knowledge-sync`, `nanlabs-setup` |
+| Skills | `nanlabs-assistant`, `nanlabs-dev-companion`, `nanlabs-output-handshake`, `nanlabs-pr-fallback`, `nanlabs-workspace-knowledge-sync`, `nanlabs-setup`, `nanlabs-pyrightination` |
 | Agent | `nanlabs-code-reviewer` |
 | Setup | `scripts/doctor-contracts.py`, `contracts/requirements/nanlabs-core.yaml`, `commands/setup.md` |
 

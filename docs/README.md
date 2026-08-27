@@ -2,7 +2,7 @@
 > 📘 **Repo-Only Doc** — last reviewed **2026-08-27**
 >
 > This document lives only in the repo. It is public-ready and self-contained.
-
+>
 > [!IMPORTANT]
 > **L1 ↔ L1.5** — This **public** repo is L1.5 (skills, agents, plugins). **L1 machine provisioning** (`chezmoi`, `nan-*` CLI, internal-only skills) is in **`nanlabs/internal-workstation`** — **private**; NaNLABS GitHub org access required. Workstation bridge: [`docs/ADOPTION.md`](ADOPTION.md#workstation-cutover-internal-workstation).
 
