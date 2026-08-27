@@ -6,11 +6,17 @@
   <img alt="NaNLABS agent-toolkit" src="static/hero-banner.svg" width="880">
 </picture>
 
+<a href="https://github.com/nanlabs/.github/blob/main/profile/octonan.png">
+  <img alt="NaNLABS Octonan mascot" src="https://raw.githubusercontent.com/nanlabs/.github/main/profile/octonan.png" width="150">
+</a>
+
 # agent-toolkit
 
 ### NaNLABS skills, agents, and plugins — L1.5 distribution
 
 <p><strong>Claude · Claude Code · Cursor IDE · Cursor Agent CLI · GitHub Copilot</strong> — production distribution surfaces</p>
+
+<sub>Brand asset: <a href="https://github.com/nanlabs/.github/blob/main/profile/octonan.png">NaNLABS Octonan</a>, from the public <code>nanlabs/.github</code> repository.</sub>
 
 <p>
   <a href="docs/README.md">Docs</a> ·
@@ -87,8 +93,8 @@ Then run **`/nanlabs-core:setup`**. Optional: `/plugin install nanlabs-agents@na
 <details>
 <summary><strong>Cursor IDE</strong></summary>
 
-- **Local:** load from `~/.cursor/plugins/local` ([Cursor plugins](https://cursor.com/docs/plugins))
-- **Team:** import this repository as a Team Marketplace
+- **Local:** copy or symlink `plugins/nanlabs-core` under `~/.cursor/plugins/local/`, then reload the window ([Cursor plugins](https://cursor.com/docs/plugins))
+- **Team:** an org admin imports this repository as a Team Marketplace
 
 Install **`nanlabs-core`** (recommended), optionally **`nanlabs-agents`**.
 
@@ -98,10 +104,12 @@ Install **`nanlabs-core`** (recommended), optionally **`nanlabs-agents`**.
 <summary><strong>Cursor Agent CLI</strong> — equal priority; see certification matrix</summary>
 
 ```bash
-agent --version || cursor agent --version || true
+agent --version
 agent plugin marketplace add https://github.com/nanlabs/agent-toolkit
-# Prefer --plugin-dir for local smoke — docs/CURSOR_CLI.md
 ```
+
+`marketplace add` registers the catalog; it does not install a plugin. For the
+documented local load path, use `--plugin-dir` (see [`docs/CURSOR_CLI.md`](docs/CURSOR_CLI.md)).
 
 </details>
 
@@ -112,14 +120,23 @@ agent plugin marketplace add https://github.com/nanlabs/agent-toolkit
 npx skills add nanlabs/agent-toolkit -g
 ```
 
-Does **not** install plugins, agents, MCP, or setup automation.
+Uses the [`vercel-labs/skills`](https://github.com/vercel-labs/skills) CLI to
+install the canonical Agent Skills tree. It does **not** install plugins,
+agents, MCP, or setup automation.
 
 </details>
 
 <details>
 <summary><strong>GitHub Copilot</strong></summary>
 
-- **CLI plugin surface:** generated root-level `plugin.json` in `plugins/nanlabs-core/` and `plugins/nanlabs-agents/`
+- **CLI plugin surface:** install a plugin from this repository or a checkout:
+
+  ```bash
+  copilot plugin install nanlabs/agent-toolkit:plugins/nanlabs-core
+  # optional full agent roster:
+  copilot plugin install nanlabs/agent-toolkit:plugins/nanlabs-agents
+  ```
+
 - **Repository customization surface:** `.github/copilot-instructions.md`, `.github/agents/`, `.github/skills/`
 - **Bundled typecheck skill:** `nanlabs-pyrightination` in `nanlabs-core`
 
@@ -147,7 +164,7 @@ Full paths: [`docs/ADOPTION.md`](docs/ADOPTION.md) · lifecycle: [`docs/LIFECYCL
 | `.github/copilot-instructions.md` · `.github/agents/` · `.github/skills/` | GitHub Copilot repository customization |
 | `agents/` | Canonical personas |
 | `products/plugins.yaml` | Plugin version + assembly SoT |
-| `mcp/templates/` | MCP stubs (no secrets) |
+| `mcp/templates/` | MCP configuration stubs (docs-only; no runtime server) |
 | `docs/` · `docs/wiki/` | Repo docs + GitHub Wiki source |
 | `static/` | README artwork |
 | `scripts/` | Validation + `gen-surfaces` |

@@ -1,5 +1,5 @@
 > [!NOTE]
-> 📘 **Repo-Only Doc** — last reviewed **2026-08-05**
+> 📘 **Repo-Only Doc** — last reviewed **2026-08-27**
 >
 > This document lives only in the repo. It is public-ready and self-contained.
 > If a ClickUp mirror is created later, update this banner with the link.
@@ -11,7 +11,7 @@
 Canonical skills live under `skills/<group>/<skill>/` and follow the
 [Agent Skills](https://agentskills.io/specification) format (`SKILL.md`).
 
-Install: `npx skills add nanlabs/agent-toolkit -g`  
+Install: [`npx skills`](https://github.com/vercel-labs/skills) — `npx skills add nanlabs/agent-toolkit -g`
 Catalog: [`catalogs/skill-catalog.yaml`](../catalogs/skill-catalog.yaml)  
 Authoring: [`AUTHORING.md`](AUTHORING.md)
 

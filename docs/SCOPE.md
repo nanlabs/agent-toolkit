@@ -1,5 +1,5 @@
 > [!NOTE]
-> 📘 **Repo-Only Doc** — last reviewed **2026-08-05**
+> 📘 **Repo-Only Doc** — last reviewed **2026-08-27**
 >
 > This document lives only in the repo. It is public-ready and self-contained.
 

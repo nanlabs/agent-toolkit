@@ -55,18 +55,36 @@ Install **`nanlabs-core`** (recommended); optionally **`nanlabs-agents`**. Setup
 
 ## Cursor Agent CLI
 
-Equal priority with Cursor IDE. Record binary/version, load plugins per CLI support, and update [`CURSOR_CLI.md`](CURSOR_CLI.md).
+Equal priority with Cursor IDE. Record binary/version and use the supported
+local load path for reproducible CLI smoke tests:
 
 ```bash
-agent --version || cursor agent --version || true
-bash scripts/smoke/preflight.sh
+agent --version
+agent plugin marketplace add https://github.com/nanlabs/agent-toolkit
+agent --plugin-dir /path/to/agent-toolkit/plugins/nanlabs-core \
+  -p --mode ask --output-format text \
+  "List skills and slash commands from the loaded plugin"
 ```
 
-The CLI matrix is retained in [`CURSOR_CLI.md`](CURSOR_CLI.md); issues #8 and #58 are closed.
+`marketplace add` registers the catalog; it does not install a plugin. The
+repository's evidence snapshot does not certify a non-interactive CLI install.
+See the current matrix in [`CURSOR_CLI.md`](CURSOR_CLI.md).
 
-## MCP stubs
+## GitHub Copilot CLI
 
-Templates under `mcp/templates/` use `${ENV_VAR}` placeholders only. Never commit tokens. See each template README.
+```bash
+copilot plugin update nanlabs-core
+copilot plugin uninstall nanlabs-core
+```
+
+Use the GitHub repository subdirectory specification to reinstall a plugin:
+`copilot plugin install nanlabs/agent-toolkit:plugins/nanlabs-core`.
+
+## MCP templates
+
+Templates under `mcp/templates/` use `${ENV_VAR}` placeholders only. No MCP
+server is shipped by this repository, and plugin installation does not register
+one. Never commit tokens; see each template README for separate client setup.
 
 
 ## Local preflight

@@ -57,6 +57,12 @@ Skills only — no plugins, agents, MCP, or setup automation.
 
 ### GitHub Copilot
 
+Install a plugin directly from this repository:
+
+```bash
+copilot plugin install nanlabs/agent-toolkit:plugins/nanlabs-core
+```
+
 CLI plugin manifests are generated in `plugins/nanlabs-core/` and `plugins/nanlabs-agents/`.
 Repository customization lives under `.github/copilot-instructions.md`, `.github/agents/`, and `.github/skills/`.
 

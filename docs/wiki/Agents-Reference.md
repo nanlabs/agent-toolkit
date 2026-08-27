@@ -31,3 +31,5 @@ Catalog: [`catalogs/agent-catalog.yaml`](https://github.com/nanlabs/agent-toolki
 
 - **Core plugin:** includes `nanlabs-code-reviewer` only.
 - **Agents plugin:** `/plugin install nanlabs-agents@nanlabs-agent-toolkit` (or Cursor equivalent) for the full set.
+- **GitHub Copilot CLI:** `copilot plugin install nanlabs/agent-toolkit:plugins/nanlabs-agents`.
+- **Skills-only:** `npx skills` installs skills, not agents.

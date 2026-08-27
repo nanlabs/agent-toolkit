@@ -32,6 +32,7 @@ Consumer-facing and maintainer docs for `nanlabs/agent-toolkit` (**L1.5**). Mach
 | [FAQ.md](FAQ.md) | Common questions |
 | [LIFECYCLE.md](LIFECYCLE.md) | Update / pin / rollback |
 | [CURSOR_CLI.md](CURSOR_CLI.md) | Cursor Agent CLI certification matrix |
+| [AGENT_PLUGINS.md](AGENT_PLUGINS.md) | Portable versus native plugin surfaces |
 | [wiki/Home.md](wiki/Home.md) | Wiki landing (synced) |
 
 ## Operators / certification

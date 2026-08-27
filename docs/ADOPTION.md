@@ -1,5 +1,5 @@
 > [!NOTE]
-> 📘 **Repo-Only Doc** — last reviewed **2026-08-05**
+> 📘 **Repo-Only Doc** — last reviewed **2026-08-27**
 >
 > This document lives only in the repo. It is public-ready and self-contained.
 > If a ClickUp mirror is created later, update this banner with the link.
@@ -49,10 +49,25 @@ See [Cursor plugins](https://cursor.com/docs/plugins).
 
 Same product priority as Cursor IDE. Do not assume IDE plugin components load identically in the CLI.
 
-1. Pin and record the CLI binary/version (`agent` / `cursor agent`).
-2. Load plugins the same way your org supports (`--plugin-dir`, settings `enabled_plugins`, or marketplace).
-3. Fill the component matrix in [`CURSOR_CLI.md`](CURSOR_CLI.md) with pass/fail/partial evidence.
-4. Treat unknown cells as **uncertified**, not deprioritized.
+```bash
+agent --version
+agent plugin marketplace add https://github.com/nanlabs/agent-toolkit
+```
+
+`marketplace add` registers the repository catalog; it does not install
+`nanlabs-core`. The recorded CLI evidence uses the local load path:
+
+```bash
+agent --plugin-dir /path/to/agent-toolkit/plugins/nanlabs-core \
+  -p --mode ask --output-format text \
+  "List skills and slash commands from the loaded plugin"
+```
+
+The evidence snapshot did not expose a non-interactive plugin-install command.
+Use `--plugin-dir` for CLI smoke tests, or install interactively through
+Cursor's plugin dashboard / Cursor IDE Team Marketplace. Fill the
+component matrix in [`CURSOR_CLI.md`](CURSOR_CLI.md) with pass/fail/partial
+evidence; unknown cells are **uncertified**, not deprioritized.
 
 ## GitHub Copilot
 
@@ -63,6 +78,15 @@ Two supported surfaces:
    - `plugins/nanlabs-agents/`
    Copilot consumes these manifests additively in Open Plugin Spec mode, with
    `agents/` and `skills/` as the default component paths.
+
+   Install directly from GitHub, or use the equivalent path in a checkout:
+
+   ```bash
+   copilot plugin install nanlabs/agent-toolkit:plugins/nanlabs-core
+   # optional full agent roster:
+   copilot plugin install nanlabs/agent-toolkit:plugins/nanlabs-agents
+   ```
+
 2. **Repository customization** — committed under:
    - `.github/copilot-instructions.md`
    - `.github/agents/*.agent.md`
@@ -83,7 +107,9 @@ Current honesty rules:
 npx skills add nanlabs/agent-toolkit -g
 ```
 
-Installs the grouped tree `skills/<group>/<skill>/` (48 skills, including `nanlabs-setup` and `nanlabs-pyrightination`).
+This uses the [`vercel-labs/skills`](https://github.com/vercel-labs/skills)
+CLI to install the grouped tree `skills/<group>/<skill>/` (48 skills,
+including `nanlabs-setup` and `nanlabs-pyrightination`).
 
 Skills-only installs do **not** bundle the contract doctor; use baseline spot-checks in the skill or clone the repo for full validation.
 
@@ -92,7 +118,7 @@ Skill index: [`SKILLS.md`](SKILLS.md) · machine catalog: [`../catalogs/skill-ca
 ## Agents and MCP
 
 - Agents: [`../agents/README.md`](../agents/README.md) (18 personas; plugin `nanlabs-agents`)
-- MCP stubs: [`../mcp/templates/README.md`](../mcp/templates/README.md) (docs-only; env placeholders only)
+- MCP stubs: [`../mcp/templates/README.md`](../mcp/templates/README.md) (docs-only; no MCP server is shipped)
 - Dependency contracts: [`../contracts/README.md`](../contracts/README.md)
 - Future outcome packs are tracked in GitHub issues `#24`, `#25`, and `#28` rather than placeholder directories in this repo
 - Overlay governance: [`OVERLAY_GOVERNANCE.md`](OVERLAY_GOVERNANCE.md)

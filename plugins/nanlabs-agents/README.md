@@ -1,6 +1,7 @@
 # nanlabs-agents
 
-Claude Code / Cursor plugin bundling all public agent personas from `agents/`.
+Claude Code / Cursor / GitHub Copilot CLI plugin bundling all public agent
+personas from `agents/`.
 
 Canonical bodies live under repository-root `agents/`. Core skills live under `skills/core/`. This plugin tree is
 **generated** by:
@@ -19,6 +20,20 @@ ship under `resources/agents/<name>/`.
 ```text
 /plugin marketplace add nanlabs/agent-toolkit
 /plugin install nanlabs-agents@nanlabs-agent-toolkit
+```
+
+For Cursor IDE, copy or symlink this directory under
+`~/.cursor/plugins/local/`, or install it from the Team Marketplace. For the
+Cursor Agent CLI, load the checkout with:
+
+```bash
+agent --plugin-dir /path/to/agent-toolkit/plugins/nanlabs-agents
+```
+
+For GitHub Copilot CLI, install directly from GitHub:
+
+```bash
+copilot plugin install nanlabs/agent-toolkit:plugins/nanlabs-agents
 ```
 
 ## Contents

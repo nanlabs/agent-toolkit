@@ -1,6 +1,7 @@
 # nanlabs-core
 
-Baseline NaNLABS harness plugin for Claude Code / Cursor — **single recommended install**.
+Baseline NaNLABS harness plugin for Claude Code, Cursor, and GitHub Copilot CLI
+— **single recommended install**.
 
 Includes bundled setup: contract doctor, `nanlabs-setup` skill, and `/nanlabs-core:setup` command.
 
@@ -12,6 +13,20 @@ Includes bundled setup: contract doctor, `nanlabs-setup` skill, and `/nanlabs-co
 ```
 
 Then run setup via **`/nanlabs-core:setup`** or ask Claude to run the `nanlabs-setup` skill.
+
+For Cursor IDE, copy or symlink this directory under
+`~/.cursor/plugins/local/`, or install it from the Team Marketplace. For the
+Cursor Agent CLI, load the checkout with:
+
+```bash
+agent --plugin-dir /path/to/agent-toolkit/plugins/nanlabs-core
+```
+
+For GitHub Copilot CLI, install directly from GitHub:
+
+```bash
+copilot plugin install nanlabs/agent-toolkit:plugins/nanlabs-core
+```
 
 Optional: install `nanlabs-agents` for the full agent roster.
 

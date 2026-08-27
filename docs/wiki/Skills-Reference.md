@@ -8,7 +8,7 @@ Machine catalog: [`catalogs/skill-catalog.yaml`](https://github.com/nanlabs/agen
 
 | Group | Path | Approx. count |
 | --- | --- | --- |
-| core | `skills/core/` | 6 |
+| core | `skills/core/` | 7 |
 | delivery | `skills/delivery/` | 19 |
 | design | `skills/design/` | 6 |
 | forge | `skills/forge/` | 4 |

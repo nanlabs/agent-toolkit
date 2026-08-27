@@ -9,6 +9,11 @@ skills and MCP configuration:
 - [Agent Plugins v1.0.0 plugin schema](https://agent-plugins.org/schemas/1.0.0/plugin.schema.json)
 - [Agent Plugins v1.0.0 MCP schema](https://agent-plugins.org/schemas/1.0.0/mcp.schema.json)
 
+Install flows are maintained in [`ADOPTION.md`](ADOPTION.md). In particular,
+the Cursor Agent CLI `--plugin-dir` path and GitHub Copilot CLI's
+`OWNER/REPO:PATH` plugin syntax are distinct from Claude Code marketplace
+installation.
+
 ## Manifest and component model
 
 The `nanlabs-core` and `nanlabs-agents` plugins each have a closed, root-level

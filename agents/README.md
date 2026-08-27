@@ -32,7 +32,8 @@ Each agent directory contains `AGENT.md` (YAML frontmatter: `name` + `descriptio
 ## Install notes
 
 - **Claude Code / Cursor plugins:** install `nanlabs-agents` for the full set, or use `nanlabs-core` (includes `nanlabs-code-reviewer` only). Plugin layout is flat `plugins/<id>/agents/<name>.md` with references under `plugins/<id>/resources/agents/<name>/`.
-- **Direct copy:** point your client at `agents/<name>/AGENT.md` per tooling docs.
+- **GitHub Copilot CLI:** install `nanlabs/agent-toolkit:plugins/nanlabs-agents` with `copilot plugin install`.
+- **Skills-only:** `npx skills` does not install these agents.
 - Plugin agent files and core skills are generated — edit `agents/` and `skills/core/`, then run `python3 scripts/gen-surfaces.py`.
 
 ## Provenance
