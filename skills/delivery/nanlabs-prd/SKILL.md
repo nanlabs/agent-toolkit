@@ -6,7 +6,7 @@ description: >-
 
 # PRD, Product Requirements (WHAT)
 
-**Canonical source:** the PRD template in ClickUp (not duplicated here). See `references/clickup-urls.md`.
+**Canonical source:** the PRD template in ClickUp (not duplicated here). Ask internally for the current link; use the local template below as the distributable source.
 
 ## Default guardrails (before any final content)
 
@@ -35,7 +35,6 @@ description: >-
 ## References
 
 - `nanlabs-output-handshake`, destination and review (required first for final output)
-- `references/clickup-urls.md`, stable Doc URLs
 - `references/default-template.md`, local PRD template structure
 - `references/example-unified-api.md`, PRD example for an API strategy initiative
 - `nanlabs-workflow-generic-project`, delivery phases and ticket traceability

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate Claude + Cursor marketplace/plugin manifests for agent-toolkit.
+"""Validate Claude, Cursor, and Agent Plugins manifests for agent-toolkit.
 
 Cursor manifests are checked against pinned official schemas under
 schemas/cursor/ (from cursor/plugins). Claude checks remain structural.
@@ -133,6 +133,10 @@ def validate_cursor_official_schemas() -> None:
 def main() -> None:
     validate_claude_marketplace()
     validate_cursor_official_schemas()
+    subprocess.run(
+        [sys.executable, str(ROOT / "scripts" / "validate-agent-plugins.py")],
+        check=True,
+    )
     subprocess.run(
         [sys.executable, str(ROOT / "scripts" / "validate-copilot-manifests.py")],
         check=True,

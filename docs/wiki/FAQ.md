@@ -18,7 +18,7 @@ MCP templates under `mcp/templates/` are **docs-only**. Plugins do not install M
 
 ## Where did `nanlabs-setup` go?
 
-Merged into **`nanlabs-core`** (v0.2+). Use `/nanlabs-core:setup`. The old plugin directory may remain with a deprecation notice but is not in the marketplace catalog.
+Merged into **`nanlabs-core`** (v0.3.0+). Use `/nanlabs-core:setup`. The old plugin directory may remain with a deprecation notice but is not in the marketplace catalog.
 
 ## Skills-only vs plugins?
 

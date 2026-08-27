@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+- Public-content hardening removes direct internal ClickUp workspace/document URLs and adds a deterministic public-content validator.
+- Documentation is current with v0.3.0 distribution metadata, 48 skills, 18 agents, and closed #8/#9/#58 status.
+
 ## [0.3.0] — 2026-08-20
 
 Sole-source distribution: skills, agents, plugins, and MCP templates live **here**. `internal-workstation` provisions machines only.

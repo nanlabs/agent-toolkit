@@ -1,15 +1,11 @@
-> [!IMPORTANT]
-> 📘 **ClickUp Companion**, last synced **2026-08-03**
+> [!NOTE]
+> 📘 **ClickUp Companion**, last synced **2026-08-27**
 >
-> This document is mirrored in ClickUp for cross-team discovery and execution logging:
->
-> - 📑 **[Workspace Conventions](https://app.clickup.com/459857/docs/e12h-314297/e12h-156937)**
+> This document is mirrored in the NaNLABS internal ClickUp workspace for cross-team discovery and execution logging.
 >
 > **ClickUp** is the cross-team discovery + execution-log surface.
 > **This repo doc** is the co-located implementation reference (close to the code).
 > When you update one, sync the other and bump the **last synced** date above.
-
-<!-- Internal: ClickUp links require NaNLABS workspace access -->
 
 ---
 
@@ -43,8 +39,8 @@ spec:
   requires:
     agentToolkit: ">=0.3.0"   # marketplace / repo tag guidance
     plugins:
-      - nanlabs-core@0.1.0
-      - nanlabs-agents@0.1.0
+      - nanlabs-core@0.3.0
+      - nanlabs-agents@0.2.0
   composes:
     packs:
       - engineering-workflow

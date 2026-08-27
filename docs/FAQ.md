@@ -9,11 +9,11 @@
 
 ## Is this only for Claude Code?
 
-No. Equal priority: **Claude · Claude Code · Cursor IDE · Cursor Agent CLI**.
+No. Equal priority: **Claude · Claude Code · Cursor IDE · Cursor Agent CLI · GitHub Copilot**.
 
 ## How does this differ from `ulises-jeremias/agent-toolkit`?
 
-That project is a broad multi-tool toolkit (CLI, loops, many targets). **This repo** is NaNLABS L1.5 production distribution: Claude + Cursor focus, skills-only secondary packaging path, no consumer CLI/loops compiler.
+That project is a broad multi-tool toolkit (CLI, loops, many targets). **This repo** is NaNLABS L1.5 production distribution for Claude, Claude Code, Cursor IDE, Cursor Agent CLI, and GitHub Copilot, with a skills-only packaging path and no consumer CLI/loops compiler.
 
 ## Do I need `internal-workstation`?
 
@@ -25,7 +25,7 @@ Not to install public plugins/skills. Yes for NaNLABS machine provisioning and s
 
 ## Where is `nanlabs-setup`?
 
-Merged into **`nanlabs-core`** (v0.2+). Use `/nanlabs-core:setup`.
+Merged into **`nanlabs-core`** (v0.3.0+). Use `/nanlabs-core:setup`.
 
 ## Skills-only vs plugins?
 

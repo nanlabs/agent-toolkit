@@ -1,5 +1,5 @@
 > [!NOTE]
-> 📘 **Repo-Only Doc** — last reviewed **2026-08-19**
+> 📘 **Repo-Only Doc** — last reviewed **2026-08-27**
 >
 > This document lives only in the repo. It is public-ready and self-contained.
 
@@ -39,7 +39,7 @@ Consumer-facing and maintainer docs for `nanlabs/agent-toolkit` (**L1.5**). Mach
 | Doc | Topic |
 | --- | --- |
 | [RELEASE.md](RELEASE.md) | Version SoT, tags, changelog |
-| [PILOT_CHECKLIST.md](PILOT_CHECKLIST.md) | Production pilots (#9) |
+| [PILOT_CHECKLIST.md](PILOT_CHECKLIST.md) | Production pilots (closed #9 checklist) |
 | [P0_FINDINGS.md](P0_FINDINGS.md) | Feasibility + lifecycle matrix |
 | [WAVE0_INVENTORY.md](WAVE0_INVENTORY.md) | H0 inventory + privacy |
 

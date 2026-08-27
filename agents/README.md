@@ -1,6 +1,6 @@
 # Agents
 
-Canonical agent / subagent personas for Claude Code, Cursor, OpenCode, and compatible clients.
+Canonical agent / subagent personas for Claude Code, Cursor, and compatible clients.
 
 Machine-readable index: [`catalogs/agent-catalog.yaml`](../catalogs/agent-catalog.yaml).
 
@@ -27,7 +27,7 @@ Machine-readable index: [`catalogs/agent-catalog.yaml`](../catalogs/agent-catalo
 | `nanlabs-forge-pr` | Draft PR / MR from current branch |
 | `nanlabs-data-validator` | Data / ETL contract checks |
 
-Each agent directory contains `AGENT.md` (YAML frontmatter: `name` + `description` only), optional `references/`, and `NOTICE.txt`. Target-specific fields (Claude `tools`, OpenCode/Cursor UI metadata) live in [`catalogs/agent-target-map.yaml`](../catalogs/agent-target-map.yaml) and are applied by `scripts/gen-surfaces.py` when building plugin agent files.
+Each agent directory contains `AGENT.md` (YAML frontmatter: `name` + `description` only), optional `references/`, and `NOTICE.txt`. Target-specific fields (Claude tools and Cursor UI metadata) live in [`catalogs/agent-target-map.yaml`](../catalogs/agent-target-map.yaml) and are applied by `scripts/gen-surfaces.py` when building plugin agent files.
 
 ## Install notes
 

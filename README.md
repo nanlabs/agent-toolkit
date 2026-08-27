@@ -41,6 +41,7 @@
   <img src="https://img.shields.io/badge/Claude%20Code-equal-f7c948?style=for-the-badge&labelColor=0d1117" alt="Claude Code"/>
   <img src="https://img.shields.io/badge/Cursor%20IDE-equal-58a6ff?style=for-the-badge&labelColor=0d1117" alt="Cursor IDE"/>
   <img src="https://img.shields.io/badge/Cursor%20Agent%20CLI-equal-7ee787?style=for-the-badge&labelColor=0d1117" alt="Cursor Agent CLI"/>
+  <img src="https://img.shields.io/badge/GitHub%20Copilot-equal-8b949e?style=for-the-badge&labelColor=0d1117" alt="GitHub Copilot"/>
 </p>
 
 </div>
@@ -64,10 +65,10 @@ Smaller than multi-tool personal forks: **no** consumer CLI, loop runtime, or Op
 
 ## Highlights
 
-- **Equal-priority surfaces** — Claude, Claude Code, Cursor IDE, and Cursor Agent CLI
-- **GitHub Copilot support** — CLI plugin manifests and repository customization under `.github/`
+- **Equal-priority surfaces** — Claude, Claude Code, Cursor IDE, Cursor Agent CLI, and GitHub Copilot
+- **GitHub Copilot support** — Agent Plugins manifests and repository customization under `.github/`
 - **Recommended plugin** — `nanlabs-core` with bundled setup (`/nanlabs-core:setup`)
-- **Optional roster** — `nanlabs-agents` for all 16 personas
+- **Optional roster** — `nanlabs-agents` for all 18 personas
 - **Python typing** — `nanlabs-pyrightination` ships in `nanlabs-core`
 - **Honest MCP** — templates under `mcp/templates/` are docs-only
 - **CI quality bar** — manifests, skills-ref, Claude validate, MegaLinter, Danger
@@ -131,9 +132,9 @@ Full paths: [`docs/ADOPTION.md`](docs/ADOPTION.md) · lifecycle: [`docs/LIFECYCL
 | Area | Notes |
 | --- | --- |
 | Skills | 48 under `skills/<group>/` — [catalog](catalogs/skill-catalog.yaml) · [index](docs/SKILLS.md) |
-| Core plugin | `nanlabs-core` v0.2 — harness + setup doctor + `/nanlabs-core:setup` |
-| Agents plugin | `nanlabs-agents` (optional) — 16 personas via `gen-surfaces` |
-| Copilot | CLI plugin manifests + repository customization surface under `.github/` |
+| Core plugin | `nanlabs-core` v0.3.0 — harness + setup doctor + `/nanlabs-core:setup` |
+| Agents plugin | `nanlabs-agents` v0.2.0 (optional) — 18 personas via `gen-surfaces` |
+| Copilot | Agent Plugins manifests + repository customization surface under `.github/` |
 | MCP | Docs-only under `mcp/templates/` |
 
 ## Repository layout
@@ -141,7 +142,7 @@ Full paths: [`docs/ADOPTION.md`](docs/ADOPTION.md) · lifecycle: [`docs/LIFECYCL
 | Path | Purpose |
 | --- | --- |
 | `skills/<group>/<skill>/` | Canonical [Agent Skills](https://agentskills.io/specification) tree |
-| `plugins/` | Claude / Cursor plugin bundles + Copilot CLI manifests |
+| `plugins/` | Claude / Cursor plugin bundles + portable Agent Plugins manifests |
 | `.claude-plugin/` · `.cursor-plugin/` | Marketplace catalogs |
 | `.github/copilot-instructions.md` · `.github/agents/` · `.github/skills/` | GitHub Copilot repository customization |
 | `agents/` | Canonical personas |
@@ -168,11 +169,14 @@ Full paths: [`docs/ADOPTION.md`](docs/ADOPTION.md) · lifecycle: [`docs/LIFECYCL
 ```bash
 bash scripts/validate-repo-structure.sh
 python3 scripts/validate-manifests.py
+python3 scripts/validate-agent-plugins.py
+python3 scripts/validate-public-content.py
 python3 scripts/validate-skills.py
 python3 scripts/validate-agents.py
 python3 scripts/validate-mcp.py
 python3 scripts/validate-contracts.py
 python3 scripts/gen-surfaces.py --check
+python3 scripts/gen-copilot-surfaces.py --check
 bash scripts/secret-scan.sh
 pre-commit run --all-files
 ```

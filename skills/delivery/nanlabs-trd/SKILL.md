@@ -6,7 +6,7 @@ description: >-
 
 # TRD, Technical Requirements (WHAT)
 
-**Canonical source:** the TRD template in ClickUp. See `references/clickup-urls.md`.
+**Canonical source:** the TRD template in ClickUp. Ask internally for the current link; use the local template below as the distributable source.
 
 ## Default guardrails (before any final content)
 
@@ -35,7 +35,6 @@ description: >-
 ## References
 
 - `nanlabs-output-handshake`, destination and review
-- `references/clickup-urls.md`, TRD and related pages
 - `references/default-template.md`, local TRD template structure
 - `references/example-api-migration.md`, TRD example for an API migration with phases and testing strategy
 - `nanlabs-prd`, when work starts from product requirements

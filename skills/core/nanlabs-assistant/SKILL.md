@@ -97,7 +97,9 @@ Invoke subagents with **@mention** in your message (not the skill tool):
 `@nanlabs-planner`, `@nanlabs-code-reviewer`, `@nanlabs-security-reviewer`, `@nanlabs-tdd-guide`,
 `@nanlabs-architect`, `@nanlabs-build-error-resolver`, `@nanlabs-database-reviewer`,
 `@nanlabs-performance-optimizer`, `@nanlabs-typescript-reviewer`, `@nanlabs-e2e-runner`,
-`@nanlabs-refactor-cleaner`, `@nanlabs-reference-lookup`
+`@nanlabs-refactor-cleaner`, `@nanlabs-reference-lookup`, `@nanlabs-client-workflow-bootstrap`,
+`@nanlabs-docs-lookup`, `@nanlabs-devcompanion-lead`, `@nanlabs-forge-pr`,
+`@nanlabs-data-validator`
 
 Deployed under Claude/Cursor plugins from `nanlabs/agent-toolkit` or Agent Skills install paths.
 

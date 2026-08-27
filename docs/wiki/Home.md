@@ -21,10 +21,10 @@ Machine provisioning stays in [`internal-workstation`](https://github.com/nanlab
 | Component | Count | Notes |
 | --- | --- | --- |
 | Skills | 48 | Agent Skills tree under `skills/<group>/` |
-| Agents | 16 | Canonical personas; flat plugin surfaces via `gen-surfaces` |
+| Agents | 18 | Canonical personas; flat plugin surfaces via `gen-surfaces` |
 | Plugins | 2 marketplace | `nanlabs-core` (recommended) · `nanlabs-agents` (optional) |
 | MCP templates | 6 | **Docs-only** stubs — not installed by plugins |
-| Copilot | 2 surfaces | CLI plugin manifests + repository customization |
+| Copilot | 2 surfaces | Agent Plugins manifests + repository customization |
 
 ---
 

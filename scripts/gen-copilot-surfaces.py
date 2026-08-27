@@ -1,12 +1,16 @@
 #!/usr/bin/env python3
-"""Deterministically assemble GitHub Copilot surfaces from canonical sources.
+"""Deterministically assemble portable Agent Plugins and Copilot surfaces.
 
 Generated artifacts:
-  plugins/<id>/plugin.json                  # Copilot CLI plugin manifest
+  plugins/<id>/plugin.json                  # Agent Plugins v1.0.0 portable manifest
   plugins/<id>/agents/<name>.agent.md       # Copilot CLI agent files
   .github/copilot-instructions.md           # Repository customization surface
   .github/agents/<name>.agent.md            # Repository agent files
   .github/skills/<name>/SKILL.md            # Repository skills
+
+The root plugin manifests are consumed by GitHub Copilot in additive Open
+Plugin Spec mode, where agents/ and skills/ are the default component paths.
+This is a focused surface generator, not a multi-target compiler.
 
 Usage:
   python3 scripts/gen-copilot-surfaces.py
@@ -41,6 +45,7 @@ OWNER_EMAIL = "technology@nanlabs.com"
 REPOSITORY_URL = "https://github.com/nanlabs/agent-toolkit"
 LICENSE = "MIT"
 REPO_SURFACE_PRODUCT = "nanlabs-core"
+AGENT_PLUGINS_SCHEMA = "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json"
 
 
 def fail(msg: str) -> None:
@@ -213,8 +218,9 @@ def trees_equal(a: Path, b: Path) -> bool:
     return True
 
 
-def build_plugin_manifest(plugin_id: str, cfg: dict[str, Any]) -> dict[str, Any]:
-    manifest: dict[str, Any] = {
+def build_portable_manifest(plugin_id: str, cfg: dict[str, Any]) -> dict[str, Any]:
+    return {
+        "$schema": AGENT_PLUGINS_SCHEMA,
         "name": plugin_id,
         "version": cfg.get("version"),
         "description": cfg.get("description"),
@@ -222,14 +228,10 @@ def build_plugin_manifest(plugin_id: str, cfg: dict[str, Any]) -> dict[str, Any]
             "name": OWNER_NAME,
             "url": REPOSITORY_URL,
         },
+        "homepage": REPOSITORY_URL,
         "repository": REPOSITORY_URL,
         "license": LICENSE,
     }
-    if cfg.get("skills"):
-        manifest["skills"] = "skills/"
-    if cfg.get("agents"):
-        manifest["agents"] = "agents/"
-    return manifest
 
 
 def sync_plugin_cli_surfaces(products: dict[str, Any], *, check: bool) -> None:
@@ -242,7 +244,7 @@ def sync_plugin_cli_surfaces(products: dict[str, Any], *, check: bool) -> None:
             fail(f"missing plugin root: {plugin_root.relative_to(ROOT)}")
 
         manifest_path = plugin_root / "plugin.json"
-        manifest_text = json.dumps(build_plugin_manifest(plugin_id, cfg), indent=2) + "\n"
+        manifest_text = json.dumps(build_portable_manifest(plugin_id, cfg), indent=2) + "\n"
         if check:
             ensure_file_equals(manifest_path, manifest_text)
         else:
@@ -337,6 +339,7 @@ def build_repo_instructions(products: dict[str, Any]) -> str:
             "- `README.md`",
             "- `AGENTS.md`",
             "- `docs/ADOPTION.md`",
+            "- `docs/AGENT_PLUGINS.md`",
             "- `docs/LIFECYCLE.md`",
             "- `products/plugins.yaml`",
         ]

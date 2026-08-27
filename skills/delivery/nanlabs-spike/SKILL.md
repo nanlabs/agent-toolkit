@@ -18,7 +18,6 @@ Use for technical exploration, feasibility validation, architecture assessment, 
 ## References
 
 - `references/default-template.md`
-- `references/clickup-urls.md`
 - `references/example-graphql-federation.md` — example spike with findings, risks, and implementation recommendation
 - `nanlabs-trd`
 - `nanlabs-adr`

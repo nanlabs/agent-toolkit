@@ -6,7 +6,7 @@ description: >-
 
 # ADR, Architecture Decisions (WHAT)
 
-**Canonical source:** the ADR workflow page in ClickUp. See `references/clickup-urls.md`.
+**Canonical source:** the ADR workflow page in ClickUp. Ask internally for the current link; use the local template below as the distributable source.
 
 ## Default guardrails (before any final content)
 
@@ -39,7 +39,6 @@ Use **`nanlabs-decision-log`** for lightweight product/project/operational decis
 
 - `nanlabs-architect` agent — trade-off analysis and `references/PATTERNS.md` (SOLID, Clean Architecture) before drafting options
 - `nanlabs-output-handshake`, destination and review
-- `references/clickup-urls.md`, ADR workflow and related process links
 - `references/default-template.md`, local ADR template structure
 - `references/example-001-graphql-adoption.md` — example ADR for a GraphQL migration decision
 - `nanlabs-trd`, where technical design references decisions

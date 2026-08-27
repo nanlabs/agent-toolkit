@@ -26,6 +26,5 @@ Epic -> Story/Task/Bug -> Subtasks. Not every methodology uses every level; foll
 
 ## References
 
-- `references/clickup-urls.md`
 - `references/default-template.md`
 - `references/example-routing-dashboard.md` — example showing how the router delegates to the right skill

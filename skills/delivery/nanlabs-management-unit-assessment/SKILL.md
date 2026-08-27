@@ -96,7 +96,6 @@ Use `references/default-template.md` for the management unit scorecard.
 
 ## References
 
-- `references/clickup-urls.md` - canonical management indicator pages
 - `references/default-template.md` - default management unit template
 - `references/example-team-assessment.md` — example assessment for an engineering management unit
 - `nanlabs-project-assessment-evidence` - evidence map

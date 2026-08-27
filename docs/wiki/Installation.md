@@ -30,7 +30,7 @@ Optional full agent roster:
 /plugin install nanlabs-agents@nanlabs-agent-toolkit
 ```
 
-> `nanlabs-setup` as a **separate** marketplace plugin is deprecated. Setup ships inside `nanlabs-core` (v0.2+).
+> `nanlabs-setup` as a **separate** marketplace plugin is deprecated. Setup ships inside `nanlabs-core` (v0.3.0+).
 
 ## Cursor IDE
 
@@ -59,9 +59,11 @@ Parity matrix: [Cursor Agent CLI](Cursor-Agent-CLI) · repo [`docs/CURSOR_CLI.md
 
 Two supported surfaces:
 
-1. **CLI plugin surface** — generated in:
+1. **CLI plugin surface** — Agent Plugins v1.0.0 portable manifests generated in:
    - `plugins/nanlabs-core/plugin.json`
    - `plugins/nanlabs-agents/plugin.json`
+   Copilot uses `agents/` and `skills/` as the default component paths in
+   additive Open Plugin Spec mode.
 
    Install from this repository root (or a checkout):
 

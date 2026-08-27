@@ -21,6 +21,5 @@ Route to **`nanlabs-incident`** instead if the problem impacts production or liv
 ## References
 
 - `references/default-template.md`
-- `references/clickup-urls.md`
 - `references/example-search-filter-bug.md` — example bug with environment details, diagnostics, and severity assessment
 - `nanlabs-incident`, when to escalate to incident

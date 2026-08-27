@@ -1,17 +1,13 @@
 > Also see [RELEASE.md](RELEASE.md) for tags, changelog, and rollback policy.
 
-> [!IMPORTANT]
-> 📘 **ClickUp Companion**, last synced **2026-08-03**
+> [!NOTE]
+> 📘 **ClickUp Companion**, last synced **2026-08-27**
 >
-> This document is mirrored in ClickUp for cross-team discovery and execution logging:
->
-> - 📑 **[NaN Workbench (Practices)](https://app.clickup.com/459857/docs/e12h-314297/e12h-156797)**
+> This document is mirrored in the NaNLABS internal ClickUp workspace for cross-team discovery and execution logging.
 >
 > **ClickUp** is the cross-team discovery + execution-log surface.
 > **This repo doc** is the co-located implementation reference (close to the code).
 > When you update one, sync the other and bump the **last synced** date above.
-
-<!-- Internal: ClickUp links require NaNLABS workspace access -->
 
 ---
 
@@ -66,7 +62,7 @@ agent --version || cursor agent --version || true
 bash scripts/smoke/preflight.sh
 ```
 
-Paste CLI matrix results on GitHub issue #58 / #8.
+The CLI matrix is retained in [`CURSOR_CLI.md`](CURSOR_CLI.md); issues #8 and #58 are closed.
 
 ## MCP stubs
 
@@ -79,4 +75,4 @@ Templates under `mcp/templates/` use `${ENV_VAR}` placeholders only. Never commi
 bash scripts/smoke/preflight.sh
 ```
 
-Paste live Claude Code / Cursor IDE / Cursor Agent CLI results on GitHub issue #8 (CLI matrix: #58).
+Keep live Claude Code / Cursor IDE / Cursor Agent CLI evidence in the operator docs; issues #8, #9, and #58 are closed.

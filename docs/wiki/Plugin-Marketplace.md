@@ -11,8 +11,8 @@ Version SoT: [`products/plugins.yaml`](https://github.com/nanlabs/agent-toolkit/
 
 | Plugin | Version (see SoT) | Contents |
 | --- | --- | --- |
-| `nanlabs-core` | 0.2.x | Setup/onboarding, orchestrator skills, `/nanlabs-core:setup`, `nanlabs-code-reviewer` |
-| `nanlabs-agents` | 0.1.x | Full agent roster |
+| `nanlabs-core` | 0.3.0 | Setup/onboarding, orchestrator skills, `/nanlabs-core:setup`, `nanlabs-code-reviewer` |
+| `nanlabs-agents` | 0.2.0 | Full agent roster |
 
 Deprecated: standalone `nanlabs-setup` (not listed in marketplace).
 

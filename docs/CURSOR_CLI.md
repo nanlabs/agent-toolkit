@@ -21,9 +21,9 @@ Cursor IDE and Cursor Agent CLI are separate runtimes. Do not assume IDE plugin 
 
 | Component | IDE (expected) | CLI result | Evidence / notes |
 | --- | --- | --- | --- |
-| Skills from installed plugins | yes | **pass** | `--plugin-dir` + print ask listed all 6 `nanlabs-core` skills |
+| Skills from installed plugins | yes | **pass** | `--plugin-dir` + print ask listed all 7 `nanlabs-core` skills |
 | Slash commands from plugins | yes | **pass** | `/nanlabs-core:setup`, `/nanlabs-core:core-help` |
-| Subagents / agents | yes | **pass** | `nanlabs-code-reviewer` from core; all 16 with `nanlabs-agents` |
+| Subagents / agents | yes | **pass** | `nanlabs-code-reviewer` from core; all 18 with `nanlabs-agents` |
 | Rules | if shipped | n/a | not shipped |
 | Hooks | if shipped | n/a | not shipped |
 | MCP from plugin | if shipped | n/a | MCP not packaged in plugins |
@@ -54,4 +54,4 @@ agent --plugin-dir .../nanlabs-core --sandbox enabled \
 
 1. **Priority:** equal with Claude, Claude Code, and Cursor IDE.
 2. **Honesty:** skills + commands + agents + sandbox/force evidenced on CLI `2026.07.23-e383d2b` via `--plugin-dir`. Non-interactive marketplace **install** is not offered by this CLI build — document IDE/`/plugins` for that UX.
-3. **Epic #19:** remaining gates are live Claude Code + Cursor IDE smoke (#8) and pilots (#9), not CLI demotion.
+3. **Epic #19:** issues #8, #9, and #58 are closed. The documented non-interactive marketplace-install limitation remains a CLI constraint, not a product-priority change.

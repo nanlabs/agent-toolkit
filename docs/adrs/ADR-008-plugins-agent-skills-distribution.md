@@ -1,15 +1,11 @@
-> [!IMPORTANT]
-> 📘 **ClickUp Companion**, last synced **2026-08-03**
+> [!NOTE]
+> 📘 **ClickUp Companion**, last synced **2026-08-27**
 >
-> This document is mirrored in ClickUp for cross-team discovery and execution logging:
->
-> - 📑 **[Decisions and Agreements](https://app.clickup.com/459857/v/li/901713909190)**
+> This document is mirrored in the NaNLABS internal ClickUp workspace for cross-team discovery and execution logging.
 >
 > **ClickUp** is the cross-team discovery + execution-log surface.
 > **This repo doc** is the co-located implementation reference (close to the code).
 > When you update one, sync the other and bump the **last synced** date above.
-
-<!-- Internal: ClickUp links require NaNLABS workspace access -->
 
 ---
 

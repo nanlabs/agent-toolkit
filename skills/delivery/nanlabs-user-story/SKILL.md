@@ -17,6 +17,5 @@ Use for user-centered requirements that need business value, technical notes, an
 ## References
 
 - `references/default-template.md`
-- `references/clickup-urls.md`
 - `references/example-advanced-filtering.md` — example user story with AC, story points, and technical notes
 - `nanlabs-planning`

@@ -30,7 +30,7 @@ Optional full agent roster:
 /plugin install nanlabs-agents@nanlabs-agent-toolkit
 ```
 
-> **Deprecated:** `nanlabs-setup` as a separate plugin is no longer in the marketplace. Setup ships inside `nanlabs-core` (v0.2.0+).
+> **Deprecated:** `nanlabs-setup` as a separate plugin is no longer in the marketplace. Setup ships inside `nanlabs-core` (v0.3.0+).
 
 Lifecycle (update / pin / rollback): [`LIFECYCLE.md`](LIFECYCLE.md).
 
@@ -58,15 +58,17 @@ Same product priority as Cursor IDE. Do not assume IDE plugin components load id
 
 Two supported surfaces:
 
-1. **CLI plugin surface** — generated root-level `plugin.json` in:
+1. **CLI plugin surface** — Agent Plugins v1.0.0 portable root-level `plugin.json` in:
    - `plugins/nanlabs-core/`
    - `plugins/nanlabs-agents/`
+   Copilot consumes these manifests additively in Open Plugin Spec mode, with
+   `agents/` and `skills/` as the default component paths.
 2. **Repository customization** — committed under:
    - `.github/copilot-instructions.md`
    - `.github/agents/*.agent.md`
    - `.github/skills/*/SKILL.md`
 
-The recommended baseline remains **`nanlabs-core`**. It now includes the
+The recommended baseline remains **`nanlabs-core`**. It includes the
 report-only `nanlabs-pyrightination` skill for Python type-checking guidance.
 
 Current honesty rules:
@@ -89,7 +91,7 @@ Skill index: [`SKILLS.md`](SKILLS.md) · machine catalog: [`../catalogs/skill-ca
 
 ## Agents and MCP
 
-- Agents: [`../agents/README.md`](../agents/README.md) (16 personas; plugin `nanlabs-agents`)
+- Agents: [`../agents/README.md`](../agents/README.md) (18 personas; plugin `nanlabs-agents`)
 - MCP stubs: [`../mcp/templates/README.md`](../mcp/templates/README.md) (docs-only; env placeholders only)
 - Dependency contracts: [`../contracts/README.md`](../contracts/README.md)
 - Future outcome packs are tracked in GitHub issues `#24`, `#25`, and `#28` rather than placeholder directories in this repo
@@ -120,7 +122,7 @@ Install guide (private repo — clone with org access): `docs/AGENT_TOOLKIT.md` 
 
 | Symptom | Check |
 | --- | --- |
-| Setup can’t find doctor scripts | Use marketplace `nanlabs-core` ≥ 0.2.0 (bundles doctor); avoid relying on a git checkout |
+| Setup can’t find doctor scripts | Use marketplace `nanlabs-core` ≥ 0.3.0 (bundles doctor); avoid relying on a git checkout |
 | Cursor marketplace import fails | Ensure `.cursor-plugin/marketplace.json` passes official schema |
 | Expected MCP tools missing | MCP templates are docs-only; configure MCP separately |
 | CLI skills/commands missing | Re-check [`CURSOR_CLI.md`](CURSOR_CLI.md) on the pinned CLI version — IDE ≠ CLI |

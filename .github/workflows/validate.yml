@@ -48,6 +48,12 @@ jobs:
       - name: Validate marketplace manifests
         run: python3 scripts/validate-manifests.py
 
+      - name: Validate Agent Plugins manifests
+        run: python3 scripts/validate-agent-plugins.py
+
+      - name: Validate public content
+        run: python3 scripts/validate-public-content.py
+
       - name: Validate skills
         run: python3 scripts/validate-skills.py
 
@@ -127,7 +133,7 @@ jobs:
         run: |
           curl -fsSL https://claude.ai/install.sh | bash
           echo "$HOME/.local/bin" >> "$GITHUB_PATH"
-      - name: Validate plugins (non-strict always; strict when supported)
+      - name: Validate plugins (non-strict and strict)
         run: |
           set -euo pipefail
           claude --version || true
@@ -137,15 +143,8 @@ jobs:
               claude plugin validate "$p"
             fi
           done
-          echo "Attempting --strict (may fail until #52 lands)"
-          strict_fail=0
           for p in plugins/nanlabs-core plugins/nanlabs-agents; do
             if [[ -d "$p" ]]; then
-              claude plugin validate --strict "$p" || strict_fail=1
+              claude plugin validate --strict "$p"
             fi
           done
-          # Soft gate until assembler lands: report but do not fail the job yet.
-          # Flip to exit $strict_fail once #52 is on main.
-          if [[ $strict_fail -ne 0 ]]; then
-            echo "::warning::claude plugin validate --strict failed (tracked by #52/#57)"
-          fi

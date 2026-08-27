@@ -17,6 +17,5 @@ Use for technical or operational work that is not best represented as a user sto
 ## References
 
 - `references/default-template.md`
-- `references/clickup-urls.md`
 - `references/example-nav-system.md` — example task with AC, estimate, and technical notes
 - `nanlabs-planning`

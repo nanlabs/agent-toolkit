@@ -1,15 +1,11 @@
-> [!IMPORTANT]
-> 📘 **ClickUp Companion**, last synced **2026-08-03**
+> [!NOTE]
+> 📘 **ClickUp Companion**, last synced **2026-08-27**
 >
-> This document is mirrored in ClickUp for cross-team discovery and execution logging:
->
-> - 📑 **[AI Assets Migration Milestone](https://app.clickup.com/t/86e2m4d6k)**
+> This document is mirrored in the NaNLABS internal ClickUp workspace for cross-team discovery and execution logging.
 >
 > **ClickUp** is the cross-team discovery + execution-log surface.
 > **This repo doc** is the co-located implementation reference (close to the code).
 > When you update one, sync the other and bump the **last synced** date above.
-
-<!-- Internal: ClickUp links require NaNLABS workspace access -->
 
 ---
 
@@ -46,7 +42,7 @@ Snapshot for H0 (baseline decisions). Living document; update when slices change
 | --- | --- | --- |
 | Secret scan + validators | CI green on `main` | Revert merge; rotate any leaked credential |
 | Public scrub | Policy checklist on PR | Remove content; keep on workstation |
-| Pilot install (#8/#9) | Documented smoke | Pin previous plugin version; disable marketplace auto-update |
+| Pilot install (#8/#9) | Documented smoke (issues closed) | Pin previous plugin version; disable marketplace auto-update |
 | Cutover (#23) | L1.5 SoT confirmed | Keep dual-rail; do not delete workstation yet |
 
 ## H0 unresolved → proposed resolutions
