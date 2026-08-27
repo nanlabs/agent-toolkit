@@ -12,7 +12,7 @@ How to install and use `nanlabs/agent-toolkit`.
 
 Also see [SCOPE.md](SCOPE.md), [FAQ.md](FAQ.md), and the [wiki source](wiki/) (companion PR: wiki sync).
 
-**Production surfaces:** Claude · Claude Code · Cursor IDE · Cursor Agent CLI · GitHub Copilot.  
+**Production surfaces:** Claude · Claude Code · Cursor IDE · Cursor Agent CLI.
 **Skills-only** installs skills alone (needed on some Claude surfaces and any Agent Skills client). Cursor Agent CLI certification evidence lives in [`CURSOR_CLI.md`](CURSOR_CLI.md) — evidence gap ≠ lower product priority.
 
 ## Claude Code
@@ -68,38 +68,6 @@ Use `--plugin-dir` for CLI smoke tests, or install interactively through
 Cursor's plugin dashboard / Cursor IDE Team Marketplace. Fill the
 component matrix in [`CURSOR_CLI.md`](CURSOR_CLI.md) with pass/fail/partial
 evidence; unknown cells are **uncertified**, not deprioritized.
-
-## GitHub Copilot
-
-Two supported surfaces:
-
-1. **CLI plugin surface** — Agent Plugins v1.0.0 portable root-level `plugin.json` in:
-   - `plugins/nanlabs-core/`
-   - `plugins/nanlabs-agents/`
-   Copilot consumes these manifests additively in Open Plugin Spec mode, with
-   `agents/` and `skills/` as the default component paths.
-
-   Install directly from GitHub, or use the equivalent path in a checkout:
-
-   ```bash
-   copilot plugin install nanlabs/agent-toolkit:plugins/nanlabs-core
-   # optional full agent roster:
-   copilot plugin install nanlabs/agent-toolkit:plugins/nanlabs-agents
-   ```
-
-2. **Repository customization** — committed under:
-   - `.github/copilot-instructions.md`
-   - `.github/agents/*.agent.md`
-   - `.github/skills/*/SKILL.md`
-
-The recommended baseline remains **`nanlabs-core`**. It includes the
-report-only `nanlabs-pyrightination` skill for Python type-checking guidance.
-
-Current honesty rules:
-
-- Hooks are **not** shipped for Copilot yet.
-- MCP remains configured separately; the repo does not claim bundled Copilot MCP support.
-- Repository customization is repo-scoped, not a global machine install.
 
 ## Skills-only
 

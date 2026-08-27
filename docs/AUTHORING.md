@@ -96,9 +96,11 @@ pre-commit run --all-files
 
 ## Adding a plugin
 
-1. Create the portable Agent Plugins manifest at `plugins/<plugin-id>/plugin.json`.
+1. Register the plugin in `products/plugins.yaml` and create its
+   `plugins/<plugin-id>/` root.
 2. Create `plugins/<plugin-id>/.claude-plugin/plugin.json` and `.cursor-plugin/plugin.json` for native clients.
 3. Register it in `.claude-plugin/marketplace.json` and `.cursor-plugin/marketplace.json`.
 4. Keep plugin `name` fields identical across marketplace entries and plugin manifests.
 5. Update catalogs when the plugin exposes new skills/agents.
-6. Run `python3 scripts/validate-agent-plugins.py` and the local validation commands below.
+6. Run `python3 scripts/gen-copilot-surfaces.py` to generate the portable
+   manifest and Copilot surfaces, then run the local validation commands below.

@@ -10,7 +10,7 @@ Public **L1.5** distribution of NaNLABS skills, agents, and plugins.
 | Claude Code | Equal |
 | Cursor IDE | Equal |
 | Cursor Agent CLI | Equal |
-| GitHub Copilot | Supported |
+| GitHub Copilot | Equal |
 
 Machine provisioning stays in [`internal-workstation`](https://github.com/nanlabs/internal-workstation). This repo does **not** ship a consumer CLI, loop runtime, multi-tool profile compiler, or OpenCode/Windsurf/Gemini CLI/Pi plugin targets.
 
@@ -63,7 +63,7 @@ Install a plugin directly from this repository:
 copilot plugin install nanlabs/agent-toolkit:plugins/nanlabs-core
 ```
 
-CLI plugin manifests are generated in `plugins/nanlabs-core/` and `plugins/nanlabs-agents/`.
+Agent Plugins v1.0.0 manifests are generated in `plugins/nanlabs-core/` and `plugins/nanlabs-agents/`.
 Repository customization lives under `.github/copilot-instructions.md`, `.github/agents/`, and `.github/skills/`.
 
 ---

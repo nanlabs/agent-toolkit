@@ -67,8 +67,6 @@ def validate_content() -> int:
         if not path.is_file():
             continue
         raw = path.read_bytes()
-        if b"\0" in raw:
-            continue
         scanned += 1
         text = raw.decode("utf-8", errors="replace")
         relative = path.relative_to(ROOT).as_posix()
@@ -94,7 +92,7 @@ def main() -> None:
     scanned = validate_content()
     print(
         "OK: public-content validator scanned "
-        f"{scanned} tracked text files (allowlist entries: {len(ALLOWLIST)})"
+        f"{scanned} tracked files (allowlist entries: {len(ALLOWLIST)})"
     )
 
 
