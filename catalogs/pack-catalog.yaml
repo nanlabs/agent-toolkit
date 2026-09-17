@@ -1,0 +1,151 @@
+# Domain and group packs (public)
+# Packs are catalog aliases over skills/<group>/ and named skill/agent lists.
+# They are not a packs/ directory tree (see docs/PACKS.md).
+version: 1
+source: nanlabs/agent-toolkit
+
+packs:
+  # --- Group packs (1:1 with skills/<group>/) ---
+  - id: core
+    kind: group
+    path: skills/core
+    description: Orchestration, setup, companion, handshake, and PR fallback
+    coverage: high
+    domains: [onboarding, orchestration]
+    cloud: skills-only
+    code_cursor: skills-only
+
+  - id: data
+    kind: group
+    path: skills/data
+    description: dbt and Snowflake validation
+    coverage: medium
+    domains: [data]
+    cloud: skills-only
+    code_cursor: skills-only
+
+  - id: delivery
+    kind: group
+    path: skills/delivery
+    description: PRD, TRD, ADR, work items, assessments, and delivery process
+    coverage: high
+    domains: [pm, delivery]
+    cloud: skills-only
+    code_cursor: skills-only
+
+  - id: design
+    kind: group
+    path: skills/design
+    description: Figma MCP and UI/UX intelligence (not a full designer workflow)
+    coverage: medium
+    domains: [design]
+    cloud: skills-only
+    code_cursor: skills-only
+
+  - id: forge
+    kind: group
+    path: skills/forge
+    description: GitHub and GitLab CLI automation for PRs, reviews, and CI
+    coverage: high
+    domains: [engineering]
+    cloud: skills-only
+    code_cursor: skills-only
+
+  - id: integrations
+    kind: group
+    path: skills/integrations
+    description: ClickUp, Slack, and Linear integrations
+    coverage: medium
+    domains: [operations, delivery]
+    cloud: skills-only
+    code_cursor: skills-only
+
+  - id: ops
+    kind: group
+    path: skills/ops
+    description: Workstation triage, presentations ops, and skill contribution
+    coverage: medium
+    domains: [operations, staff]
+    cloud: skills-only
+    code_cursor: skills-only
+
+  - id: tooling
+    kind: group
+    path: skills/tooling
+    description: Playwright CLI and Jupyter notebook scaffolding
+    coverage: low
+    domains: [qa, rd]
+    cloud: skills-only
+    code_cursor: skills-only
+
+  - id: workflow
+    kind: group
+    path: skills/workflow
+    description: Client delivery workflows and bootstrap
+    coverage: high
+    domains: [delivery]
+    cloud: skills-only
+    code_cursor: skills-only
+
+  # --- Domain packs (named "install the pack of X"; may span groups) ---
+  - id: code-review
+    kind: domain
+    description: Review diffs and leave findings on the pull request
+    coverage: medium
+    domains: [engineering]
+    skills:
+      - github-cli-workflow
+      - gh-address-comments
+      - gh-fix-ci
+      - nanlabs-pr-fallback
+    agents:
+      - nanlabs-code-reviewer
+      - nanlabs-security-reviewer
+      - nanlabs-typescript-reviewer
+    cloud: skills-only
+    code_cursor: skills-and-agents
+
+  - id: qa
+    kind: domain
+    description: Browser automation and Playwright test authoring (thin coverage)
+    coverage: low
+    domains: [qa]
+    skills:
+      - playwright-cli
+    agents:
+      - nanlabs-e2e-runner
+    cloud: skills-only
+    code_cursor: skills-and-agents
+
+  - id: architect
+    kind: domain
+    description: Structural design, ADRs, and technical requirements
+    coverage: medium
+    domains: [architecture]
+    skills:
+      - nanlabs-adr
+      - nanlabs-trd
+    agents:
+      - nanlabs-architect
+    cloud: skills-only
+    code_cursor: skills-and-agents
+
+  - id: staff
+    kind: domain
+    description: Presentations list maintenance (not style or tone consistency)
+    coverage: low
+    domains: [staff]
+    skills:
+      - nanlabs-presentations-reconciliation
+    cloud: skills-only
+    code_cursor: skills-only
+
+  - id: contribute
+    kind: domain
+    description: Propose a new public skill or agent via GitHub pull request
+    coverage: n/a
+    domains: [maintainers, staff]
+    skills:
+      - nanlabs-propose-skill
+    cloud: skills-only
+    code_cursor: skills-only

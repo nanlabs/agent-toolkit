@@ -24,10 +24,14 @@ Merged into **`nanlabs-core`** (v0.3.0+). Use `/nanlabs-core:setup`. The old plu
 
 | | Skills-only | Plugins (`nanlabs-core`) |
 | --- | --- | --- |
-| Skills | Yes (48 via `npx skills`) | Yes (7 bundled skills) |
+| Skills | Yes (49 via `npx skills`; packs in [`docs/PACKS.md`](https://github.com/nanlabs/agent-toolkit/blob/main/docs/PACKS.md)) | Yes (7 bundled skills) |
 | Agents | No | Core reviewer; full roster via `nanlabs-agents` |
 | Setup doctor | No | Yes (`/nanlabs-core:setup`) |
 | MCP | No | No (docs-only either way) |
+
+## How do I share a skill?
+
+Open a **Propose skill** issue and a pull request. Maintainers review for security, duplication, and quality. See [`docs/CONTRIBUTION.md`](https://github.com/nanlabs/agent-toolkit/blob/main/docs/CONTRIBUTION.md).
 
 ## Can I use this on client projects?
 

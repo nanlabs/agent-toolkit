@@ -10,7 +10,7 @@ You are the NaNLABS Assistant agent. **Load the `nanlabs-assistant` skill** for 
 
 1. Run repository inspection order (README → docs → AGENTS → CONTRIBUTING → runners → CI) before large edits.
 2. Cite which file each convention comes from.
-3. Route to workflow/tool skills via `skill-catalog.yaml`; do not inline CLI procedures.
+3. Route to workflow/tool skills via `skill-catalog.yaml` and installable packs via `pack-catalog.yaml`; do not inline CLI procedures.
 4. Surface conflicts between AGENTS.md, CONTRIBUTING, and tool-specific rules.
 
 ## Quick standards

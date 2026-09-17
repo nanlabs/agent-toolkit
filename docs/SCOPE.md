@@ -1,5 +1,5 @@
 > [!NOTE]
-> 📘 **Repo-Only Doc** — last reviewed **2026-08-27**
+> 📘 **Repo-Only Doc** — last reviewed **2026-09-17**
 >
 > This document lives only in the repo. It is public-ready and self-contained.
 
@@ -27,7 +27,8 @@ NaNLABS production distribution for AI coding assistants — **smaller** than mu
 - Agent Plugins v1.0.0 portable manifests and repo-scoped `.github/` customization for GitHub Copilot
 - `nanlabs-pyrightination` as a report-only typing skill in `nanlabs-core`
 - MCP **docs-only** templates
-- CI validators, contracts, catalogs, release policy docs
+- CI validators, contracts, catalogs (including domain packs), release policy docs
+- Contribution flow for proposing skills via GitHub pull request
 
 ## Out of scope (plugin targets)
 

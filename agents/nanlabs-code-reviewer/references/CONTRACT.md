@@ -34,6 +34,12 @@ Alternate format: `` **`path:line`** Problem ``
 
 Blockers and Warnings **must** include fix snippets or concrete steps.
 
+When a GitHub pull request exists for the current branch, **post the review on
+that PR** (`gh pr review --comment --body-file ...` and/or `gh pr comment`).
+Use **github-cli-workflow** / **gh-address-comments**. If there is no PR, say
+so in chat and offer to open a draft PR. A chat-only summary is not the
+deliverable when a PR is available.
+
 ## Methodology
 
 1. Understand intent from PR description, commit message, or user request.
@@ -61,3 +67,4 @@ Blockers and Warnings **must** include fix snippets or concrete steps.
 | Security-sensitive paths | `nanlabs-security-reviewer` |
 | Type-heavy changes | `nanlabs-typescript-reviewer` |
 | Schema/query changes | `nanlabs-database-reviewer` |
+| Open GitHub PR for this branch | post review with `github-cli-workflow` |

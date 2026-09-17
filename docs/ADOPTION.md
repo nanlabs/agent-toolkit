@@ -1,5 +1,5 @@
 > [!NOTE]
-> 📘 **Repo-Only Doc** — last reviewed **2026-08-27**
+> 📘 **Repo-Only Doc** — last reviewed **2026-09-17**
 >
 > This document lives only in the repo. It is public-ready and self-contained.
 > If a ClickUp mirror is created later, update this banner with the link.
@@ -76,19 +76,27 @@ npx skills add nanlabs/agent-toolkit -g
 ```
 
 This uses the [`vercel-labs/skills`](https://github.com/vercel-labs/skills)
-CLI to install the grouped tree `skills/<group>/<skill>/` (48 skills,
+CLI to install the grouped tree `skills/<group>/<skill>/` (49 skills,
 including `nanlabs-setup` and `nanlabs-pyrightination`).
+
+Install one group or a named domain pack instead of the whole tree:
+
+```bash
+npx skills add nanlabs/agent-toolkit/skills/delivery
+npx skills add nanlabs/agent-toolkit --skill github-cli-workflow --skill gh-address-comments
+bash scripts/install-pack.sh code-review -y
+```
 
 Skills-only installs do **not** bundle the contract doctor; use baseline spot-checks in the skill or clone the repo for full validation.
 
-Skill index: [`SKILLS.md`](SKILLS.md) · machine catalog: [`../catalogs/skill-catalog.yaml`](../catalogs/skill-catalog.yaml).
+Skill index: [`SKILLS.md`](SKILLS.md) · packs: [`PACKS.md`](PACKS.md) · machine catalogs: [`../catalogs/skill-catalog.yaml`](../catalogs/skill-catalog.yaml), [`../catalogs/pack-catalog.yaml`](../catalogs/pack-catalog.yaml).
 
 ## Agents and MCP
 
 - Agents: [`../agents/README.md`](../agents/README.md) (18 personas; plugin `nanlabs-agents`)
 - MCP stubs: [`../mcp/templates/README.md`](../mcp/templates/README.md) (docs-only; no MCP server is shipped)
 - Dependency contracts: [`../contracts/README.md`](../contracts/README.md)
-- Future outcome packs are tracked in GitHub issues `#24`, `#25`, and `#28` rather than placeholder directories in this repo
+- Domain packs: [`PACKS.md`](PACKS.md). Remaining outcome-pack **content** is tracked in GitHub issues `#24`, `#25`, and `#28` (no placeholder directories)
 - Overlay governance: [`OVERLAY_GOVERNANCE.md`](OVERLAY_GOVERNANCE.md)
 - Telemetry ownership: [`TELEMETRY_CONTRACT.md`](TELEMETRY_CONTRACT.md)
 
@@ -126,4 +134,6 @@ Install guide (private repo — clone with org access): `docs/AGENT_TOOLKIT.md` 
 - [`P0_FINDINGS.md`](P0_FINDINGS.md) — feasibility + lifecycle matrix
 - [`PUBLIC_CONTENT_POLICY.md`](PUBLIC_CONTENT_POLICY.md) — what may be published
 - [`AUTHORING.md`](AUTHORING.md) — how to add skills/plugins
+- [`PACKS.md`](PACKS.md) — group and domain pack install
+- [`CONTRIBUTION.md`](CONTRIBUTION.md) — propose a skill via PR
 - [`../AGENTS.md`](../AGENTS.md) — contributor contract for this repo

@@ -31,7 +31,8 @@ Do **not** duplicate full procedures owned by Jira, ClickUp, forge, or data skil
    - **PRD / TRD / ADR** to NaNLABS templates in ClickUp → **nanlabs-prd**, **nanlabs-trd**, **nanlabs-adr** (after the handshake when output is final).
    - **Default pull-request body** when the repo has no template → **nanlabs-pr-fallback** (after the handshake) before **github-cli-workflow** or for MR description with **gitlab-cli-workflow** when applicable.
    - **Draft PR/MR** after push → **github-cli-workflow** or **gitlab-cli-workflow** by remote host.
-   - **GitHub PR review comments / threads** on the open PR → **gh-address-comments** (read/triage); pair with **github-cli-workflow** when pushing fixes.
+   - **GitHub PR review comments / threads** on the open PR → **gh-address-comments** (read/triage); pair with **github-cli-workflow** when pushing fixes. Pack **code-review** when the user wants the review left on the PR.
+  - **Propose / share a skill** into this public repo → **nanlabs-propose-skill** (pack **contribute**).
    - **Failing GitHub Actions checks** → **gh-fix-ci** (logs + snippet); pair with **nanlabs-planning** for an explicit fix plan before coding.
    - **Linear** issues, cycles, projects → **linear** (Linear MCP; OAuth).
    - **Figma design → code** → start from **figma** / **figma-implement-design**; **figma-code-connect-components** for Code Connect; **figma-create-design-system-rules** for `AGENTS.md`/rules files; **figma-create-new-file** for new files. Heavy canvas/plugin flows (**figma-use**, **figma-generate-design**) are opt-in packs — see `docs/SKILLS.md`.
@@ -64,28 +65,35 @@ If the user signals an engagement (ticket prefix, repo path prefix, explicit nam
 
 ## Agent dispatch (personas vs skills)
 
+**Subagent** means a user-driven persona under `agents/` (Claude Code / Cursor).
+**Autonomous agent** is out of scope. Cloud has no native subagents: use the
+skill column. Packs (`catalogs/pack-catalog.yaml`) name what to install;
+handoffs live in `docs/HANDOFFS.md`.
+
 Agents carry **methodology and output contracts**; skills carry **procedures and templates**. Use `@mention` (Claude/OpenCode) or the matching Cursor/Windsurf rule.
 
-| Situation | Agent | Complementary skill |
+| Situation | Agent (Code / Cursor) | Cloud / skill fallback |
 | --- | --- | --- |
-| Structural design / trade-offs | `nanlabs-architect` | `nanlabs-adr` |
-| Plan before implementation | `nanlabs-planner` | `nanlabs-planning` |
-| Post-change / pre-PR review | `nanlabs-code-reviewer` | `github-cli-workflow` |
+| Structural design / trade-offs | `nanlabs-architect` | `nanlabs-adr`, `nanlabs-trd` (pack `architect`) |
+| Plan before implementation | `nanlabs-planner` | `nanlabs-planning`; HTML plan + handshake |
+| Post-change / pre-PR review | `nanlabs-code-reviewer` | `github-cli-workflow`, `gh-address-comments` (pack `code-review`); post on the PR |
 | Auth, secrets, injection | `nanlabs-security-reviewer` | — |
 | New feature with tests-first | `nanlabs-tdd-guide` | — |
 | Type-heavy review | `nanlabs-typescript-reviewer` | — |
 | Schema / query / migration | `nanlabs-database-reviewer` | — |
+| Propose a skill to this repo | — | `nanlabs-propose-skill` (pack `contribute`) |
 | Internal NaNLABS ClickUp ops | `clickup-cli` | integrations |
 | Client delivery bootstrap | `nanlabs-client-workflow-bootstrap` | `nanlabs-workflow-client-bootstrap` |
 | Repo discovery / routing | `nanlabs-assistant` | this skill |
 
-Machine-readable index: `catalogs/agent-catalog.yaml`. Canonical bodies and `references/CONTRACT.md` live under `agents/<name>/` in this repository.
+Machine-readable index: `catalogs/agent-catalog.yaml` and `catalogs/pack-catalog.yaml`. Canonical bodies and `references/CONTRACT.md` live under `agents/<name>/` in this repository.
 
 ## Installed paths (reference)
 
 | Asset | Path |
 | --- | --- |
 | Skill catalog (repo default) | `catalogs/skill-catalog.yaml` |
+| Pack catalog | `catalogs/pack-catalog.yaml` |
 | Agent catalog | `catalogs/agent-catalog.yaml` |
 | Agent personas (canonical) | `agents/<name>/AGENT.md` |
 | This orchestrator | `skills/core/nanlabs-assistant/SKILL.md` |

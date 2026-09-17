@@ -21,6 +21,7 @@ What this repository **is** and **is not**. Inspired by broader agent-toolkit ec
 - `nanlabs-pyrightination` as a report-only typing skill in `nanlabs-core`
 - MCP **templates** (docs-only stubs)
 - Validation scripts + CI gates
+- Domain pack catalog (`catalogs/pack-catalog.yaml`) and GitHub contribution flow
 - Dependency contracts for setup/doctor
 
 ## Explicitly out of scope (plugin targets)

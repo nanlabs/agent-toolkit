@@ -20,6 +20,7 @@ bash scripts/validate-repo-structure.sh
 python3 scripts/validate-manifests.py
 python3 scripts/validate-skills.py
 python3 scripts/validate-agents.py
+python3 scripts/validate-pack-catalog.py
 python3 scripts/validate-mcp.py
 python3 scripts/gen-surfaces.py --check
 python3 scripts/validate-contracts.py
@@ -28,6 +29,10 @@ python3 plugins/nanlabs-core/scripts/doctor-contracts.py --contract nanlabs-core
 bash scripts/secret-scan.sh
 pre-commit run --all-files
 ```
+
+## Propose a skill
+
+Open a **Propose skill** issue, then follow [`docs/CONTRIBUTION.md`](https://github.com/nanlabs/agent-toolkit/blob/main/docs/CONTRIBUTION.md) and skill `nanlabs-propose-skill`. Maintainers review for security, duplication, quality, and pack membership.
 
 ## Wiki source
 

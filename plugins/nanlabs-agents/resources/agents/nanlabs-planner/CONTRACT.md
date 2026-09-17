@@ -43,6 +43,34 @@
 ## Validation approach
 ```
 
+Also emit a **self-contained HTML** file of the same plan (inline CSS, no
+external assets) so the user can open it in a browser. Before writing the
+file, use **`nanlabs-output-handshake`**: ask where it should live (repo path,
+gist, paste-only). Do not implement until the user approves the plan.
+
+Minimal HTML shape:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <title>Plan</title>
+  <style>
+    body { font-family: sans-serif; max-width: 52rem; margin: 2rem auto; }
+    .risk-high { border-left: 4px solid #b42318; padding-left: 0.75rem; }
+  </style>
+</head>
+<body>
+  <h1>Summary</h1>
+  <h2>Risks</h2>
+  <h2>Tasks</h2>
+  <h2>Definition of Done</h2>
+  <h2>Open questions</h2>
+</body>
+</html>
+```
+
 ## Anti-patterns
 
 - **Big-bang plans** — single task that cannot be reviewed incrementally.
@@ -57,3 +85,4 @@
 | Structural design choices | `nanlabs-architect` |
 | Estimation and capacity | `nanlabs-planning` skill |
 | Repo conventions | `nanlabs-assistant` |
+| Where to save the HTML plan | `nanlabs-output-handshake` |

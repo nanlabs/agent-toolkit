@@ -24,6 +24,7 @@ Portable agent contract for work in this repository.
 bash scripts/validate-repo-structure.sh
 python3 scripts/validate-manifests.py
 python3 scripts/validate-skills.py
+python3 scripts/validate-pack-catalog.py
 bash scripts/secret-scan.sh
 ```
 
@@ -37,5 +38,6 @@ CI also runs MegaLinter (`mega-linter.yml`) and Danger JS (`pr-review.yml`) on n
 | --- | --- |
 | Machine provisioning / doctor / telemetry policy | `nanlabs/internal-workstation` |
 | Plugin/skill content and marketplaces | this repo |
+| Domain pack install / propose-skill flow | `docs/PACKS.md`, `docs/CONTRIBUTION.md` |
 | Onyx / observability backends | `nanlabs/internal-terraform-infra` |
 | Migration program tracking | GitHub Project [AI Native Workbench](https://github.com/orgs/nanlabs/projects/12) |

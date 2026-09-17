@@ -57,6 +57,7 @@
     ],
     "ops": [
       "nanlabs-presentations-reconciliation",
+      "nanlabs-propose-skill",
       "nanlabs-workstation-triage"
     ],
     "tooling": [
@@ -283,6 +284,11 @@
       "name": "nanlabs-presentations-reconciliation",
       "group": "ops",
       "path": "skills/ops/nanlabs-presentations-reconciliation"
+    },
+    {
+      "name": "nanlabs-propose-skill",
+      "group": "ops",
+      "path": "skills/ops/nanlabs-propose-skill"
     },
     {
       "name": "nanlabs-workstation-triage",

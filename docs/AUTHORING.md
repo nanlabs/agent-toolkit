@@ -1,7 +1,7 @@
 > [!NOTE]
-> 📘 **ClickUp Companion**, last synced **2026-08-27**
+> 📘 **ClickUp Companion**, last synced **2026-09-17**
 >
-> This document is mirrored in the NaNLABS internal ClickUp workspace for cross-team discovery and execution logging.
+> This document is mirrored in the NaNLABS internal ClickUp workspace for cross-team discovery and execution logging. Packs and contribution: [`PACKS.md`](PACKS.md), [`CONTRIBUTION.md`](CONTRIBUTION.md).
 >
 > **ClickUp** is the cross-team discovery + execution-log surface.
 > **This repo doc** is the co-located implementation reference (close to the code).
@@ -46,7 +46,7 @@ Optional spec fields: `license`, `compatibility`, `metadata`, `allowed-tools`.
 | `SKILL.md.tmpl` | Chezmoi template; this repo ships the rendered skill. |
 | Per-tool symlink matrices in-repo | Distribution is marketplace / `npx skills`, not home-dir symlinks. |
 
-Repo-level routing metadata lives in `catalogs/skill-catalog.yaml` (orchestrator index), not inside each skill folder.
+Repo-level routing metadata lives in `catalogs/skill-catalog.yaml` (orchestrator index) and `catalogs/pack-catalog.yaml` (installable packs), not inside each skill folder.
 
 ## Other paths
 
@@ -57,9 +57,11 @@ Repo-level routing metadata lives in `catalogs/skill-catalog.yaml` (orchestrator
 | `catalogs/agent-target-map.yaml` | Target-specific agent frontmatter overlays |
 | `mcp/templates/` | MCP config stubs (placeholders only) |
 | `plugins/<id>/` | Claude / Cursor plugin bundles |
-| `catalogs/` | Routing catalogs (`skill-catalog.yaml`, layout map) |
+| `catalogs/` | Routing catalogs (`skill-catalog.yaml`, `pack-catalog.yaml`, layout map) |
 | `contracts/requirements/` | Dependency/permission contracts (`RequirementContract` v1) |
-| GitHub issues `#24`, `#25`, `#28` | Future outcome-pack discovery / implementation |
+| `docs/PACKS.md` | Installable group and domain packs |
+| `docs/CONTRIBUTION.md` | Propose-via-PR flow |
+| GitHub issues `#24`, `#25`, `#28` | Remaining outcome-pack **content** (not this catalog) |
 
 ## Dependency contracts
 
@@ -86,6 +88,7 @@ python3 scripts/validate-agent-plugins.py
 python3 scripts/validate-public-content.py
 python3 scripts/validate-skills.py
 python3 scripts/validate-agents.py
+python3 scripts/validate-pack-catalog.py
 python3 scripts/validate-mcp.py
 python3 scripts/validate-contracts.py
 python3 scripts/gen-surfaces.py --check

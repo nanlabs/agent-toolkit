@@ -20,7 +20,7 @@ Machine provisioning stays in [`internal-workstation`](https://github.com/nanlab
 
 | Component | Count | Notes |
 | --- | --- | --- |
-| Skills | 48 | Agent Skills tree under `skills/<group>/` |
+| Skills | 49 | Agent Skills tree under `skills/<group>/` |
 | Agents | 18 | Canonical personas; flat plugin surfaces via `gen-surfaces` |
 | Plugins | 2 marketplace | `nanlabs-core` (recommended) · `nanlabs-agents` (optional) |
 | MCP templates | 6 | **Docs-only** stubs — not installed by plugins |
@@ -51,6 +51,12 @@ Equal priority — see [Cursor Agent CLI](Cursor-Agent-CLI). Prefer `--plugin-di
 
 ```bash
 npx skills add nanlabs/agent-toolkit -g
+```
+
+Group pack (subdirectory) or domain pack: see [`docs/PACKS.md`](https://github.com/nanlabs/agent-toolkit/blob/main/docs/PACKS.md).
+
+```bash
+npx skills add nanlabs/agent-toolkit/skills/delivery
 ```
 
 Skills only — no plugins, agents, MCP, or setup automation.
@@ -95,6 +101,8 @@ Repository customization lives under `.github/copilot-instructions.md`, `.github
 | [`docs/ADOPTION.md`](https://github.com/nanlabs/agent-toolkit/blob/main/docs/ADOPTION.md) | Adoption by surface |
 | [`docs/RELEASE.md`](https://github.com/nanlabs/agent-toolkit/blob/main/docs/RELEASE.md) | Versions, tags, rollback |
 | [`docs/AUTHORING.md`](https://github.com/nanlabs/agent-toolkit/blob/main/docs/AUTHORING.md) | Add skills / plugins |
+| [`docs/PACKS.md`](https://github.com/nanlabs/agent-toolkit/blob/main/docs/PACKS.md) | Domain pack install |
+| [`docs/CONTRIBUTION.md`](https://github.com/nanlabs/agent-toolkit/blob/main/docs/CONTRIBUTION.md) | Propose a skill via PR |
 | [`docs/PUBLIC_CONTENT_POLICY.md`](https://github.com/nanlabs/agent-toolkit/blob/main/docs/PUBLIC_CONTENT_POLICY.md) | What may be published |
 | [`README.md`](https://github.com/nanlabs/agent-toolkit/blob/main/README.md) | Hero + architecture artwork |
 

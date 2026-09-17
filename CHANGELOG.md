@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html) for plugin packages.
 
+## [Unreleased]
+
+- Domain and group **packs** as catalog aliases (`catalogs/pack-catalog.yaml`) with `npx skills` subdirectory / `--skill` install and `scripts/install-pack.sh`.
+- Skill `nanlabs-propose-skill` plus contribution docs and PR/issue checklists (propose via GitHub, maintainer review, then installable).
+- Handoff contracts: planner emits HTML; code reviewer posts on the pull request. Coverage map in `docs/COVERAGE.md`.
+
 ## [0.3.1] — 2026-08-27
 
 - Public-content hardening removes direct internal ClickUp workspace/document URLs and adds a deterministic public-content validator.

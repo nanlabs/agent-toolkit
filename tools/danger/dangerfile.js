@@ -26,6 +26,14 @@ const publicRepoChecklist = [
   "Manifests still validate (`python3 scripts/validate-manifests.py`)",
 ];
 
+const skillAgentChecklist = [
+  "Not a duplicate of an existing catalog skill or agent",
+  "Pack membership recorded in `catalogs/pack-catalog.yaml` (or N/A)",
+  "Handoff / output contract documented (or N/A; see `docs/HANDOFFS.md`)",
+  "Cloud-safe as skills-only (or documented Code/Cursor-only)",
+  "`docs/PUBLIC_CONTENT_POLICY.md` satisfied",
+];
+
 const prBody = danger.github.pr.body ?? "";
 const prTitle = danger.github.pr.title ?? "";
 const releasePrTitle =
@@ -114,10 +122,21 @@ if (hasDocs) {
 }
 
 const hasSkills = touchedFiles.some((f) => f.startsWith("skills/"));
-if (hasSkills) {
+const hasAgents = touchedFiles.some((f) => f.startsWith("agents/"));
+if (hasSkills || hasAgents) {
   message(
-    "Skills changed — remember `docs/PUBLIC_CONTENT_POLICY.md` and `python3 scripts/validate-skills.py`.",
+    "Skills/agents changed — remember `docs/PUBLIC_CONTENT_POLICY.md`, `docs/CONTRIBUTION.md`, and `python3 scripts/validate-skills.py` / `validate-pack-catalog.py`.",
   );
+  if (!hasSection("## Skill / Agent checklist")) {
+    warn(
+      ":clipboard: Skill/Agent checklist — include <i>## Skill / Agent checklist</i> when changing skills or agents.",
+    );
+  }
+  skillAgentChecklist.forEach((item) => {
+    if (!isChecklistItemChecked(item)) {
+      warn(`:mag: Skill/Agent checklist — please confirm: <i>${item}</i>`);
+    }
+  });
 }
 
 const hasManifests = touchedFiles.some(

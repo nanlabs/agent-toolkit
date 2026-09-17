@@ -26,7 +26,7 @@ groups:
     description: "ClickUp, Slack, Linear integrations"
   - id: ops
     path: skills/ops
-    description: "Workstation triage and presentations ops"
+    description: "Workstation triage, presentations ops, and skill contribution"
   - id: tooling
     path: skills/tooling
     description: "Playwright and Jupyter tooling"
@@ -333,6 +333,13 @@ skills:
     domain: learning
     responsibility: HOW
     role: presentations_list_maintenance
+  - name: nanlabs-propose-skill
+    group: ops
+    path: skills/ops/nanlabs-propose-skill
+    public: true
+    domain: contribution
+    responsibility: HOW
+    role: skill_contribution_flow
   - name: nanlabs-workstation-triage
     group: ops
     path: skills/ops/nanlabs-workstation-triage

@@ -1,5 +1,5 @@
 > [!NOTE]
-> 📘 **Repo-Only Doc** — last reviewed **2026-08-27**
+> 📘 **Repo-Only Doc** — last reviewed **2026-09-17**
 >
 > This document lives only in the repo. It is public-ready and self-contained.
 >
@@ -49,6 +49,10 @@ Consumer-facing and maintainer docs for `nanlabs/agent-toolkit` (**L1.5**). Mach
 | Doc | Topic |
 | --- | --- |
 | [AUTHORING.md](AUTHORING.md) | Add skills / plugins |
+| [PACKS.md](PACKS.md) | Domain and group pack install |
+| [HANDOFFS.md](HANDOFFS.md) | Planner / reviewer output contracts |
+| [COVERAGE.md](COVERAGE.md) | Roles vs skills, honest gaps |
+| [CONTRIBUTION.md](CONTRIBUTION.md) | Propose a skill via GitHub PR |
 | [SKILLS.md](SKILLS.md) | Skill groups index |
 | [AGENT_AUDIT.md](AGENT_AUDIT.md) | Core vs optional agents |
 | [PUBLIC_CONTENT_POLICY.md](PUBLIC_CONTENT_POLICY.md) | What may be published |
@@ -60,9 +64,9 @@ Consumer-facing and maintainer docs for `nanlabs/agent-toolkit` (**L1.5**). Mach
 
 | Path | Topic |
 | --- | --- |
-| [`../catalogs/`](../catalogs/) | Skill / agent / MCP indexes |
+| [`../catalogs/`](../catalogs/) | Skill / agent / pack / MCP indexes |
 | [`../contracts/`](../contracts/) | Dependency contracts |
-| GitHub issues `#24`, `#25`, `#28` | Future outcome-pack discovery and implementation |
+| GitHub issues `#24`, `#25`, `#28` | Remaining outcome-pack content (catalog is in `pack-catalog.yaml`) |
 | [`../mcp/templates/`](../mcp/templates/) | MCP docs-only stubs |
 
 ## GitHub Wiki

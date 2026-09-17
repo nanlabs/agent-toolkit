@@ -110,6 +110,15 @@ Uses the [`vercel-labs/skills`](https://github.com/vercel-labs/skills) CLI to
 install `skills/<group>/<skill>/` only. Does **not** install plugins, agents,
 MCP, or `/nanlabs-core:setup`.
 
+Group pack (subdirectory) or named domain pack:
+
+```bash
+npx skills add nanlabs/agent-toolkit/skills/delivery
+npx skills add nanlabs/agent-toolkit --skill github-cli-workflow --skill gh-address-comments
+```
+
+See [`docs/PACKS.md`](https://github.com/nanlabs/agent-toolkit/blob/main/docs/PACKS.md).
+
 ## Verify
 
 | Path | Check |

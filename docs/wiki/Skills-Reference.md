@@ -1,8 +1,8 @@
 # 🛠️ Skills reference
 
-48 public skills under `skills/<group>/<skill>/SKILL.md` ([Agent Skills](https://agentskills.io/specification)).
+49 public skills under `skills/<group>/<skill>/SKILL.md` ([Agent Skills](https://agentskills.io/specification)).
 
-Machine catalog: [`catalogs/skill-catalog.yaml`](https://github.com/nanlabs/agent-toolkit/blob/main/catalogs/skill-catalog.yaml) · human index: [`docs/SKILLS.md`](https://github.com/nanlabs/agent-toolkit/blob/main/docs/SKILLS.md).
+Machine catalog: [`catalogs/skill-catalog.yaml`](https://github.com/nanlabs/agent-toolkit/blob/main/catalogs/skill-catalog.yaml) · packs: [`docs/PACKS.md`](https://github.com/nanlabs/agent-toolkit/blob/main/docs/PACKS.md) · human index: [`docs/SKILLS.md`](https://github.com/nanlabs/agent-toolkit/blob/main/docs/SKILLS.md).
 
 ## Groups
 
@@ -15,16 +15,17 @@ Machine catalog: [`catalogs/skill-catalog.yaml`](https://github.com/nanlabs/agen
 | integrations | `skills/integrations/` | 4 |
 | data | `skills/data/` | 2 |
 | workflow | `skills/workflow/` | 2 |
-| ops | `skills/ops/` | 2 |
+| ops | `skills/ops/` | 3 |
 | tooling | `skills/tooling/` | 2 |
 
 ## Install
 
 ```bash
 npx skills add nanlabs/agent-toolkit -g
+npx skills add nanlabs/agent-toolkit/skills/delivery
 ```
 
-Or install **`nanlabs-core`** (bundles core skills + setup) via Claude/Cursor plugins — see [Installation](Installation).
+Or install **`nanlabs-core`** (bundles core skills + setup) via Claude/Cursor plugins — see [Installation](Installation). Domain packs: [`docs/PACKS.md`](https://github.com/nanlabs/agent-toolkit/blob/main/docs/PACKS.md).
 
 ## Not shipped here
 

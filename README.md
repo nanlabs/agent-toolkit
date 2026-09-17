@@ -29,7 +29,7 @@
 </p>
 
 <p>
-  <img src="https://img.shields.io/badge/skills-48-ff6b35" alt="48 skills"/>
+  <img src="https://img.shields.io/badge/skills-49-ff6b35" alt="49 skills"/>
   <img src="https://img.shields.io/badge/agents-18-58a6ff" alt="18 agents"/>
   <img src="https://img.shields.io/badge/plugins-2-f7c948" alt="2 plugins"/>
   <img src="https://img.shields.io/badge/MCP-docs--only-8b949e" alt="MCP docs-only"/>
@@ -117,6 +117,16 @@ Uses the [`vercel-labs/skills`](https://github.com/vercel-labs/skills) CLI to
 install the canonical Agent Skills tree. It does **not** install plugins,
 agents, MCP, or setup automation.
 
+Install a **group pack** (subdirectory) or a **domain pack** (skill filter):
+
+```bash
+npx skills add nanlabs/agent-toolkit/skills/delivery
+npx skills add nanlabs/agent-toolkit --skill github-cli-workflow --skill gh-address-comments
+```
+
+Pack catalog: [`catalogs/pack-catalog.yaml`](catalogs/pack-catalog.yaml) ·
+[`docs/PACKS.md`](docs/PACKS.md). Helper: `bash scripts/install-pack.sh delivery`.
+
 </details>
 
 <details>
@@ -141,7 +151,7 @@ Full paths: [`docs/ADOPTION.md`](docs/ADOPTION.md) · lifecycle: [`docs/LIFECYCL
 
 | Area | Notes |
 | --- | --- |
-| Skills | 48 under `skills/<group>/` — [catalog](catalogs/skill-catalog.yaml) · [index](docs/SKILLS.md) |
+| Skills | 49 under `skills/<group>/` — [catalog](catalogs/skill-catalog.yaml) · [packs](docs/PACKS.md) · [index](docs/SKILLS.md) |
 | Core plugin | `nanlabs-core` v0.3.1 — harness + setup doctor + `/nanlabs-core:setup` |
 | Agents plugin | `nanlabs-agents` v0.2.1 (optional) — 18 personas via `gen-surfaces` |
 | Copilot | Agent Plugins manifests + repository customization surface under `.github/` |
@@ -172,6 +182,8 @@ Full paths: [`docs/ADOPTION.md`](docs/ADOPTION.md) · lifecycle: [`docs/LIFECYCL
 | Cursor Agent CLI matrix | [CURSOR_CLI](docs/CURSOR_CLI.md) |
 | Docs map | [docs/README.md](docs/README.md) |
 | Add a skill / plugin | [Authoring](docs/AUTHORING.md) |
+| Install a domain pack | [Packs](docs/PACKS.md) |
+| Propose a skill | [Contribution](docs/CONTRIBUTION.md) |
 | Public safety | [Public content policy](docs/PUBLIC_CONTENT_POLICY.md) |
 
 ## Quality bar
@@ -183,6 +195,7 @@ python3 scripts/validate-agent-plugins.py
 python3 scripts/validate-public-content.py
 python3 scripts/validate-skills.py
 python3 scripts/validate-agents.py
+python3 scripts/validate-pack-catalog.py
 python3 scripts/validate-mcp.py
 python3 scripts/validate-contracts.py
 python3 scripts/gen-surfaces.py --check

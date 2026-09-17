@@ -1,5 +1,5 @@
 > [!NOTE]
-> 📘 **Repo-Only Doc** — last reviewed **2026-08-27**
+> 📘 **Repo-Only Doc** — last reviewed **2026-09-17**
 >
 > This document lives only in the repo. It is public-ready and self-contained.
 
@@ -29,7 +29,11 @@ Merged into **`nanlabs-core`** (v0.3.0+). Use `/nanlabs-core:setup`.
 
 ## Skills-only vs plugins?
 
-Skills-only installs skills alone. Plugins add agents, commands, and the bundled setup doctor. Neither path installs MCP.
+Skills-only installs skills alone. Plugins add agents, commands, and the bundled setup doctor. Neither path installs MCP. Domain packs (`npx skills add nanlabs/agent-toolkit/skills/delivery`) are documented in [PACKS.md](PACKS.md).
+
+## How do I share a skill?
+
+Open a GitHub issue with the Propose skill template and a pull request. Maintainers approve; merge makes it installable. See [CONTRIBUTION.md](CONTRIBUTION.md).
 
 ## Cursor Agent CLI vs IDE?
 
