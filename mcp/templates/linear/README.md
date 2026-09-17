@@ -3,7 +3,7 @@
 Official hosted MCP (Streamable HTTP + OAuth 2.1).
 
 - Endpoint: `https://mcp.linear.app/mcp`
-- Docs: https://linear.app/docs/mcp
+- Docs: [official setup](https://linear.app/docs/mcp)
 - Plugin: `nanlabs-integrations` (`mcp.json`)
 
 No environment variables. The client opens OAuth on first use.

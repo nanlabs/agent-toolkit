@@ -3,7 +3,7 @@
 Official hosted MCP (Streamable HTTP).
 
 - Endpoint: `https://api.githubcopilot.com/mcp/`
-- Docs: https://github.com/github/github-mcp-server/blob/main/docs/remote-server.md
+- Docs: [official setup](https://github.com/github/github-mcp-server/blob/main/docs/remote-server.md)
 - Plugin: `nanlabs-forge` (`mcp.json`)
 
 VS Code / Copilot use OAuth against this URL. Some Cursor versions still ask

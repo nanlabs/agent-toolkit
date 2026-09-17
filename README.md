@@ -2,7 +2,7 @@
 
 # agent-toolkit
 
-**NaNLABS skills, agents, and plugins — L1.5 distribution**
+<p>NaNLABS skills, agents, and plugins — L1.5 distribution</p>
 
 </div>
 

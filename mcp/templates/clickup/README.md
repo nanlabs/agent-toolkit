@@ -3,7 +3,7 @@
 Official hosted MCP (Streamable HTTP + OAuth). API tokens are **not** supported.
 
 - Endpoint: `https://mcp.clickup.com/mcp`
-- Docs: https://developer.clickup.com/docs/connect-an-ai-assistant-to-clickups-mcp-server-1
+- Docs: [official setup](https://developer.clickup.com/docs/connect-an-ai-assistant-to-clickups-mcp-server-1)
 - Plugin: `nanlabs-integrations` (`mcp.json`)
 
 After plugin install, authenticate in the client. No environment variables.
