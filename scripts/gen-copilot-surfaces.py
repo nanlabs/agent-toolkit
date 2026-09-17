@@ -2,15 +2,14 @@
 """Deterministically assemble portable Agent Plugins and Copilot surfaces.
 
 Generated artifacts:
-  plugins/<id>/plugin.json                  # Agent Plugins v1.0.0 portable manifest
-  plugins/<id>/agents/<name>.agent.md       # Copilot CLI agent files
-  .github/copilot-instructions.md           # Repository customization surface
-  .github/agents/<name>.agent.md            # Repository agent files
-  .github/skills/<name>/SKILL.md            # Repository skills
+  plugins/<id>/plugin.json                       # Agent Plugins v1.0.0 portable manifest
+  plugins/<id>/agents/<name>.agent.md            # Copilot CLI agent files
+  plugins/<id>/com.github.copilot/agents/        # VS Code Copilot agent files
+  .github/copilot-instructions.md                # Repository customization surface
+  .github/agents/<name>.agent.md                 # Repository agent files
 
-The root plugin manifests are consumed by GitHub Copilot in additive Open
-Plugin Spec mode, where agents/ and skills/ are the default component paths.
-This is a focused surface generator, not a multi-target compiler.
+Skills are not copied. Canonical skill bodies live under
+plugins/<id>/skills/<name>/ (see catalogs/skills-layout.json).
 
 Usage:
   python3 scripts/gen-copilot-surfaces.py
@@ -20,7 +19,6 @@ Usage:
 from __future__ import annotations
 
 import argparse
-import filecmp
 import json
 import re
 import shutil
@@ -38,6 +36,7 @@ PRODUCTS = ROOT / "products" / "plugins.yaml"
 PLUGINS_ROOT = ROOT / "plugins"
 AGENTS_ROOT = ROOT / "agents"
 TARGET_MAP = ROOT / "catalogs" / "agent-target-map.yaml"
+LAYOUT = ROOT / "catalogs" / "skills-layout.json"
 REPO_GITHUB = ROOT / ".github"
 FRONTMATTER_RE = re.compile(r"\A---\n(.*?)\n---\n", re.DOTALL)
 OWNER_NAME = "NaNLABS"
@@ -62,6 +61,21 @@ def load_yaml(path: Path) -> dict[str, Any]:
     return data
 
 
+def load_layout_groups() -> dict[str, list[str]]:
+    if not LAYOUT.is_file():
+        fail(f"missing required file: {LAYOUT.relative_to(ROOT)}")
+    data = json.loads(LAYOUT.read_text(encoding="utf-8"))
+    groups = data.get("groups")
+    if not isinstance(groups, dict) or not groups:
+        fail("catalogs/skills-layout.json groups must be a non-empty mapping")
+    out: dict[str, list[str]] = {}
+    for group, names in groups.items():
+        if not isinstance(names, list) or not names:
+            fail(f"skills-layout groups.{group} must be a non-empty list")
+        out[str(group)] = [str(name) for name in names]
+    return out
+
+
 def plugin_cfg(products: dict[str, Any], plugin_id: str) -> dict[str, Any]:
     cfg = ((products.get("plugins") or {}).get(plugin_id)) or {}
     if not cfg:
@@ -70,20 +84,17 @@ def plugin_cfg(products: dict[str, Any], plugin_id: str) -> dict[str, Any]:
 
 
 def plugin_ids(products: dict[str, Any]) -> list[str]:
-    ids = sorted((products.get("plugins") or {}).keys())
+    ids = list((products.get("plugins") or {}).keys())
     if not ids:
         fail("products/plugins.yaml defines no plugins")
     return ids
 
 
-def skill_source_paths(cfg: dict[str, Any]) -> list[Path]:
-    out: list[Path] = []
-    for raw in cfg.get("skills") or []:
-        path = ROOT / str(raw)
-        if not path.is_dir():
-            fail(f"missing skill source: {path.relative_to(ROOT)}")
-        out.append(path)
-    return out
+def plugin_keywords(cfg: dict[str, Any]) -> list[str]:
+    raw = cfg.get("keywords") or []
+    if not isinstance(raw, list):
+        fail("plugin keywords must be a list")
+    return [str(item) for item in raw]
 
 
 def agent_dirs() -> list[Path]:
@@ -199,41 +210,56 @@ def ensure_file_equals(path: Path, expected: str) -> None:
         fail(f"drift: {path.relative_to(ROOT)}")
 
 
-def copy_skill_tree(src: Path, dst: Path) -> None:
-    if dst.exists():
-        shutil.rmtree(dst)
-    shutil.copytree(src, dst)
-
-
-def trees_equal(a: Path, b: Path) -> bool:
-    if not a.is_dir() or not b.is_dir():
-        return False
-    a_files = {p.relative_to(a): p for p in a.rglob("*") if p.is_file()}
-    b_files = {p.relative_to(b): p for p in b.rglob("*") if p.is_file()}
-    if set(a_files) != set(b_files):
-        return False
-    for rel, left in a_files.items():
-        if not filecmp.cmp(left, b_files[rel], shallow=False):
-            return False
-    return True
-
-
 def build_portable_manifest(plugin_id: str, cfg: dict[str, Any]) -> dict[str, Any]:
     """Closed Agent Plugins v1.0.0 plugin.json (no skills/agents/mcp path fields)."""
-    manifest = {
+    manifest: dict[str, Any] = {
         "$schema": AGENT_PLUGINS_SCHEMA,
         "name": plugin_id,
         "version": cfg.get("version"),
         "description": cfg.get("description"),
         "author": {
             "name": OWNER_NAME,
+            "email": OWNER_EMAIL,
             "url": REPOSITORY_URL,
         },
         "homepage": REPOSITORY_URL,
         "repository": REPOSITORY_URL,
         "license": LICENSE,
     }
+    keywords = plugin_keywords(cfg)
+    if keywords:
+        manifest["keywords"] = keywords
     return {key: value for key, value in manifest.items() if value is not None}
+
+
+def sync_agent_files(
+    plugin_root: Path,
+    dest_dir: Path,
+    agent_names: list[str],
+    rendered: dict[str, str],
+    *,
+    suffix: str,
+    check: bool,
+) -> None:
+    expected = {f"{name}{suffix}" for name in agent_names}
+    if check:
+        existing = {p.name for p in dest_dir.glob(f"*{suffix}")} if dest_dir.is_dir() else set()
+        if existing != expected:
+            fail(
+                f"{plugin_root.name} agent drift in {dest_dir.relative_to(ROOT)}: "
+                f"extra={sorted(existing - expected)} "
+                f"missing={sorted(expected - existing)}"
+            )
+        for name in agent_names:
+            ensure_file_equals(dest_dir / f"{name}{suffix}", rendered[name])
+        return
+
+    dest_dir.mkdir(parents=True, exist_ok=True)
+    for existing in dest_dir.glob(f"*{suffix}"):
+        if existing.name not in expected:
+            existing.unlink()
+    for name in agent_names:
+        write_text(dest_dir / f"{name}{suffix}", rendered[name])
 
 
 def sync_plugin_cli_surfaces(products: dict[str, Any], *, check: bool) -> None:
@@ -255,40 +281,42 @@ def sync_plugin_cli_surfaces(products: dict[str, Any], *, check: bool) -> None:
         agent_names = agents_by_plugin.get(plugin_id, [])
         if not agent_names:
             continue
-
-        expected_agent_files = {f"{name}.agent.md" for name in agent_names}
-        agents_dir = plugin_root / "agents"
-        if check:
-            existing = {p.name for p in agents_dir.glob("*.agent.md")} if agents_dir.is_dir() else set()
-            if existing != expected_agent_files:
-                fail(
-                    f"{plugin_id} Copilot agent drift: "
-                    f"extra={sorted(existing - expected_agent_files)} "
-                    f"missing={sorted(expected_agent_files - existing)}"
-                )
-        else:
-            agents_dir.mkdir(parents=True, exist_ok=True)
-            for existing in agents_dir.glob("*.agent.md"):
-                if existing.name not in expected_agent_files:
-                    existing.unlink()
-
+        rendered: dict[str, str] = {}
         for name in agent_names:
             canonical = canonical_agent_path(name)
             front, body = parse_agent(canonical)
             description = front.get("description")
             if not description:
                 fail(f"agents/{name}/AGENT.md: missing description")
-            rendered = render_copilot_plugin_agent(name, description, body, target_map)
-            copilot_path = agents_dir / f"{name}.agent.md"
-            if check:
-                ensure_file_equals(copilot_path, rendered)
-            else:
-                write_text(copilot_path, rendered)
+            rendered[name] = render_copilot_plugin_agent(name, description, body, target_map)
+
+        sync_agent_files(
+            plugin_root,
+            plugin_root / "agents",
+            agent_names,
+            rendered,
+            suffix=".agent.md",
+            check=check,
+        )
+        sync_agent_files(
+            plugin_root,
+            plugin_root / "com.github.copilot" / "agents",
+            agent_names,
+            rendered,
+            suffix=".agent.md",
+            check=check,
+        )
 
 
-def repo_surface_skill_sources(products: dict[str, Any]) -> list[Path]:
-    core_cfg = plugin_cfg(products, REPO_SURFACE_PRODUCT)
-    return skill_source_paths(core_cfg)
+def repo_surface_skill_names(products: dict[str, Any]) -> list[str]:
+    cfg = plugin_cfg(products, REPO_SURFACE_PRODUCT)
+    group = cfg.get("skills_group")
+    if not isinstance(group, str) or not group:
+        fail(f"{REPO_SURFACE_PRODUCT} must declare skills_group")
+    names = load_layout_groups().get(group)
+    if not names:
+        fail(f"skills-layout has no group {group!r}")
+    return list(names)
 
 
 def repo_surface_agent_names(products: dict[str, Any]) -> list[str]:
@@ -301,7 +329,7 @@ def repo_surface_agent_names(products: dict[str, Any]) -> list[str]:
 
 def build_repo_instructions(products: dict[str, Any]) -> str:
     core_cfg = plugin_cfg(products, REPO_SURFACE_PRODUCT)
-    skills = [src.name for src in repo_surface_skill_sources(products)]
+    skills = repo_surface_skill_names(products)
     agents = repo_surface_agent_names(products)
     lines = [
         "# NaNLABS Copilot Instructions",
@@ -322,6 +350,8 @@ def build_repo_instructions(products: dict[str, Any]) -> str:
         "- Do not invent install flags; document only real platform flows already present in this repo.",
         "",
         "## Available baseline skills",
+        "",
+        "Canonical copies live under `plugins/nanlabs-core/skills/<name>/`.",
         "",
     ]
     lines.extend(f"- `{name}`" for name in skills)
@@ -358,8 +388,6 @@ def sync_repo_surface(products: dict[str, Any], *, check: bool) -> None:
         write_text(instructions_path, instructions)
 
     agent_names = repo_surface_agent_names(products)
-    skills = repo_surface_skill_sources(products)
-
     agents_dir = REPO_GITHUB / "agents"
     expected_agents = {f"{name}.agent.md" for name in agent_names}
     if check:
@@ -385,28 +413,10 @@ def sync_repo_surface(products: dict[str, Any], *, check: bool) -> None:
             write_text(out_path, content)
 
     skills_dir = REPO_GITHUB / "skills"
-    expected_skill_names = {src.name for src in skills}
-    if check:
-        actual = {p.name for p in skills_dir.iterdir() if p.is_dir()} if skills_dir.is_dir() else set()
-        if actual != expected_skill_names:
-            fail(
-                "repository Copilot skills drift: "
-                f"extra={sorted(actual - expected_skill_names)} "
-                f"missing={sorted(expected_skill_names - actual)}"
-            )
-    else:
-        skills_dir.mkdir(parents=True, exist_ok=True)
-        for existing in list(skills_dir.iterdir()):
-            if existing.is_dir() and existing.name not in expected_skill_names:
-                shutil.rmtree(existing)
-
-    for src in skills:
-        dst = skills_dir / src.name
+    if skills_dir.exists():
         if check:
-            if not trees_equal(src, dst):
-                fail(f"drift: {dst.relative_to(ROOT)}")
-        else:
-            copy_skill_tree(src, dst)
+            fail("legacy .github/skills/ must be removed (skills live in plugins/)")
+        shutil.rmtree(skills_dir)
 
 
 def main() -> None:

@@ -24,13 +24,14 @@ Fixes #
 - [ ] `python3 scripts/validate-manifests.py`
 - [ ] `python3 scripts/validate-skills.py`
 - [ ] `python3 scripts/validate-pack-catalog.py` (if catalogs or packs changed)
+- [ ] `python3 scripts/validate-skill-inventory.py` (if skills or layout changed)
 - [ ] `python3 scripts/validate-agent-plugins.py` (if `plugins/` changed)
 - [ ] `bash scripts/secret-scan.sh`
 - [ ] Relevant workflow(s) reviewed
 
 ## Skill / Agent checklist
 
-Fill when the PR adds or changes `skills/` or `agents/`. Mark N/A items with a note in Description.
+Fill when the PR adds or changes `plugins/*/skills/` or `agents/`. Mark N/A items with a note in Description.
 
 - [ ] Not a duplicate of an existing catalog skill or agent
 - [ ] Pack membership recorded in `catalogs/pack-catalog.yaml` (or N/A)

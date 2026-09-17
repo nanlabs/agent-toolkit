@@ -6,17 +6,14 @@ What this repository **is** and **is not**. Inspired by broader agent-toolkit ec
 
 | Surface | Role |
 | --- | --- |
-| Claude | Skills where plugins are unavailable |
-| Claude Code | Marketplace plugins + skills |
-| Cursor IDE | Plugins (local / team marketplace) |
-| Cursor Agent CLI | Same priority; certify via matrix (`docs/CURSOR_CLI.md`) |
-| GitHub Copilot | CLI manifests + repository customization |
+| Agent Plugins roster | VS Code, Copilot, Cursor, ChatGPT/Codex, Kiro, Grok Bot, Hermes, OpenClaw, NanoClaw |
+| Claude Code | Native marketplace (not on the AP roster) |
 
 ## In scope (content)
 
-- Agent Skills (`SKILL.md`) under `skills/<group>/`
+- Agent Skills (`SKILL.md`) under `plugins/nanlabs-<group>/skills/`
 - Agent personas under `agents/`
-- Claude + Cursor plugin bundles (`nanlabs-core`, `nanlabs-agents`)
+- Nine group plugins plus optional `nanlabs-agents`
 - GitHub Copilot CLI manifests + `.github/` repository surface
 - `nanlabs-pyrightination` as a report-only typing skill in `nanlabs-core`
 - MCP **templates** (docs-only stubs)
@@ -35,7 +32,6 @@ Compared to larger personal forks, NaNLABS **does not** ship here:
 - Consumer CLI (`agent-toolkit install` / multi-tool compiler)
 - Loop engineering runtime / scheduled loops
 - Multi-tool profile matrix (6+ IDEs)
-- Forge-as-separate marketplace plugin (forge skills live in the skills tree)
 - Org RAG / telemetry backends (L1 / Part III)
 - Workstation provisioning (chezmoi) — that stays in `internal-workstation`
 

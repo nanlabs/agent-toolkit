@@ -1,15 +1,14 @@
-# Packs are catalog aliases for Agent Skills (`npx skills`). They are NOT
-# Agent Plugins packages: no plugin.json, no plugins/<pack-id>/ tree.
-# Portable Agent Plugins discovery is non-recursive (skills/<name>/SKILL.md).
+# Group packs map 1:1 onto plugins/nanlabs-<group>/ (npx skills + Agent Plugins).
+# Domain packs remain npx --skill aliases and are not separate plugin packages.
 # See docs/PACKS.md and https://agent-plugins.org/specification §7.1.
 version: 1
 source: nanlabs/agent-toolkit
 
 packs:
-  # --- Group packs (1:1 with skills/<group>/) ---
+  # --- Group packs (1:1 with plugins/nanlabs-<group>/skills/) ---
   - id: core
     kind: group
-    path: skills/core
+    path: plugins/nanlabs-core/skills
     description: Orchestration, setup, companion, handshake, and PR fallback
     coverage: high
     domains: [onboarding, orchestration]
@@ -18,7 +17,7 @@ packs:
 
   - id: data
     kind: group
-    path: skills/data
+    path: plugins/nanlabs-data/skills
     description: dbt and Snowflake validation
     coverage: medium
     domains: [data]
@@ -27,7 +26,7 @@ packs:
 
   - id: delivery
     kind: group
-    path: skills/delivery
+    path: plugins/nanlabs-delivery/skills
     description: PRD, TRD, ADR, work items, assessments, and delivery process
     coverage: high
     domains: [pm, delivery]
@@ -36,7 +35,7 @@ packs:
 
   - id: design
     kind: group
-    path: skills/design
+    path: plugins/nanlabs-design/skills
     description: Figma MCP and UI/UX intelligence (not a full designer workflow)
     coverage: medium
     domains: [design]
@@ -45,7 +44,7 @@ packs:
 
   - id: forge
     kind: group
-    path: skills/forge
+    path: plugins/nanlabs-forge/skills
     description: GitHub and GitLab CLI automation for PRs, reviews, and CI
     coverage: high
     domains: [engineering]
@@ -54,7 +53,7 @@ packs:
 
   - id: integrations
     kind: group
-    path: skills/integrations
+    path: plugins/nanlabs-integrations/skills
     description: ClickUp, Slack, and Linear integrations
     coverage: medium
     domains: [operations, delivery]
@@ -63,7 +62,7 @@ packs:
 
   - id: ops
     kind: group
-    path: skills/ops
+    path: plugins/nanlabs-ops/skills
     description: Workstation triage, presentations ops, and skill contribution
     coverage: medium
     domains: [operations, staff]
@@ -72,7 +71,7 @@ packs:
 
   - id: tooling
     kind: group
-    path: skills/tooling
+    path: plugins/nanlabs-tooling/skills
     description: Playwright CLI and Jupyter notebook scaffolding
     coverage: low
     domains: [qa, rd]
@@ -81,7 +80,7 @@ packs:
 
   - id: workflow
     kind: group
-    path: skills/workflow
+    path: plugins/nanlabs-workflow/skills
     description: Client delivery workflows and bootstrap
     coverage: high
     domains: [delivery]

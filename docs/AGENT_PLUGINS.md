@@ -8,19 +8,20 @@ skills and MCP configuration:
 - [Agent Plugins manifest reference](https://agent-plugins.org/plugin-authors/manifest)
 - [Agent Plugins v1.0.0 plugin schema](https://agent-plugins.org/schemas/1.0.0/plugin.schema.json)
 - [Agent Plugins v1.0.0 MCP schema](https://agent-plugins.org/schemas/1.0.0/mcp.schema.json)
+- [Compatible clients](https://agent-plugins.org/compatible-clients) (JS table; snapshot 2026-08-13)
 
-Install flows are maintained in [`ADOPTION.md`](ADOPTION.md). In particular,
-the Cursor Agent CLI `--plugin-dir` path and GitHub Copilot CLI's
-`OWNER/REPO:PATH` plugin syntax are distinct from Claude Code marketplace
-installation.
+Install flows: [`ADOPTION.md`](ADOPTION.md). Production = the nine roster
+clients **plus** Claude Code (native dual-rail; not on that roster).
+
+There is **no** `plugin.json` at the repository root. Each group is its own
+package under `plugins/nanlabs-<group>/`. Skill bodies live only there
+(`skills/<name>/SKILL.md`). `gen-surfaces` writes manifests, not skill copies.
 
 ## Manifest and component model
 
-The `nanlabs-core` and `nanlabs-agents` plugins each have a closed, root-level
-`plugins/<name>/plugin.json` manifest. It contains the canonical `$schema`,
-plugin identity and metadata.
-The portable manifest intentionally does not declare `skills` or `agents` path
-fields: Agent Plugins clients discover skills at `skills/<name>/SKILL.md`, and
+Each group plugin has a closed, root-level `plugins/<name>/plugin.json`.
+The portable manifest does not declare `skills` or `agents` path fields:
+Agent Plugins clients discover skills at `skills/<name>/SKILL.md`, and
 native clients retain their own component rules.
 
 | Surface | Manifest | Portable or native | Components |
@@ -28,91 +29,109 @@ native clients retain their own component rules.
 | Agent Plugins | `plugin.json` | Portable | Skills; optional MCP via `mcp.json` |
 | Claude Code | `.claude-plugin/plugin.json` | Native | Claude commands, skills, agents, hooks, and MCP |
 | Cursor | `.cursor-plugin/plugin.json` | Native | Cursor rules, skills, agents, commands, hooks, variables, and MCP |
-| GitHub Copilot CLI | Root `plugin.json` plus `agents/` | Portable manifest plus Copilot surface | Skills and Copilot agent files |
+| GitHub Copilot / VS Code | Root `plugin.json` plus `agents/` and `com.github.copilot/agents/` | Portable manifest plus Copilot surface | Skills and Copilot agent files |
+| ChatGPT / Codex | `.claude-plugin/marketplace.json`, `.cursor-plugin/marketplace.json`, `.agents/plugins/marketplace.json` | Marketplace catalogs | Skills |
 
 The root manifest is generated from `products/plugins.yaml` by
-`scripts/gen-copilot-surfaces.py`. Do not hand-edit generated root manifests or
-the generated Copilot surfaces.
+`scripts/gen-surfaces.py` / `scripts/gen-copilot-surfaces.py`. Do not hand-edit
+generated root manifests or generated Copilot agent files.
 
-## Client behavior
+## Official roster (9) + Claude Code
+
+Source: [compatible-clients](https://agent-plugins.org/compatible-clients)
+(page is client-side JS; re-check when implementing). All listed clients load
+**Agent Skills**. MCP support varies; this repo does **not** ship `mcp.json`.
+
+| Client | How to load a group plugin |
+| --- | --- |
+| VS Code | `chat.plugins.enabled` + `chat.plugins.marketplaces: ["nanlabs/agent-toolkit"]`, then @agentPlugins; or Install Plugin From Source |
+| GitHub Copilot | `copilot plugin install nanlabs/agent-toolkit:plugins/nanlabs-<group>` |
+| Cursor | Team Marketplace or `--plugin-dir plugins/nanlabs-<group>` |
+| ChatGPT & Codex | `codex plugin marketplace add nanlabs/agent-toolkit` then Plugins Directory |
+| Kiro | Import folder `plugins/nanlabs-<group>` (`keywords` activate the power) |
+| Grok Bot | Folder / Cursor-style plugin directory |
+| Hermes Agent, OpenClaw, NanoClaw | Point at `plugins/nanlabs-<group>` (`plugin.json` + `skills/<name>/`) |
+| Claude Code (not on the roster) | `/plugin marketplace add nanlabs/agent-toolkit` + `/plugin install <id>@nanlabs-agent-toolkit` |
+
+**Out of production scope:** Gemini, Antigravity, OpenCode.
+
+Complete install = nine group plugins + optional `nanlabs-agents`.
+
+## Client notes
 
 ### Claude Code
 
-Claude Code uses `plugins/<name>/.claude-plugin/plugin.json`. That native
-manifest is unchanged by the portable Agent Plugins manifest, and
-`claude plugin validate --strict` is a required CI gate. See Anthropic's
+Uses `plugins/<name>/.claude-plugin/plugin.json`. `claude plugin validate`
+(and `--strict` except the deprecated `nanlabs-setup` plugin) is a CI gate.
+See Anthropic's
 [plugin marketplace documentation](https://docs.anthropic.com/en/docs/claude-code/plugin-marketplaces).
 
 ### Cursor
 
-Cursor supports both formats. Its marketplace resolution checks
-`.cursor-plugin/plugin.json` first, so the native manifest remains authoritative
-for Cursor. The root `plugin.json` can coexist for portable consumers. See the
-[Cursor plugin reference](https://cursor.com/docs/reference/plugins).
+Checks `.cursor-plugin/plugin.json` first. The root `plugin.json` coexists for
+portable consumers. Cursor does not expand `${PLUGIN_ROOT}` / `${PLUGIN_DATA}`
+in `mcp.json`. See the [Cursor plugin reference](https://cursor.com/docs/reference/plugins).
 
-### GitHub Copilot CLI
+### GitHub Copilot and VS Code
 
-GitHub Copilot CLI recognizes a root `plugin.json`. Declaring the canonical
-Agent Plugins `$schema` opts into Open Plugin Spec mode additively; when
-component path fields are omitted, `agents/` and `skills/` are the defaults.
-This preserves the existing Copilot agent files and generated repository
-customization under `.github/`. See the official
-[Copilot CLI plugin reference](https://docs.github.com/en/copilot/reference/copilot-cli-reference/cli-plugin-reference).
+Copilot CLI recognizes a root `plugin.json`. Declaring the canonical Agent
+Plugins `$schema` opts into Open Plugin Spec mode additively; when component
+path fields are omitted, `agents/` and `skills/` are the defaults. VS Code
+Copilot agents live under `com.github.copilot/agents/`. Repository
+customization is `.github/copilot-instructions.md` and `.github/agents/`
+(skills are **not** mirrored under `.github/skills/`).
 
-### Agent Skills clients
+### ChatGPT and Codex
 
-The canonical skills remain available under `skills/<group>/<name>/` and follow
-the [Agent Skills specification](https://agentskills.io/specification).
-Portable consumers discover each skill through its immediate `SKILL.md` file;
-the Agent Plugins validator does not treat nested directories as additional
-skills.
+Codex reads Claude and Cursor marketplace files. ChatGPT desktop documents
+`.agents/plugins/marketplace.json` with `source.path` prefixed `./`.
 
-## Packs (not plugins)
+## Packs
 
-[`PACKS.md`](PACKS.md) names **catalog aliases** for `npx skills`. Packs are
-not Agent Plugins packages: they have no `plugin.json`, they are not installed
-via Copilot `OWNER/REPO:PATH`, and Agent Plugins clients will not see
-`skills/<group>/<name>/SKILL.md` (discovery is non-recursive, [§7.1](https://agent-plugins.org/specification#71-skills)).
+[`PACKS.md`](PACKS.md) names catalog aliases. **Group** packs are the same
+directories as group plugins. **Domain** packs (`code-review`, `qa`, …) are
+`npx --skill` lists and are not Agent Plugins packages.
 
-To expose a skill to Agent Plugins consumers, register it in
-`products/plugins.yaml` so `gen-surfaces` mirrors it as an **immediate** child
-of `plugins/<id>/skills/<name>/SKILL.md`. Do not add `skills` or `agents` path
-fields to `plugin.json` (closed schema, [§5.2](https://agent-plugins.org/specification#52-manifest-object)).
+To expose a new skill: add `plugins/nanlabs-<group>/skills/<name>/SKILL.md`
+and a row in `catalogs/skills-layout.json` / `skill-catalog.yaml`. Do not add
+`skills` or `agents` path fields to `plugin.json` (closed schema,
+[§5.2](https://agent-plugins.org/specification#52-manifest-object)).
 Agents remain native-only (v1 portable component types are skills and MCP only).
 
 Native Claude Code and Cursor files (`.claude-plugin/`, `.cursor-plugin/`,
 `commands/`, Copilot `agents/*.agent.md`) sit beside the portable package.
 Agent Plugins clients ignore those extra directories: they are not v1
-component types and they are not reverse-domain extension namespaces.
+component types and they are not reverse-domain extension namespaces
+(`com.github.copilot` is the Copilot extension namespace).
 
 ## What is portable here
 
-`nanlabs-core` exposes its skills as the portable component set. Its commands,
-scripts, contracts, and setup automation are client-native and are not claimed
-to be Agent Plugins v1 portable components.
+Each `nanlabs-<group>` plugin exposes its skills as the portable component set.
+`nanlabs-core` also ships client-native setup (commands, doctor scripts,
+contracts) that are not claimed as Agent Plugins v1 portable components.
 
 `nanlabs-agents` is a native-agent distribution. Its agent files are useful to
 Copilot and other supported native clients, but agents are not a portable
 component in Agent Plugins v1.0.0.
 
-No `mcp.json` ships in either plugin. The repository's MCP material under
-`mcp/templates/` is documentation and configuration-template content, not a
-runtime server distribution. If a plugin later adds `mcp.json`, it must use the
-vendored Agent Plugins v1.0.0 MCP schema and keep executable paths and working
-directories contained by the plugin path rules.
+No `mcp.json` ships. The repository's MCP material under `mcp/templates/` is
+documentation, not a runtime server. If a plugin later adds `mcp.json`, it
+must use the vendored Agent Plugins v1.0.0 MCP schema and keep executable
+paths and working directories contained by the plugin path rules.
 
 ## Conformance policy
 
 The canonical schemas are vendored under
-`schemas/agent-plugins/1.0.0/` with pinned SHA-256 hashes. CI and local
-validation use `scripts/validate-agent-plugins.py` to check:
+`schemas/agent-plugins/1.0.0/` with pinned SHA-256 hashes. CI uses
+`scripts/validate-agent-plugins.py` and `scripts/validate-skill-inventory.py`:
 
 - the closed plugin schema and exact canonical `$schema` URL;
 - plugin naming and directory-name agreement;
 - immediate skill discovery and regular `SKILL.md` files;
+- one inventory copy per layout skill (no `skills/<group>/`, no `.github/skills/`);
 - realpath containment for plugin files and discovered skills; and
 - future `mcp.json` schema, schema-version, and executable-path compatibility.
 
-Validation never fetches schemas at runtime. Regenerate surfaces and run
+Validation never fetches schemas at runtime. Regenerate manifests and run
 `python3 scripts/validate-agent-plugins.py` after changing
-`products/plugins.yaml` or plugin layout.
+`products/plugins.yaml`.

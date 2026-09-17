@@ -9,7 +9,7 @@
 
 ## Is this only for Claude Code?
 
-No. Equal priority: **Claude · Claude Code · Cursor IDE · Cursor Agent CLI · GitHub Copilot**.
+No. Production is the [Agent Plugins roster](https://agent-plugins.org/compatible-clients) (VS Code, Copilot, Cursor, ChatGPT/Codex, Kiro, Grok Bot, Hermes, OpenClaw, NanoClaw) **plus** Claude Code.
 
 ## How does this differ from `ulises-jeremias/agent-toolkit`?
 
@@ -33,11 +33,11 @@ Three different layouts:
 
 | Path | Spec | What you get |
 | --- | --- | --- |
-| Skills-only / packs | [Agent Skills](https://agentskills.io/specification) + `npx skills` | Nested `skills/<group>/<name>/SKILL.md`. Packs are catalog aliases, not packages. |
+| Skills-only / domain packs | [Agent Skills](https://agentskills.io/specification) + `npx skills` | `plugins/nanlabs-<group>/skills/<name>/SKILL.md`. Domain packs are `--skill` aliases. |
 | Agent Plugins v1 | [Agent Plugins](https://agent-plugins.org/specification) | Closed root `plugin.json` plus **immediate** `plugins/<id>/skills/<name>/SKILL.md`. Agents are not portable in v1. This repo ships no `mcp.json`. |
 | Claude Code / Cursor plugins | Native marketplaces | Agents, commands, hooks, doctor. Native manifests live under `.claude-plugin/` / `.cursor-plugin/`. |
 
-Domain packs (`npx skills add nanlabs/agent-toolkit/skills/delivery`) are documented in [PACKS.md](PACKS.md). Portable vs native plugins: [AGENT_PLUGINS.md](AGENT_PLUGINS.md).
+Group packs (`npx skills add nanlabs/agent-toolkit/plugins/nanlabs-delivery/skills`) match group plugins. See [PACKS.md](PACKS.md). Portable vs native: [AGENT_PLUGINS.md](AGENT_PLUGINS.md).
 
 ## How do I share a skill?
 

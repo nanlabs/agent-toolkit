@@ -26,6 +26,7 @@ python3 scripts/validate-manifests.py
 python3 scripts/validate-agent-plugins.py
 python3 scripts/validate-skills.py
 python3 scripts/validate-pack-catalog.py
+python3 scripts/validate-skill-inventory.py
 bash scripts/secret-scan.sh
 ```
 

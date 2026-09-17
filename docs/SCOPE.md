@@ -13,27 +13,30 @@ NaNLABS production distribution for AI coding assistants — **smaller** than mu
 
 | Surface | Support |
 | --- | --- |
-| Claude | Skills path where plugins unavailable |
-| Claude Code | Marketplace plugins + skills |
-| Cursor IDE | Plugins (local / team marketplace) |
-| Cursor Agent CLI | Equal priority; certify in [CURSOR_CLI.md](CURSOR_CLI.md) |
-| GitHub Copilot | Agent Plugins portable manifests + repository customization |
+| VS Code | Agent Plugins marketplace / from-source folders |
+| GitHub Copilot | CLI `OWNER/REPO:PATH` + VS Code Copilot agents |
+| Cursor IDE / Agent CLI | Native marketplace + `--plugin-dir` |
+| ChatGPT & Codex | `.agents/plugins/marketplace.json` + Claude/Cursor catalogs |
+| Kiro | Folder import of `plugins/nanlabs-*` |
+| Grok Bot, Hermes, OpenClaw, NanoClaw | Agent Plugins plugin directory |
+| Claude Code | Native `.claude-plugin/` marketplace (not on the AP roster) |
+| `npx skills` | Skills-only from `plugins/nanlabs-<group>/skills` |
 
 ## In scope
 
-- Agent Skills (`skills/<group>/`)
-- Agent personas (`agents/`) + flat plugin assembly (`gen-surfaces`)
-- Plugins: `nanlabs-core`, `nanlabs-agents`
-- Agent Plugins v1.0.0 portable manifests and repo-scoped `.github/` customization for GitHub Copilot
+- Agent Skills under `plugins/nanlabs-<group>/skills/<name>/`
+- Agent personas (`agents/`) + generated plugin agent files (`gen-surfaces`)
+- Nine group plugins plus optional `nanlabs-agents`
+- Agent Plugins v1.0.0 portable manifests; Copilot `com.github.copilot/agents/`
 - `nanlabs-pyrightination` as a report-only typing skill in `nanlabs-core`
 - MCP **docs-only** templates
 - CI validators, contracts, catalogs (including domain packs), release policy docs
 - Contribution flow for proposing skills via GitHub pull request
-- Packs (`catalogs/pack-catalog.yaml`) as Agent Skills / `npx skills` aliases — **not** [Agent Plugins](https://agent-plugins.org/specification) packages
+- Domain packs (`catalogs/pack-catalog.yaml`) as `npx skills --skill` aliases
 
 ## Out of scope (plugin targets)
 
-OpenCode, Windsurf, Gemini CLI, Pi, etc. Portable skills may still work via `npx skills`.
+Gemini, Antigravity, OpenCode, Windsurf, Pi, etc. Portable skills may still work via `npx skills`.
 
 ## Out of scope (product)
 

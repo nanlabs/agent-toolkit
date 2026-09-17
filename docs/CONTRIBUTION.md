@@ -23,7 +23,7 @@ duplication review, then publish as an installable). There is no separate
 sharing product.
 
 Contributor walkthrough: skill **`nanlabs-propose-skill`**.
-Maintainer bar: [`skills/ops/nanlabs-propose-skill/references/REVIEW-CHECKLIST.md`](../skills/ops/nanlabs-propose-skill/references/REVIEW-CHECKLIST.md).
+Maintainer bar: [`plugins/nanlabs-ops/skills/nanlabs-propose-skill/references/REVIEW-CHECKLIST.md`](../plugins/nanlabs-ops/skills/nanlabs-propose-skill/references/REVIEW-CHECKLIST.md).
 Authoring layout: [`AUTHORING.md`](AUTHORING.md).
 Public scrub: [`PUBLIC_CONTENT_POLICY.md`](PUBLIC_CONTENT_POLICY.md).
 
@@ -33,7 +33,7 @@ Public scrub: [`PUBLIC_CONTENT_POLICY.md`](PUBLIC_CONTENT_POLICY.md).
    `catalogs/agent-catalog.yaml` so the proposal is not a duplicate.
 2. Open a GitHub issue on **nanlabs/agent-toolkit** with the **Propose skill**
    template: <https://github.com/nanlabs/agent-toolkit/issues/new?template=propose-skill.yml>.
-3. Author under `skills/<group>/<name>/` (or `agents/<name>/`) with a real
+3. Author under `plugins/nanlabs-<group>/skills/<name>/` (or `agents/<name>/`) with a real
    `SKILL.md` / `AGENT.md` — never a README-only directory.
 4. Update catalogs and, if needed, [`PACKS.md`](PACKS.md).
 5. Open a pull request against **`nanlabs/agent-toolkit` `main`**, fill the
@@ -46,7 +46,7 @@ Public scrub: [`PUBLIC_CONTENT_POLICY.md`](PUBLIC_CONTENT_POLICY.md).
 
    ```bash
    npx skills add nanlabs/agent-toolkit@<skill-name>
-   npx skills add nanlabs/agent-toolkit/skills/<group>
+   npx skills add nanlabs/agent-toolkit/plugins/nanlabs-<group>/skills
    ```
 
 ## Review checklist (short)
@@ -68,10 +68,10 @@ Portable packages MUST match [Agent Plugins](https://agent-plugins.org/specifica
   `https://agent-plugins.org/schemas/1.0.0/plugin.schema.json`). No
   `skills`/`agents` path fields.
 - Skills in a plugin are **only** `plugins/<id>/skills/<name>/SKILL.md`
-  (immediate children). Nested `skills/<group>/` is for the repo Agent Skills
-  tree and `npx skills`, not for Agent Plugins discovery.
+  (immediate children). That directory **is** the canonical skill. Do not
+  keep a second copy under `skills/<group>/` or `.github/skills/`.
 - Agents are not a v1 portable component. Keep them in `agents/` and native
-  plugin surfaces.
+  plugin surfaces (`plugins/<id>/agents/`, `com.github.copilot/agents/`).
 - Optional MCP is `mcp.json` at the plugin root with the matching schema
   version. This repo ships none.
 - A **pack** is not a plugin. Do not add `plugin.json` for a catalog pack.

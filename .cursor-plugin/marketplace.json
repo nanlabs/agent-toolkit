@@ -5,8 +5,8 @@
     "email": "technology@nanlabs.com"
   },
   "metadata": {
-    "description": "NaNLABS skills, agents, and plugins for Claude Code and Cursor IDE",
-    "version": "0.5.1",
+    "description": "NaNLABS skills, agents, and plugins for Agent Plugins clients and Claude Code",
+    "version": "0.6.0",
     "pluginRoot": "plugins"
   },
   "plugins": [
@@ -14,6 +14,46 @@
       "name": "nanlabs-core",
       "source": "nanlabs-core",
       "description": "Recommended install: setup/onboarding, orchestrator, companion, handshake, Pyright report-only typing, PR fallback, knowledge sync, and code-reviewer agent"
+    },
+    {
+      "name": "nanlabs-data",
+      "source": "nanlabs-data",
+      "description": "dbt and Snowflake validation skills"
+    },
+    {
+      "name": "nanlabs-delivery",
+      "source": "nanlabs-delivery",
+      "description": "PRD, TRD, ADR, work items, assessments, and delivery process"
+    },
+    {
+      "name": "nanlabs-design",
+      "source": "nanlabs-design",
+      "description": "Figma MCP and UI/UX intelligence (not a full designer workflow)"
+    },
+    {
+      "name": "nanlabs-forge",
+      "source": "nanlabs-forge",
+      "description": "GitHub and GitLab CLI automation for PRs, reviews, and CI"
+    },
+    {
+      "name": "nanlabs-integrations",
+      "source": "nanlabs-integrations",
+      "description": "ClickUp, Slack, and Linear integrations"
+    },
+    {
+      "name": "nanlabs-ops",
+      "source": "nanlabs-ops",
+      "description": "Workstation triage, presentations ops, and skill contribution"
+    },
+    {
+      "name": "nanlabs-tooling",
+      "source": "nanlabs-tooling",
+      "description": "Playwright CLI and Jupyter notebook scaffolding"
+    },
+    {
+      "name": "nanlabs-workflow",
+      "source": "nanlabs-workflow",
+      "description": "Client delivery workflows and bootstrap"
     },
     {
       "name": "nanlabs-agents",

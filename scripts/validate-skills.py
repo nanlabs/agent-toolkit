@@ -31,10 +31,11 @@ def fail(msg: str) -> None:
 
 def iter_skill_files() -> list[Path]:
     paths: list[Path] = []
-    for base in (ROOT / "skills", ROOT / "plugins"):
-        if not base.exists():
-            continue
-        paths.extend(sorted(base.rglob("SKILL.md")))
+    plugins = ROOT / "plugins"
+    if not plugins.is_dir():
+        return paths
+    for skill_md in sorted(plugins.glob("*/skills/*/SKILL.md")):
+        paths.append(skill_md)
     return paths
 
 
@@ -67,7 +68,7 @@ def validate_skill(path: Path) -> None:
 def main() -> None:
     skills = iter_skill_files()
     if not skills:
-        fail("no SKILL.md files found under skills/ or plugins/")
+        fail("no SKILL.md files found under plugins/*/skills/")
     for path in skills:
         validate_skill(path)
         print(f"OK: {path.relative_to(ROOT)}")

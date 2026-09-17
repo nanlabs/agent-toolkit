@@ -51,6 +51,9 @@ jobs:
       - name: Validate Agent Plugins manifests
         run: python3 scripts/validate-agent-plugins.py
 
+      - name: Validate skill inventory
+        run: python3 scripts/validate-skill-inventory.py
+
       - name: Validate public content
         run: python3 scripts/validate-public-content.py
 
@@ -122,7 +125,7 @@ jobs:
             dir=$(dirname "$skill")
             echo "skills-ref: $dir"
             npx --yes skills-ref validate "$dir" || fail=1
-          done < <(find skills -type f -name SKILL.md -print0 | sort -z)
+          done < <(find plugins -type f -name SKILL.md -not -path '*/__pycache__/*' -print0 | sort -z)
           exit $fail
 
   claude-plugin-validate:
@@ -140,14 +143,19 @@ jobs:
         run: |
           set -euo pipefail
           claude --version || true
-          for p in plugins/nanlabs-setup plugins/nanlabs-core plugins/nanlabs-agents; do
-            if [[ -d "$p" ]]; then
+          shopt -s nullglob
+          for p in plugins/nanlabs-*; do
+            if [[ -d "$p/.claude-plugin" ]]; then
               echo "validate $p"
               claude plugin validate "$p"
             fi
           done
-          for p in plugins/nanlabs-core plugins/nanlabs-agents; do
-            if [[ -d "$p" ]]; then
+          for p in plugins/nanlabs-*; do
+            if [[ "$(basename "$p")" == "nanlabs-setup" ]]; then
+              continue
+            fi
+            if [[ -d "$p/.claude-plugin" ]]; then
+              echo "validate --strict $p"
               claude plugin validate --strict "$p"
             fi
           done

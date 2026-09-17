@@ -51,7 +51,7 @@ Project-scope installs can write `skills-lock.json` for reproducibility (CLI res
 3. Modes: Default Off / Default On / Required.
 4. Updates: Refresh or enable Auto Refresh (GitHub App).
 
-Install **`nanlabs-core`** (recommended); optionally **`nanlabs-agents`**. Setup: `/nanlabs-core:setup` when the IDE surfaces plugin commands.
+Install **`nanlabs-core`** first, then the other `nanlabs-*` group plugins for a complete skill set; optionally **`nanlabs-agents`**. Setup: `/nanlabs-core:setup` when the IDE surfaces plugin commands.
 
 ## Cursor Agent CLI
 

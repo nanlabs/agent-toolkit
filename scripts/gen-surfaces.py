@@ -3,18 +3,22 @@
 
 Canonical sources:
   agents/<name>/AGENT.md (+ references/, NOTICE.txt)
-  skills/core/<skill>/...
+  plugins/<id>/skills/<name>/          # skill bodies (not copied)
   products/plugins.yaml (versions + plugin metadata)
+  catalogs/skills-layout.json (skills_group membership)
   catalogs/agent-target-map.yaml (Claude/Cursor frontmatter overlays)
 
-Generated surfaces:
-  plugins/<id>/agents/<name>.md          # flat agent files (Claude + Cursor discovery)
-  plugins/<id>/resources/agents/<name>/  # references + NOTICE (not scanned as agents)
-  plugins/<id>/skills/<skill>/           # mirrored from skills/core
-  .claude-plugin/marketplace.json        # version fields synced
-  .cursor-plugin/marketplace.json        # schema-safe entries + version in metadata only
-  plugins/*/.claude-plugin/plugin.json
-  plugins/*/.cursor-plugin/plugin.json
+Generated surfaces (manifests only — skill trees are never copied):
+  plugins/<id>/plugin.json             # Agent Plugins portable manifest
+  plugins/<id>/.claude-plugin/plugin.json
+  plugins/<id>/.cursor-plugin/plugin.json
+  plugins/<id>/LICENSE
+  plugins/<id>/README.md               # scaffolded only when missing
+  plugins/<id>/agents/<name>.md        # flat agent files (when agents: is set)
+  plugins/<id>/resources/agents/<name>/
+  .claude-plugin/marketplace.json
+  .cursor-plugin/marketplace.json
+  .agents/plugins/marketplace.json     # ChatGPT desktop / Codex
 
 Usage:
   python3 scripts/gen-surfaces.py          # write surfaces
@@ -41,12 +45,21 @@ ROOT = Path(__file__).resolve().parents[1]
 AGENTS_ROOT = ROOT / "agents"
 PRODUCTS = ROOT / "products" / "plugins.yaml"
 TARGET_MAP = ROOT / "catalogs" / "agent-target-map.yaml"
+LAYOUT = ROOT / "catalogs" / "skills-layout.json"
+LICENSE_SRC = ROOT / "LICENSE"
 FRONTMATTER_RE = re.compile(r"\A---\n(.*?)\n---\n", re.DOTALL)
-NAME_RE = re.compile(r"^name:\s*(.+)$", re.MULTILINE)
-DESC_RE = re.compile(r"^description:\s*(.+)$", re.MULTILINE)
 FORBIDDEN_CANONICAL_KEYS = frozenset(
     {"opencode_mode", "opencode_color", "cursor_title", "tools"}
 )
+OWNER_NAME = "NaNLABS"
+OWNER_EMAIL = "technology@nanlabs.com"
+REPOSITORY_URL = "https://github.com/nanlabs/agent-toolkit"
+LICENSE = "MIT"
+MARKETPLACE_NAME = "nanlabs-agent-toolkit"
+AGENT_PLUGINS_SCHEMA = "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json"
+CLAUDE_MARKETPLACE = ROOT / ".claude-plugin" / "marketplace.json"
+CURSOR_MARKETPLACE = ROOT / ".cursor-plugin" / "marketplace.json"
+AGENTS_MARKETPLACE = ROOT / ".agents" / "plugins" / "marketplace.json"
 
 
 def fail(msg: str) -> None:
@@ -61,6 +74,38 @@ def load_yaml(path: Path) -> dict[str, Any]:
     if not isinstance(data, dict):
         fail(f"{path.relative_to(ROOT)} must be a mapping")
     return data
+
+
+def load_layout_groups() -> dict[str, list[str]]:
+    if not LAYOUT.is_file():
+        fail(f"missing required file: {LAYOUT.relative_to(ROOT)}")
+    data = json.loads(LAYOUT.read_text(encoding="utf-8"))
+    groups = data.get("groups")
+    if not isinstance(groups, dict) or not groups:
+        fail("catalogs/skills-layout.json groups must be a non-empty mapping")
+    out: dict[str, list[str]] = {}
+    for group, names in groups.items():
+        if not isinstance(names, list) or not names:
+            fail(f"skills-layout groups.{group} must be a non-empty list")
+        out[str(group)] = [str(name) for name in names]
+    return out
+
+
+def dump_json(data: dict[str, Any]) -> str:
+    return json.dumps(data, indent=2) + "\n"
+
+
+def write_json(path: Path, data: dict[str, Any]) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(dump_json(data), encoding="utf-8")
+
+
+def ensure_text_equals(path: Path, expected: str) -> None:
+    if not path.is_file():
+        fail(f"missing {path.relative_to(ROOT)} — run scripts/gen-surfaces.py")
+    current = path.read_text(encoding="utf-8")
+    if current != expected:
+        fail(f"drift: {path.relative_to(ROOT)}")
 
 
 def agent_dirs() -> list[Path]:
@@ -135,19 +180,6 @@ def mirror_tree(src: Path, dst: Path) -> None:
     shutil.copytree(src, dst)
 
 
-def trees_equal(a: Path, b: Path) -> bool:
-    if not a.is_dir() or not b.is_dir():
-        return False
-    a_files = {p.relative_to(a): p for p in a.rglob("*") if p.is_file()}
-    b_files = {p.relative_to(b): p for p in b.rglob("*") if p.is_file()}
-    if set(a_files) != set(b_files):
-        return False
-    for rel, left in a_files.items():
-        if not filecmp.cmp(left, b_files[rel], shallow=False):
-            return False
-    return True
-
-
 def files_equal(a: Path, b: Path) -> bool:
     return a.is_file() and b.is_file() and filecmp.cmp(a, b, shallow=False)
 
@@ -160,16 +192,144 @@ def plugin_agent_names(products: dict[str, Any]) -> dict[str, list[str]]:
         if agents_cfg == "all":
             out[plugin_id] = all_agents
         elif isinstance(agents_cfg, list):
-            out[plugin_id] = agents_cfg
+            out[plugin_id] = [str(name) for name in agents_cfg]
         else:
             out[plugin_id] = []
     return out
 
 
-def skill_sources(products: dict[str, Any], plugin_id: str) -> list[Path]:
-    cfg = (products.get("plugins") or {}).get(plugin_id) or {}
-    sources = cfg.get("skills") or []
-    return [ROOT / str(s) for s in sources]
+def plugin_keywords(cfg: dict[str, Any]) -> list[str]:
+    raw = cfg.get("keywords") or []
+    if not isinstance(raw, list):
+        fail("plugin keywords must be a list")
+    return [str(item) for item in raw]
+
+
+def build_portable_manifest(plugin_id: str, cfg: dict[str, Any]) -> dict[str, Any]:
+    """Closed Agent Plugins v1.0.0 plugin.json (no skills/agents/mcp path fields)."""
+    author: dict[str, str] = {
+        "name": OWNER_NAME,
+        "email": OWNER_EMAIL,
+        "url": REPOSITORY_URL,
+    }
+    manifest: dict[str, Any] = {
+        "$schema": AGENT_PLUGINS_SCHEMA,
+        "name": plugin_id,
+        "version": cfg.get("version"),
+        "description": cfg.get("description"),
+        "author": author,
+        "homepage": REPOSITORY_URL,
+        "repository": REPOSITORY_URL,
+        "license": LICENSE,
+    }
+    keywords = plugin_keywords(cfg)
+    if keywords:
+        manifest["keywords"] = keywords
+    return {key: value for key, value in manifest.items() if value is not None}
+
+
+def build_native_manifest(plugin_id: str, cfg: dict[str, Any]) -> dict[str, Any]:
+    manifest: dict[str, Any] = {
+        "name": plugin_id,
+        "version": cfg.get("version"),
+        "description": cfg.get("description"),
+        "author": {
+            "name": OWNER_NAME,
+            "email": OWNER_EMAIL,
+        },
+        "homepage": REPOSITORY_URL,
+        "repository": REPOSITORY_URL,
+        "license": LICENSE,
+    }
+    keywords = plugin_keywords(cfg)
+    if keywords:
+        manifest["keywords"] = keywords
+    return {key: value for key, value in manifest.items() if value is not None}
+
+
+def plugin_readme(plugin_id: str, cfg: dict[str, Any]) -> str:
+    description = str(cfg.get("description") or "").strip()
+    group = cfg.get("skills_group")
+    skills_note = (
+        f"Canonical skills live under `skills/<name>/` (layout group `{group}`)."
+        if group
+        else "This plugin ships agent personas; skill bodies live in the group plugins."
+    )
+    return (
+        f"# {plugin_id}\n"
+        f"\n"
+        f"{description}\n"
+        f"\n"
+        f"{skills_note} There is no second tree under `skills/<group>/`.\n"
+        f"\n"
+        f"## Install\n"
+        f"\n"
+        f"See [docs/ADOPTION.md](../../docs/ADOPTION.md) for the full client matrix.\n"
+        f"\n"
+        f"### Claude Code\n"
+        f"\n"
+        f"```text\n"
+        f"/plugin marketplace add nanlabs/agent-toolkit\n"
+        f"/plugin install {plugin_id}@nanlabs-agent-toolkit\n"
+        f"```\n"
+        f"\n"
+        f"### GitHub Copilot CLI\n"
+        f"\n"
+        f"```bash\n"
+        f"copilot plugin install nanlabs/agent-toolkit:plugins/{plugin_id}\n"
+        f"```\n"
+        f"\n"
+        f"### Cursor\n"
+        f"\n"
+        f"```bash\n"
+        f"agent --plugin-dir /path/to/agent-toolkit/plugins/{plugin_id}\n"
+        f"```\n"
+        f"\n"
+        f"### Agent Plugins folder import\n"
+        f"\n"
+        f"Point the client at `plugins/{plugin_id}` (`plugin.json` + `skills/<name>/SKILL.md`).\n"
+        f"Kiro, Grok Bot, Hermes Agent, OpenClaw, and NanoClaw use this path.\n"
+    )
+
+
+def scaffold_plugin(plugin_id: str, cfg: dict[str, Any], *, check: bool) -> None:
+    plugin_root = ROOT / "plugins" / plugin_id
+    license_dst = plugin_root / "LICENSE"
+    readme_dst = plugin_root / "README.md"
+    portable = build_portable_manifest(plugin_id, cfg)
+    native = build_native_manifest(plugin_id, cfg)
+    portable_text = dump_json(portable)
+    native_text = dump_json(native)
+    license_text = LICENSE_SRC.read_text(encoding="utf-8") if LICENSE_SRC.is_file() else ""
+    if not license_text:
+        fail("missing repo LICENSE")
+
+    manifests = {
+        plugin_root / "plugin.json": portable_text,
+        plugin_root / ".claude-plugin" / "plugin.json": native_text,
+        plugin_root / ".cursor-plugin" / "plugin.json": native_text,
+    }
+
+    if check:
+        if not plugin_root.is_dir():
+            fail(f"missing {plugin_root.relative_to(ROOT)} — run scripts/gen-surfaces.py")
+        for path, expected in manifests.items():
+            ensure_text_equals(path, expected)
+        if not license_dst.is_file() or license_dst.read_text(encoding="utf-8") != license_text:
+            fail(f"drift: {license_dst.relative_to(ROOT)}")
+        if not readme_dst.is_file():
+            fail(f"missing {readme_dst.relative_to(ROOT)}")
+        return
+
+    plugin_root.mkdir(parents=True, exist_ok=True)
+    for path, expected in manifests.items():
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text(expected, encoding="utf-8")
+    license_dst.write_text(license_text, encoding="utf-8")
+    if not readme_dst.is_file():
+        readme_dst.write_text(plugin_readme(plugin_id, cfg), encoding="utf-8")
+        print(f"scaffolded {readme_dst.relative_to(ROOT)}")
+    print(f"synced manifests for plugins/{plugin_id}")
 
 
 def sync_agent_surfaces(
@@ -283,171 +443,136 @@ def sync_agent_surfaces(
             print(f"synced agent {name} -> plugins/{plugin_id}/agents/{name}.md")
 
 
-def sync_skill_surfaces(plugin_id: str, sources: list[Path], *, check: bool) -> None:
-    skills_dest = ROOT / "plugins" / plugin_id / "skills"
-    expected = {src.name: src for src in sources}
-
-    if check:
-        if not skills_dest.is_dir() and expected:
-            fail(f"missing {skills_dest.relative_to(ROOT)}")
-        actual = {p.name: p for p in skills_dest.iterdir() if p.is_dir()} if skills_dest.is_dir() else {}
-        if set(actual) != set(expected):
-            fail(
-                f"{plugin_id} skills drift: extra={sorted(set(actual)-set(expected))} "
-                f"missing={sorted(set(expected)-set(actual))}"
-            )
-        for name, src in expected.items():
-            if not trees_equal(src, actual[name]):
-                fail(f"drift: plugins/{plugin_id}/skills/{name}")
-    else:
-        skills_dest.mkdir(parents=True, exist_ok=True)
-        for existing in list(skills_dest.iterdir()):
-            if existing.is_dir() and existing.name not in expected:
-                shutil.rmtree(existing)
-        for name, src in expected.items():
-            dst = skills_dest / name
-            mirror_tree(src, dst)
-            print(f"synced {src.relative_to(ROOT)} -> plugins/{plugin_id}/skills/{name}")
-
-
-def sync_versions(products: dict[str, Any], *, check: bool) -> None:
-    meta_version = (products.get("marketplace") or {}).get("metadata", {}).get("version")
-    if not meta_version:
+def marketplace_meta(products: dict[str, Any]) -> tuple[str, str]:
+    meta = (products.get("marketplace") or {}).get("metadata") or {}
+    version = meta.get("version")
+    description = meta.get("description")
+    if not isinstance(version, str) or not version.strip():
         fail("products/plugins.yaml: marketplace.metadata.version required")
-
-    claude_marketplace = ROOT / ".claude-plugin" / "marketplace.json"
-    cursor_marketplace = ROOT / ".cursor-plugin" / "marketplace.json"
-
-    if check:
-        _check_versions(products, claude_marketplace, cursor_marketplace, meta_version)
-    else:
-        _write_versions(products, claude_marketplace, cursor_marketplace, meta_version)
+    if not isinstance(description, str) or not description.strip():
+        fail("products/plugins.yaml: marketplace.metadata.description required")
+    return version, description
 
 
-def _check_versions(
-    products: dict[str, Any],
-    claude_path: Path,
-    cursor_path: Path,
-    meta_version: str,
-) -> None:
-    claude = json.loads(claude_path.read_text(encoding="utf-8"))
-    cursor = json.loads(cursor_path.read_text(encoding="utf-8"))
-    if claude.get("metadata", {}).get("version") != meta_version:
-        fail("drift: .claude-plugin/marketplace.json metadata.version")
-    if cursor.get("metadata", {}).get("version") != meta_version:
-        fail("drift: .cursor-plugin/marketplace.json metadata.version")
+def build_claude_marketplace(products: dict[str, Any]) -> dict[str, Any]:
+    version, description = marketplace_meta(products)
+    plugins: list[dict[str, Any]] = []
     for plugin_id, cfg in (products.get("plugins") or {}).items():
-        version = cfg.get("version")
-        for marketplace, path in (("claude", claude_path), ("cursor", cursor_path)):
-            data = claude if marketplace == "claude" else cursor
-            entry = next((p for p in data.get("plugins", []) if p.get("name") == plugin_id), None)
-            if not entry:
-                fail(f"missing marketplace entry for {plugin_id} in {path.name}")
-            if marketplace == "claude" and entry.get("version") != version:
-                fail(f"drift: {path.name} plugin {plugin_id} version")
-        for manifest_name in (".claude-plugin/plugin.json", ".cursor-plugin/plugin.json"):
-            manifest = ROOT / "plugins" / plugin_id / manifest_name
-            if not manifest.is_file():
-                continue
-            data = json.loads(manifest.read_text(encoding="utf-8"))
-            if data.get("version") != version:
-                fail(f"drift: {manifest.relative_to(ROOT)} version")
-
-
-def _write_versions(
-    products: dict[str, Any],
-    claude_path: Path,
-    cursor_path: Path,
-    meta_version: str,
-) -> None:
-    claude = json.loads(claude_path.read_text(encoding="utf-8"))
-    cursor = json.loads(cursor_path.read_text(encoding="utf-8"))
-
-    claude.setdefault("metadata", {})["version"] = meta_version
-    cursor.setdefault("metadata", {})["version"] = meta_version
-    meta_desc = (products.get("marketplace") or {}).get("metadata", {}).get("description")
-    if meta_desc:
-        claude["metadata"]["description"] = meta_desc
-        cursor["metadata"]["description"] = meta_desc
-
-    for plugin_id, cfg in (products.get("plugins") or {}).items():
-        version = cfg.get("version")
-        description = cfg.get("description")
-        for data in (claude, cursor):
-            entry = next((p for p in data.get("plugins", []) if p.get("name") == plugin_id), None)
-            if entry and description:
-                entry["description"] = description
-            if entry and data is claude and version:
-                entry["version"] = version
-        for manifest_name in (".claude-plugin/plugin.json", ".cursor-plugin/plugin.json"):
-            manifest = ROOT / "plugins" / plugin_id / manifest_name
-            if manifest.is_file():
-                data = json.loads(manifest.read_text(encoding="utf-8"))
-                if version:
-                    data["version"] = version
-                if description:
-                    data["description"] = description
-                manifest.write_text(json.dumps(data, indent=2) + "\n", encoding="utf-8")
-
-    claude_path.write_text(json.dumps(claude, indent=2) + "\n", encoding="utf-8")
-    cursor_path.write_text(json.dumps(_cursor_marketplace_schema_safe(cursor), indent=2) + "\n", encoding="utf-8")
-    print("synced plugin versions from products/plugins.yaml")
-
-
-def _cursor_marketplace_schema_safe(data: dict[str, Any]) -> dict[str, Any]:
-    """Cursor marketplace entries allow only name, source, description, minClientVersions."""
-    cleaned = dict(data)
-    plugins = []
-    for entry in data.get("plugins") or []:
-        safe = {
-            k: entry[k]
-            for k in ("name", "source", "description", "minClientVersions")
-            if k in entry
+        entry: dict[str, Any] = {
+            "name": plugin_id,
+            "source": f"./plugins/{plugin_id}",
+            "description": cfg.get("description"),
+            "version": cfg.get("version"),
+            "category": "productivity",
         }
-        plugins.append(safe)
-    cleaned["plugins"] = plugins
-    return cleaned
+        keywords = plugin_keywords(cfg)
+        if keywords:
+            entry["tags"] = keywords
+        plugins.append(entry)
+    return {
+        "name": MARKETPLACE_NAME,
+        "owner": {"name": OWNER_NAME, "email": OWNER_EMAIL},
+        "metadata": {
+            "description": description,
+            "version": version,
+            "pluginRoot": "./plugins",
+        },
+        "plugins": plugins,
+    }
+
+
+def build_cursor_marketplace(products: dict[str, Any]) -> dict[str, Any]:
+    version, description = marketplace_meta(products)
+    plugins: list[dict[str, Any]] = []
+    for plugin_id, cfg in (products.get("plugins") or {}).items():
+        plugins.append(
+            {
+                "name": plugin_id,
+                "source": plugin_id,
+                "description": cfg.get("description"),
+            }
+        )
+    return {
+        "name": MARKETPLACE_NAME,
+        "owner": {"name": OWNER_NAME, "email": OWNER_EMAIL},
+        "metadata": {
+            "description": description,
+            "version": version,
+            "pluginRoot": "plugins",
+        },
+        "plugins": plugins,
+    }
+
+
+def build_agents_marketplace(products: dict[str, Any]) -> dict[str, Any]:
+    plugins: list[dict[str, Any]] = []
+    for plugin_id, cfg in (products.get("plugins") or {}).items():
+        plugins.append(
+            {
+                "name": plugin_id,
+                "description": cfg.get("description"),
+                "source": {"path": f"./plugins/{plugin_id}"},
+            }
+        )
+    return {"name": MARKETPLACE_NAME, "plugins": plugins}
+
+
+def sync_marketplaces(products: dict[str, Any], *, check: bool) -> None:
+    expected = {
+        CLAUDE_MARKETPLACE: build_claude_marketplace(products),
+        CURSOR_MARKETPLACE: build_cursor_marketplace(products),
+        AGENTS_MARKETPLACE: build_agents_marketplace(products),
+    }
+    for path, data in expected.items():
+        text = dump_json(data)
+        if check:
+            ensure_text_equals(path, text)
+        else:
+            write_json(path, data)
+            print(f"synced {path.relative_to(ROOT)}")
 
 
 def check_surfaces() -> None:
     products = load_yaml(PRODUCTS)
     target_map = load_yaml(TARGET_MAP)
+    layout_groups = load_layout_groups()
     agents_by_plugin = plugin_agent_names(products)
 
-    for plugin_id, names in agents_by_plugin.items():
+    for plugin_id, cfg in (products.get("plugins") or {}).items():
+        group = cfg.get("skills_group")
+        if group is not None and group not in layout_groups:
+            fail(f"products/plugins.yaml {plugin_id}: unknown skills_group {group!r}")
+        scaffold_plugin(plugin_id, cfg, check=True)
+        names = agents_by_plugin.get(plugin_id) or []
         if names:
             sync_agent_surfaces(plugin_id, names, target_map, check=True)
 
-    for plugin_id, cfg in (products.get("plugins") or {}).items():
-        sources = skill_sources(products, plugin_id)
-        if sources:
-            sync_skill_surfaces(plugin_id, sources, check=True)
-
-    sync_versions(products, check=True)
+    sync_marketplaces(products, check=True)
 
     total_agents = sum(len(v) for v in agents_by_plugin.values())
     print(
         f"OK: gen-surfaces check passed ({total_agents} plugin agent file(s); "
-        f"versions synced from products/plugins.yaml)"
+        f"manifests only — skill trees are not generated)"
     )
 
 
 def write_surfaces() -> None:
     products = load_yaml(PRODUCTS)
     target_map = load_yaml(TARGET_MAP)
+    layout_groups = load_layout_groups()
     agents_by_plugin = plugin_agent_names(products)
 
-    for plugin_id, names in agents_by_plugin.items():
+    for plugin_id, cfg in (products.get("plugins") or {}).items():
+        group = cfg.get("skills_group")
+        if group is not None and group not in layout_groups:
+            fail(f"products/plugins.yaml {plugin_id}: unknown skills_group {group!r}")
+        scaffold_plugin(plugin_id, cfg, check=False)
+        names = agents_by_plugin.get(plugin_id) or []
         if names:
             sync_agent_surfaces(plugin_id, names, target_map, check=False)
 
-    for plugin_id in (products.get("plugins") or {}):
-        sources = skill_sources(products, plugin_id)
-        if sources:
-            sync_skill_surfaces(plugin_id, sources, check=False)
-
-    sync_versions(products, check=False)
-    print("OK: gen-surfaces wrote plugin surfaces")
+    sync_marketplaces(products, check=False)
+    print("OK: gen-surfaces wrote plugin manifests (skills were not copied)")
 
 
 def main() -> None:

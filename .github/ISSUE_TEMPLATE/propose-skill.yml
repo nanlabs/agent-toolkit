@@ -99,7 +99,7 @@ body:
           required: true
         - label: Cloud users can follow this as a skill (or Code/Cursor-only steps are labeled)
           required: true
-        - label: I can open a pull request with a real SKILL.md or AGENT.md (no placeholder directory)
+        - label: I can open a pull request with a real SKILL.md under plugins/nanlabs-<group>/skills/<name>/ (no placeholder directory)
           required: false
-        - label: This is an Agent Skills / pack contribution (not a new Agent Plugins package unless maintainers asked)
+        - label: Skills go in the matching group plugin (not a second skills/<group>/ tree)
           required: false

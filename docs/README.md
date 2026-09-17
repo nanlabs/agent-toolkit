@@ -12,7 +12,7 @@
 
 Consumer-facing and maintainer docs for `nanlabs/agent-toolkit` (**L1.5**). Machine provisioning stays in **`nanlabs/internal-workstation`** (**private**).
 
-**Production surfaces:** Claude · Claude Code · Cursor IDE · Cursor Agent CLI · GitHub Copilot.
+**Production surfaces:** Agent Plugins roster + Claude Code.
 
 ## Documentation model
 

@@ -17,12 +17,14 @@ Portable repository customization surface for `nanlabs/agent-toolkit`.
 
 ## Available baseline skills
 
-- `nanlabs-setup`
+Canonical copies live under `plugins/nanlabs-core/skills/<name>/`.
+
 - `nanlabs-assistant`
 - `nanlabs-dev-companion`
 - `nanlabs-output-handshake`
 - `nanlabs-pyrightination`
 - `nanlabs-pr-fallback`
+- `nanlabs-setup`
 - `nanlabs-workspace-knowledge-sync`
 
 ## Available agents

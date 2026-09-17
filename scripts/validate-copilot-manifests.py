@@ -54,13 +54,13 @@ def repo_surface_skills(cfgs: dict[str, dict[str, Any]]) -> list[Path]:
     cfg = cfgs.get(REPO_SURFACE_PRODUCT)
     if not isinstance(cfg, dict):
         fail(f"missing repository-surface product {REPO_SURFACE_PRODUCT!r}")
-    out: list[Path] = []
-    for raw in cfg.get("skills") or []:
-        path = ROOT / str(raw)
-        if not path.is_dir():
-            fail(f"missing skill source: {path.relative_to(ROOT)}")
-        out.append(path)
-    return out
+    group = cfg.get("skills_group")
+    if not isinstance(group, str) or not group:
+        fail(f"{REPO_SURFACE_PRODUCT} must declare skills_group")
+    skills_dir = PLUGINS_ROOT / REPO_SURFACE_PRODUCT / "skills"
+    if not skills_dir.is_dir():
+        fail(f"missing {skills_dir.relative_to(ROOT)}")
+    return sorted(p.parent for p in skills_dir.glob("*/SKILL.md"))
 
 
 def resolved_plugin_agent_names(cfg: dict[str, Any]) -> list[str]:
@@ -81,8 +81,11 @@ def validate_plugin_cli_surfaces(cfgs: dict[str, dict[str, Any]]) -> None:
         agent_names = resolved_plugin_agent_names(cfg)
         for name in agent_names:
             dst = plugin_root / "agents" / f"{name}.agent.md"
+            copilot_dst = plugin_root / "com.github.copilot" / "agents" / f"{name}.agent.md"
             if not dst.is_file():
                 fail(f"missing Copilot agent file: {dst.relative_to(ROOT)}")
+            if not copilot_dst.is_file():
+                fail(f"missing VS Code Copilot agent file: {copilot_dst.relative_to(ROOT)}")
 
 
 def validate_repo_surface(cfgs: dict[str, dict[str, Any]]) -> None:
@@ -96,10 +99,13 @@ def validate_repo_surface(cfgs: dict[str, dict[str, Any]]) -> None:
         if not path.is_file():
             fail(f"missing repository Copilot agent: {path.relative_to(ROOT)}")
 
+    github_skills = REPO_GITHUB / "skills"
+    if github_skills.exists():
+        fail("legacy .github/skills/ must not exist")
     for skill_dir in repo_surface_skills(cfgs):
-        path = REPO_GITHUB / "skills" / skill_dir.name / "SKILL.md"
+        path = skill_dir / "SKILL.md"
         if not path.is_file():
-            fail(f"missing repository Copilot skill: {path.relative_to(ROOT)}")
+            fail(f"missing plugin skill: {path.relative_to(ROOT)}")
 
 
 def main() -> None:

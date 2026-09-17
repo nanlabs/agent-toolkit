@@ -69,17 +69,16 @@ Parity matrix: [Cursor Agent CLI](Cursor-Agent-CLI) · repo [`docs/CURSOR_CLI.md
 
 Two supported surfaces:
 
-1. **CLI plugin surface** — Agent Plugins v1.0.0 portable manifests generated in:
-   - `plugins/nanlabs-core/plugin.json`
-   - `plugins/nanlabs-agents/plugin.json`
-   Copilot uses `agents/` and `skills/` as the default component paths in
-   additive Open Plugin Spec mode.
+1. **CLI plugin surface** — Agent Plugins v1.0.0 portable manifests in each
+   `plugins/nanlabs-*` directory. Copilot uses `agents/` and `skills/` as the
+   default component paths in additive Open Plugin Spec mode.
 
-   Install directly from GitHub, or use the equivalent path in a checkout:
+   Install each group plugin from GitHub, or use the equivalent path in a checkout:
 
    ```bash
    copilot plugin install nanlabs/agent-toolkit:plugins/nanlabs-core
-   # optional full agent roster:
+   copilot plugin install nanlabs/agent-toolkit:plugins/nanlabs-delivery
+   # …repeat for data, design, forge, integrations, ops, tooling, workflow
    copilot plugin install nanlabs/agent-toolkit:plugins/nanlabs-agents
    ```
 
@@ -89,7 +88,6 @@ Two supported surfaces:
 2. **Repository customization** — committed in:
    - `.github/copilot-instructions.md`
    - `.github/agents/*.agent.md`
-   - `.github/skills/*/SKILL.md`
 
 The recommended baseline remains `nanlabs-core`, which also bundles the
 report-only `nanlabs-pyrightination` skill for Python type-check reporting.
@@ -107,13 +105,13 @@ npx skills add nanlabs/agent-toolkit -g
 ```
 
 Uses the [`vercel-labs/skills`](https://github.com/vercel-labs/skills) CLI to
-install `skills/<group>/<skill>/` only. Does **not** install plugins, agents,
+install `plugins/nanlabs-<group>/skills/<skill>/` only. Does **not** install plugins as Claude/Cursor packages, agents,
 MCP, or `/nanlabs-core:setup`.
 
 Group pack (subdirectory) or named domain pack:
 
 ```bash
-npx skills add nanlabs/agent-toolkit/skills/delivery
+npx skills add nanlabs/agent-toolkit/plugins/nanlabs-delivery/skills
 npx skills add nanlabs/agent-toolkit --skill github-cli-workflow --skill gh-address-comments
 ```
 

@@ -18,8 +18,9 @@ ROOT = Path(__file__).resolve().parents[1]
 PACK_CATALOG = ROOT / "catalogs" / "pack-catalog.yaml"
 SKILL_CATALOG = ROOT / "catalogs" / "skill-catalog.yaml"
 AGENT_CATALOG = ROOT / "catalogs" / "agent-catalog.yaml"
-SKILLS_ROOT = ROOT / "skills"
+PLUGINS_ROOT = ROOT / "plugins"
 AGENTS_ROOT = ROOT / "agents"
+DEPRECATED_SETUP_PLUGIN = "nanlabs-setup"
 
 PACK_ID_RE = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
 KINDS = {"group", "domain"}
@@ -63,10 +64,18 @@ def expect_list(obj: dict[str, Any], key: str, label: str) -> list[Any]:
 
 def skill_names_on_disk() -> dict[str, Path]:
     found: dict[str, Path] = {}
-    if not SKILLS_ROOT.is_dir():
-        fail("skills/ is missing")
-    for path in sorted(SKILLS_ROOT.glob("*/*/SKILL.md")):
+    if not PLUGINS_ROOT.is_dir():
+        fail("plugins/ is missing")
+    for path in sorted(PLUGINS_ROOT.glob("*/skills/*/SKILL.md")):
+        plugin_id = path.relative_to(PLUGINS_ROOT).parts[0]
+        if plugin_id == DEPRECATED_SETUP_PLUGIN:
+            continue
         name = path.parent.name
+        if name in found:
+            fail(
+                f"duplicate skill {name!r}: {found[name].relative_to(ROOT)} and "
+                f"{path.parent.relative_to(ROOT)}"
+            )
         found[name] = path.parent
     return found
 
@@ -202,10 +211,12 @@ def validate_pack(
 
     if kind == "group":
         rel_path = expect_str(pack, "path", label)
-        if not rel_path.startswith("skills/") or rel_path.startswith("skills/../"):
-            fail(f"{label}.path must start with skills/, got {rel_path!r}")
-        if rel_path.startswith("plugins/") or "/plugins/" in rel_path:
-            fail(f"{label}.path must not point at plugins/ (not an Agent Plugins package)")
+        if not rel_path.startswith("plugins/nanlabs-") or not rel_path.endswith("/skills"):
+            fail(
+                f"{label}.path must be plugins/nanlabs-<group>/skills, got {rel_path!r}"
+            )
+        if "/../" in rel_path:
+            fail(f"{label}.path must not traverse parent directories")
         path = ROOT / rel_path
         if not path.is_dir():
             fail(f"{label}.path does not exist: {rel_path}")
@@ -226,7 +237,7 @@ def validate_pack(
 
     for name in skills:
         if name not in disk_skills:
-            fail(f"{label}: skill {name!r} has no skills/*/{name}/SKILL.md")
+            fail(f"{label}: skill {name!r} has no plugins/*/skills/{name}/SKILL.md")
         if name not in catalog_skills:
             fail(f"{label}: skill {name!r} is missing from catalogs/skill-catalog.yaml")
 

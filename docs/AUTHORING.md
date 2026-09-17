@@ -17,33 +17,26 @@ Portable **plugins** additionally follow **[Agent Plugins](https://agent-plugins
 
 ## Skill layout (canonical)
 
-```text
-skills/<group>/<skill>/
-├── SKILL.md          # Required: YAML frontmatter + instructions
-├── scripts/          # Optional: executable helpers
-├── references/       # Optional: progressive-disclosure docs
-├── assets/           # Optional: templates / data
-├── LICENSE.txt       # Optional: required when redistributing third-party skills
-└── NOTICE.txt        # Optional: NaNLABS modifications to third-party skills
-```
-
-Grouped under `skills/<group>/` so the tree stays navigable; `npx skills` discovers nested `SKILL.md` (depth ≤ 5).
-
-### Agent Plugins plugin layout (portable)
-
-[Agent Plugins §7.1](https://agent-plugins.org/specification#71-skills) discovers **only immediate** children:
+One tree. Author the skill where Agent Plugins discovers it:
 
 ```text
-plugins/<plugin-id>/
-├── plugin.json          # Closed schema; $schema + name required
+plugins/nanlabs-<group>/
+├── plugin.json
 └── skills/
     └── <skill>/
-        └── SKILL.md     # NOT skills/<group>/<skill>/
+        ├── SKILL.md          # Required: YAML frontmatter + instructions
+        ├── scripts/          # Optional: executable helpers
+        ├── references/       # Optional: progressive-disclosure docs
+        ├── assets/           # Optional: templates / data
+        ├── LICENSE.txt       # Optional: required when redistributing third-party skills
+        └── NOTICE.txt        # Optional: NaNLABS modifications to third-party skills
 ```
 
-`gen-surfaces` mirrors `skills/core/<skill>/` into `plugins/nanlabs-core/skills/<skill>/`. Do not nest groups inside a plugin `skills/` directory. Do not add unknown top-level fields to `plugin.json`. Do not put agents or skill paths in that manifest. Optional MCP is root `mcp.json` only.
+`name` in frontmatter must match the directory. Grouping is inventory only (`catalogs/skills-layout.json` + `products/plugins.yaml` `skills_group`). Do **not** add `skills/<group>/` at repo root. `npx skills` still finds nested `SKILL.md` (depth ≤ 5).
 
-Packs (`catalogs/pack-catalog.yaml`) are Agent Skills install aliases, not Agent Plugins packages. See [`PACKS.md`](PACKS.md) and [`AGENT_PLUGINS.md`](AGENT_PLUGINS.md).
+[Agent Plugins §7.1](https://agent-plugins.org/specification#71-skills) discovers **only immediate** `skills/<name>/SKILL.md` children. `gen-surfaces` writes manifests, LICENSE, and native plugin.json — it does **not** copy skill trees. Do not nest groups inside a plugin `skills/` directory. Do not add unknown top-level fields to `plugin.json`. Do not put agents or skill paths in that manifest. Optional MCP is root `mcp.json` only (this repo ships none).
+
+Domain packs (`catalogs/pack-catalog.yaml`) are `npx skills` aliases. Group packs map 1:1 onto these plugin directories. See [`PACKS.md`](PACKS.md) and [`AGENT_PLUGINS.md`](AGENT_PLUGINS.md).
 
 ### `SKILL.md` frontmatter
 
@@ -91,7 +84,7 @@ python3 scripts/validate-contracts.py
 
 ## Rules
 
-1. Author skills under `skills/<group>/<skill>/` per the Agent Skills spec. Core plugin skills are mirrored from `skills/core/` via `scripts/gen-surfaces.py` (see `products/plugins.yaml`) as immediate `plugins/nanlabs-core/skills/<skill>/` children (Agent Plugins discovery).
+1. Author skills under `plugins/nanlabs-<group>/skills/<skill>/` per the Agent Skills spec. Add the name to `catalogs/skills-layout.json` and `catalogs/skill-catalog.yaml`. `gen-surfaces` only refreshes manifests.
 2. Every `SKILL.md` needs valid YAML frontmatter (`name` + `description`).
 3. Never commit secrets. Use env-var names only in MCP stubs. If adding `plugins/<id>/mcp.json`, it MUST use the Agent Plugins MCP schema and stay inside the plugin root.
 4. Public scrub: read `docs/PUBLIC_CONTENT_POLICY.md` before migrating internal content.
@@ -108,6 +101,7 @@ python3 scripts/validate-public-content.py
 python3 scripts/validate-skills.py
 python3 scripts/validate-agents.py
 python3 scripts/validate-pack-catalog.py
+python3 scripts/validate-skill-inventory.py
 python3 scripts/validate-mcp.py
 python3 scripts/validate-contracts.py
 python3 scripts/gen-surfaces.py --check
@@ -118,17 +112,14 @@ pre-commit run --all-files
 
 ## Adding a plugin
 
-1. Register the plugin in `products/plugins.yaml` and create its
-   `plugins/<plugin-id>/` root.
-2. Create `plugins/<plugin-id>/.claude-plugin/plugin.json` and `.cursor-plugin/plugin.json` for native clients.
-3. Register it in `.claude-plugin/marketplace.json` and `.cursor-plugin/marketplace.json`.
+1. Register the plugin in `products/plugins.yaml` (`skills_group` and/or `agents`).
+2. For a group plugin, put skills at `plugins/<id>/skills/<name>/SKILL.md` and
+   list them in `catalogs/skills-layout.json`.
+3. Run `python3 scripts/gen-surfaces.py` then `python3 scripts/gen-copilot-surfaces.py`
+   to generate native + portable manifests, LICENSE, marketplaces
+   (Claude, Cursor, `.agents/plugins/`), and Copilot agent files.
+   Do not copy skill trees.
 4. Keep plugin `name` fields identical across marketplace entries and plugin manifests.
-5. Update catalogs when the plugin exposes new skills/agents.
-6. Run `python3 scripts/gen-copilot-surfaces.py` to generate the portable
-   root `plugin.json` (closed Agent Plugins v1 schema — no `skills`/`agents`
-   path fields) and Copilot surfaces.
-7. Mirror portable skills as **immediate**
-   `plugins/<plugin-id>/skills/<skill>/SKILL.md`. Nested `skills/<group>/`
-   belongs in the repo Agent Skills tree, not inside a plugin package.
-8. Run `python3 scripts/validate-agent-plugins.py` plus the other local
+5. Run `python3 scripts/validate-skill-inventory.py`,
+   `python3 scripts/validate-agent-plugins.py`, plus the other local
    validation commands above.

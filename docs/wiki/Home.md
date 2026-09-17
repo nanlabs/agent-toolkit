@@ -6,11 +6,8 @@ Public **L1.5** distribution of NaNLABS skills, agents, and plugins.
 
 | Surface | Priority |
 | --- | --- |
-| Claude | Equal |
-| Claude Code | Equal |
-| Cursor IDE | Equal |
-| Cursor Agent CLI | Equal |
-| GitHub Copilot | Equal |
+| Agent Plugins roster (9) | Equal |
+| Claude Code (native) | Equal |
 
 Machine provisioning stays in [`internal-workstation`](https://github.com/nanlabs/internal-workstation). This repo does **not** ship a consumer CLI, loop runtime, multi-tool profile compiler, or OpenCode/Windsurf/Gemini CLI/Pi plugin targets.
 
@@ -20,9 +17,9 @@ Machine provisioning stays in [`internal-workstation`](https://github.com/nanlab
 
 | Component | Count | Notes |
 | --- | --- | --- |
-| Skills | 49 | Agent Skills tree under `skills/<group>/` |
+| Skills | 49 | `plugins/nanlabs-<group>/skills/` |
 | Agents | 18 | Canonical personas; flat plugin surfaces via `gen-surfaces` |
-| Plugins | 2 marketplace | `nanlabs-core` (recommended) · `nanlabs-agents` (optional) |
+| Plugins | 10 marketplace | nine group plugins · `nanlabs-agents` (optional) |
 | MCP templates | 6 | **Docs-only** stubs — not installed by plugins |
 | Copilot | 2 surfaces | Agent Plugins manifests + repository customization |
 
@@ -56,7 +53,7 @@ npx skills add nanlabs/agent-toolkit -g
 Group pack (subdirectory) or domain pack: see [`docs/PACKS.md`](https://github.com/nanlabs/agent-toolkit/blob/main/docs/PACKS.md).
 
 ```bash
-npx skills add nanlabs/agent-toolkit/skills/delivery
+npx skills add nanlabs/agent-toolkit/plugins/nanlabs-delivery/skills
 ```
 
 Skills only — no plugins, agents, MCP, or setup automation.
@@ -69,8 +66,8 @@ Install a plugin directly from this repository:
 copilot plugin install nanlabs/agent-toolkit:plugins/nanlabs-core
 ```
 
-Agent Plugins v1.0.0 manifests are generated in `plugins/nanlabs-core/` and `plugins/nanlabs-agents/`.
-Repository customization lives under `.github/copilot-instructions.md`, `.github/agents/`, and `.github/skills/`.
+Agent Plugins v1.0.0 manifests live in each `plugins/nanlabs-*` directory.
+Repository customization lives under `.github/copilot-instructions.md` and `.github/agents/`.
 
 ---
 

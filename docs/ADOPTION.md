@@ -12,17 +12,85 @@ How to install and use `nanlabs/agent-toolkit`.
 
 Also see [SCOPE.md](SCOPE.md), [FAQ.md](FAQ.md), and the [wiki source](wiki/) (companion PR: wiki sync).
 
-**Production surfaces:** Claude · Claude Code · Cursor IDE · Cursor Agent CLI · GitHub Copilot CLI.
-**Skills-only** installs skills alone (needed on some Claude surfaces and any Agent Skills client). Cursor Agent CLI certification evidence lives in [`CURSOR_CLI.md`](CURSOR_CLI.md) — evidence gap ≠ lower product priority.
+**Production:** [Agent Plugins](https://agent-plugins.org/compatible-clients) roster (9 clients) **plus** Claude Code (native marketplace; not on that roster). MCP is docs-only — plugins ship skills, not `mcp.json`. Cursor Agent CLI certification evidence lives in [`CURSOR_CLI.md`](CURSOR_CLI.md) — evidence gap ≠ lower product priority.
 
-## Claude Code
+There is **no** root `plugin.json`. Each package is `plugins/nanlabs-<group>/` (plus optional `nanlabs-agents`). Canonical skills live there under `skills/<name>/`.
+
+**Complete install** = the nine group plugins, then optionally `nanlabs-agents`:
+
+`nanlabs-core` · `nanlabs-data` · `nanlabs-delivery` · `nanlabs-design` · `nanlabs-forge` · `nanlabs-integrations` · `nanlabs-ops` · `nanlabs-tooling` · `nanlabs-workflow`
+
+Repeat the install command per plugin id. Domain packs (`code-review`, `qa`, …) are `npx skills` aliases, not extra plugin packages.
+
+Roster snapshot (compatible-clients page is JS-only; last checked 2026-09-17 against the 2026-08-13 listing): VS Code, GitHub Copilot, Cursor, ChatGPT & Codex (one entry), Kiro, Grok Bot, Hermes Agent, OpenClaw, NanoClaw. **Not on the roster:** Claude Code (still supported here), Gemini / Antigravity / OpenCode.
+
+## VS Code
+
+Enable plugins, add this repo as a marketplace, then install each `nanlabs-*` from **@agentPlugins**:
+
+```json
+{
+  "chat.plugins.enabled": true,
+  "chat.plugins.marketplaces": ["nanlabs/agent-toolkit"]
+}
+```
+
+Alternative: **Chat: Install Plugin From Source** → git URL or folder `plugins/nanlabs-delivery` (repeat per group). Copilot agents for VS Code live under each plugin’s `com.github.copilot/agents/`.
+
+## GitHub Copilot (VS Code, CLI, app)
+
+```bash
+copilot plugin install nanlabs/agent-toolkit:plugins/nanlabs-core
+copilot plugin install nanlabs/agent-toolkit:plugins/nanlabs-delivery
+# …repeat for data, design, forge, integrations, ops, tooling, workflow
+copilot plugin install nanlabs/agent-toolkit:plugins/nanlabs-agents   # optional
+```
+
+CLI installs land in `~/.copilot/installed-plugins/` and then show up in VS Code. Agents are not a portable Agent Plugins component; Copilot reads `agents/*.agent.md` and `com.github.copilot/agents/`.
+
+## Cursor IDE and Cursor Agent CLI
+
+**IDE:** Team Marketplace import of `nanlabs/agent-toolkit`, or copy/symlink each `plugins/nanlabs-*` under `~/.cursor/plugins/local/` and reload. Marketplace entries use only `name`, `source`, `description` (official schema). Cursor does **not** expand `${PLUGIN_ROOT}` in `mcp.json` (another reason this repo does not ship MCP).
+
+**CLI:**
+
+```bash
+agent plugin marketplace add https://github.com/nanlabs/agent-toolkit
+agent --plugin-dir /path/to/agent-toolkit/plugins/nanlabs-core \
+  -p --mode ask --output-format text \
+  "List skills and slash commands from the loaded plugin"
+```
+
+`marketplace add` registers the catalog; it does not install a plugin. Repeat `--plugin-dir` per group (or install interactively). See [`CURSOR_CLI.md`](CURSOR_CLI.md).
+
+## ChatGPT and Codex
+
+Codex 0.147+ reads `.claude-plugin/marketplace.json` and `.cursor-plugin/marketplace.json`. ChatGPT desktop also documents `$REPO_ROOT/.agents/plugins/marketplace.json` (`source.path` is `./plugins/nanlabs-…`).
+
+```bash
+codex plugin marketplace add nanlabs/agent-toolkit
+```
+
+Install each plugin from the Plugins Directory (install TUI, not headless).
+
+## Kiro
+
+Powers → Import from folder → `plugins/nanlabs-<group>`. `keywords` in `plugin.json` activate the power. Do **not** import the GitHub repository root.
+
+## Grok Bot, Hermes Agent, OpenClaw, NanoClaw
+
+Point the client at the plugin directory (`plugin.json` + `skills/<name>/SKILL.md`). There is no separate NaNLABS marketplace for these clients.
+
+## Claude Code (native, not on the Agent Plugins roster)
+
+The portable `plugin.json` alone does not load Claude Code. Use the dual-rail `.claude-plugin/` marketplace:
 
 ```text
 /plugin marketplace add nanlabs/agent-toolkit
 /plugin install nanlabs-core@nanlabs-agent-toolkit
 ```
 
-Invoke setup via the **namespaced** plugin command: **`/nanlabs-core:setup`**, or ask Claude to run the bundled `nanlabs-setup` skill.
+Repeat `/plugin install <id>@nanlabs-agent-toolkit` for each group plugin. Invoke setup with **`/nanlabs-core:setup`**, or ask Claude to run the bundled `nanlabs-setup` skill.
 
 Optional full agent roster:
 
@@ -34,62 +102,27 @@ Optional full agent roster:
 
 Lifecycle (update / pin / rollback): [`LIFECYCLE.md`](LIFECYCLE.md).
 
-## Cursor IDE
-
-1. **Local development:** place or symlink a plugin under `~/.cursor/plugins/local/` and reload the window.
-2. **Team:** import this repository as a Team Marketplace (org admin; Teams or Enterprise).
-
-Install **`nanlabs-core`** (recommended). Optionally install **`nanlabs-agents`**.
-
-Marketplace entries use only `name`, `source`, `description`, and optional `minClientVersions` per the official Cursor schema.
-
-See [Cursor plugins](https://cursor.com/docs/plugins).
-
-## Cursor Agent CLI
-
-Same product priority as Cursor IDE. Do not assume IDE plugin components load identically in the CLI.
-
-```bash
-agent --version
-agent plugin marketplace add https://github.com/nanlabs/agent-toolkit
-```
-
-`marketplace add` registers the repository catalog; it does not install
-`nanlabs-core`. The recorded CLI evidence uses the local load path:
-
-```bash
-agent --plugin-dir /path/to/agent-toolkit/plugins/nanlabs-core \
-  -p --mode ask --output-format text \
-  "List skills and slash commands from the loaded plugin"
-```
-
-The evidence snapshot did not expose a non-interactive plugin-install command.
-Use `--plugin-dir` for CLI smoke tests, or install interactively through
-Cursor's plugin dashboard / Cursor IDE Team Marketplace. Fill the
-component matrix in [`CURSOR_CLI.md`](CURSOR_CLI.md) with pass/fail/partial
-evidence; unknown cells are **uncertified**, not deprioritized.
-
-## Skills-only
+## Skills-only (`npx skills`)
 
 ```bash
 npx skills add nanlabs/agent-toolkit -g
 ```
 
 This uses the [`vercel-labs/skills`](https://github.com/vercel-labs/skills)
-CLI to install the grouped tree `skills/<group>/<skill>/` (49 skills,
-including `nanlabs-setup` and `nanlabs-pyrightination`).
+CLI. It recurses to depth ≤ 5 and finds `SKILL.md` under
+`plugins/nanlabs-<group>/skills/<name>/` (49 skills).
 
 Install one group or a named domain pack instead of the whole tree:
 
 ```bash
-npx skills add nanlabs/agent-toolkit/skills/delivery
+npx skills add nanlabs/agent-toolkit/plugins/nanlabs-delivery/skills
 npx skills add nanlabs/agent-toolkit --skill github-cli-workflow --skill gh-address-comments
 bash scripts/install-pack.sh code-review -y
 ```
 
 Skills-only installs do **not** bundle the contract doctor; use baseline spot-checks in the skill or clone the repo for full validation.
 
-Skill index: [`SKILLS.md`](SKILLS.md) · packs: [`PACKS.md`](PACKS.md) · machine catalogs: [`../catalogs/skill-catalog.yaml`](../catalogs/skill-catalog.yaml), [`../catalogs/pack-catalog.yaml`](../catalogs/pack-catalog.yaml). Packs are Agent Skills aliases, not [Agent Plugins](https://agent-plugins.org/specification) packages.
+Skill index: [`SKILLS.md`](SKILLS.md) · packs: [`PACKS.md`](PACKS.md) · machine catalogs: [`../catalogs/skill-catalog.yaml`](../catalogs/skill-catalog.yaml), [`../catalogs/pack-catalog.yaml`](../catalogs/pack-catalog.yaml). Domain packs stay `npx` aliases; group packs match the Agent Plugins directories.
 
 ## Agents and MCP
 
@@ -117,7 +150,7 @@ Install guide (private repo — clone with org access): `docs/AGENT_TOOLKIT.md` 
 - Marketplace add succeeds without private-repo auth for this public repository.
 - `nanlabs-core` is installed; `/nanlabs-core:setup` runs the bundled doctor without a git checkout.
 - Cursor IDE and Cursor Agent CLI each have recorded install + smoke evidence (CLI matrix in [`CURSOR_CLI.md`](CURSOR_CLI.md)).
-- `npx skills` discovers nested skills under `skills/<group>/`.
+- `npx skills` discovers nested skills under `plugins/nanlabs-<group>/skills/`.
 - No secrets were required to install the plugin or skills themselves.
 
 ## Troubleshooting

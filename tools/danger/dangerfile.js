@@ -127,7 +127,7 @@ if (hasDocs) {
   message("Thanks for updating documentation! :books:");
 }
 
-const hasSkills = touchedFiles.some((f) => f.startsWith("skills/"));
+const hasSkills = touchedFiles.some((f) => f.includes("/skills/"));
 const hasAgents = touchedFiles.some((f) => f.startsWith("agents/"));
 if (hasSkills || hasAgents) {
   message(

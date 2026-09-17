@@ -77,6 +77,31 @@ def validate_claude_marketplace() -> None:
             )
 
 
+def validate_agents_marketplace() -> None:
+    path = ROOT / ".agents" / "plugins" / "marketplace.json"
+    data = expect_dict(load_json(path), str(path.relative_to(ROOT)))
+    expect_str(data, "name", "agents marketplace")
+    plugins = data.get("plugins")
+    if not isinstance(plugins, list) or not plugins:
+        fail("agents marketplace.plugins must be a non-empty array")
+    for idx, entry in enumerate(plugins):
+        plugin = expect_dict(entry, f"agents marketplace.plugins[{idx}]")
+        name = expect_str(plugin, "name", f"agents marketplace.plugins[{idx}]")
+        source = expect_dict(plugin.get("source"), f"agents marketplace.plugins[{idx}].source")
+        rel = expect_str(source, "path", f"agents marketplace.plugins[{idx}].source")
+        source_path = (ROOT / rel).resolve()
+        if not source_path.is_dir():
+            fail(f"agents plugin source missing for {name}: {rel}")
+        manifest = source_path / "plugin.json"
+        plugin_data = expect_dict(load_json(manifest), str(manifest.relative_to(ROOT)))
+        expect_str(plugin_data, "name", str(manifest.relative_to(ROOT)))
+        if plugin_data["name"] != name:
+            fail(
+                f"agents plugin name mismatch: marketplace={name} "
+                f"plugin.json={plugin_data['name']}"
+            )
+
+
 def validate_cursor_official_schemas() -> None:
     marketplace_schema = expect_dict(
         load_json(ROOT / "schemas" / "cursor" / "marketplace.schema.json"),
@@ -133,6 +158,7 @@ def validate_cursor_official_schemas() -> None:
 def main() -> None:
     validate_claude_marketplace()
     validate_cursor_official_schemas()
+    validate_agents_marketplace()
     subprocess.run(
         [sys.executable, str(ROOT / "scripts" / "validate-agent-plugins.py")],
         check=True,

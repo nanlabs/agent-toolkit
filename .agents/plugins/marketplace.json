@@ -1,0 +1,75 @@
+{
+  "name": "nanlabs-agent-toolkit",
+  "plugins": [
+    {
+      "name": "nanlabs-core",
+      "description": "Recommended install: setup/onboarding, orchestrator, companion, handshake, Pyright report-only typing, PR fallback, knowledge sync, and code-reviewer agent",
+      "source": {
+        "path": "./plugins/nanlabs-core"
+      }
+    },
+    {
+      "name": "nanlabs-data",
+      "description": "dbt and Snowflake validation skills",
+      "source": {
+        "path": "./plugins/nanlabs-data"
+      }
+    },
+    {
+      "name": "nanlabs-delivery",
+      "description": "PRD, TRD, ADR, work items, assessments, and delivery process",
+      "source": {
+        "path": "./plugins/nanlabs-delivery"
+      }
+    },
+    {
+      "name": "nanlabs-design",
+      "description": "Figma MCP and UI/UX intelligence (not a full designer workflow)",
+      "source": {
+        "path": "./plugins/nanlabs-design"
+      }
+    },
+    {
+      "name": "nanlabs-forge",
+      "description": "GitHub and GitLab CLI automation for PRs, reviews, and CI",
+      "source": {
+        "path": "./plugins/nanlabs-forge"
+      }
+    },
+    {
+      "name": "nanlabs-integrations",
+      "description": "ClickUp, Slack, and Linear integrations",
+      "source": {
+        "path": "./plugins/nanlabs-integrations"
+      }
+    },
+    {
+      "name": "nanlabs-ops",
+      "description": "Workstation triage, presentations ops, and skill contribution",
+      "source": {
+        "path": "./plugins/nanlabs-ops"
+      }
+    },
+    {
+      "name": "nanlabs-tooling",
+      "description": "Playwright CLI and Jupyter notebook scaffolding",
+      "source": {
+        "path": "./plugins/nanlabs-tooling"
+      }
+    },
+    {
+      "name": "nanlabs-workflow",
+      "description": "Client delivery workflows and bootstrap",
+      "source": {
+        "path": "./plugins/nanlabs-workflow"
+      }
+    },
+    {
+      "name": "nanlabs-agents",
+      "description": "Optional full set of NaNLABS agent / subagent personas (reviewers, architect, planner, e2e, \u2026)",
+      "source": {
+        "path": "./plugins/nanlabs-agents"
+      }
+    }
+  ]
+}

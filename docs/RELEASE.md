@@ -8,7 +8,7 @@ Lightweight release model for a **content marketplace** repository (no CLI packa
 | --- | --- |
 | Portable plugin manifest | `plugins/<id>/plugin.json` → Agent Plugins v1.0.0 metadata |
 | Each native plugin | `plugins/<id>/.claude-plugin/plugin.json` → `version` (mirror in `.cursor-plugin/plugin.json`) |
-| Marketplace metadata | `.claude-plugin/marketplace.json` / `.cursor-plugin/marketplace.json` → `metadata.version` (catalog revision; optional) |
+| Marketplace metadata | `.claude-plugin/marketplace.json` / `.cursor-plugin/marketplace.json` / `.agents/plugins/marketplace.json` → `metadata.version` where present (catalog revision) |
 | Git | Annotated tag `vX.Y.Z` matching the **default recommended plugin** (`nanlabs-core`) when cutting a distribution release |
 
 Do not put `version` on Cursor **marketplace plugin entries** (official schema forbids it).
@@ -54,7 +54,7 @@ Before calling a tag “production”:
 - [x] Live smoke checklist ([LIFECYCLE.md](LIFECYCLE.md)) — issue #8 is closed; operator evidence is retained in that issue
 - [x] No secrets in tree
 
-`v0.3.1` is the current distribution release (`nanlabs-core` 0.3.1, `nanlabs-agents` 0.2.1, marketplace metadata 0.5.1). Issues #8, #9, and #58 are closed.
+`v0.3.1` is the current tagged distribution release (`nanlabs-core` 0.3.1, `nanlabs-agents` 0.2.1, marketplace metadata 0.5.1). This branch bumps marketplace metadata to **0.6.0**, `nanlabs-core` to **0.4.0**, and adds group plugins at **0.1.0**. Issues #8, #9, and #58 are closed.
 
 ## Schema pins
 

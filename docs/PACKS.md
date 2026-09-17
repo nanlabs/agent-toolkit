@@ -7,10 +7,10 @@
 
 # Packs
 
-A **pack** is a named, installable slice of this repository: a `skills/<group>/`
-subdirectory, or a cross-group list of skills (and optional agents). Packs are
-**catalog aliases**, not a `packs/` directory tree and **not** Agent Plugins
-packages.
+A **pack** is a named, installable slice of this repository: a group plugin
+directory (`plugins/nanlabs-<group>/skills/`), or a cross-group list of skills
+(and optional agents). Domain packs are **catalog aliases**, not a `packs/`
+directory tree. Group packs map 1:1 onto Agent Plugins packages.
 
 Machine catalog: [`catalogs/pack-catalog.yaml`](../catalogs/pack-catalog.yaml).
 
@@ -20,23 +20,21 @@ discovery, install, and governance slice.
 
 ## Packs vs Agent Plugins
 
-This repository ships **two** distribution shapes. Do not mix them.
+This repository ships **two** install shapes. Group packs and group plugins are the same directories.
 
-| | Packs (this catalog) | Agent Plugins v1.0.0 |
+| | Domain packs | Group plugins / group packs |
 | --- | --- | --- |
-| Spec | [Agent Skills](https://agentskills.io/specification) + `npx skills` | [Agent Plugins](https://agent-plugins.org/specification) |
-| Unit | Named skill list or `skills/<group>/` | Directory with root `plugin.json` |
-| Skill discovery | Nested `skills/<group>/<name>/SKILL.md` | **Immediate** `plugins/<id>/skills/<name>/SKILL.md` only (§7.1) |
+| Spec | [Agent Skills](https://agentskills.io/specification) + `npx skills --skill` | [Agent Plugins](https://agent-plugins.org/specification) + `npx skills` path |
+| Unit | Named skill list | Directory with root `plugin.json` |
+| Skill discovery | `--skill` names (CLI recurses) | **Immediate** `plugins/<id>/skills/<name>/SKILL.md` only (§7.1) |
 | Manifest | `catalogs/pack-catalog.yaml` | Closed `plugin.json` (`$schema`, `name`, metadata; no `skills`/`agents` path fields) |
-| Agents | Optional Code/Cursor personas | **Not** a v1 portable component |
-| MCP | Not part of a pack | Optional root `mcp.json` only |
+| Agents | Optional Code/Cursor personas | **Not** a v1 portable component (`nanlabs-agents` is native) |
+| MCP | Not part of a pack | Optional root `mcp.json` only (none shipped) |
 
-A pack MUST NOT add `plugin.json`, MUST NOT live under `plugins/`, and MUST NOT
-expect Agent Plugins clients to recurse into `skills/<group>/`. Portable plugin
-skills stay flat under `plugins/nanlabs-core/skills/<name>/` (mirrored from
-`skills/core/` by `gen-surfaces`). Install a plugin with Copilot/Claude/Cursor
-marketplace flows; install a pack with `npx skills`. See
-[`AGENT_PLUGINS.md`](AGENT_PLUGINS.md).
+A domain pack MUST NOT add `plugin.json` and MUST NOT live as `plugins/<pack-id>/`.
+Group plugins already are the skill tree — `gen-surfaces` does not copy skills.
+Install a plugin with Copilot/Claude/Cursor/VS Code marketplace flows; install a
+domain pack with `npx skills --skill`. See [`AGENT_PLUGINS.md`](AGENT_PLUGINS.md).
 
 ## Why packs (not personas)
 
@@ -54,8 +52,8 @@ subagents, so Cloud users install **skills only**.
 From a project directory:
 
 ```bash
-# 1. Group pack (subdirectory of skills/)
-npx skills add nanlabs/agent-toolkit/skills/delivery
+# 1. Group pack (plugin skills directory)
+npx skills add nanlabs/agent-toolkit/plugins/nanlabs-delivery/skills
 
 # 2. Domain pack (explicit skill filter)
 npx skills add nanlabs/agent-toolkit --skill github-cli-workflow --skill gh-address-comments --skill gh-fix-ci --skill nanlabs-pr-fallback
@@ -72,30 +70,31 @@ bash scripts/install-pack.sh --list
 `scripts/install-pack.sh` expands the catalog and runs `npx skills`. Extra
 flags after the pack id are forwarded (`-g`, `-y`, `--agent`).
 
-Pin a tag with a full GitHub URL when you need a release:
+Pin a tag with a full GitHub URL when you need a release. Tags after this
+layout use the plugin skills directory; `v0.3.1` still used `skills/delivery`.
 
 ```bash
-npx skills add https://github.com/nanlabs/agent-toolkit/tree/v0.3.1/skills/delivery
+npx skills add https://github.com/nanlabs/agent-toolkit/tree/<tag>/plugins/nanlabs-delivery/skills
 ```
 
 ## Group packs
 
-One-to-one with `skills/<group>/`. Install the subdirectory.
+One-to-one with `plugins/nanlabs-<group>/skills/`. Install the plugin directory.
 
 | Pack | Path | Coverage |
 | --- | --- | --- |
-| `core` | `skills/core/` | high |
-| `delivery` | `skills/delivery/` | high |
-| `design` | `skills/design/` | medium |
-| `forge` | `skills/forge/` | high |
-| `data` | `skills/data/` | medium |
-| `integrations` | `skills/integrations/` | medium |
-| `ops` | `skills/ops/` | medium |
-| `tooling` | `skills/tooling/` | low |
-| `workflow` | `skills/workflow/` | high |
+| `core` | `plugins/nanlabs-core/skills/` | high |
+| `delivery` | `plugins/nanlabs-delivery/skills/` | high |
+| `design` | `plugins/nanlabs-design/skills/` | medium |
+| `forge` | `plugins/nanlabs-forge/skills/` | high |
+| `data` | `plugins/nanlabs-data/skills/` | medium |
+| `integrations` | `plugins/nanlabs-integrations/skills/` | medium |
+| `ops` | `plugins/nanlabs-ops/skills/` | medium |
+| `tooling` | `plugins/nanlabs-tooling/skills/` | low |
+| `workflow` | `plugins/nanlabs-workflow/skills/` | high |
 
 ```bash
-npx skills add nanlabs/agent-toolkit/skills/<group>
+npx skills add nanlabs/agent-toolkit/plugins/nanlabs-<group>/skills
 ```
 
 ## Domain packs
@@ -122,8 +121,8 @@ to “install / use the pack of X”. Handoffs: [`HANDOFFS.md`](HANDOFFS.md).
 
 1. Edit `catalogs/pack-catalog.yaml` (no empty directories, no `plugin.json`).
 2. Point only at skills and agents that already exist.
-3. Do not create `plugins/<pack-id>/` unless you are adding a real Agent Plugins
-   package (closed `plugin.json`, immediate `skills/<name>/SKILL.md`).
+3. Do not create `plugins/<pack-id>/` for a **domain** pack. Group plugins
+   already exist as `plugins/nanlabs-<group>/`.
 4. Run `python3 scripts/validate-pack-catalog.py` and, if you touched
    `plugins/`, `python3 scripts/validate-agent-plugins.py`.
 5. Document the pack here if it is user-facing.

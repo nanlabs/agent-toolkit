@@ -14,7 +14,7 @@ matching **skill** is the Cloud counterpart.
 | Term | Meaning here |
 | --- | --- |
 | Subagent | User-invoked persona under `agents/` (Code / Cursor) |
-| Skill | Portable procedure under `skills/` (every surface, including Cloud) |
+| Skill | Portable procedure under `plugins/nanlabs-<group>/skills/` (every surface, including Cloud) |
 | Autonomous agent | Out of scope for this repo |
 
 `nanlabs-assistant` routes. Packs ([`PACKS.md`](PACKS.md)) group the skills to
@@ -61,5 +61,5 @@ agent only as optional follow-up.
 ## Related
 
 - [`catalogs/pack-catalog.yaml`](../catalogs/pack-catalog.yaml)
-- [`skills/core/nanlabs-assistant/references/ORCHESTRATION.md`](../skills/core/nanlabs-assistant/references/ORCHESTRATION.md)
-- [`skills/core/nanlabs-output-handshake/SKILL.md`](../skills/core/nanlabs-output-handshake/SKILL.md)
+- [`plugins/nanlabs-core/skills/nanlabs-assistant/references/ORCHESTRATION.md`](../plugins/nanlabs-core/skills/nanlabs-assistant/references/ORCHESTRATION.md)
+- [`plugins/nanlabs-core/skills/nanlabs-output-handshake/SKILL.md`](../plugins/nanlabs-core/skills/nanlabs-output-handshake/SKILL.md)

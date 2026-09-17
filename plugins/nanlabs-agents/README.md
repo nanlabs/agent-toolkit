@@ -3,11 +3,12 @@
 Claude Code / Cursor / GitHub Copilot CLI plugin bundling all public agent
 personas from `agents/`.
 
-Canonical bodies live under repository-root `agents/`. Core skills live under `skills/core/`. This plugin tree is
+Canonical bodies live under repository-root `agents/`. Core skills live under `plugins/nanlabs-core/skills/`. Agent files in this plugin are
 **generated** by:
 
 ```bash
 python3 scripts/gen-surfaces.py
+python3 scripts/gen-copilot-surfaces.py
 python3 scripts/gen-surfaces.py --check   # CI drift gate
 ```
 

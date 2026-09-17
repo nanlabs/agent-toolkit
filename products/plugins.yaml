@@ -1,27 +1,115 @@
 # Single source of truth for plugin + marketplace versions (maintainer sync via gen-surfaces).
+# Skill bodies live under plugins/<id>/skills/<name>/ (one tree). skills_group maps to
+# catalogs/skills-layout.json. Do not list skill filesystem paths here.
 version: 1
 
 marketplace:
   metadata:
-    version: "0.5.1"
-    description: "NaNLABS skills, agents, and plugins for Claude Code and Cursor IDE"
+    version: "0.6.0"
+    description: "NaNLABS skills, agents, and plugins for Agent Plugins clients and Claude Code"
 
 plugins:
   nanlabs-core:
-    version: "0.3.1"
+    version: "0.4.0"
     description: "Recommended install: setup/onboarding, orchestrator, companion, handshake, Pyright report-only typing, PR fallback, knowledge sync, and code-reviewer agent"
-    skills:
-      - skills/core/nanlabs-setup
-      - skills/core/nanlabs-assistant
-      - skills/core/nanlabs-dev-companion
-      - skills/core/nanlabs-output-handshake
-      - skills/core/nanlabs-pyrightination
-      - skills/core/nanlabs-pr-fallback
-      - skills/core/nanlabs-workspace-knowledge-sync
+    skills_group: core
+    keywords:
+      - nanlabs
+      - orchestrator
+      - core
+      - setup
+      - harness
     agents:
       - nanlabs-code-reviewer
+
+  nanlabs-data:
+    version: "0.1.0"
+    description: "dbt and Snowflake validation skills"
+    skills_group: data
+    keywords:
+      - nanlabs
+      - data
+      - dbt
+      - snowflake
+
+  nanlabs-delivery:
+    version: "0.1.0"
+    description: "PRD, TRD, ADR, work items, assessments, and delivery process"
+    skills_group: delivery
+    keywords:
+      - nanlabs
+      - delivery
+      - pm
+      - prd
+      - adr
+
+  nanlabs-design:
+    version: "0.1.0"
+    description: "Figma MCP and UI/UX intelligence (not a full designer workflow)"
+    skills_group: design
+    keywords:
+      - nanlabs
+      - design
+      - figma
+      - ui
+
+  nanlabs-forge:
+    version: "0.1.0"
+    description: "GitHub and GitLab CLI automation for PRs, reviews, and CI"
+    skills_group: forge
+    keywords:
+      - nanlabs
+      - forge
+      - github
+      - gitlab
+      - pr
+
+  nanlabs-integrations:
+    version: "0.1.0"
+    description: "ClickUp, Slack, and Linear integrations"
+    skills_group: integrations
+    keywords:
+      - nanlabs
+      - clickup
+      - slack
+      - linear
+
+  nanlabs-ops:
+    version: "0.1.0"
+    description: "Workstation triage, presentations ops, and skill contribution"
+    skills_group: ops
+    keywords:
+      - nanlabs
+      - ops
+      - workstation
+      - contribute
+
+  nanlabs-tooling:
+    version: "0.1.0"
+    description: "Playwright CLI and Jupyter notebook scaffolding"
+    skills_group: tooling
+    keywords:
+      - nanlabs
+      - playwright
+      - jupyter
+      - qa
+
+  nanlabs-workflow:
+    version: "0.1.0"
+    description: "Client delivery workflows and bootstrap"
+    skills_group: workflow
+    keywords:
+      - nanlabs
+      - workflow
+      - delivery
+      - client
 
   nanlabs-agents:
     version: "0.2.1"
     description: "Optional full set of NaNLABS agent / subagent personas (reviewers, architect, planner, e2e, …)"
+    keywords:
+      - nanlabs
+      - agents
+      - subagents
+      - review
     agents: all

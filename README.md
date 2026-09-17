@@ -11,7 +11,7 @@
   <img alt="NaNLABS Octonan mascot" align="left" width="150" src="https://github.com/nanlabs/.github/blob/main/profile/octonan.png?raw=true"/>
 </picture>
 
-**Production surfaces:** Claude · Claude Code · Cursor IDE · Cursor Agent CLI · GitHub Copilot
+**Production surfaces:** Agent Plugins roster + Claude Code
 
 <sub>Brand asset: [NaNLABS Octonan](https://github.com/nanlabs/.github/blob/main/profile/octonan.png), from the public `nanlabs/.github` repository.</sub>
 
@@ -31,7 +31,7 @@
 <p>
   <img src="https://img.shields.io/badge/skills-49-ff6b35" alt="49 skills"/>
   <img src="https://img.shields.io/badge/agents-18-58a6ff" alt="18 agents"/>
-  <img src="https://img.shields.io/badge/plugins-2-f7c948" alt="2 plugins"/>
+  <img src="https://img.shields.io/badge/plugins-10-f7c948" alt="10 plugins"/>
   <img src="https://img.shields.io/badge/MCP-docs--only-8b949e" alt="MCP docs-only"/>
 </p>
 
@@ -46,7 +46,7 @@
 </div>
 
 > [!IMPORTANT]
-> **L1.5 distribution (public)** — This repository ships NaNLABS skills, agents, and plugins for Claude, Cursor, Copilot, and Agent Skills clients.
+> **L1.5 distribution (public)** — This repository ships NaNLABS skills, agents, and plugins for the [Agent Plugins](https://agent-plugins.org/compatible-clients) roster and Claude Code.
 >
 > **Machine provisioning (L1)** lives in **`nanlabs/internal-workstation`** — a **private** NaNLABS repository (org access required). Employees install the workstation via chezmoi, then run **`nan-ai-enable`** to pin this repo. See [Workstation cutover](docs/ADOPTION.md#workstation-cutover-internal-workstation) in Adoption.
 
@@ -54,7 +54,7 @@
 
 ## What is agent-toolkit?
 
-Public **L1.5** distribution of NaNLABS AI capabilities: Agent Skills, agent personas, Claude/Cursor marketplace plugins, and GitHub Copilot surfaces. Machine provisioning stays in **`nanlabs/internal-workstation`** (L1, **private**).
+Public **L1.5** distribution of NaNLABS AI capabilities: Agent Skills, agent personas, one plugin per skill group, and GitHub Copilot surfaces. Machine provisioning stays in **`nanlabs/internal-workstation`** (L1, **private**).
 
 Smaller than multi-tool personal forks: **no** consumer CLI, loop runtime, or OpenCode/Windsurf/Gemini/Pi plugin targets. Portable skills may still work via `npx skills`.
 
@@ -64,13 +64,13 @@ Smaller than multi-tool personal forks: **no** consumer CLI, loop runtime, or Op
 
 ## Highlights
 
-- **Equal-priority surfaces** — Claude, Claude Code, Cursor IDE, Cursor Agent CLI, and GitHub Copilot
-- **GitHub Copilot support** — Agent Plugins manifests and repository customization under `.github/`
+- **Equal-priority surfaces** — Agent Plugins roster (VS Code, Copilot, Cursor, ChatGPT/Codex, Kiro, Grok Bot, Hermes, OpenClaw, NanoClaw) plus Claude Code
+- **Group plugins** — one package per skill group (`plugins/nanlabs-delivery`, …); no duplicated skill trees
 - **Recommended plugin** — `nanlabs-core` with bundled setup (`/nanlabs-core:setup`)
 - **Optional roster** — `nanlabs-agents` for all 18 personas
 - **Python typing** — `nanlabs-pyrightination` ships in `nanlabs-core`
 - **Honest MCP** — templates under `mcp/templates/` are docs-only
-- **CI quality bar** — manifests, skills-ref, Claude validate, MegaLinter, Danger
+- **CI quality bar** — inventory, manifests, skills-ref, Claude validate, MegaLinter, Danger
 
 ## Quick install
 
@@ -81,7 +81,7 @@ Smaller than multi-tool personal forks: **no** consumer CLI, loop runtime, or Op
 /plugin install nanlabs-core@nanlabs-agent-toolkit
 ```
 
-Then run **`/nanlabs-core:setup`**. Optional: `/plugin install nanlabs-agents@nanlabs-agent-toolkit`.
+Then run **`/nanlabs-core:setup`**. Repeat `/plugin install <id>@nanlabs-agent-toolkit` for the other group plugins. Optional: `/plugin install nanlabs-agents@nanlabs-agent-toolkit`.
 
 <details>
 <summary><strong>Cursor IDE</strong></summary>
@@ -89,7 +89,7 @@ Then run **`/nanlabs-core:setup`**. Optional: `/plugin install nanlabs-agents@na
 - **Local:** copy or symlink `plugins/nanlabs-core` under `~/.cursor/plugins/local/`, then reload the window ([Cursor plugins](https://cursor.com/docs/plugins))
 - **Team:** an org admin imports this repository as a Team Marketplace
 
-Install **`nanlabs-core`** (recommended), optionally **`nanlabs-agents`**.
+Install **each** `nanlabs-*` group plugin (recommended start: **`nanlabs-core`**), optionally **`nanlabs-agents`**.
 
 </details>
 
@@ -120,14 +120,14 @@ agents, MCP, or setup automation.
 Install a **group pack** (subdirectory) or a **domain pack** (skill filter):
 
 ```bash
-npx skills add nanlabs/agent-toolkit/skills/delivery
+npx skills add nanlabs/agent-toolkit/plugins/nanlabs-delivery/skills
 npx skills add nanlabs/agent-toolkit --skill github-cli-workflow --skill gh-address-comments
 ```
 
 Pack catalog: [`catalogs/pack-catalog.yaml`](catalogs/pack-catalog.yaml) ·
 [`docs/PACKS.md`](docs/PACKS.md). Helper: `bash scripts/install-pack.sh delivery`.
-Packs are **not** [Agent Plugins](https://agent-plugins.org/specification)
-packages (those use a closed `plugin.json` and immediate `skills/<name>/`).
+Group packs are the same directories as [Agent Plugins](https://agent-plugins.org/specification)
+packages (closed `plugin.json`, immediate `skills/<name>/`).
 
 </details>
 
@@ -138,11 +138,13 @@ packages (those use a closed `plugin.json` and immediate `skills/<name>/`).
 
   ```bash
   copilot plugin install nanlabs/agent-toolkit:plugins/nanlabs-core
-  # optional full agent roster:
+  copilot plugin install nanlabs/agent-toolkit:plugins/nanlabs-delivery
+  # …repeat per group plugin
   copilot plugin install nanlabs/agent-toolkit:plugins/nanlabs-agents
   ```
 
-- **Repository customization surface:** `.github/copilot-instructions.md`, `.github/agents/`, `.github/skills/`
+- **Repository customization surface:** `.github/copilot-instructions.md`, `.github/agents/`
+- **VS Code Copilot agents:** `plugins/<id>/com.github.copilot/agents/`
 - **Bundled typecheck skill:** `nanlabs-pyrightination` in `nanlabs-core`
 
 </details>
@@ -153,20 +155,20 @@ Full paths: [`docs/ADOPTION.md`](docs/ADOPTION.md) · lifecycle: [`docs/LIFECYCL
 
 | Area | Notes |
 | --- | --- |
-| Skills | 49 under `skills/<group>/` — [catalog](catalogs/skill-catalog.yaml) · [packs](docs/PACKS.md) · [index](docs/SKILLS.md) |
-| Core plugin | `nanlabs-core` v0.3.1 — harness + setup doctor + `/nanlabs-core:setup` |
+| Skills | 49 under `plugins/nanlabs-<group>/skills/` — [catalog](catalogs/skill-catalog.yaml) · [packs](docs/PACKS.md) · [index](docs/SKILLS.md) |
+| Group plugins | nine `nanlabs-*` packages (`nanlabs-core` v0.4.0 includes setup doctor + `/nanlabs-core:setup`) |
 | Agents plugin | `nanlabs-agents` v0.2.1 (optional) — 18 personas via `gen-surfaces` |
-| Copilot | Agent Plugins manifests + repository customization surface under `.github/` |
+| Copilot | Agent Plugins manifests + `.github/` instructions/agents + `com.github.copilot/agents/` |
 | MCP | Docs-only under `mcp/templates/` |
 
 ## Repository layout
 
 | Path | Purpose |
 | --- | --- |
-| `skills/<group>/<skill>/` | Canonical [Agent Skills](https://agentskills.io/specification) tree |
-| `plugins/` | Claude / Cursor plugin bundles + portable Agent Plugins manifests |
-| `.claude-plugin/` · `.cursor-plugin/` | Marketplace catalogs |
-| `.github/copilot-instructions.md` · `.github/agents/` · `.github/skills/` | GitHub Copilot repository customization |
+| `plugins/nanlabs-<group>/skills/<skill>/` | Canonical [Agent Skills](https://agentskills.io/specification) + [Agent Plugins](https://agent-plugins.org/specification) tree |
+| `plugins/` | One package per group + optional `nanlabs-agents` |
+| `.claude-plugin/` · `.cursor-plugin/` · `.agents/plugins/` | Marketplace catalogs |
+| `.github/copilot-instructions.md` · `.github/agents/` | GitHub Copilot repository customization |
 | `agents/` | Canonical personas |
 | `products/plugins.yaml` | Plugin version + assembly SoT |
 | `mcp/templates/` | MCP configuration stubs (docs-only; no runtime server) |
@@ -194,6 +196,7 @@ Full paths: [`docs/ADOPTION.md`](docs/ADOPTION.md) · lifecycle: [`docs/LIFECYCL
 bash scripts/validate-repo-structure.sh
 python3 scripts/validate-manifests.py
 python3 scripts/validate-agent-plugins.py
+python3 scripts/validate-skill-inventory.py
 python3 scripts/validate-public-content.py
 python3 scripts/validate-skills.py
 python3 scripts/validate-agents.py

@@ -8,31 +8,30 @@
 
 # Skills index
 
-Canonical skills live under `skills/<group>/<skill>/` and follow the
+Canonical skills live under `plugins/nanlabs-<group>/skills/<skill>/` and follow the
 [Agent Skills](https://agentskills.io/specification) format (`SKILL.md`).
 
 Install: [`npx skills`](https://github.com/vercel-labs/skills) — `npx skills add nanlabs/agent-toolkit -g`  
-Group or domain pack: [`PACKS.md`](PACKS.md) (subdirectory or `--skill` filter)  
+Group plugin or domain pack: [`PACKS.md`](PACKS.md) (plugin skills dir or `--skill` filter)  
 Catalog: [`catalogs/skill-catalog.yaml`](../catalogs/skill-catalog.yaml)  
 Authoring: [`AUTHORING.md`](AUTHORING.md)
 
-Portable [Agent Plugins](https://agent-plugins.org/specification) skills are the
-**flat** mirror under `plugins/nanlabs-core/skills/<name>/` (not the grouped
-tree). See [`AGENT_PLUGINS.md`](AGENT_PLUGINS.md).
+Each group plugin **is** the portable [Agent Plugins](https://agent-plugins.org/specification) package
+(`plugin.json` + immediate `skills/<name>/`). See [`AGENT_PLUGINS.md`](AGENT_PLUGINS.md).
 
 ## Bundled groups
 
 | Group | Path |
 | --- | --- |
-| core | `skills/core/` |
-| delivery | `skills/delivery/` |
-| workflow | `skills/workflow/` |
-| forge | `skills/forge/` |
-| integrations | `skills/integrations/` |
-| design | `skills/design/` |
-| data | `skills/data/` |
-| ops | `skills/ops/` (includes `nanlabs-propose-skill`) |
-| tooling | `skills/tooling/` |
+| core | `plugins/nanlabs-core/skills/` |
+| delivery | `plugins/nanlabs-delivery/skills/` |
+| workflow | `plugins/nanlabs-workflow/skills/` |
+| forge | `plugins/nanlabs-forge/skills/` |
+| integrations | `plugins/nanlabs-integrations/skills/` |
+| design | `plugins/nanlabs-design/skills/` |
+| data | `plugins/nanlabs-data/skills/` |
+| ops | `plugins/nanlabs-ops/skills/` (includes `nanlabs-propose-skill`) |
+| tooling | `plugins/nanlabs-tooling/skills/` |
 
 ## Opt-in / not bundled here
 
