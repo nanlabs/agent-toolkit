@@ -54,7 +54,7 @@ Before calling a tag “production”:
 - [x] Live smoke checklist ([LIFECYCLE.md](LIFECYCLE.md)) — issue #8 is closed; operator evidence is retained in that issue
 - [x] No secrets in tree
 
-`v0.3.1` is the current tagged distribution release (`nanlabs-core` 0.3.1, `nanlabs-agents` 0.2.1, marketplace metadata 0.5.1). This branch bumps marketplace metadata to **0.6.0**, `nanlabs-core` to **0.4.0**, and adds group plugins at **0.1.0**. Issues #8, #9, and #58 are closed.
+`v0.4.0` is the current tagged distribution release (`nanlabs-core` 0.4.0, `nanlabs-agents` 0.2.1, marketplace metadata 0.7.0, design/forge/integrations 0.2.0 with official hosted MCP). Issues #8, #9, and #58 are closed.
 
 ## Schema pins
 

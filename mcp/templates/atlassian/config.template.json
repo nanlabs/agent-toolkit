@@ -1,0 +1,6 @@
+{
+  "name": "atlassian",
+  "type": "streamable-http",
+  "url": "https://mcp.atlassian.com/v2/mcp",
+  "auth": "oauth"
+}

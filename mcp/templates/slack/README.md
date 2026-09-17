@@ -1,8 +1,13 @@
-# Slack MCP Template
+# Slack MCP
 
-## Required environment variables
+Official hosted MCP (Streamable HTTP + OAuth).
 
-- `SLACK_BOT_TOKEN`
-- `SLACK_APP_TOKEN`
+- Endpoint: `https://mcp.slack.com/mcp`
+- Docs: https://docs.slack.dev/ai/slack-mcp-server/
+- Plugin: `nanlabs-integrations` (`mcp.json`)
 
-Use `config.template.json` and `wrapper.sh` as baseline examples.
+Slack does **not** support Dynamic Client Registration. Workspace admins must
+approve MCP. If the client cannot complete OAuth from URL-only config, install
+Slack’s own MCP plugin for that client (it binds Slack’s registered OAuth app).
+
+Bot/app tokens do not belong in plugin config.

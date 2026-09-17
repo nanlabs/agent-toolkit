@@ -16,7 +16,7 @@ What this repository **is** and **is not**. Inspired by broader agent-toolkit ec
 - Nine group plugins plus optional `nanlabs-agents`
 - GitHub Copilot CLI manifests + `.github/` repository surface
 - `nanlabs-pyrightination` as a report-only typing skill in `nanlabs-core`
-- MCP **templates** (docs-only stubs)
+- Official hosted MCP servers (`mcp.json` on design / forge / integrations)
 - Validation scripts + CI gates
 - Domain pack catalog (`catalogs/pack-catalog.yaml`) and GitHub contribution flow
 - Dependency contracts for setup/doctor

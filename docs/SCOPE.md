@@ -29,7 +29,7 @@ NaNLABS production distribution for AI coding assistants — **smaller** than mu
 - Nine group plugins plus optional `nanlabs-agents`
 - Agent Plugins v1.0.0 portable manifests; Copilot `com.github.copilot/agents/`
 - `nanlabs-pyrightination` as a report-only typing skill in `nanlabs-core`
-- MCP **docs-only** templates
+- Official hosted MCP servers in group plugins (`mcp.json` / `.mcp.json`)
 - CI validators, contracts, catalogs (including domain packs), release policy docs
 - Contribution flow for proposing skills via GitHub pull request
 - Domain packs (`catalogs/pack-catalog.yaml`) as `npx skills --skill` aliases

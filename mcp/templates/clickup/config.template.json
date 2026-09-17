@@ -1,7 +1,6 @@
 {
   "name": "clickup",
-  "command": "mcp-clickup-server",
-  "env": {
-    "CLICKUP_API_TOKEN": "${CLICKUP_API_TOKEN}"
-  }
+  "type": "streamable-http",
+  "url": "https://mcp.clickup.com/mcp",
+  "auth": "oauth"
 }

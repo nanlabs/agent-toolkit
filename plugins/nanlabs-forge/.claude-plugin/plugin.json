@@ -1,7 +1,7 @@
 {
   "name": "nanlabs-forge",
-  "version": "0.1.0",
-  "description": "GitHub and GitLab CLI automation for PRs, reviews, and CI",
+  "version": "0.2.0",
+  "description": "GitHub and GitLab CLI automation plus official GitHub and GitLab MCP",
   "author": {
     "name": "NaNLABS",
     "email": "technology@nanlabs.com"
@@ -14,6 +14,7 @@
     "forge",
     "github",
     "gitlab",
-    "pr"
+    "pr",
+    "mcp"
   ]
 }

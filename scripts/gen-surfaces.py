@@ -7,11 +7,14 @@ Canonical sources:
   products/plugins.yaml (versions + plugin metadata)
   catalogs/skills-layout.json (skills_group membership)
   catalogs/agent-target-map.yaml (Claude/Cursor frontmatter overlays)
+  catalogs/mcp-catalog.yaml            # official remote MCP URLs per plugin
 
 Generated surfaces (manifests only — skill trees are never copied):
   plugins/<id>/plugin.json             # Agent Plugins portable manifest
   plugins/<id>/.claude-plugin/plugin.json
   plugins/<id>/.cursor-plugin/plugin.json
+  plugins/<id>/mcp.json                # Agent Plugins / Cursor (when catalog has servers)
+  plugins/<id>/.mcp.json               # Claude Code native MCP (same URLs, type http)
   plugins/<id>/LICENSE
   plugins/<id>/README.md               # scaffolded only when missing
   plugins/<id>/agents/<name>.md        # flat agent files (when agents: is set)
@@ -46,6 +49,7 @@ AGENTS_ROOT = ROOT / "agents"
 PRODUCTS = ROOT / "products" / "plugins.yaml"
 TARGET_MAP = ROOT / "catalogs" / "agent-target-map.yaml"
 LAYOUT = ROOT / "catalogs" / "skills-layout.json"
+MCP_CATALOG = ROOT / "catalogs" / "mcp-catalog.yaml"
 LICENSE_SRC = ROOT / "LICENSE"
 FRONTMATTER_RE = re.compile(r"\A---\n(.*?)\n---\n", re.DOTALL)
 FORBIDDEN_CANONICAL_KEYS = frozenset(
@@ -57,6 +61,7 @@ REPOSITORY_URL = "https://github.com/nanlabs/agent-toolkit"
 LICENSE = "MIT"
 MARKETPLACE_NAME = "nanlabs-agent-toolkit"
 AGENT_PLUGINS_SCHEMA = "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json"
+AGENT_PLUGINS_MCP_SCHEMA = "https://agent-plugins.org/schemas/1.0.0/mcp.schema.json"
 CLAUDE_MARKETPLACE = ROOT / ".claude-plugin" / "marketplace.json"
 CURSOR_MARKETPLACE = ROOT / ".cursor-plugin" / "marketplace.json"
 AGENTS_MARKETPLACE = ROOT / ".agents" / "plugins" / "marketplace.json"
@@ -205,6 +210,50 @@ def plugin_keywords(cfg: dict[str, Any]) -> list[str]:
     return [str(item) for item in raw]
 
 
+def load_mcp_catalog() -> dict[str, dict[str, Any]]:
+    data = load_yaml(MCP_CATALOG)
+    servers = data.get("servers")
+    if not isinstance(servers, dict) or not servers:
+        fail("catalogs/mcp-catalog.yaml servers must be a non-empty mapping")
+    out: dict[str, dict[str, Any]] = {}
+    for name, cfg in servers.items():
+        if not isinstance(cfg, dict):
+            fail(f"mcp-catalog servers.{name} must be a mapping")
+        plugin_id = cfg.get("plugin")
+        url = cfg.get("url")
+        if not isinstance(plugin_id, str) or not plugin_id.strip():
+            fail(f"mcp-catalog servers.{name}.plugin required")
+        if not isinstance(url, str) or not url.startswith("https://"):
+            fail(f"mcp-catalog servers.{name}.url must be an https URL")
+        out[str(name)] = cfg
+    return out
+
+
+def mcp_urls_for_plugin(
+    plugin_id: str, catalog: dict[str, dict[str, Any]]
+) -> dict[str, str]:
+    return {
+        name: str(cfg["url"])
+        for name, cfg in sorted(catalog.items())
+        if cfg.get("plugin") == plugin_id
+    }
+
+
+def build_ap_mcp(urls: dict[str, str]) -> dict[str, Any]:
+    return {
+        "$schema": AGENT_PLUGINS_MCP_SCHEMA,
+        "mcpServers": {
+            name: {"type": "streamable-http", "url": url} for name, url in urls.items()
+        },
+    }
+
+
+def build_claude_mcp(urls: dict[str, str]) -> dict[str, Any]:
+    return {
+        "mcpServers": {name: {"type": "http", "url": url} for name, url in urls.items()}
+    }
+
+
 def build_portable_manifest(plugin_id: str, cfg: dict[str, Any]) -> dict[str, Any]:
     """Closed Agent Plugins v1.0.0 plugin.json (no skills/agents/mcp path fields)."""
     author: dict[str, str] = {
@@ -247,7 +296,9 @@ def build_native_manifest(plugin_id: str, cfg: dict[str, Any]) -> dict[str, Any]
     return {key: value for key, value in manifest.items() if value is not None}
 
 
-def plugin_readme(plugin_id: str, cfg: dict[str, Any]) -> str:
+def plugin_readme(
+    plugin_id: str, cfg: dict[str, Any], mcp_urls: dict[str, str] | None = None
+) -> str:
     description = str(cfg.get("description") or "").strip()
     group = cfg.get("skills_group")
     skills_note = (
@@ -255,12 +306,29 @@ def plugin_readme(plugin_id: str, cfg: dict[str, Any]) -> str:
         if group
         else "This plugin ships agent personas; skill bodies live in the group plugins."
     )
+    mcp_section = ""
+    if mcp_urls:
+        lines = "\n".join(f"- `{name}` — `{url}`" for name, url in mcp_urls.items())
+        mcp_section = (
+            "\n"
+            "## MCP\n"
+            "\n"
+            "Official hosted MCP servers ship in `mcp.json` (Agent Plugins / Cursor) "
+            "and `.mcp.json` (Claude Code). After install, authenticate in the client. "
+            "No tokens are stored in the plugin.\n"
+            "\n"
+            f"{lines}\n"
+            "\n"
+            "Catalog and docs: [`catalogs/mcp-catalog.yaml`](../../catalogs/mcp-catalog.yaml), "
+            "[`docs/wiki/MCP-Setup.md`](../../docs/wiki/MCP-Setup.md).\n"
+        )
     return (
         f"# {plugin_id}\n"
         f"\n"
         f"{description}\n"
         f"\n"
         f"{skills_note} There is no second tree under `skills/<group>/`.\n"
+        f"{mcp_section}"
         f"\n"
         f"## Install\n"
         f"\n"
@@ -292,7 +360,40 @@ def plugin_readme(plugin_id: str, cfg: dict[str, Any]) -> str:
     )
 
 
-def scaffold_plugin(plugin_id: str, cfg: dict[str, Any], *, check: bool) -> None:
+def sync_plugin_mcp(plugin_root: Path, urls: dict[str, str], *, check: bool) -> None:
+    ap_path = plugin_root / "mcp.json"
+    claude_path = plugin_root / ".mcp.json"
+    if urls:
+        expected = {
+            ap_path: dump_json(build_ap_mcp(urls)),
+            claude_path: dump_json(build_claude_mcp(urls)),
+        }
+        if check:
+            for path, text in expected.items():
+                ensure_text_equals(path, text)
+            return
+        for path, text in expected.items():
+            path.write_text(text, encoding="utf-8")
+        return
+    for path in (ap_path, claude_path):
+        if check:
+            if path.exists():
+                fail(
+                    f"unexpected {path.relative_to(ROOT)} — plugin has no "
+                    "catalogs/mcp-catalog.yaml servers"
+                )
+            continue
+        if path.is_file():
+            path.unlink()
+
+
+def scaffold_plugin(
+    plugin_id: str,
+    cfg: dict[str, Any],
+    mcp_catalog: dict[str, dict[str, Any]],
+    *,
+    check: bool,
+) -> None:
     plugin_root = ROOT / "plugins" / plugin_id
     license_dst = plugin_root / "LICENSE"
     readme_dst = plugin_root / "README.md"
@@ -303,6 +404,7 @@ def scaffold_plugin(plugin_id: str, cfg: dict[str, Any], *, check: bool) -> None
     license_text = LICENSE_SRC.read_text(encoding="utf-8") if LICENSE_SRC.is_file() else ""
     if not license_text:
         fail("missing repo LICENSE")
+    mcp_urls = mcp_urls_for_plugin(plugin_id, mcp_catalog)
 
     manifests = {
         plugin_root / "plugin.json": portable_text,
@@ -319,6 +421,9 @@ def scaffold_plugin(plugin_id: str, cfg: dict[str, Any], *, check: bool) -> None
             fail(f"drift: {license_dst.relative_to(ROOT)}")
         if not readme_dst.is_file():
             fail(f"missing {readme_dst.relative_to(ROOT)}")
+        if mcp_urls:
+            ensure_text_equals(readme_dst, plugin_readme(plugin_id, cfg, mcp_urls))
+        sync_plugin_mcp(plugin_root, mcp_urls, check=True)
         return
 
     plugin_root.mkdir(parents=True, exist_ok=True)
@@ -326,9 +431,11 @@ def scaffold_plugin(plugin_id: str, cfg: dict[str, Any], *, check: bool) -> None
         path.parent.mkdir(parents=True, exist_ok=True)
         path.write_text(expected, encoding="utf-8")
     license_dst.write_text(license_text, encoding="utf-8")
-    if not readme_dst.is_file():
-        readme_dst.write_text(plugin_readme(plugin_id, cfg), encoding="utf-8")
-        print(f"scaffolded {readme_dst.relative_to(ROOT)}")
+    sync_plugin_mcp(plugin_root, mcp_urls, check=False)
+    expected_readme = plugin_readme(plugin_id, cfg, mcp_urls)
+    if not readme_dst.is_file() or mcp_urls:
+        readme_dst.write_text(expected_readme, encoding="utf-8")
+        print(f"synced {readme_dst.relative_to(ROOT)}")
     print(f"synced manifests for plugins/{plugin_id}")
 
 
@@ -536,13 +643,21 @@ def check_surfaces() -> None:
     products = load_yaml(PRODUCTS)
     target_map = load_yaml(TARGET_MAP)
     layout_groups = load_layout_groups()
+    mcp_catalog = load_mcp_catalog()
     agents_by_plugin = plugin_agent_names(products)
+    known_plugins = set(products.get("plugins") or {})
+    for name, cfg in mcp_catalog.items():
+        plugin_id = str(cfg["plugin"])
+        if plugin_id not in known_plugins:
+            fail(
+                f"mcp-catalog servers.{name}.plugin {plugin_id!r} is not a product plugin"
+            )
 
     for plugin_id, cfg in (products.get("plugins") or {}).items():
         group = cfg.get("skills_group")
         if group is not None and group not in layout_groups:
             fail(f"products/plugins.yaml {plugin_id}: unknown skills_group {group!r}")
-        scaffold_plugin(plugin_id, cfg, check=True)
+        scaffold_plugin(plugin_id, cfg, mcp_catalog, check=True)
         names = agents_by_plugin.get(plugin_id) or []
         if names:
             sync_agent_surfaces(plugin_id, names, target_map, check=True)
@@ -560,13 +675,21 @@ def write_surfaces() -> None:
     products = load_yaml(PRODUCTS)
     target_map = load_yaml(TARGET_MAP)
     layout_groups = load_layout_groups()
+    mcp_catalog = load_mcp_catalog()
     agents_by_plugin = plugin_agent_names(products)
+    known_plugins = set(products.get("plugins") or {})
+    for name, cfg in mcp_catalog.items():
+        plugin_id = str(cfg["plugin"])
+        if plugin_id not in known_plugins:
+            fail(
+                f"mcp-catalog servers.{name}.plugin {plugin_id!r} is not a product plugin"
+            )
 
     for plugin_id, cfg in (products.get("plugins") or {}).items():
         group = cfg.get("skills_group")
         if group is not None and group not in layout_groups:
             fail(f"products/plugins.yaml {plugin_id}: unknown skills_group {group!r}")
-        scaffold_plugin(plugin_id, cfg, check=False)
+        scaffold_plugin(plugin_id, cfg, mcp_catalog, check=False)
         names = agents_by_plugin.get(plugin_id) or []
         if names:
             sync_agent_surfaces(plugin_id, names, target_map, check=False)

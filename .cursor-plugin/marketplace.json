@@ -6,7 +6,7 @@
   },
   "metadata": {
     "description": "NaNLABS skills, agents, and plugins for Agent Plugins clients and Claude Code",
-    "version": "0.6.0",
+    "version": "0.7.0",
     "pluginRoot": "plugins"
   },
   "plugins": [
@@ -33,12 +33,12 @@
     {
       "name": "nanlabs-forge",
       "source": "nanlabs-forge",
-      "description": "GitHub and GitLab CLI automation for PRs, reviews, and CI"
+      "description": "GitHub and GitLab CLI automation plus official GitHub and GitLab MCP"
     },
     {
       "name": "nanlabs-integrations",
       "source": "nanlabs-integrations",
-      "description": "ClickUp, Slack, and Linear integrations"
+      "description": "ClickUp, Slack, Linear, Shortcut, Notion, and Atlassian (Jira/Confluence) MCP plus CLI skills"
     },
     {
       "name": "nanlabs-ops",

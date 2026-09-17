@@ -1,10 +1,6 @@
 {
   "name": "linear",
-  "transport": "streamable_http",
+  "type": "streamable-http",
   "url": "https://mcp.linear.app/mcp",
-  "auth": "oauth",
-  "_comment_windows_wsl_fallback": {
-    "command": "wsl",
-    "args": ["npx", "-y", "mcp-remote", "https://mcp.linear.app/sse", "--transport", "sse-only"]
-  }
+  "auth": "oauth"
 }

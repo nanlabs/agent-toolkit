@@ -34,7 +34,7 @@ plugins/nanlabs-<group>/
 
 `name` in frontmatter must match the directory. Grouping is inventory only (`catalogs/skills-layout.json` + `products/plugins.yaml` `skills_group`). Do **not** add `skills/<group>/` at repo root. `npx skills` still finds nested `SKILL.md` (depth ≤ 5).
 
-[Agent Plugins §7.1](https://agent-plugins.org/specification#71-skills) discovers **only immediate** `skills/<name>/SKILL.md` children. `gen-surfaces` writes manifests, LICENSE, and native plugin.json — it does **not** copy skill trees. Do not nest groups inside a plugin `skills/` directory. Do not add unknown top-level fields to `plugin.json`. Do not put agents or skill paths in that manifest. Optional MCP is root `mcp.json` only (this repo ships none).
+[Agent Plugins §7.1](https://agent-plugins.org/specification#71-skills) discovers **only immediate** `skills/<name>/SKILL.md` children. `gen-surfaces` writes manifests, LICENSE, native plugin.json, and official `mcp.json` / `.mcp.json` from [`catalogs/mcp-catalog.yaml`](../catalogs/mcp-catalog.yaml). Do not nest groups inside a plugin `skills/` directory. Do not add unknown top-level fields to `plugin.json`. Do not put agents or skill paths in that manifest. MCP is root `mcp.json` only.
 
 Domain packs (`catalogs/pack-catalog.yaml`) are `npx skills` aliases. Group packs map 1:1 onto these plugin directories. See [`PACKS.md`](PACKS.md) and [`AGENT_PLUGINS.md`](AGENT_PLUGINS.md).
 
@@ -66,7 +66,7 @@ Repo-level routing metadata lives in `catalogs/skill-catalog.yaml` (orchestrator
 | `agents/` | Agent/subagent personas (canonical `agents/<name>/AGENT.md`) |
 | `products/plugins.yaml` | Plugin + marketplace version source of truth (synced by gen-surfaces) |
 | `catalogs/agent-target-map.yaml` | Target-specific agent frontmatter overlays |
-| `mcp/templates/` | MCP config stubs (placeholders only) |
+| `mcp/templates/` | Official MCP URL docs (same URLs as plugin `mcp.json`) |
 | `plugins/<id>/` | Claude / Cursor plugin bundles |
 | `catalogs/` | Routing catalogs (`skill-catalog.yaml`, `pack-catalog.yaml`, layout map) |
 | `contracts/requirements/` | Dependency/permission contracts (`RequirementContract` v1) |
@@ -86,7 +86,7 @@ python3 scripts/validate-contracts.py
 
 1. Author skills under `plugins/nanlabs-<group>/skills/<skill>/` per the Agent Skills spec. Add the name to `catalogs/skills-layout.json` and `catalogs/skill-catalog.yaml`. `gen-surfaces` only refreshes manifests.
 2. Every `SKILL.md` needs valid YAML frontmatter (`name` + `description`).
-3. Never commit secrets. Use env-var names only in MCP stubs. If adding `plugins/<id>/mcp.json`, it MUST use the Agent Plugins MCP schema and stay inside the plugin root.
+3. Never commit secrets. Official MCP URLs live in `catalogs/mcp-catalog.yaml`. Plugin `mcp.json` is generated and MUST use the Agent Plugins MCP schema with no tokens in headers.
 4. Public scrub: read `docs/PUBLIC_CONTENT_POLICY.md` before migrating internal content.
 5. Project overlays: follow `docs/OVERLAY_GOVERNANCE.md` (credentials remain L1-only).
 6. Keep upstream `LICENSE.txt` / `NOTICE.txt` when redistributing third-party skills.

@@ -80,11 +80,12 @@ copilot plugin uninstall nanlabs-core
 Use the GitHub repository subdirectory specification to reinstall a plugin:
 `copilot plugin install nanlabs/agent-toolkit:plugins/nanlabs-core`.
 
-## MCP templates
+## Official MCP
 
-Templates under `mcp/templates/` use `${ENV_VAR}` placeholders only. No MCP
-server is shipped by this repository, and plugin installation does not register
-one. Never commit tokens; see each template README for separate client setup.
+Group plugins `nanlabs-design`, `nanlabs-forge`, and `nanlabs-integrations`
+ship official hosted MCP URLs from `catalogs/mcp-catalog.yaml`. Authenticate
+in the client after install. Never commit tokens; see each template README
+and [`wiki/MCP-Setup.md`](wiki/MCP-Setup.md).
 
 ## Local preflight
 

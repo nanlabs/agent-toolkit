@@ -1,11 +1,14 @@
-# GitHub MCP Template
+# GitHub MCP
 
-## Required environment variables
+Official hosted MCP (Streamable HTTP).
 
-- `GITHUB_TOKEN`
+- Endpoint: `https://api.githubcopilot.com/mcp/`
+- Docs: https://github.com/github/github-mcp-server/blob/main/docs/remote-server.md
+- Plugin: `nanlabs-forge` (`mcp.json`)
 
-## Usage
+VS Code / Copilot use OAuth against this URL. Some Cursor versions still ask
+for a Personal Access Token in **user** MCP config (`~/.cursor/mcp.json`); do
+not put tokens in the plugin.
 
-1. Copy `config.template.json` to your MCP client config.
-2. Export `GITHUB_TOKEN`.
-3. Run `./wrapper.sh` as an example launcher.
+The local Docker image `ghcr.io/github/github-mcp-server` is an official
+alternative, not shipped here.

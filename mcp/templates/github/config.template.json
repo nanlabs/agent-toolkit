@@ -1,7 +1,6 @@
 {
   "name": "github",
-  "command": "mcp-github-server",
-  "env": {
-    "GITHUB_TOKEN": "${GITHUB_TOKEN}"
-  }
+  "type": "streamable-http",
+  "url": "https://api.githubcopilot.com/mcp/",
+  "auth": "oauth"
 }

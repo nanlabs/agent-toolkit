@@ -1,19 +1,10 @@
-# Notion MCP template (stub)
+# Notion MCP
 
-Public-safe MCP stub. **No secrets** — use env-var substitution only.
+Official hosted MCP (Streamable HTTP + OAuth). Do not use integration tokens in
+the plugin.
 
-## Required environment variables
+- Endpoint: `https://mcp.notion.com/mcp`
+- Docs: https://developers.notion.com/guides/mcp/get-started-with-mcp
+- Plugin: `nanlabs-integrations` (`mcp.json`)
 
-| Variable | Purpose |
-| --- | --- |
-| `NOTION_API_TOKEN` | Notion integration token with least privilege needed |
-
-## Usage
-
-1. Copy `config.template.json` into your MCP client config (shape varies by client).
-2. Export `NOTION_API_TOKEN` (never commit it).
-3. Optionally run `./wrapper.sh` as a local launcher example.
-
-## Provenance
-
-Adapted from `nanlabs/internal-workstation` MCP templates for public distribution in `agent-toolkit`.
+The open-source `notion-mcp-server` is unmaintained. Use this hosted URL.

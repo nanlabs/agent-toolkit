@@ -1,29 +1,12 @@
-# Linear MCP template (stub)
+# Linear MCP
 
-Connects an AI client to Linear via the official remote MCP server
-(`https://mcp.linear.app/mcp`, OAuth — no API token in this stub).
+Official hosted MCP (Streamable HTTP + OAuth 2.1).
 
-## Required environment variables
+- Endpoint: `https://mcp.linear.app/mcp`
+- Docs: https://linear.app/docs/mcp
+- Plugin: `nanlabs-integrations` (`mcp.json`)
 
-None for the default OAuth path. Authentication is prompted by the AI client on first call.
+No environment variables. The client opens OAuth on first use.
 
-## Usage
-
-Transport is **streamable HTTP** — there is no local `command` / `wrapper.sh` for the primary path.
-
-1. Copy the URL / auth shape from `config.template.json` into your client MCP config.
-2. Restart the AI client.
-3. The first Linear tool call should open an OAuth window; the session is cached by the client.
-
-| AI tool | Typical config path |
-| --- | --- |
-| Claude Code | `~/.claude/mcp.json` |
-| Cursor | `~/.cursor/mcp.json` |
-| OpenCode | `~/.config/opencode/mcp.json` |
-| Windsurf | `~/.codeium/windsurf/mcp_config.json` |
-
-`config.template.json` also documents an optional Windows/WSL `mcp-remote` fallback under `_comment_windows_wsl_fallback` (not active by default).
-
-## Provenance
-
-Adapted from `nanlabs/internal-workstation` MCP templates for public distribution in `agent-toolkit`.
+The legacy SSE URL `https://mcp.linear.app/sse` is deprecated. WSL-only
+`mcp-remote` fallbacks belong in user config, not in the plugin.

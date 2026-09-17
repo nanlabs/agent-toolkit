@@ -1,7 +1,7 @@
 {
   "name": "nanlabs-integrations",
-  "version": "0.1.0",
-  "description": "ClickUp, Slack, and Linear integrations",
+  "version": "0.2.0",
+  "description": "ClickUp, Slack, Linear, Shortcut, Notion, and Atlassian (Jira/Confluence) MCP plus CLI skills",
   "author": {
     "name": "NaNLABS",
     "email": "technology@nanlabs.com"
@@ -13,6 +13,12 @@
     "nanlabs",
     "clickup",
     "slack",
-    "linear"
+    "linear",
+    "shortcut",
+    "notion",
+    "atlassian",
+    "jira",
+    "confluence",
+    "mcp"
   ]
 }

@@ -73,7 +73,9 @@ Portable packages MUST match [Agent Plugins](https://agent-plugins.org/specifica
 - Agents are not a v1 portable component. Keep them in `agents/` and native
   plugin surfaces (`plugins/<id>/agents/`, `com.github.copilot/agents/`).
 - Optional MCP is `mcp.json` at the plugin root with the matching schema
-  version. This repo ships none.
+  version. Official hosted servers are generated from
+  `catalogs/mcp-catalog.yaml` (`nanlabs-design`, `nanlabs-forge`,
+  `nanlabs-integrations`).
 - A **pack** is not a plugin. Do not add `plugin.json` for a catalog pack.
 
 ## Related

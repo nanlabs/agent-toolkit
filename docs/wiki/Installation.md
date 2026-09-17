@@ -95,7 +95,7 @@ report-only `nanlabs-pyrightination` skill for Python type-check reporting.
 Honesty rules:
 
 - Hooks are not bundled for Copilot yet.
-- MCP is still configured separately.
+- MCP ships with `nanlabs-design`, `nanlabs-forge`, and `nanlabs-integrations` (authenticate after install).
 - Repository customization is repo-scoped, not a machine-global install.
 
 ## Skills-only (Agent Skills CLI)

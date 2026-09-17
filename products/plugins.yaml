@@ -5,7 +5,7 @@ version: 1
 
 marketplace:
   metadata:
-    version: "0.6.0"
+    version: "0.7.0"
     description: "NaNLABS skills, agents, and plugins for Agent Plugins clients and Claude Code"
 
 plugins:
@@ -44,7 +44,7 @@ plugins:
       - adr
 
   nanlabs-design:
-    version: "0.1.0"
+    version: "0.2.0"
     description: "Figma MCP and UI/UX intelligence (not a full designer workflow)"
     skills_group: design
     keywords:
@@ -52,10 +52,11 @@ plugins:
       - design
       - figma
       - ui
+      - mcp
 
   nanlabs-forge:
-    version: "0.1.0"
-    description: "GitHub and GitLab CLI automation for PRs, reviews, and CI"
+    version: "0.2.0"
+    description: "GitHub and GitLab CLI automation plus official GitHub and GitLab MCP"
     skills_group: forge
     keywords:
       - nanlabs
@@ -63,16 +64,23 @@ plugins:
       - github
       - gitlab
       - pr
+      - mcp
 
   nanlabs-integrations:
-    version: "0.1.0"
-    description: "ClickUp, Slack, and Linear integrations"
+    version: "0.2.0"
+    description: "ClickUp, Slack, Linear, Shortcut, Notion, and Atlassian (Jira/Confluence) MCP plus CLI skills"
     skills_group: integrations
     keywords:
       - nanlabs
       - clickup
       - slack
       - linear
+      - shortcut
+      - notion
+      - atlassian
+      - jira
+      - confluence
+      - mcp
 
   nanlabs-ops:
     version: "0.1.0"

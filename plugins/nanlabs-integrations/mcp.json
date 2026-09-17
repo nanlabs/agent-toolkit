@@ -1,0 +1,29 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/mcp.schema.json",
+  "mcpServers": {
+    "atlassian": {
+      "type": "streamable-http",
+      "url": "https://mcp.atlassian.com/v2/mcp"
+    },
+    "clickup": {
+      "type": "streamable-http",
+      "url": "https://mcp.clickup.com/mcp"
+    },
+    "linear": {
+      "type": "streamable-http",
+      "url": "https://mcp.linear.app/mcp"
+    },
+    "notion": {
+      "type": "streamable-http",
+      "url": "https://mcp.notion.com/mcp"
+    },
+    "shortcut": {
+      "type": "streamable-http",
+      "url": "https://mcp.shortcut.com/mcp"
+    },
+    "slack": {
+      "type": "streamable-http",
+      "url": "https://mcp.slack.com/mcp"
+    }
+  }
+}

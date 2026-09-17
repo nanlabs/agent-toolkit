@@ -1,7 +1,6 @@
 {
   "name": "notion",
-  "command": "mcp-notion-server",
-  "env": {
-    "NOTION_API_TOKEN": "${NOTION_API_TOKEN}"
-  }
+  "type": "streamable-http",
+  "url": "https://mcp.notion.com/mcp",
+  "auth": "oauth"
 }

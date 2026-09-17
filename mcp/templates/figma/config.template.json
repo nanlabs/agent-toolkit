@@ -1,9 +1,6 @@
 {
   "name": "figma",
-  "transport": "streamable_http",
+  "type": "streamable-http",
   "url": "https://mcp.figma.com/mcp",
-  "headers": {
-    "Authorization": "Bearer ${FIGMA_OAUTH_TOKEN}",
-    "X-Figma-Region": "${FIGMA_REGION}"
-  }
+  "auth": "oauth"
 }

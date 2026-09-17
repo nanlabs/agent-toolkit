@@ -67,7 +67,7 @@ Consumer-facing and maintainer docs for `nanlabs/agent-toolkit` (**L1.5**). Mach
 | [`../catalogs/`](../catalogs/) | Skill / agent / pack / MCP indexes |
 | [`../contracts/`](../contracts/) | Dependency contracts |
 | GitHub issues `#24`, `#25`, `#28` | Remaining outcome-pack content (catalog is in `pack-catalog.yaml`) |
-| [`../mcp/templates/`](../mcp/templates/) | MCP docs-only stubs |
+| [`../mcp/templates/`](../mcp/templates/) | Official MCP URL docs (shipped via plugin `mcp.json`) |
 
 ## GitHub Wiki
 

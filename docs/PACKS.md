@@ -29,7 +29,7 @@ This repository ships **two** install shapes. Group packs and group plugins are 
 | Skill discovery | `--skill` names (CLI recurses) | **Immediate** `plugins/<id>/skills/<name>/SKILL.md` only (§7.1) |
 | Manifest | `catalogs/pack-catalog.yaml` | Closed `plugin.json` (`$schema`, `name`, metadata; no `skills`/`agents` path fields) |
 | Agents | Optional Code/Cursor personas | **Not** a v1 portable component (`nanlabs-agents` is native) |
-| MCP | Not part of a pack | Optional root `mcp.json` only (none shipped) |
+| MCP | Not part of a pack | Official root `mcp.json` on design / forge / integrations |
 
 A domain pack MUST NOT add `plugin.json` and MUST NOT live as `plugins/<pack-id>/`.
 Group plugins already are the skill tree — `gen-surfaces` does not copy skills.

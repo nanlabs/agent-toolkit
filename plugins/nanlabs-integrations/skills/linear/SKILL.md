@@ -8,9 +8,9 @@ description: Manage Linear issues, projects and cycles via the Linear MCP server
 Structured workflow for managing Linear issues, projects and cycles through the
 official Linear MCP server (`https://mcp.linear.app/mcp`, OAuth).
 
-This skill assumes the MCP is wired into your AI tool. See
-[`docs/MCP_TEMPLATES.md`](../../../../../../docs/MCP_TEMPLATES.md) and
-`~/.local/share/nanlabs/mcp/linear/` for the NaNLABS-managed template.
+This skill assumes the Linear MCP is available. Installing the
+`nanlabs-integrations` plugin ships `https://mcp.linear.app/mcp` (OAuth).
+See [`docs/wiki/MCP-Setup.md`](../../../../docs/wiki/MCP-Setup.md).
 
 ## When to use
 
@@ -21,29 +21,22 @@ This skill assumes the MCP is wired into your AI tool. See
 
 ## Prerequisites
 
-1. Linear MCP server connected via OAuth in your AI tool of choice.
+1. Linear MCP connected via OAuth (plugin `nanlabs-integrations`, or the same URL in user MCP config).
 2. Workspace access to the relevant teams and projects.
-3. NaNLABS template available at `~/.local/share/nanlabs/mcp/linear/`
-   (deployed by `chezmoi apply`).
 
 ## Setup (per AI tool)
 
-The Linear MCP is a **streamable HTTP** endpoint with OAuth. Register it in
-your AI tool of choice using the NaNLABS template as reference:
+The Linear MCP is a **streamable HTTP** endpoint with OAuth. The
+`nanlabs-integrations` plugin already registers `https://mcp.linear.app/mcp`.
+If you are not using the plugin, add that URL in the client and complete OAuth:
 
 | AI tool | Where to register |
 |---------|-------------------|
-| Claude Code | `~/.claude/mcp.json` (or via `claude mcp add`) |
-| Cursor | `~/.cursor/mcp.json` |
-| OpenCode | `~/.config/opencode/mcp.json` |
-| Windsurf | `~/.codeium/windsurf/mcp_config.json` |
+| Claude Code | plugin `.mcp.json`, or `claude mcp add --transport http linear https://mcp.linear.app/mcp` |
+| Cursor | plugin `mcp.json`, or `~/.cursor/mcp.json` |
+| VS Code / Copilot | plugin `mcp.json` |
 
-Copy `~/.local/share/nanlabs/mcp/linear/config.template.json` into the right
-location and follow the OAuth prompt the first time you call a Linear tool.
-
-> Windows / WSL note: if direct connections fail on Windows, run the MCP through
-> WSL using `npx -y mcp-remote https://mcp.linear.app/sse --transport sse-only`
-> as the command. The template includes a comment block with this fallback.
+The first Linear tool call opens an OAuth window.
 
 ## Required workflow
 

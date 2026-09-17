@@ -51,8 +51,8 @@ See [Agent Plugins](https://agent-plugins.org/specification).
 - [ ] Plugin skills are immediate `plugins/<id>/skills/<name>/SKILL.md`
       (clients MUST NOT recurse, §7.1). That directory is the only copy.
 - [ ] Agents stay in `agents/` / native plugin surfaces (not a v1 portable type)
-- [ ] Optional MCP is root `mcp.json` with matching schema version (this repo
-      ships none)
+- [ ] Optional MCP is root `mcp.json` with matching schema version. Official
+      hosted servers are generated from `catalogs/mcp-catalog.yaml`.
 - [ ] Catalog packs were not given a `plugin.json`
 
 ## Merge

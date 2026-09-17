@@ -14,7 +14,7 @@ No for installing plugins/skills from this public repo. Yes for NaNLABS machine 
 
 ## Why isn’t MCP available after installing the plugin?
 
-MCP templates under `mcp/templates/` are **docs-only**. Plugins do not install MCP servers. Configure MCP separately using the stubs as reference.
+Install `nanlabs-design`, `nanlabs-forge`, or `nanlabs-integrations` and complete OAuth. `nanlabs-core` does not ship MCP. Skills-only installs do not register servers. Slack may need Slack’s own client plugin (no Dynamic Client Registration).
 
 ## Where did `nanlabs-setup` go?
 
@@ -27,7 +27,7 @@ Merged into **`nanlabs-core`** (v0.3.0+). Use `/nanlabs-core:setup`. The old plu
 | Skills | Yes (49 via `npx skills`; packs in [`docs/PACKS.md`](https://github.com/nanlabs/agent-toolkit/blob/main/docs/PACKS.md)) | Yes (group plugin skills; `nanlabs-core` has 7) |
 | Agents | No | Core reviewer; full roster via `nanlabs-agents` |
 | Setup doctor | No | Yes (`/nanlabs-core:setup`) |
-| MCP | No | No (docs-only either way) |
+| MCP | No | Yes, on design / forge / integrations plugins |
 
 ## How do I share a skill?
 

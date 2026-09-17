@@ -31,14 +31,14 @@
     },
     {
       "name": "nanlabs-forge",
-      "description": "GitHub and GitLab CLI automation for PRs, reviews, and CI",
+      "description": "GitHub and GitLab CLI automation plus official GitHub and GitLab MCP",
       "source": {
         "path": "./plugins/nanlabs-forge"
       }
     },
     {
       "name": "nanlabs-integrations",
-      "description": "ClickUp, Slack, and Linear integrations",
+      "description": "ClickUp, Slack, Linear, Shortcut, Notion, and Atlassian (Jira/Confluence) MCP plus CLI skills",
       "source": {
         "path": "./plugins/nanlabs-integrations"
       }

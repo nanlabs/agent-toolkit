@@ -21,7 +21,7 @@ Not to install public plugins/skills. Yes for NaNLABS machine provisioning and s
 
 ## Why no MCP tools after plugin install?
 
-[`mcp/templates/`](../mcp/templates/) are docs-only. Plugins do not install MCP servers.
+Install the group plugin that ships that server (`nanlabs-design`, `nanlabs-forge`, or `nanlabs-integrations`), reload, and complete OAuth. Skills-only (`npx skills`) does not register MCP. Slack may still need Slack’s own client plugin because Slack does not support Dynamic Client Registration.
 
 ## Where is `nanlabs-setup`?
 
@@ -34,7 +34,7 @@ Three different layouts:
 | Path | Spec | What you get |
 | --- | --- | --- |
 | Skills-only / domain packs | [Agent Skills](https://agentskills.io/specification) + `npx skills` | `plugins/nanlabs-<group>/skills/<name>/SKILL.md`. Domain packs are `--skill` aliases. |
-| Agent Plugins v1 | [Agent Plugins](https://agent-plugins.org/specification) | Closed root `plugin.json` plus **immediate** `plugins/<id>/skills/<name>/SKILL.md`. Agents are not portable in v1. This repo ships no `mcp.json`. |
+| Agent Plugins v1 | [Agent Plugins](https://agent-plugins.org/specification) | Closed root `plugin.json` plus **immediate** `plugins/<id>/skills/<name>/SKILL.md`. Agents are not portable in v1. Official MCP is root `mcp.json` on design/forge/integrations. |
 | Claude Code / Cursor plugins | Native marketplaces | Agents, commands, hooks, doctor. Native manifests live under `.claude-plugin/` / `.cursor-plugin/`. |
 
 Group packs (`npx skills add nanlabs/agent-toolkit/plugins/nanlabs-delivery/skills`) match group plugins. See [PACKS.md](PACKS.md). Portable vs native: [AGENT_PLUGINS.md](AGENT_PLUGINS.md).

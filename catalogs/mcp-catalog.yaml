@@ -1,37 +1,66 @@
-# MCP template catalog (public stubs)
-
+# Official hosted MCP servers shipped by group plugins.
+# Source of truth for plugins/<id>/mcp.json (Agent Plugins / Cursor) and
+# plugins/<id>/.mcp.json (Claude Code). Auth is client-managed OAuth —
+# Agent Plugins 1.0.0 has no credential fields; never put tokens here.
 version: 1
 
-templates:
-  - name: clickup
-    path: mcp/templates/clickup
-    public: true
-    required_env: [CLICKUP_API_TOKEN]
-    notes: Legacy / deprecated — prefer clickup-cli skill
+servers:
+  atlassian:
+    plugin: nanlabs-integrations
+    url: https://mcp.atlassian.com/v2/mcp
+    docs: https://support.atlassian.com/atlassian-rovo-mcp-server/docs/getting-started-with-the-atlassian-remote-mcp-server/
+    products:
+      - Jira
+      - Confluence
+      - Jira Service Management
+      - Bitbucket
+      - Loom
+    notes: Official Atlassian Rovo MCP v2. One server covers Jira and Confluence.
 
-  - name: figma
-    path: mcp/templates/figma
-    public: true
-    required_env: [FIGMA_OAUTH_TOKEN, FIGMA_REGION]
-    notes: Remote streamable HTTP
+  clickup:
+    plugin: nanlabs-integrations
+    url: https://mcp.clickup.com/mcp
+    docs: https://developer.clickup.com/docs/connect-an-ai-assistant-to-clickups-mcp-server-1
+    notes: Official ClickUp hosted MCP. OAuth only; API tokens are not supported.
 
-  - name: github
-    path: mcp/templates/github
-    public: true
-    required_env: [GITHUB_TOKEN]
+  figma:
+    plugin: nanlabs-design
+    url: https://mcp.figma.com/mcp
+    docs: https://developers.figma.com/docs/figma-mcp-server/remote-server-installation/
+    notes: Official Figma remote MCP. OAuth. Figma allowlists MCP clients.
 
-  - name: linear
-    path: mcp/templates/linear
-    public: true
-    required_env: []
-    notes: OAuth remote MCP; no env token in stub
+  github:
+    plugin: nanlabs-forge
+    url: https://api.githubcopilot.com/mcp/
+    docs: https://github.com/github/github-mcp-server/blob/main/docs/remote-server.md
+    notes: Official GitHub hosted MCP. OAuth in VS Code / Copilot; some Cursor setups still prompt for a PAT in user MCP config, not in this plugin.
 
-  - name: notion
-    path: mcp/templates/notion
-    public: true
-    required_env: [NOTION_API_TOKEN]
+  gitlab:
+    plugin: nanlabs-forge
+    url: https://gitlab.com/api/v4/mcp
+    docs: https://docs.gitlab.com/user/model_context_protocol/mcp_server/
+    notes: Official GitLab.com MCP. Self-managed instances use https://<host>/api/v4/mcp in user config instead.
 
-  - name: slack
-    path: mcp/templates/slack
-    public: true
-    required_env: [SLACK_BOT_TOKEN, SLACK_APP_TOKEN]
+  linear:
+    plugin: nanlabs-integrations
+    url: https://mcp.linear.app/mcp
+    docs: https://linear.app/docs/mcp
+    notes: Official Linear hosted MCP. OAuth 2.1. SSE at /sse is deprecated.
+
+  notion:
+    plugin: nanlabs-integrations
+    url: https://mcp.notion.com/mcp
+    docs: https://developers.notion.com/guides/mcp/get-started-with-mcp
+    notes: Official Notion hosted MCP. OAuth. Open-source notion-mcp-server is unmaintained.
+
+  shortcut:
+    plugin: nanlabs-integrations
+    url: https://mcp.shortcut.com/mcp
+    docs: https://www.shortcut.com/help/integrations/mcp-server/
+    notes: Official Shortcut hosted MCP. OAuth; no API token.
+
+  slack:
+    plugin: nanlabs-integrations
+    url: https://mcp.slack.com/mcp
+    docs: https://docs.slack.dev/ai/slack-mcp-server/
+    notes: Official Slack hosted MCP. OAuth. Slack does not support Dynamic Client Registration; workspace admin approval is required. Slack's own client plugins may still be needed for client-id-bound OAuth.

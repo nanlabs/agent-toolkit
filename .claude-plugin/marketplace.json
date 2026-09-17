@@ -6,7 +6,7 @@
   },
   "metadata": {
     "description": "NaNLABS skills, agents, and plugins for Agent Plugins clients and Claude Code",
-    "version": "0.6.0",
+    "version": "0.7.0",
     "pluginRoot": "./plugins"
   },
   "plugins": [
@@ -55,40 +55,48 @@
       "name": "nanlabs-design",
       "source": "./plugins/nanlabs-design",
       "description": "Figma MCP and UI/UX intelligence (not a full designer workflow)",
-      "version": "0.1.0",
+      "version": "0.2.0",
       "category": "productivity",
       "tags": [
         "nanlabs",
         "design",
         "figma",
-        "ui"
+        "ui",
+        "mcp"
       ]
     },
     {
       "name": "nanlabs-forge",
       "source": "./plugins/nanlabs-forge",
-      "description": "GitHub and GitLab CLI automation for PRs, reviews, and CI",
-      "version": "0.1.0",
+      "description": "GitHub and GitLab CLI automation plus official GitHub and GitLab MCP",
+      "version": "0.2.0",
       "category": "productivity",
       "tags": [
         "nanlabs",
         "forge",
         "github",
         "gitlab",
-        "pr"
+        "pr",
+        "mcp"
       ]
     },
     {
       "name": "nanlabs-integrations",
       "source": "./plugins/nanlabs-integrations",
-      "description": "ClickUp, Slack, and Linear integrations",
-      "version": "0.1.0",
+      "description": "ClickUp, Slack, Linear, Shortcut, Notion, and Atlassian (Jira/Confluence) MCP plus CLI skills",
+      "version": "0.2.0",
       "category": "productivity",
       "tags": [
         "nanlabs",
         "clickup",
         "slack",
-        "linear"
+        "linear",
+        "shortcut",
+        "notion",
+        "atlassian",
+        "jira",
+        "confluence",
+        "mcp"
       ]
     },
     {

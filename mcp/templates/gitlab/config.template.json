@@ -1,0 +1,6 @@
+{
+  "name": "gitlab",
+  "type": "streamable-http",
+  "url": "https://gitlab.com/api/v4/mcp",
+  "auth": "oauth"
+}

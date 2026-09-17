@@ -32,7 +32,7 @@
   <img src="https://img.shields.io/badge/skills-49-ff6b35" alt="49 skills"/>
   <img src="https://img.shields.io/badge/agents-18-58a6ff" alt="18 agents"/>
   <img src="https://img.shields.io/badge/plugins-10-f7c948" alt="10 plugins"/>
-  <img src="https://img.shields.io/badge/MCP-docs--only-8b949e" alt="MCP docs-only"/>
+  <img src="https://img.shields.io/badge/MCP-official%20remote-7ee787" alt="Official remote MCP"/>
 </p>
 
 <p>
@@ -69,7 +69,7 @@ Smaller than multi-tool personal forks: **no** consumer CLI, loop runtime, or Op
 - **Recommended plugin** — `nanlabs-core` with bundled setup (`/nanlabs-core:setup`)
 - **Optional roster** — `nanlabs-agents` for all 18 personas
 - **Python typing** — `nanlabs-pyrightination` ships in `nanlabs-core`
-- **Honest MCP** — templates under `mcp/templates/` are docs-only
+- **Official MCP** — group plugins ship hosted OAuth MCP (`mcp.json`); authenticate in the client
 - **CI quality bar** — inventory, manifests, skills-ref, Claude validate, MegaLinter, Danger
 
 ## Quick install
@@ -159,7 +159,7 @@ Full paths: [`docs/ADOPTION.md`](docs/ADOPTION.md) · lifecycle: [`docs/LIFECYCL
 | Group plugins | nine `nanlabs-*` packages (`nanlabs-core` v0.4.0 includes setup doctor + `/nanlabs-core:setup`) |
 | Agents plugin | `nanlabs-agents` v0.2.1 (optional) — 18 personas via `gen-surfaces` |
 | Copilot | Agent Plugins manifests + `.github/` instructions/agents + `com.github.copilot/agents/` |
-| MCP | Docs-only under `mcp/templates/` |
+| MCP | Official remote servers in `nanlabs-design` / `nanlabs-forge` / `nanlabs-integrations` |
 
 ## Repository layout
 
@@ -171,7 +171,7 @@ Full paths: [`docs/ADOPTION.md`](docs/ADOPTION.md) · lifecycle: [`docs/LIFECYCL
 | `.github/copilot-instructions.md` · `.github/agents/` | GitHub Copilot repository customization |
 | `agents/` | Canonical personas |
 | `products/plugins.yaml` | Plugin version + assembly SoT |
-| `mcp/templates/` | MCP configuration stubs (docs-only; no runtime server) |
+| `mcp/templates/` | Official MCP URL docs (same URLs shipped in plugin `mcp.json`) |
 | `docs/` · `docs/wiki/` | Repo docs + GitHub Wiki source |
 | `static/` | README artwork |
 | `scripts/` | Validation + `gen-surfaces` |

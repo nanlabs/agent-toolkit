@@ -40,7 +40,7 @@ generated root manifests or generated Copilot agent files.
 
 Source: [compatible-clients](https://agent-plugins.org/compatible-clients)
 (page is client-side JS; re-check when implementing). All listed clients load
-**Agent Skills**. MCP support varies; this repo does **not** ship `mcp.json`.
+**Agent Skills**. MCP support varies. Design, forge, and integrations ship official hosted MCP in `mcp.json` (remote HTTPS + client OAuth).
 
 | Client | How to load a group plugin |
 | --- | --- |
@@ -69,8 +69,9 @@ See Anthropic's
 ### Cursor
 
 Checks `.cursor-plugin/plugin.json` first. The root `plugin.json` coexists for
-portable consumers. Cursor does not expand `${PLUGIN_ROOT}` / `${PLUGIN_DATA}`
-in `mcp.json`. See the [Cursor plugin reference](https://cursor.com/docs/reference/plugins).
+portable consumers. Shipped MCP servers are remote URLs (no `${PLUGIN_ROOT}`).
+Cursor does not expand `${PLUGIN_ROOT}` / `${PLUGIN_DATA}` in `mcp.json` if a
+stdio server is added later. See the [Cursor plugin reference](https://cursor.com/docs/reference/plugins).
 
 ### GitHub Copilot and VS Code
 
@@ -114,10 +115,11 @@ contracts) that are not claimed as Agent Plugins v1 portable components.
 Copilot and other supported native clients, but agents are not a portable
 component in Agent Plugins v1.0.0.
 
-No `mcp.json` ships. The repository's MCP material under `mcp/templates/` is
-documentation, not a runtime server. If a plugin later adds `mcp.json`, it
-must use the vendored Agent Plugins v1.0.0 MCP schema and keep executable
-paths and working directories contained by the plugin path rules.
+`nanlabs-design`, `nanlabs-forge`, and `nanlabs-integrations` ship `mcp.json`
+(Agent Plugins schema, `type: streamable-http`) and `.mcp.json` (Claude Code,
+`type: http`) from [`catalogs/mcp-catalog.yaml`](../catalogs/mcp-catalog.yaml).
+Auth is client-managed OAuth; headers and tokens are not packaged. Templates
+under `mcp/templates/` document the same official URLs.
 
 ## Conformance policy
 
@@ -130,7 +132,7 @@ The canonical schemas are vendored under
 - immediate skill discovery and regular `SKILL.md` files;
 - one inventory copy per layout skill (no `skills/<group>/`, no `.github/skills/`);
 - realpath containment for plugin files and discovered skills; and
-- future `mcp.json` schema, schema-version, and executable-path compatibility.
+- `mcp.json` schema, schema-version match, and no secrets in headers.
 
 Validation never fetches schemas at runtime. Regenerate manifests and run
 `python3 scripts/validate-agent-plugins.py` after changing

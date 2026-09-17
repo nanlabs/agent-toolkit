@@ -12,7 +12,7 @@ How to install and use `nanlabs/agent-toolkit`.
 
 Also see [SCOPE.md](SCOPE.md), [FAQ.md](FAQ.md), and the [wiki source](wiki/) (companion PR: wiki sync).
 
-**Production:** [Agent Plugins](https://agent-plugins.org/compatible-clients) roster (9 clients) **plus** Claude Code (native marketplace; not on that roster). MCP is docs-only — plugins ship skills, not `mcp.json`. Cursor Agent CLI certification evidence lives in [`CURSOR_CLI.md`](CURSOR_CLI.md) — evidence gap ≠ lower product priority.
+**Production:** [Agent Plugins](https://agent-plugins.org/compatible-clients) roster (9 clients) **plus** Claude Code (native marketplace; not on that roster). Group plugins ship official hosted MCP in `mcp.json` (Agent Plugins / Cursor) and `.mcp.json` (Claude Code). Authenticate in the client — no tokens in the plugin. Cursor Agent CLI certification evidence lives in [`CURSOR_CLI.md`](CURSOR_CLI.md) — evidence gap ≠ lower product priority.
 
 There is **no** root `plugin.json`. Each package is `plugins/nanlabs-<group>/` (plus optional `nanlabs-agents`). Canonical skills live there under `skills/<name>/`.
 
@@ -50,7 +50,7 @@ CLI installs land in `~/.copilot/installed-plugins/` and then show up in VS Code
 
 ## Cursor IDE and Cursor Agent CLI
 
-**IDE:** Team Marketplace import of `nanlabs/agent-toolkit`, or copy/symlink each `plugins/nanlabs-*` under `~/.cursor/plugins/local/` and reload. Marketplace entries use only `name`, `source`, `description` (official schema). Cursor does **not** expand `${PLUGIN_ROOT}` in `mcp.json` (another reason this repo does not ship MCP).
+**IDE:** Team Marketplace import of `nanlabs/agent-toolkit`, or copy/symlink each `plugins/nanlabs-*` under `~/.cursor/plugins/local/` and reload. Marketplace entries use only `name`, `source`, `description` (official schema). Shipped MCP servers are remote HTTPS URLs (no `${PLUGIN_ROOT}`). Cursor does **not** expand `${PLUGIN_ROOT}` / `${PLUGIN_DATA}` if a future stdio server is added.
 
 **CLI:**
 
@@ -127,7 +127,7 @@ Skill index: [`SKILLS.md`](SKILLS.md) · packs: [`PACKS.md`](PACKS.md) · machin
 ## Agents and MCP
 
 - Agents: [`../agents/README.md`](../agents/README.md) (18 personas; plugin `nanlabs-agents`)
-- MCP stubs: [`../mcp/templates/README.md`](../mcp/templates/README.md) (docs-only; no MCP server is shipped)
+- MCP: [`../mcp/templates/README.md`](../mcp/templates/README.md) and [`../catalogs/mcp-catalog.yaml`](../catalogs/mcp-catalog.yaml) — official URLs shipped by `nanlabs-design`, `nanlabs-forge`, `nanlabs-integrations`
 - Dependency contracts: [`../contracts/README.md`](../contracts/README.md)
 - Domain packs: [`PACKS.md`](PACKS.md). Remaining outcome-pack **content** is tracked in GitHub issues `#24`, `#25`, and `#28` (no placeholder directories)
 - Overlay governance: [`OVERLAY_GOVERNANCE.md`](OVERLAY_GOVERNANCE.md)
@@ -159,7 +159,7 @@ Install guide (private repo — clone with org access): `docs/AGENT_TOOLKIT.md` 
 | --- | --- |
 | Setup can’t find doctor scripts | Use marketplace `nanlabs-core` ≥ 0.3.0 (bundles doctor); avoid relying on a git checkout |
 | Cursor marketplace import fails | Ensure `.cursor-plugin/marketplace.json` passes official schema |
-| Expected MCP tools missing | MCP templates are docs-only; configure MCP separately |
+| Expected MCP tools missing | Install `nanlabs-design` / `nanlabs-forge` / `nanlabs-integrations` and complete OAuth in the client |
 | CLI skills/commands missing | Re-check [`CURSOR_CLI.md`](CURSOR_CLI.md) on the pinned CLI version — IDE ≠ CLI |
 
 ## Related docs

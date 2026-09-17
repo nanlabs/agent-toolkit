@@ -1,0 +1,6 @@
+{
+  "name": "shortcut",
+  "type": "streamable-http",
+  "url": "https://mcp.shortcut.com/mcp",
+  "auth": "oauth"
+}
