@@ -7,8 +7,10 @@ body:
   - type: markdown
     attributes:
       value: |
-        Share a skill via GitHub. Maintainers review for security, duplication, quality, and pack membership.
-        After merge it is installable with `npx skills`. See `docs/CONTRIBUTION.md`.
+        Propose a skill or agent to **https://github.com/nanlabs/agent-toolkit**.
+        Maintainers review for security, duplication, quality, and pack membership.
+        After merge it is installable with `npx skills`. See `docs/CONTRIBUTION.md`
+        in that repository.
   - type: input
     id: skill-name
     attributes:

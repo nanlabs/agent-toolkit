@@ -7,9 +7,16 @@
 
 # Contribution (skills and agents)
 
-Anyone may **propose** a skill or agent. Maintainers **approve**. After merge
-the change is installable (`npx skills` / plugins). GitHub is the source of
-truth.
+Anyone may **propose** a skill or agent to
+**[nanlabs/agent-toolkit](https://github.com/nanlabs/agent-toolkit)**.
+Maintainers **approve**. After merge the change is installable (`npx skills` /
+plugins). That GitHub repository is the source of truth.
+
+Clone (do not open the PR against a client repo or `internal-workstation`):
+
+```bash
+git clone https://github.com/nanlabs/agent-toolkit.git
+```
 
 This is the same shape as a share-then-approve loop (propose, security and
 duplication review, then publish as an installable). There is no separate
@@ -24,12 +31,13 @@ Public scrub: [`PUBLIC_CONTENT_POLICY.md`](PUBLIC_CONTENT_POLICY.md).
 
 1. Search `catalogs/skill-catalog.yaml`, `catalogs/pack-catalog.yaml`, and
    `catalogs/agent-catalog.yaml` so the proposal is not a duplicate.
-2. Open a GitHub issue with the **Propose skill** template.
+2. Open a GitHub issue on **nanlabs/agent-toolkit** with the **Propose skill**
+   template: <https://github.com/nanlabs/agent-toolkit/issues/new?template=propose-skill.yml>.
 3. Author under `skills/<group>/<name>/` (or `agents/<name>/`) with a real
    `SKILL.md` / `AGENT.md` — never a README-only directory.
 4. Update catalogs and, if needed, [`PACKS.md`](PACKS.md).
-5. Open a pull request from `main`, fill the Skill/Agent checklist, link the
-   issue (`Fixes #N`).
+5. Open a pull request against **`nanlabs/agent-toolkit` `main`**, fill the
+   Skill/Agent checklist, link the issue (`Fixes #N`).
 6. CODEOWNERS (`@nanlabs/internal-maintainers`, `@nanlabs/oss-core-team`)
    review: security, sense, duplicates, quality, pack membership, Cloud-safe
    skills fallback.

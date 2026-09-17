@@ -1,7 +1,9 @@
 # Maintainer review checklist (propose skill)
 
-Use this list when reviewing a PR that adds or changes `skills/` or `agents/`.
-It is the artisan approval gate: share via PR, admin review, then installable.
+Use this list when reviewing a PR **on
+[nanlabs/agent-toolkit](https://github.com/nanlabs/agent-toolkit)** that adds or
+changes `skills/` or `agents/`. It is the artisan approval gate: share via PR
+to that repo, admin review, then installable.
 
 ## Security and public safety
 
