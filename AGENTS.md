@@ -23,6 +23,7 @@ Portable agent contract for work in this repository.
 ```bash
 bash scripts/validate-repo-structure.sh
 python3 scripts/validate-manifests.py
+python3 scripts/validate-agent-plugins.py
 python3 scripts/validate-skills.py
 python3 scripts/validate-pack-catalog.py
 bash scripts/secret-scan.sh

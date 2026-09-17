@@ -24,6 +24,7 @@ Fixes #
 - [ ] `python3 scripts/validate-manifests.py`
 - [ ] `python3 scripts/validate-skills.py`
 - [ ] `python3 scripts/validate-pack-catalog.py` (if catalogs or packs changed)
+- [ ] `python3 scripts/validate-agent-plugins.py` (if `plugins/` changed)
 - [ ] `bash scripts/secret-scan.sh`
 - [ ] Relevant workflow(s) reviewed
 
@@ -36,6 +37,15 @@ Fill when the PR adds or changes `skills/` or `agents/`. Mark N/A items with a n
 - [ ] Handoff / output contract documented (or N/A; see `docs/HANDOFFS.md`)
 - [ ] Cloud-safe as skills-only (or documented Code/Cursor-only)
 - [ ] `docs/PUBLIC_CONTENT_POLICY.md` satisfied
+
+## Agent Plugins checklist
+
+Fill when the PR changes `plugins/` or a root `plugin.json`. Mark N/A otherwise.
+See [Agent Plugins](https://agent-plugins.org/specification).
+
+- [ ] Root `plugin.json` is closed-schema v1 (`$schema` + `name`; no `skills`/`agents` path fields)
+- [ ] Plugin skills are immediate `plugins/<id>/skills/<name>/SKILL.md` (not nested groups)
+- [ ] Packs were not given a `plugin.json` (`python3 scripts/validate-agent-plugins.py`)
 
 ## Checklist
 

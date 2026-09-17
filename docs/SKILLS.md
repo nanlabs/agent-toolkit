@@ -16,6 +16,10 @@ Group or domain pack: [`PACKS.md`](PACKS.md) (subdirectory or `--skill` filter)
 Catalog: [`catalogs/skill-catalog.yaml`](../catalogs/skill-catalog.yaml)  
 Authoring: [`AUTHORING.md`](AUTHORING.md)
 
+Portable [Agent Plugins](https://agent-plugins.org/specification) skills are the
+**flat** mirror under `plugins/nanlabs-core/skills/<name>/` (not the grouped
+tree). See [`AGENT_PLUGINS.md`](AGENT_PLUGINS.md).
+
 ## Bundled groups
 
 | Group | Path |

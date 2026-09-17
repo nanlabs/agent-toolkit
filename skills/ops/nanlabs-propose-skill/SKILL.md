@@ -7,7 +7,7 @@ description: >-
   or preparing a pull request against that repo for maintainers to review.
 metadata:
   author: nanlabs
-  version: "1.1"
+  version: "1.2"
 ---
 
 # Propose a skill (NaNLABS)
@@ -46,6 +46,7 @@ the source of truth. There is no separate sharing platform.
 - To publish client-confidential or internal-only procedures (see
   `docs/PUBLIC_CONTENT_POLICY.md` in **nanlabs/agent-toolkit**)
 - To add empty `packs/` directories or README-only placeholders
+- To treat a pack as an Agent Plugins package (`plugin.json` under `plugins/`)
 - To bypass CODEOWNERS review
 - To open the contribution PR against any other repository
 
@@ -62,15 +63,22 @@ the source of truth. There is no separate sharing platform.
    instead of a new name.
 3. **Author** — Follow `docs/AUTHORING.md` and `docs/CONTRIBUTION.md` in
    **nanlabs/agent-toolkit**. Layout: `skills/<group>/<skill>/SKILL.md` with
-   kebab-case `name` matching the directory.
+   kebab-case `name` matching the directory. That nested group tree is for
+   Agent Skills / `npx skills`. [Agent Plugins](https://agent-plugins.org/specification)
+   v1 discovers only immediate `plugins/<id>/skills/<name>/SKILL.md`. Do **not**
+   add `plugin.json` or `plugins/<pack-id>/` for a catalog pack. Core plugin
+   skills are mirrored from `skills/core/` by `gen-surfaces`.
 4. **Pack membership** — Add the skill to `catalogs/skill-catalog.yaml` and
    `catalogs/skills-layout.json`. If it belongs in a domain pack, update
    `catalogs/pack-catalog.yaml`. Run `python3 scripts/validate-pack-catalog.py`.
+   If you changed `plugins/`, also run
+   `python3 scripts/validate-agent-plugins.py`.
 5. **Issue** — Open a GitHub issue **on nanlabs/agent-toolkit** with the
    **Propose skill** template
    (`https://github.com/nanlabs/agent-toolkit/issues/new?template=propose-skill.yml`).
 6. **Pull request** — Branch from `main` **in nanlabs/agent-toolkit**, fill
-   `.github/PULL_REQUEST_TEMPLATE.md` including the Skill/Agent checklist, and
+   `.github/PULL_REQUEST_TEMPLATE.md` including the Skill/Agent checklist (and
+   the Agent Plugins checklist if `plugins/` changed), and
    link the issue (`Fixes #N`). Create the PR against
    `https://github.com/nanlabs/agent-toolkit` (`base: main`).
 7. **Handoff** — Tell the contributor that CODEOWNERS on that repo
@@ -94,5 +102,6 @@ fallback.
 - `https://github.com/nanlabs/agent-toolkit` — contribution target
 - `docs/CONTRIBUTION.md` — human-readable flow (in that repo)
 - `docs/PACKS.md` — installable domain packs
+- `docs/AGENT_PLUGINS.md` — portable vs native plugins
 - `docs/HANDOFFS.md` — output contracts
 - `github-cli-workflow` — draft the PR against **nanlabs/agent-toolkit**

@@ -9,13 +9,34 @@
 
 A **pack** is a named, installable slice of this repository: a `skills/<group>/`
 subdirectory, or a cross-group list of skills (and optional agents). Packs are
-**catalog aliases**, not a `packs/` directory tree.
+**catalog aliases**, not a `packs/` directory tree and **not** Agent Plugins
+packages.
 
 Machine catalog: [`catalogs/pack-catalog.yaml`](../catalogs/pack-catalog.yaml).
 
 GitHub issues `#24`, `#25`, and `#28` still track **outcome-pack content**
 (deeper QA, DevOps golden stacks, and similar). This catalog is the
 discovery, install, and governance slice.
+
+## Packs vs Agent Plugins
+
+This repository ships **two** distribution shapes. Do not mix them.
+
+| | Packs (this catalog) | Agent Plugins v1.0.0 |
+| --- | --- | --- |
+| Spec | [Agent Skills](https://agentskills.io/specification) + `npx skills` | [Agent Plugins](https://agent-plugins.org/specification) |
+| Unit | Named skill list or `skills/<group>/` | Directory with root `plugin.json` |
+| Skill discovery | Nested `skills/<group>/<name>/SKILL.md` | **Immediate** `plugins/<id>/skills/<name>/SKILL.md` only (§7.1) |
+| Manifest | `catalogs/pack-catalog.yaml` | Closed `plugin.json` (`$schema`, `name`, metadata; no `skills`/`agents` path fields) |
+| Agents | Optional Code/Cursor personas | **Not** a v1 portable component |
+| MCP | Not part of a pack | Optional root `mcp.json` only |
+
+A pack MUST NOT add `plugin.json`, MUST NOT live under `plugins/`, and MUST NOT
+expect Agent Plugins clients to recurse into `skills/<group>/`. Portable plugin
+skills stay flat under `plugins/nanlabs-core/skills/<name>/` (mirrored from
+`skills/core/` by `gen-surfaces`). Install a plugin with Copilot/Claude/Cursor
+marketplace flows; install a pack with `npx skills`. See
+[`AGENT_PLUGINS.md`](AGENT_PLUGINS.md).
 
 ## Why packs (not personas)
 
@@ -99,9 +120,12 @@ to “install / use the pack of X”. Handoffs: [`HANDOFFS.md`](HANDOFFS.md).
 
 ## Adding or changing a pack
 
-1. Edit `catalogs/pack-catalog.yaml` (no empty directories).
+1. Edit `catalogs/pack-catalog.yaml` (no empty directories, no `plugin.json`).
 2. Point only at skills and agents that already exist.
-3. Run `python3 scripts/validate-pack-catalog.py`.
-4. Document the pack here if it is user-facing.
+3. Do not create `plugins/<pack-id>/` unless you are adding a real Agent Plugins
+   package (closed `plugin.json`, immediate `skills/<name>/SKILL.md`).
+4. Run `python3 scripts/validate-pack-catalog.py` and, if you touched
+   `plugins/`, `python3 scripts/validate-agent-plugins.py`.
+5. Document the pack here if it is user-facing.
 
 Contribution flow: [`CONTRIBUTION.md`](CONTRIBUTION.md).

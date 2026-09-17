@@ -1,6 +1,7 @@
-# Domain and group packs (public)
-# Packs are catalog aliases over skills/<group>/ and named skill/agent lists.
-# They are not a packs/ directory tree (see docs/PACKS.md).
+# Packs are catalog aliases for Agent Skills (`npx skills`). They are NOT
+# Agent Plugins packages: no plugin.json, no plugins/<pack-id>/ tree.
+# Portable Agent Plugins discovery is non-recursive (skills/<name>/SKILL.md).
+# See docs/PACKS.md and https://agent-plugins.org/specification §7.1.
 version: 1
 source: nanlabs/agent-toolkit
 

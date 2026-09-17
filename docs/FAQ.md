@@ -27,9 +27,17 @@ Not to install public plugins/skills. Yes for NaNLABS machine provisioning and s
 
 Merged into **`nanlabs-core`** (v0.3.0+). Use `/nanlabs-core:setup`.
 
-## Skills-only vs plugins?
+## Skills-only vs plugins vs packs?
 
-Skills-only installs skills alone. Plugins add agents, commands, and the bundled setup doctor. Neither path installs MCP. Domain packs (`npx skills add nanlabs/agent-toolkit/skills/delivery`) are documented in [PACKS.md](PACKS.md).
+Three different layouts:
+
+| Path | Spec | What you get |
+| --- | --- | --- |
+| Skills-only / packs | [Agent Skills](https://agentskills.io/specification) + `npx skills` | Nested `skills/<group>/<name>/SKILL.md`. Packs are catalog aliases, not packages. |
+| Agent Plugins v1 | [Agent Plugins](https://agent-plugins.org/specification) | Closed root `plugin.json` plus **immediate** `plugins/<id>/skills/<name>/SKILL.md`. Agents are not portable in v1. This repo ships no `mcp.json`. |
+| Claude Code / Cursor plugins | Native marketplaces | Agents, commands, hooks, doctor. Native manifests live under `.claude-plugin/` / `.cursor-plugin/`. |
+
+Domain packs (`npx skills add nanlabs/agent-toolkit/skills/delivery`) are documented in [PACKS.md](PACKS.md). Portable vs native plugins: [AGENT_PLUGINS.md](AGENT_PLUGINS.md).
 
 ## How do I share a skill?
 

@@ -126,6 +126,8 @@ npx skills add nanlabs/agent-toolkit --skill github-cli-workflow --skill gh-addr
 
 Pack catalog: [`catalogs/pack-catalog.yaml`](catalogs/pack-catalog.yaml) ·
 [`docs/PACKS.md`](docs/PACKS.md). Helper: `bash scripts/install-pack.sh delivery`.
+Packs are **not** [Agent Plugins](https://agent-plugins.org/specification)
+packages (those use a closed `plugin.json` and immediate `skills/<name>/`).
 
 </details>
 

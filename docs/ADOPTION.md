@@ -89,7 +89,7 @@ bash scripts/install-pack.sh code-review -y
 
 Skills-only installs do **not** bundle the contract doctor; use baseline spot-checks in the skill or clone the repo for full validation.
 
-Skill index: [`SKILLS.md`](SKILLS.md) · packs: [`PACKS.md`](PACKS.md) · machine catalogs: [`../catalogs/skill-catalog.yaml`](../catalogs/skill-catalog.yaml), [`../catalogs/pack-catalog.yaml`](../catalogs/pack-catalog.yaml).
+Skill index: [`SKILLS.md`](SKILLS.md) · packs: [`PACKS.md`](PACKS.md) · machine catalogs: [`../catalogs/skill-catalog.yaml`](../catalogs/skill-catalog.yaml), [`../catalogs/pack-catalog.yaml`](../catalogs/pack-catalog.yaml). Packs are Agent Skills aliases, not [Agent Plugins](https://agent-plugins.org/specification) packages.
 
 ## Agents and MCP
 

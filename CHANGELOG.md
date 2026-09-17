@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-- Domain and group **packs** as catalog aliases (`catalogs/pack-catalog.yaml`) with `npx skills` subdirectory / `--skill` install and `scripts/install-pack.sh`.
+- Domain and group **packs** as catalog aliases (`catalogs/pack-catalog.yaml`) with `npx skills` subdirectory / `--skill` install and `scripts/install-pack.sh`. Packs are not [Agent Plugins](https://agent-plugins.org/specification) packages (v1 discovers only immediate `skills/<name>/SKILL.md`; closed `plugin.json`).
 - Skill `nanlabs-propose-skill` plus contribution docs and PR/issue checklists (propose via GitHub, maintainer review, then installable).
 - Handoff contracts: planner emits HTML; code reviewer posts on the pull request. Coverage map in `docs/COVERAGE.md`.
 

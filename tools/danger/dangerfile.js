@@ -34,6 +34,12 @@ const skillAgentChecklist = [
   "`docs/PUBLIC_CONTENT_POLICY.md` satisfied",
 ];
 
+const agentPluginsChecklist = [
+  "Root `plugin.json` is closed-schema v1 (`$schema` + `name`; no `skills`/`agents` path fields)",
+  "Plugin skills are immediate `plugins/<id>/skills/<name>/SKILL.md` (not nested groups)",
+  "Packs were not given a `plugin.json` (`python3 scripts/validate-agent-plugins.py`)",
+];
+
 const prBody = danger.github.pr.body ?? "";
 const prTitle = danger.github.pr.title ?? "";
 const releasePrTitle =
@@ -150,6 +156,29 @@ if (hasManifests) {
 }
 
 const allTouched = [...touchedFiles, ...danger.git.deleted_files];
+const hasAgentPlugins = allTouched.some(
+  (f) =>
+    f.startsWith("plugins/") ||
+    f.startsWith("schemas/agent-plugins/") ||
+    f === "scripts/validate-agent-plugins.py" ||
+    f === "scripts/gen-copilot-surfaces.py",
+);
+if (hasAgentPlugins) {
+  warn(
+    "Agent Plugins files changed — keep root `plugin.json` closed-schema and skills as immediate `plugins/<id>/skills/<name>/SKILL.md` ([spec §7.1](https://agent-plugins.org/specification#71-skills)). Packs are not plugins. Run `python3 scripts/validate-agent-plugins.py`.",
+  );
+  if (!hasSection("## Agent Plugins checklist")) {
+    warn(
+      ":clipboard: Agent Plugins checklist — include <i>## Agent Plugins checklist</i> when changing `plugins/`.",
+    );
+  }
+  agentPluginsChecklist.forEach((item) => {
+    if (!isChecklistItemChecked(item)) {
+      warn(`:package: Agent Plugins checklist — please confirm: <i>${item}</i>`);
+    }
+  });
+}
+
 const modifiedAnyPackageJson = allTouched.some((f) => f.endsWith("package.json"));
 const modifiedLockfile = allTouched.some((f) => f.endsWith("pnpm-lock.yaml"));
 if (modifiedLockfile && !modifiedAnyPackageJson) {

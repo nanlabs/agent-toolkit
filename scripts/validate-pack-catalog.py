@@ -27,6 +27,8 @@ COVERAGE = {"high", "medium", "low", "n/a"}
 CLOUD = {"skills-only"}
 CODE_CURSOR = {"skills-only", "skills-and-agents"}
 SOURCE = "nanlabs/agent-toolkit"
+# Packs are Agent Skills aliases, not Agent Plugins packages.
+FORBIDDEN_PACK_KEYS = {"plugin", "plugin.json", "plugins", "$schema", "mcp.json"}
 
 
 def fail(msg: str) -> None:
@@ -172,6 +174,12 @@ def validate_pack(
     kind = expect_str(pack, "kind", label)
     if kind not in KINDS:
         fail(f"{label}.kind must be one of {sorted(KINDS)}")
+    for key in FORBIDDEN_PACK_KEYS:
+        if key in pack:
+            fail(
+                f"{label}: packs are not Agent Plugins packages; remove {key!r} "
+                "(see https://agent-plugins.org/specification)"
+            )
 
     expect_str(pack, "description", label)
     coverage = expect_str(pack, "coverage", label)
@@ -194,8 +202,10 @@ def validate_pack(
 
     if kind == "group":
         rel_path = expect_str(pack, "path", label)
-        if not rel_path.startswith("skills/"):
+        if not rel_path.startswith("skills/") or rel_path.startswith("skills/../"):
             fail(f"{label}.path must start with skills/, got {rel_path!r}")
+        if rel_path.startswith("plugins/") or "/plugins/" in rel_path:
+            fail(f"{label}.path must not point at plugins/ (not an Agent Plugins package)")
         path = ROOT / rel_path
         if not path.is_dir():
             fail(f"{label}.path does not exist: {rel_path}")

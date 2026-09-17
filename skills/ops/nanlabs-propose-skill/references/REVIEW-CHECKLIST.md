@@ -27,6 +27,7 @@ to that repo, admin review, then installable.
 - [ ] `SKILL.md` / `AGENT.md` frontmatter `name` matches the directory
 - [ ] `python3 scripts/validate-skills.py` (and `validate-agents.py` if needed)
 - [ ] `python3 scripts/validate-pack-catalog.py` if pack membership changed
+- [ ] `python3 scripts/validate-agent-plugins.py` if `plugins/` changed
 - [ ] Handoff and output contract documented (`docs/HANDOFFS.md`) or N/A
 - [ ] Cloud users can follow the skill without native subagents
       (Code/Cursor-only steps are labeled)
@@ -37,6 +38,21 @@ to that repo, admin review, then installable.
 - [ ] Domain pack updated, or an explicit N/A in the PR
 - [ ] No new empty or README-only directories
       (`python3 scripts/validate-no-placeholders.py`)
+
+## Agent Plugins v1
+
+Apply when the PR touches `plugins/` or a root `plugin.json`.
+See [Agent Plugins](https://agent-plugins.org/specification).
+
+- [ ] Root `plugin.json` is closed schema (`$schema` MUST be
+      `https://agent-plugins.org/schemas/1.0.0/plugin.schema.json`; no
+      `skills`/`agents` path fields)
+- [ ] Plugin skills are immediate `plugins/<id>/skills/<name>/SKILL.md`
+      (clients MUST NOT recurse, §7.1)
+- [ ] Agents stay in `agents/` / native plugin surfaces (not a v1 portable type)
+- [ ] Optional MCP is root `mcp.json` with matching schema version (this repo
+      ships none)
+- [ ] Catalog packs were not given a `plugin.json`
 
 ## Merge
 

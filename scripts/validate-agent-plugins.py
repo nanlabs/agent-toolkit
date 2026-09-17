@@ -27,6 +27,18 @@ PLUGIN_SCHEMA_PATH = SCHEMAS_ROOT / "plugin.schema.json"
 MCP_SCHEMA_PATH = SCHEMAS_ROOT / "mcp.schema.json"
 PLUGIN_SCHEMA_URL = "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json"
 MCP_SCHEMA_URL = "https://agent-plugins.org/schemas/1.0.0/mcp.schema.json"
+ALLOWED_MANIFEST_FIELDS = {
+    "$schema",
+    "name",
+    "version",
+    "description",
+    "author",
+    "homepage",
+    "repository",
+    "license",
+    "keywords",
+    "extensions",
+}
 PLUGIN_NAME_RE = re.compile(
     r"^(?!.*(?:--|\.\.))[a-z0-9](?:[a-z0-9.-]*[a-z0-9])?$"
 )
@@ -128,6 +140,13 @@ def validate_manifest(
     if manifest.get("$schema") != PLUGIN_SCHEMA_URL:
         fail(f"{relative(manifest_path)}.$schema must equal {PLUGIN_SCHEMA_URL}")
 
+    unknown = sorted(set(manifest) - ALLOWED_MANIFEST_FIELDS)
+    if unknown:
+        fail(
+            f"{relative(manifest_path)} has unknown top-level field(s) {unknown}; "
+            "Agent Plugins v1 plugin.json is a closed schema (§5.2)"
+        )
+
     return name
 
 
@@ -137,13 +156,31 @@ def validate_skills(plugin_root: Path) -> None:
         fail(f"{relative(skills_dir)} must not be a symlink")
     if not skills_dir.exists():
         return
+    if not skills_dir.is_dir():
+        fail(
+            f"{relative(skills_dir)} is present but is not a directory "
+            "(Agent Plugins §6.2)"
+        )
     ensure_directory(skills_dir, plugin_root, relative(skills_dir))
+
+    # §7.1: only immediate child directories that contain a regular SKILL.md.
     for skill_dir in sorted(skills_dir.iterdir(), key=lambda path: path.name):
-        if not skill_dir.is_dir():
+        if not skill_dir.is_dir() or skill_dir.name.startswith("."):
             continue
         ensure_directory(skill_dir, plugin_root, relative(skill_dir))
         skill_file = skill_dir / "SKILL.md"
+        if not skill_file.exists() and not skill_file.is_symlink():
+            continue
         ensure_regular_file(skill_file, plugin_root, relative(skill_file))
+
+    # Nested SKILL.md is invisible to Agent Plugins clients; treat as author error.
+    for skill_md in sorted(skills_dir.rglob("SKILL.md")):
+        rel = skill_md.relative_to(skills_dir)
+        if len(rel.parts) != 2 or rel.parts[1] != "SKILL.md":
+            fail(
+                f"{relative(skill_md)} is nested; Agent Plugins v1 discovers only "
+                "immediate skills/<name>/SKILL.md (§7.1)"
+            )
 
 
 def resolve_plugin_path(value: str, plugin_root: Path, label: str) -> None:

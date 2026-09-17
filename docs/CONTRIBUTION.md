@@ -40,7 +40,8 @@ Public scrub: [`PUBLIC_CONTENT_POLICY.md`](PUBLIC_CONTENT_POLICY.md).
    Skill/Agent checklist, link the issue (`Fixes #N`).
 6. CODEOWNERS (`@nanlabs/internal-maintainers`, `@nanlabs/oss-core-team`)
    review: security, sense, duplicates, quality, pack membership, Cloud-safe
-   skills fallback.
+   skills fallback, and [Agent Plugins](https://agent-plugins.org/specification)
+   layout if `plugins/` changed.
 7. Squash-merge. The skill is then available:
 
    ```bash
@@ -56,10 +57,28 @@ Public scrub: [`PUBLIC_CONTENT_POLICY.md`](PUBLIC_CONTENT_POLICY.md).
 - Cloud users can run the skill without native subagents
 - Pack membership recorded or N/A
 - Validators pass (`validate-skills.py`, `validate-pack-catalog.py`,
-  `validate-no-placeholders.py`, `secret-scan.sh`)
+  `validate-no-placeholders.py`, `secret-scan.sh`; `validate-agent-plugins.py`
+  when `plugins/` changes)
+
+## Agent Plugins v1 (when touching `plugins/`)
+
+Portable packages MUST match [Agent Plugins](https://agent-plugins.org/specification):
+
+- Root `plugin.json` is a **closed** manifest (`$schema` MUST be
+  `https://agent-plugins.org/schemas/1.0.0/plugin.schema.json`). No
+  `skills`/`agents` path fields.
+- Skills in a plugin are **only** `plugins/<id>/skills/<name>/SKILL.md`
+  (immediate children). Nested `skills/<group>/` is for the repo Agent Skills
+  tree and `npx skills`, not for Agent Plugins discovery.
+- Agents are not a v1 portable component. Keep them in `agents/` and native
+  plugin surfaces.
+- Optional MCP is `mcp.json` at the plugin root with the matching schema
+  version. This repo ships none.
+- A **pack** is not a plugin. Do not add `plugin.json` for a catalog pack.
 
 ## Related
 
 - [`../CONTRIBUTING.md`](../CONTRIBUTING.md) — clone, CI, PR mechanics
 - Packs: [`PACKS.md`](PACKS.md)
+- Agent Plugins: [`AGENT_PLUGINS.md`](AGENT_PLUGINS.md)
 - Coverage gaps: [`COVERAGE.md`](COVERAGE.md)

@@ -67,6 +67,24 @@ Portable consumers discover each skill through its immediate `SKILL.md` file;
 the Agent Plugins validator does not treat nested directories as additional
 skills.
 
+## Packs (not plugins)
+
+[`PACKS.md`](PACKS.md) names **catalog aliases** for `npx skills`. Packs are
+not Agent Plugins packages: they have no `plugin.json`, they are not installed
+via Copilot `OWNER/REPO:PATH`, and Agent Plugins clients will not see
+`skills/<group>/<name>/SKILL.md` (discovery is non-recursive, [§7.1](https://agent-plugins.org/specification#71-skills)).
+
+To expose a skill to Agent Plugins consumers, register it in
+`products/plugins.yaml` so `gen-surfaces` mirrors it as an **immediate** child
+of `plugins/<id>/skills/<name>/SKILL.md`. Do not add `skills` or `agents` path
+fields to `plugin.json` (closed schema, [§5.2](https://agent-plugins.org/specification#52-manifest-object)).
+Agents remain native-only (v1 portable component types are skills and MCP only).
+
+Native Claude Code and Cursor files (`.claude-plugin/`, `.cursor-plugin/`,
+`commands/`, Copilot `agents/*.agent.md`) sit beside the portable package.
+Agent Plugins clients ignore those extra directories: they are not v1
+component types and they are not reverse-domain extension namespaces.
+
 ## What is portable here
 
 `nanlabs-core` exposes its skills as the portable component set. Its commands,

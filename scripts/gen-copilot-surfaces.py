@@ -219,7 +219,8 @@ def trees_equal(a: Path, b: Path) -> bool:
 
 
 def build_portable_manifest(plugin_id: str, cfg: dict[str, Any]) -> dict[str, Any]:
-    return {
+    """Closed Agent Plugins v1.0.0 plugin.json (no skills/agents/mcp path fields)."""
+    manifest = {
         "$schema": AGENT_PLUGINS_SCHEMA,
         "name": plugin_id,
         "version": cfg.get("version"),
@@ -232,6 +233,7 @@ def build_portable_manifest(plugin_id: str, cfg: dict[str, Any]) -> dict[str, An
         "repository": REPOSITORY_URL,
         "license": LICENSE,
     }
+    return {key: value for key, value in manifest.items() if value is not None}
 
 
 def sync_plugin_cli_surfaces(products: dict[str, Any], *, check: bool) -> None:

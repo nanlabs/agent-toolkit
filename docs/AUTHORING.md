@@ -13,6 +13,8 @@
 
 This repository follows the open **[Agent Skills](https://agentskills.io/specification)** standard. Do not invent parallel manifests.
 
+Portable **plugins** additionally follow **[Agent Plugins](https://agent-plugins.org/specification)** v1.0.0. Those two layouts are different (see below).
+
 ## Skill layout (canonical)
 
 ```text
@@ -26,6 +28,22 @@ skills/<group>/<skill>/
 ```
 
 Grouped under `skills/<group>/` so the tree stays navigable; `npx skills` discovers nested `SKILL.md` (depth ≤ 5).
+
+### Agent Plugins plugin layout (portable)
+
+[Agent Plugins §7.1](https://agent-plugins.org/specification#71-skills) discovers **only immediate** children:
+
+```text
+plugins/<plugin-id>/
+├── plugin.json          # Closed schema; $schema + name required
+└── skills/
+    └── <skill>/
+        └── SKILL.md     # NOT skills/<group>/<skill>/
+```
+
+`gen-surfaces` mirrors `skills/core/<skill>/` into `plugins/nanlabs-core/skills/<skill>/`. Do not nest groups inside a plugin `skills/` directory. Do not add unknown top-level fields to `plugin.json`. Do not put agents or skill paths in that manifest. Optional MCP is root `mcp.json` only.
+
+Packs (`catalogs/pack-catalog.yaml`) are Agent Skills install aliases, not Agent Plugins packages. See [`PACKS.md`](PACKS.md) and [`AGENT_PLUGINS.md`](AGENT_PLUGINS.md).
 
 ### `SKILL.md` frontmatter
 
@@ -73,13 +91,14 @@ python3 scripts/validate-contracts.py
 
 ## Rules
 
-1. Author skills under `skills/<group>/<skill>/` per the Agent Skills spec. Core plugin skills are mirrored from `skills/core/` via `scripts/gen-surfaces.py` (see `products/plugins.yaml`).
+1. Author skills under `skills/<group>/<skill>/` per the Agent Skills spec. Core plugin skills are mirrored from `skills/core/` via `scripts/gen-surfaces.py` (see `products/plugins.yaml`) as immediate `plugins/nanlabs-core/skills/<skill>/` children (Agent Plugins discovery).
 2. Every `SKILL.md` needs valid YAML frontmatter (`name` + `description`).
-3. Never commit secrets. Use env-var names only in MCP stubs.
+3. Never commit secrets. Use env-var names only in MCP stubs. If adding `plugins/<id>/mcp.json`, it MUST use the Agent Plugins MCP schema and stay inside the plugin root.
 4. Public scrub: read `docs/PUBLIC_CONTENT_POLICY.md` before migrating internal content.
 5. Project overlays: follow `docs/OVERLAY_GOVERNANCE.md` (credentials remain L1-only).
 6. Keep upstream `LICENSE.txt` / `NOTICE.txt` when redistributing third-party skills.
-7. Run local validation before opening a PR:
+7. Do not treat a pack as a plugin: no `plugin.json` for catalog packs.
+8. Run local validation before opening a PR:
 
 ```bash
 bash scripts/validate-repo-structure.sh
@@ -106,4 +125,10 @@ pre-commit run --all-files
 4. Keep plugin `name` fields identical across marketplace entries and plugin manifests.
 5. Update catalogs when the plugin exposes new skills/agents.
 6. Run `python3 scripts/gen-copilot-surfaces.py` to generate the portable
-   manifest and Copilot surfaces, then run the local validation commands below.
+   root `plugin.json` (closed Agent Plugins v1 schema — no `skills`/`agents`
+   path fields) and Copilot surfaces.
+7. Mirror portable skills as **immediate**
+   `plugins/<plugin-id>/skills/<skill>/SKILL.md`. Nested `skills/<group>/`
+   belongs in the repo Agent Skills tree, not inside a plugin package.
+8. Run `python3 scripts/validate-agent-plugins.py` plus the other local
+   validation commands above.

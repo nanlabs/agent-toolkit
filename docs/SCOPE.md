@@ -29,6 +29,7 @@ NaNLABS production distribution for AI coding assistants — **smaller** than mu
 - MCP **docs-only** templates
 - CI validators, contracts, catalogs (including domain packs), release policy docs
 - Contribution flow for proposing skills via GitHub pull request
+- Packs (`catalogs/pack-catalog.yaml`) as Agent Skills / `npx skills` aliases — **not** [Agent Plugins](https://agent-plugins.org/specification) packages
 
 ## Out of scope (plugin targets)
 
