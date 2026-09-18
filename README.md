@@ -19,7 +19,7 @@ NaNLABS skills, agents, and plugins — install once, use in Claude Code, Cursor
 
 <p>
 <!-- generated:badges -->
-  <img src="https://img.shields.io/badge/skills-%2B45-ff6b35" alt="+45 skills"/>
+  <img src="https://img.shields.io/badge/skills-%2B50-ff6b35" alt="+50 skills"/>
   <img src="https://img.shields.io/badge/agents-%2B18-58a6ff" alt="+18 agents"/>
   <img src="https://img.shields.io/badge/plugins-%2B10-f7c948" alt="+10 plugins"/>
   <img src="https://img.shields.io/badge/MCP-%2B9%20official-7ee787" alt="+9 official"/>
@@ -146,7 +146,7 @@ Tables below are generated from [`products/plugins.yaml`](products/plugins.yaml)
 | `nanlabs-design` | 0.2.0 | 6 | `figma` | Figma MCP and UI/UX intelligence (not a full designer workflow) |
 | `nanlabs-forge` | 0.2.0 | 4 | `github`, `gitlab` | GitHub and GitLab CLI automation plus official GitHub and GitLab MCP |
 | `nanlabs-integrations` | 0.2.0 | 4 | `atlassian`, `clickup`, `linear`, `notion`, `shortcut`, `slack` | ClickUp, Slack, Linear, Shortcut, Notion, and Atlassian (Jira/Confluence) MCP plus CLI skills |
-| `nanlabs-ops` | 0.1.0 | 3 | — | Workstation triage, presentations ops, and skill contribution |
+| `nanlabs-ops` | 0.1.0 | 4 | — | Workstation triage, presentations ops, and skill contribution |
 | `nanlabs-tooling` | 0.1.0 | 2 | — | Playwright CLI and Jupyter notebook scaffolding |
 | `nanlabs-workflow` | 0.1.0 | 2 | — | Client delivery workflows and bootstrap |
 | `nanlabs-agents` | 0.2.1 | — | — | Optional. Full agent roster. |

@@ -7,7 +7,7 @@
 
 # Skills index
 
-+45 public skills follow the [Agent Skills](https://agentskills.io/specification) format (`SKILL.md`).
++50 public skills follow the [Agent Skills](https://agentskills.io/specification) format (`SKILL.md`).
 
 Install: [`npx skills`](https://github.com/vercel-labs/skills) — `npx skills add nanlabs/agent-toolkit -g`
 Group plugin or domain pack: [`PACKS.md`](PACKS.md)
@@ -26,7 +26,7 @@ Each group plugin **is** the portable [Agent Plugins](https://agent-plugins.org/
 | `design` | `nanlabs-design` | 6 | `figma`, `figma-code-connect-components`, `figma-create-design-system-rules`, `figma-create-new-file`, `figma-implement-design`, `ui-ux-pro-max` |
 | `forge` | `nanlabs-forge` | 4 | `gh-address-comments`, `gh-fix-ci`, `github-cli-workflow`, `gitlab-cli-workflow` |
 | `integrations` | `nanlabs-integrations` | 4 | `clickup-cli`, `linear`, `nan-slack-assistant`, `slack-cli` |
-| `ops` | `nanlabs-ops` | 3 | `nanlabs-presentations-reconciliation`, `nanlabs-propose-skill`, `nanlabs-workstation-triage` |
+| `ops` | `nanlabs-ops` | 4 | `hol-guard`, `nanlabs-presentations-reconciliation`, `nanlabs-propose-skill`, `nanlabs-workstation-triage` |
 | `tooling` | `nanlabs-tooling` | 2 | `jupyter-notebook`, `playwright-cli` |
 | `workflow` | `nanlabs-workflow` | 2 | `nanlabs-workflow-client-bootstrap`, `nanlabs-workflow-generic-project` |
 

@@ -6,7 +6,7 @@ Canonical skills live under `skills/<name>/` (layout group `ops`). There is no s
 
 ## Skills
 
-`nanlabs-presentations-reconciliation`, `nanlabs-propose-skill`, `nanlabs-workstation-triage`
+`hol-guard`, `nanlabs-presentations-reconciliation`, `nanlabs-propose-skill`, `nanlabs-workstation-triage`
 
 ## Install
 

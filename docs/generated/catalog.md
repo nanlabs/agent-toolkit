@@ -4,7 +4,7 @@
 
 Source of truth: [`products/plugins.yaml`](../../products/plugins.yaml), [`catalogs/mcp-catalog.yaml`](../../catalogs/mcp-catalog.yaml), [`catalogs/skills-layout.json`](../../catalogs/skills-layout.json).
 
-Marketplace metadata **0.7.0**. **+10** plugins · **+45** skills · **+18** agents · **+9** official MCP servers.
+Marketplace metadata **0.7.0**. **+10** plugins · **+50** skills · **+18** agents · **+9** official MCP servers.
 
 ## Plugins
 
@@ -16,7 +16,7 @@ Marketplace metadata **0.7.0**. **+10** plugins · **+45** skills · **+18** age
 | `nanlabs-design` | 0.2.0 | 6 | `figma` | Figma MCP and UI/UX intelligence (not a full designer workflow) |
 | `nanlabs-forge` | 0.2.0 | 4 | `github`, `gitlab` | GitHub and GitLab CLI automation plus official GitHub and GitLab MCP |
 | `nanlabs-integrations` | 0.2.0 | 4 | `atlassian`, `clickup`, `linear`, `notion`, `shortcut`, `slack` | ClickUp, Slack, Linear, Shortcut, Notion, and Atlassian (Jira/Confluence) MCP plus CLI skills |
-| `nanlabs-ops` | 0.1.0 | 3 | — | Workstation triage, presentations ops, and skill contribution |
+| `nanlabs-ops` | 0.1.0 | 4 | — | Workstation triage, presentations ops, and skill contribution |
 | `nanlabs-tooling` | 0.1.0 | 2 | — | Playwright CLI and Jupyter notebook scaffolding |
 | `nanlabs-workflow` | 0.1.0 | 2 | — | Client delivery workflows and bootstrap |
 | `nanlabs-agents` | 0.2.1 | — | — | Optional. Full agent roster. |
@@ -47,7 +47,7 @@ Authenticate in the client (OAuth). Plugins never contain tokens.
 | `design` | `nanlabs-design` | 6 | `figma`, `figma-code-connect-components`, `figma-create-design-system-rules`, `figma-create-new-file`, `figma-implement-design`, `ui-ux-pro-max` |
 | `forge` | `nanlabs-forge` | 4 | `gh-address-comments`, `gh-fix-ci`, `github-cli-workflow`, `gitlab-cli-workflow` |
 | `integrations` | `nanlabs-integrations` | 4 | `clickup-cli`, `linear`, `nan-slack-assistant`, `slack-cli` |
-| `ops` | `nanlabs-ops` | 3 | `nanlabs-presentations-reconciliation`, `nanlabs-propose-skill`, `nanlabs-workstation-triage` |
+| `ops` | `nanlabs-ops` | 4 | `hol-guard`, `nanlabs-presentations-reconciliation`, `nanlabs-propose-skill`, `nanlabs-workstation-triage` |
 | `tooling` | `nanlabs-tooling` | 2 | `jupyter-notebook`, `playwright-cli` |
 | `workflow` | `nanlabs-workflow` | 2 | `nanlabs-workflow-client-bootstrap`, `nanlabs-workflow-generic-project` |
 
