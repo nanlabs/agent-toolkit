@@ -62,7 +62,7 @@ Complete install = the group plugins + optional `nanlabs-agents`.
 ### Claude Code
 
 Uses `plugins/<name>/.claude-plugin/plugin.json`. `claude plugin validate`
-(and `--strict` except the deprecated `nanlabs-setup` plugin) is a CI gate.
+and `--strict` are CI gates.
 See Anthropic's
 [plugin marketplace documentation](https://docs.anthropic.com/en/docs/claude-code/plugin-marketplaces).
 

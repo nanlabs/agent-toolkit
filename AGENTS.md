@@ -4,7 +4,7 @@ Portable agent contract for work in this repository.
 
 ## Purpose
 
-`nanlabs/agent-toolkit` is the **public** distribution source for NaNLABS AI capabilities (skills, agents, plugins, MCP stubs). Workstation provisioning stays in `internal-workstation`.
+`nanlabs/agent-toolkit` is the **public** distribution source for NaNLABS AI capabilities (skills, agents, plugins, official MCP). Workstation provisioning stays in `internal-workstation`.
 
 ## Hard rules
 

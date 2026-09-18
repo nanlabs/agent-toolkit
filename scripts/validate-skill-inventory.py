@@ -3,7 +3,6 @@
 
 Canonical location: plugins/nanlabs-<group>/skills/<name>/SKILL.md
 Legacy copies under skills/<group>/ or .github/skills/ are errors.
-The deprecated nanlabs-setup plugin may keep its own skill copy.
 """
 
 from __future__ import annotations
@@ -24,7 +23,6 @@ PRODUCTS = ROOT / "products" / "plugins.yaml"
 PLUGINS_ROOT = ROOT / "plugins"
 LEGACY_SKILLS = ROOT / "skills"
 GITHUB_SKILLS = ROOT / ".github" / "skills"
-DEPRECATED_SETUP_PLUGIN = "nanlabs-setup"
 
 
 def fail(msg: str) -> None:
@@ -110,10 +108,6 @@ def main() -> None:
     extras: list[Path] = []
     if PLUGINS_ROOT.is_dir():
         for skill_md in iter_skill_md(PLUGINS_ROOT):
-            rel_parts = skill_md.relative_to(PLUGINS_ROOT).parts
-            # plugins/<id>/skills/<name>/SKILL.md
-            if len(rel_parts) >= 2 and rel_parts[0] == DEPRECATED_SETUP_PLUGIN:
-                continue
             if skill_md.resolve() not in expected_paths:
                 extras.append(skill_md)
     if extras:

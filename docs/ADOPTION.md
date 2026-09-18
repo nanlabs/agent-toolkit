@@ -105,8 +105,6 @@ Optional full agent roster:
 /plugin install nanlabs-agents@nanlabs-agent-toolkit
 ```
 
-> **Deprecated:** `nanlabs-setup` as a separate plugin is no longer in the marketplace. Setup ships inside `nanlabs-core` (v0.3.0+).
-
 Lifecycle (update / pin / rollback): [`LIFECYCLE.md`](LIFECYCLE.md).
 
 ## Skills-only (`npx skills`)
@@ -137,8 +135,6 @@ Skill index: [`SKILLS.md`](SKILLS.md) · packs: [`PACKS.md`](PACKS.md) · machin
 - MCP: [`../mcp/templates/README.md`](../mcp/templates/README.md) and [`../catalogs/mcp-catalog.yaml`](../catalogs/mcp-catalog.yaml) — official URLs shipped by `nanlabs-design`, `nanlabs-forge`, `nanlabs-integrations`
 - Dependency contracts: [`../contracts/README.md`](../contracts/README.md)
 - Domain packs: [`PACKS.md`](PACKS.md). Remaining outcome-pack **content** is tracked in GitHub issues `#24`, `#25`, and `#28` (no placeholder directories)
-- Overlay governance: [`OVERLAY_GOVERNANCE.md`](OVERLAY_GOVERNANCE.md)
-- Telemetry ownership: [`TELEMETRY_CONTRACT.md`](TELEMETRY_CONTRACT.md)
 
 ## Workstation cutover (`internal-workstation`)
 
@@ -171,7 +167,6 @@ Install guide (private repo — clone with org access): `docs/AGENT_TOOLKIT.md` 
 
 ## Related docs
 
-- [`P0_FINDINGS.md`](P0_FINDINGS.md) — feasibility + lifecycle matrix
 - [`PUBLIC_CONTENT_POLICY.md`](PUBLIC_CONTENT_POLICY.md) — what may be published
 - [`AUTHORING.md`](AUTHORING.md) — how to add skills/plugins
 - [`PACKS.md`](PACKS.md) — group and domain pack install

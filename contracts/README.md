@@ -1,6 +1,6 @@
 # Dependency and permission contracts
 
-Machine-readable declarations that `nanlabs-setup` (and future `/setup` automation) use to detect, request approval for, install, and verify dependencies.
+Machine-readable declarations that `/nanlabs-core:setup` (skill `nanlabs-setup`) uses to detect, request approval for, install, and verify dependencies.
 
 Canonical path: `contracts/requirements/<id>.yaml`
 
@@ -49,13 +49,13 @@ Canonical path: `contracts/requirements/<id>.yaml`
 ## Doctor (read-only)
 
 ```bash
-python3 scripts/doctor-contracts.py --contract nanlabs-setup
+python3 scripts/doctor-contracts.py --contract nanlabs-core
 python3 scripts/doctor-contracts.py          # all contracts
 ```
 
 Never installs software; prints a Markdown gap/change-report template for `/setup`.
 2. Workstation-owned tools (`git`, `python3`, OS package manager) use `installed_by: workstation` and should set `never_auto_install: true` unless IT policy says otherwise.
-3. Plugin-owned optional tools may propose OS installers; `nanlabs-setup` must ask approval before running them.
+3. Plugin-owned optional tools may propose OS installers; setup must ask approval before running them.
 4. `spec.requirements.binaries[].verify` must be a **simple argv command** (no shell metacharacters). The doctor runs it without a shell.
 5. Validate with `python3 scripts/validate-contracts.py`.
 

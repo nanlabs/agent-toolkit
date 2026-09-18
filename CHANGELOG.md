@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Removed
+
+- Deprecated standalone `nanlabs-setup` plugin stub. Setup remains the `nanlabs-setup` skill inside `nanlabs-core` (`/nanlabs-core:setup`).
+- Historical Wave 0 / P0 / telemetry / overlay / pilot snapshot docs that no longer describe the product.
+- Operator smoke wrapper that only pointed at closed issue #8.
+
 ### Changed
 
 - Headline counts use a stable **+N** floor (skills round down to a multiple of 5) so README badges and catalog summaries do not tick on every add.

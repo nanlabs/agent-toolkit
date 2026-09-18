@@ -269,9 +269,6 @@ def wiki_plugin_marketplace(
         "\n"
         + plugins_table(products, layout_groups, mcp_catalog)
         + "\n"
-        "Deprecated: standalone `nanlabs-setup` (not listed in the marketplace). "
-        "Setup ships inside `nanlabs-core`.\n"
-        "\n"
         "## Complete install\n"
         "\n"
         "### Claude Code\n"

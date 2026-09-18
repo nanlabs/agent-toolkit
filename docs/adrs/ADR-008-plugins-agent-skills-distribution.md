@@ -14,7 +14,7 @@
 - **Status:** Accepted (draft frozen for H0/H1; amend via PR)
 - **Date:** 2026-07-30
 - **Deciders:** Architecture / M&I (NaNLABS Technology)
-- **Related:** `docs/PUBLIC_CONTENT_POLICY.md`, `docs/WAVE0_INVENTORY.md`, migration plan §3–§6
+- **Related:** `docs/PUBLIC_CONTENT_POLICY.md`, migration plan §3–§6
 
 ## Context
 

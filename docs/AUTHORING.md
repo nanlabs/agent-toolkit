@@ -76,7 +76,7 @@ Repo-level routing metadata lives in `catalogs/skill-catalog.yaml` (orchestrator
 
 ## Dependency contracts
 
-See [`contracts/README.md`](../contracts/README.md). Add one YAML file per capability that `nanlabs-setup` should detect/verify. Validate with:
+See [`contracts/README.md`](../contracts/README.md). Add one YAML file per capability that setup (`/nanlabs-core:setup`) should detect/verify. Validate with:
 
 ```bash
 python3 scripts/validate-contracts.py
@@ -88,7 +88,7 @@ python3 scripts/validate-contracts.py
 2. Every `SKILL.md` needs valid YAML frontmatter (`name` + `description`).
 3. Never commit secrets. Official MCP URLs live in `catalogs/mcp-catalog.yaml`. Plugin `mcp.json` is generated and MUST use the Agent Plugins MCP schema with no tokens in headers.
 4. Public scrub: read `docs/PUBLIC_CONTENT_POLICY.md` before migrating internal content.
-5. Project overlays: follow `docs/OVERLAY_GOVERNANCE.md` (credentials remain L1-only).
+5. Project overlays belong in private repos; credentials remain L1-only (`docs/PUBLIC_CONTENT_POLICY.md`).
 6. Keep upstream `LICENSE.txt` / `NOTICE.txt` when redistributing third-party skills.
 7. Do not treat a pack as a plugin: no `plugin.json` for catalog packs.
 8. Run local validation before opening a PR:

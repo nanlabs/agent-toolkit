@@ -42,9 +42,6 @@ Consumer-facing and maintainer docs for `nanlabs/agent-toolkit` (**L1.5**). Mach
 | Doc | Topic |
 | --- | --- |
 | [RELEASE.md](RELEASE.md) | Version SoT, tags, changelog |
-| [PILOT_CHECKLIST.md](PILOT_CHECKLIST.md) | Production pilots (closed #9 checklist) |
-| [P0_FINDINGS.md](P0_FINDINGS.md) | Feasibility + lifecycle matrix |
-| [WAVE0_INVENTORY.md](WAVE0_INVENTORY.md) | H0 inventory + privacy |
 
 ## Authors / maintainers
 
@@ -56,10 +53,7 @@ Consumer-facing and maintainer docs for `nanlabs/agent-toolkit` (**L1.5**). Mach
 | [COVERAGE.md](COVERAGE.md) | Roles vs skills, honest gaps |
 | [CONTRIBUTION.md](CONTRIBUTION.md) | Propose a skill via GitHub PR |
 | [SKILLS.md](SKILLS.md) | Skill groups index |
-| [AGENT_AUDIT.md](AGENT_AUDIT.md) | Core vs optional agents |
 | [PUBLIC_CONTENT_POLICY.md](PUBLIC_CONTENT_POLICY.md) | What may be published |
-| [OVERLAY_GOVERNANCE.md](OVERLAY_GOVERNANCE.md) | Project overlays |
-| [TELEMETRY_CONTRACT.md](TELEMETRY_CONTRACT.md) | L1 policy vs L1.5 adapters |
 | [adrs/ADR-008-plugins-agent-skills-distribution.md](adrs/ADR-008-plugins-agent-skills-distribution.md) | Distribution ADR |
 
 ## Related trees

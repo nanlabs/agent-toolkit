@@ -15,7 +15,7 @@ This repository is **public**. Anything merged here is visible on the internet.
 
 ## Allowed
 
-- Generic skills, agents, plugins, and MCP **stubs** that help NaNLABS (and the community) work with AI clients.
+- Generic skills, agents, plugins, and official hosted MCP configs that help NaNLABS (and the community) work with AI clients.
 - Documentation that does not expose private process, client names under NDA, or internal URLs.
 - Generic ClickUp integration guidance is allowed, but direct internal workspace/document URLs are forbidden.
 - Env-var **names** and placeholder contracts (for example `${CLICKUP_API_TOKEN}`).

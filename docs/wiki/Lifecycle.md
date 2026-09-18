@@ -34,8 +34,11 @@ npx skills update -g
 npx skills remove <skill-name> -g
 ```
 
-## Local preflight
+## Local validation
 
 ```bash
-bash scripts/smoke/preflight.sh
+bash scripts/validate-repo-structure.sh
+python3 scripts/validate-manifests.py
+python3 scripts/gen-surfaces.py --check
+bash scripts/secret-scan.sh
 ```

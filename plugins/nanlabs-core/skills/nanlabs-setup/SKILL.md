@@ -96,8 +96,6 @@ Optional:
 /plugin install nanlabs-agents@nanlabs-agent-toolkit
 ```
 
-> **Deprecated:** standalone `nanlabs-setup` plugin — setup ships in `nanlabs-core`.
-
 #### Any agent (skills-only)
 
 ```bash
@@ -108,7 +106,7 @@ Skills-only installs do not bundle the doctor; use spot-checks or a repo clone.
 
 ### 5. Propose next (do not auto-install)
 
-- Enable integrations when needed (MCP stubs under `mcp/templates/`, `clickup-cli` skill).
+- Enable integrations when needed (official MCP via group plugins; `clickup-cli` / `gh` as CLI alternatives).
 - Point at `docs/LIFECYCLE.md` for pin/update/rollback.
 
 ## Change report (print every time)
@@ -122,7 +120,6 @@ Skills-only installs do not bundle the doctor; use spot-checks or a repo clone.
 
 - Schema: `contracts/README.md`
 - Baseline: `contracts/requirements/nanlabs-core.yaml`
-- Legacy alias: `contracts/requirements/nanlabs-setup.yaml` (deprecated)
 - Validator: `python3 scripts/validate-contracts.py`
 
 ## Out of scope
@@ -135,5 +132,4 @@ Skills-only installs do not bundle the doctor; use spot-checks or a repo clone.
 
 - `docs/ADOPTION.md`
 - `docs/PUBLIC_CONTENT_POLICY.md`
-- `docs/WAVE0_INVENTORY.md`
 - `contracts/README.md`

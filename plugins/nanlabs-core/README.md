@@ -10,7 +10,7 @@ Canonical skills live under `skills/<name>/` (layout group `core`). There is no 
 
 ## Setup
 
-After install, run **`/nanlabs-core:setup`** (or ask the agent to run the bundled `nanlabs-setup` skill). Setup is no longer a separate marketplace plugin.
+After install, run **`/nanlabs-core:setup`** (or ask the agent to run the bundled `nanlabs-setup` skill).
 
 | Area | Notes |
 | --- | --- |

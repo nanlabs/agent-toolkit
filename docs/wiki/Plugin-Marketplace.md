@@ -21,8 +21,6 @@ Version source of truth: [`products/plugins.yaml`](https://github.com/nanlabs/ag
 | `nanlabs-workflow` | 0.1.0 | 2 | — | Client delivery workflows and bootstrap |
 | `nanlabs-agents` | 0.2.1 | — | — | Optional. Full agent roster. |
 
-Deprecated: standalone `nanlabs-setup` (not listed in the marketplace). Setup ships inside `nanlabs-core`.
-
 ## Complete install
 
 ### Claude Code

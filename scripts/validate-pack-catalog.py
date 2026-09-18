@@ -20,7 +20,6 @@ SKILL_CATALOG = ROOT / "catalogs" / "skill-catalog.yaml"
 AGENT_CATALOG = ROOT / "catalogs" / "agent-catalog.yaml"
 PLUGINS_ROOT = ROOT / "plugins"
 AGENTS_ROOT = ROOT / "agents"
-DEPRECATED_SETUP_PLUGIN = "nanlabs-setup"
 
 PACK_ID_RE = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
 KINDS = {"group", "domain"}
@@ -67,9 +66,6 @@ def skill_names_on_disk() -> dict[str, Path]:
     if not PLUGINS_ROOT.is_dir():
         fail("plugins/ is missing")
     for path in sorted(PLUGINS_ROOT.glob("*/skills/*/SKILL.md")):
-        plugin_id = path.relative_to(PLUGINS_ROOT).parts[0]
-        if plugin_id == DEPRECATED_SETUP_PLUGIN:
-            continue
         name = path.parent.name
         if name in found:
             fail(

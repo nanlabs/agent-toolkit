@@ -13,7 +13,7 @@
 
 # Lifecycle — install, update, pin, rollback
 
-Short operator guide for distributing `nanlabs/agent-toolkit`. Full evidence and sources: [`P0_FINDINGS.md`](P0_FINDINGS.md).
+Short operator guide for distributing `nanlabs/agent-toolkit`. Release tags and rollback policy: [`RELEASE.md`](RELEASE.md).
 
 ## Claude Code
 
@@ -87,10 +87,14 @@ ship official hosted MCP URLs from `catalogs/mcp-catalog.yaml`. Authenticate
 in the client after install. Never commit tokens; see each template README
 and [`wiki/MCP-Setup.md`](wiki/MCP-Setup.md).
 
-## Local preflight
+## Local validation
 
 ```bash
-bash scripts/smoke/preflight.sh
+bash scripts/validate-repo-structure.sh
+python3 scripts/validate-manifests.py
+python3 scripts/validate-skills.py
+python3 scripts/gen-surfaces.py --check
+bash scripts/secret-scan.sh
 ```
 
-Keep live Claude Code / Cursor IDE / Cursor Agent CLI evidence in the operator docs; issues #8, #9, and #58 are closed.
+Keep live Claude Code / Cursor IDE / Cursor Agent CLI evidence in [`RELEASE.md`](RELEASE.md) and [`CURSOR_CLI.md`](CURSOR_CLI.md).
