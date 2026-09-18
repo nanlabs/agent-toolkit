@@ -16,12 +16,15 @@ Generated surfaces (manifests only — skill trees are never copied):
   plugins/<id>/mcp.json                # Agent Plugins / Cursor (when catalog has servers)
   plugins/<id>/.mcp.json               # Claude Code native MCP (same URLs, type http)
   plugins/<id>/LICENSE
-  plugins/<id>/README.md               # scaffolded only when missing
+  plugins/<id>/README.md               # generated from products + catalogs
   plugins/<id>/agents/<name>.md        # flat agent files (when agents: is set)
   plugins/<id>/resources/agents/<name>/
   .claude-plugin/marketplace.json
   .cursor-plugin/marketplace.json
   .agents/plugins/marketplace.json     # ChatGPT desktop / Codex
+  docs/generated/                      # plugin / MCP / skill tables
+  docs/wiki/Plugin-Marketplace.md, Skills-Reference.md, MCP-Setup.md
+  docs/SKILLS.md · mcp/templates/README.md · README.md generated regions
 
 Usage:
   python3 scripts/gen-surfaces.py          # write surfaces
@@ -38,6 +41,11 @@ import shutil
 import sys
 from pathlib import Path
 from typing import Any
+
+_SCRIPTS = Path(__file__).resolve().parent
+if str(_SCRIPTS) not in sys.path:
+    sys.path.insert(0, str(_SCRIPTS))
+from gen_catalog_docs import sync_catalog_docs
 
 try:
     import yaml
@@ -297,15 +305,42 @@ def build_native_manifest(plugin_id: str, cfg: dict[str, Any]) -> dict[str, Any]
 
 
 def plugin_readme(
-    plugin_id: str, cfg: dict[str, Any], mcp_urls: dict[str, str] | None = None
+    plugin_id: str,
+    cfg: dict[str, Any],
+    mcp_urls: dict[str, str] | None = None,
+    skill_names: list[str] | None = None,
 ) -> str:
     description = str(cfg.get("description") or "").strip()
     group = cfg.get("skills_group")
-    skills_note = (
-        f"Canonical skills live under `skills/<name>/` (layout group `{group}`)."
-        if group
-        else "This plugin ships agent personas; skill bodies live in the group plugins."
-    )
+    if group:
+        skills_note = (
+            f"Canonical skills live under `skills/<name>/` (layout group `{group}`). "
+            "There is no second tree under `skills/<group>/`."
+        )
+    else:
+        skills_note = (
+            "This plugin ships agent personas generated from repo-root `agents/`. "
+            "Skill bodies live in the group plugins. Do not hand-edit "
+            f"`plugins/{plugin_id}/agents/` — change `agents/<name>/` and regenerate."
+        )
+    skills_section = ""
+    if skill_names:
+        listed = ", ".join(f"`{name}`" for name in skill_names)
+        skills_section = f"\n## Skills\n\n{listed}\n"
+    extra = ""
+    if plugin_id == "nanlabs-core":
+        extra = (
+            "\n## Setup\n"
+            "\n"
+            "After install, run **`/nanlabs-core:setup`** (or ask the agent to run "
+            "the bundled `nanlabs-setup` skill). Setup is no longer a separate "
+            "marketplace plugin.\n"
+            "\n"
+            "| Area | Notes |\n"
+            "| --- | --- |\n"
+            "| Agent | `nanlabs-code-reviewer` |\n"
+            "| Doctor | `scripts/doctor-contracts.py` + `commands/setup.md` |\n"
+        )
     mcp_section = ""
     if mcp_urls:
         lines = "\n".join(f"- `{name}` — `{url}`" for name, url in mcp_urls.items())
@@ -319,20 +354,23 @@ def plugin_readme(
             "\n"
             f"{lines}\n"
             "\n"
-            "Catalog and docs: [`catalogs/mcp-catalog.yaml`](../../catalogs/mcp-catalog.yaml), "
-            "[`docs/wiki/MCP-Setup.md`](../../docs/wiki/MCP-Setup.md).\n"
+            "Catalog: [`catalogs/mcp-catalog.yaml`](../../catalogs/mcp-catalog.yaml) · "
+            "[MCP setup](../../docs/wiki/MCP-Setup.md).\n"
         )
     return (
         f"# {plugin_id}\n"
         f"\n"
         f"{description}\n"
         f"\n"
-        f"{skills_note} There is no second tree under `skills/<group>/`.\n"
+        f"{skills_note}\n"
+        f"{skills_section}"
         f"{mcp_section}"
+        f"{extra}"
         f"\n"
         f"## Install\n"
         f"\n"
-        f"See [docs/ADOPTION.md](../../docs/ADOPTION.md) for the full client matrix.\n"
+        f"Complete client matrix: [docs/ADOPTION.md](../../docs/ADOPTION.md). "
+        f"Generated catalog: [docs/generated/catalog.md](../../docs/generated/catalog.md).\n"
         f"\n"
         f"### Claude Code\n"
         f"\n"
@@ -347,7 +385,17 @@ def plugin_readme(
         f"copilot plugin install nanlabs/agent-toolkit:plugins/{plugin_id}\n"
         f"```\n"
         f"\n"
-        f"### Cursor\n"
+        f"### Cursor IDE\n"
+        f"\n"
+        f"```bash\n"
+        f"mkdir -p ~/.cursor/plugins/local\n"
+        f"ln -sfn /path/to/agent-toolkit/plugins/{plugin_id} "
+        f"~/.cursor/plugins/local/{plugin_id}\n"
+        f"```\n"
+        f"\n"
+        f"Then reload the window. Team Marketplace import of this repository also works.\n"
+        f"\n"
+        f"### Cursor Agent CLI\n"
         f"\n"
         f"```bash\n"
         f"agent --plugin-dir /path/to/agent-toolkit/plugins/{plugin_id}\n"
@@ -355,8 +403,9 @@ def plugin_readme(
         f"\n"
         f"### Agent Plugins folder import\n"
         f"\n"
-        f"Point the client at `plugins/{plugin_id}` (`plugin.json` + `skills/<name>/SKILL.md`).\n"
-        f"Kiro, Grok Bot, Hermes Agent, OpenClaw, and NanoClaw use this path.\n"
+        f"Point the client at `plugins/{plugin_id}` (`plugin.json` + "
+        f"`skills/<name>/SKILL.md`). Kiro, Grok Bot, Hermes Agent, OpenClaw, "
+        f"and NanoClaw use this path.\n"
     )
 
 
@@ -391,6 +440,7 @@ def scaffold_plugin(
     plugin_id: str,
     cfg: dict[str, Any],
     mcp_catalog: dict[str, dict[str, Any]],
+    layout_groups: dict[str, list[str]],
     *,
     check: bool,
 ) -> None:
@@ -405,6 +455,9 @@ def scaffold_plugin(
     if not license_text:
         fail("missing repo LICENSE")
     mcp_urls = mcp_urls_for_plugin(plugin_id, mcp_catalog)
+    group = cfg.get("skills_group")
+    skill_names = list(layout_groups.get(str(group), [])) if group else []
+    expected_readme = plugin_readme(plugin_id, cfg, mcp_urls, skill_names)
 
     manifests = {
         plugin_root / "plugin.json": portable_text,
@@ -419,10 +472,7 @@ def scaffold_plugin(
             ensure_text_equals(path, expected)
         if not license_dst.is_file() or license_dst.read_text(encoding="utf-8") != license_text:
             fail(f"drift: {license_dst.relative_to(ROOT)}")
-        if not readme_dst.is_file():
-            fail(f"missing {readme_dst.relative_to(ROOT)}")
-        if mcp_urls:
-            ensure_text_equals(readme_dst, plugin_readme(plugin_id, cfg, mcp_urls))
+        ensure_text_equals(readme_dst, expected_readme)
         sync_plugin_mcp(plugin_root, mcp_urls, check=True)
         return
 
@@ -432,10 +482,8 @@ def scaffold_plugin(
         path.write_text(expected, encoding="utf-8")
     license_dst.write_text(license_text, encoding="utf-8")
     sync_plugin_mcp(plugin_root, mcp_urls, check=False)
-    expected_readme = plugin_readme(plugin_id, cfg, mcp_urls)
-    if not readme_dst.is_file() or mcp_urls:
-        readme_dst.write_text(expected_readme, encoding="utf-8")
-        print(f"synced {readme_dst.relative_to(ROOT)}")
+    readme_dst.write_text(expected_readme, encoding="utf-8")
+    print(f"synced {readme_dst.relative_to(ROOT)}")
     print(f"synced manifests for plugins/{plugin_id}")
 
 
@@ -657,12 +705,19 @@ def check_surfaces() -> None:
         group = cfg.get("skills_group")
         if group is not None and group not in layout_groups:
             fail(f"products/plugins.yaml {plugin_id}: unknown skills_group {group!r}")
-        scaffold_plugin(plugin_id, cfg, mcp_catalog, check=True)
+        scaffold_plugin(plugin_id, cfg, mcp_catalog, layout_groups, check=True)
         names = agents_by_plugin.get(plugin_id) or []
         if names:
             sync_agent_surfaces(plugin_id, names, target_map, check=True)
 
     sync_marketplaces(products, check=True)
+    sync_catalog_docs(
+        products,
+        layout_groups,
+        mcp_catalog,
+        len(agent_dirs()),
+        check=True,
+    )
 
     total_agents = sum(len(v) for v in agents_by_plugin.values())
     print(
@@ -689,13 +744,20 @@ def write_surfaces() -> None:
         group = cfg.get("skills_group")
         if group is not None and group not in layout_groups:
             fail(f"products/plugins.yaml {plugin_id}: unknown skills_group {group!r}")
-        scaffold_plugin(plugin_id, cfg, mcp_catalog, check=False)
+        scaffold_plugin(plugin_id, cfg, mcp_catalog, layout_groups, check=False)
         names = agents_by_plugin.get(plugin_id) or []
         if names:
             sync_agent_surfaces(plugin_id, names, target_map, check=False)
 
     sync_marketplaces(products, check=False)
-    print("OK: gen-surfaces wrote plugin manifests (skills were not copied)")
+    sync_catalog_docs(
+        products,
+        layout_groups,
+        mcp_catalog,
+        len(agent_dirs()),
+        check=False,
+    )
+    print("OK: gen-surfaces wrote plugin manifests and catalog docs (skills were not copied)")
 
 
 def main() -> None:

@@ -34,7 +34,7 @@ plugins/nanlabs-<group>/
 
 `name` in frontmatter must match the directory. Grouping is inventory only (`catalogs/skills-layout.json` + `products/plugins.yaml` `skills_group`). Do **not** add `skills/<group>/` at repo root. `npx skills` still finds nested `SKILL.md` (depth ≤ 5).
 
-[Agent Plugins §7.1](https://agent-plugins.org/specification#71-skills) discovers **only immediate** `skills/<name>/SKILL.md` children. `gen-surfaces` writes manifests, LICENSE, native plugin.json, and official `mcp.json` / `.mcp.json` from [`catalogs/mcp-catalog.yaml`](../catalogs/mcp-catalog.yaml). Do not nest groups inside a plugin `skills/` directory. Do not add unknown top-level fields to `plugin.json`. Do not put agents or skill paths in that manifest. MCP is root `mcp.json` only.
+[Agent Plugins §7.1](https://agent-plugins.org/specification#71-skills) discovers **only immediate** `skills/<name>/SKILL.md` children. `gen-surfaces` writes manifests, LICENSE, plugin README, native plugin.json, official `mcp.json` / `.mcp.json`, and catalog docs (`docs/generated/`, wiki Plugin-Marketplace / Skills-Reference / MCP-Setup, README generated regions) from [`products/plugins.yaml`](../products/plugins.yaml) + catalogs. Do not nest groups inside a plugin `skills/` directory. Do not add unknown top-level fields to `plugin.json`. Do not put agents or skill paths in that manifest. MCP is root `mcp.json` only.
 
 Domain packs (`catalogs/pack-catalog.yaml`) are `npx skills` aliases. Group packs map 1:1 onto these plugin directories. See [`PACKS.md`](PACKS.md) and [`AGENT_PLUGINS.md`](AGENT_PLUGINS.md).
 

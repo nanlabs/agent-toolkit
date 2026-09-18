@@ -1,18 +1,21 @@
 ## NaNLABS agent-toolkit
 
-**Getting Started**
-- [🏠 Home](Home)
-- [📦 Installation](Installation)
-- [🎯 Scope](Scope)
-- [❓ FAQ](FAQ)
+### Getting started
 
-**Reference**
-- [🛠️ Skills](Skills-Reference)
-- [🤖 Agents](Agents-Reference)
-- [🔌 Plugin Marketplace](Plugin-Marketplace)
-- [⌨️ Cursor Agent CLI](Cursor-Agent-CLI)
-- [🔗 MCP Templates](MCP-Setup)
-- [🔄 Lifecycle](Lifecycle)
+- [Home](Home)
+- [Installation](Installation)
+- [Plugin marketplace](Plugin-Marketplace)
+- [Official MCP](MCP-Setup)
+- [Scope](Scope)
+- [FAQ](FAQ)
 
-**Contributing**
-- [🤝 Contributing](Contributing)
+### Reference
+
+- [Skills](Skills-Reference)
+- [Agents](Agents-Reference)
+- [Cursor Agent CLI](Cursor-Agent-CLI)
+- [Lifecycle](Lifecycle)
+
+### Contributing
+
+- [Contributing](Contributing)

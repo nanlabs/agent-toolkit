@@ -1,224 +1,210 @@
 <div align="center">
 
+<img alt="NaNLABS agent-toolkit" src="static/hero-banner.svg" width="1280">
+
 # agent-toolkit
 
-<p>NaNLABS skills, agents, and plugins — L1.5 distribution</p>
+NaNLABS skills, agents, and plugins — install once, use in Claude Code, Cursor, Copilot, and the [Agent Plugins](https://agent-plugins.org/compatible-clients) roster.
 
-</div>
-
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://github.com/nanlabs/.github/blob/main/profile/octonan.png?raw=true"/>
-  <img alt="NaNLABS Octonan mascot" align="left" width="150" src="https://github.com/nanlabs/.github/blob/main/profile/octonan.png?raw=true"/>
-</picture>
-
-**Production surfaces:** Agent Plugins roster + Claude Code
-
-<sub>Brand asset: [NaNLABS Octonan](https://github.com/nanlabs/.github/blob/main/profile/octonan.png), from the public `nanlabs/.github` repository.</sub>
-
-[Docs](docs/README.md) · [Wiki source](docs/wiki/Home.md) · [Adoption](docs/ADOPTION.md) · [Scope](docs/SCOPE.md) · [Contributing](CONTRIBUTING.md)
-
-<br clear="left">
-
-<div align="center">
+[Docs](docs/README.md) · [Catalog](docs/generated/catalog.md) · [Adoption](docs/ADOPTION.md) · [Wiki](docs/wiki/Home.md) · [Contributing](CONTRIBUTING.md)
 
 <p>
   <a href="https://github.com/nanlabs/agent-toolkit/actions/workflows/validate.yml"><img src="https://img.shields.io/github/actions/workflow/status/nanlabs/agent-toolkit/validate.yml?branch=main&label=validate&color=58a6ff" alt="Validate"/></a>
   <a href="https://github.com/nanlabs/agent-toolkit/actions/workflows/mega-linter.yml"><img src="https://img.shields.io/github/actions/workflow/status/nanlabs/agent-toolkit/mega-linter.yml?branch=main&label=megalinter&color=f7c948" alt="MegaLinter"/></a>
   <a href="https://agentskills.io/specification"><img src="https://img.shields.io/badge/Agent%20Skills-compatible-7ee787" alt="Agent Skills compatible"/></a>
+  <a href="https://agent-plugins.org/specification"><img src="https://img.shields.io/badge/Agent%20Plugins-v1.0.0-58a6ff" alt="Agent Plugins v1.0.0"/></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-ff6b35" alt="MIT license"/></a>
 </p>
 
 <p>
+<!-- generated:badges -->
   <img src="https://img.shields.io/badge/skills-49-ff6b35" alt="49 skills"/>
   <img src="https://img.shields.io/badge/agents-18-58a6ff" alt="18 agents"/>
   <img src="https://img.shields.io/badge/plugins-10-f7c948" alt="10 plugins"/>
-  <img src="https://img.shields.io/badge/MCP-official%20remote-7ee787" alt="Official remote MCP"/>
-</p>
-
-<p>
-  <img src="https://img.shields.io/badge/Claude-equal-ff6b35" alt="Claude"/>
-  <img src="https://img.shields.io/badge/Claude%20Code-equal-f7c948" alt="Claude Code"/>
-  <img src="https://img.shields.io/badge/Cursor%20IDE-equal-58a6ff" alt="Cursor IDE"/>
-  <img src="https://img.shields.io/badge/Cursor%20Agent%20CLI-equal-7ee787" alt="Cursor Agent CLI"/>
-  <img src="https://img.shields.io/badge/GitHub%20Copilot-equal-8b949e" alt="GitHub Copilot"/>
+  <img src="https://img.shields.io/badge/MCP-9%20official-7ee787" alt="9 official MCP"/>
+<!-- /generated:badges -->
 </p>
 
 </div>
 
 > [!IMPORTANT]
-> **L1.5 distribution (public)** — This repository ships NaNLABS skills, agents, and plugins for the [Agent Plugins](https://agent-plugins.org/compatible-clients) roster and Claude Code.
->
-> **Machine provisioning (L1)** lives in **`nanlabs/internal-workstation`** — a **private** NaNLABS repository (org access required). Employees install the workstation via chezmoi, then run **`nan-ai-enable`** to pin this repo. See [Workstation cutover](docs/ADOPTION.md#workstation-cutover-internal-workstation) in Adoption.
+> **This repo is the public product** (L1.5): skills, agents, plugins, official MCP.
+> **NaNLABS laptops** are provisioned by private **`nanlabs/internal-workstation`** (L1). Employees run `nan-ai-enable` after chezmoi. You do **not** need the workstation to install plugins from here.
 
----
+## Install everything
 
-## What is agent-toolkit?
+Copy the block for your client. Then reload and complete MCP OAuth when prompted.
 
-Public **L1.5** distribution of NaNLABS AI capabilities: Agent Skills, agent personas, one plugin per skill group, and GitHub Copilot surfaces. Machine provisioning stays in **`nanlabs/internal-workstation`** (L1, **private**).
+<details open>
+<summary><strong>Claude Code</strong> — marketplace add, then every group plugin</summary>
 
-Smaller than multi-tool personal forks: **no** consumer CLI, loop runtime, or OpenCode/Windsurf/Gemini/Pi plugin targets. Portable skills may still work via `npx skills`.
-
-<div align="center">
-  <img alt="L1 and L1.5 architecture" src="static/architecture.svg" width="820">
-</div>
-
-## Highlights
-
-- **Equal-priority surfaces** — Agent Plugins roster (VS Code, Copilot, Cursor, ChatGPT/Codex, Kiro, Grok Bot, Hermes, OpenClaw, NanoClaw) plus Claude Code
-- **Group plugins** — one package per skill group (`plugins/nanlabs-delivery`, …); no duplicated skill trees
-- **Recommended plugin** — `nanlabs-core` with bundled setup (`/nanlabs-core:setup`)
-- **Optional roster** — `nanlabs-agents` for all 18 personas
-- **Python typing** — `nanlabs-pyrightination` ships in `nanlabs-core`
-- **Official MCP** — group plugins ship hosted OAuth MCP (`mcp.json`); authenticate in the client
-- **CI quality bar** — inventory, manifests, skills-ref, Claude validate, MegaLinter, Danger
-
-## Quick install
-
-### Claude Code
-
+<!-- generated:claude-install -->
 ```text
 /plugin marketplace add nanlabs/agent-toolkit
 /plugin install nanlabs-core@nanlabs-agent-toolkit
+/plugin install nanlabs-data@nanlabs-agent-toolkit
+/plugin install nanlabs-delivery@nanlabs-agent-toolkit
+/plugin install nanlabs-design@nanlabs-agent-toolkit
+/plugin install nanlabs-forge@nanlabs-agent-toolkit
+/plugin install nanlabs-integrations@nanlabs-agent-toolkit
+/plugin install nanlabs-ops@nanlabs-agent-toolkit
+/plugin install nanlabs-tooling@nanlabs-agent-toolkit
+/plugin install nanlabs-workflow@nanlabs-agent-toolkit
+/plugin install nanlabs-agents@nanlabs-agent-toolkit
+/nanlabs-core:setup
 ```
-
-Then run **`/nanlabs-core:setup`**. Repeat `/plugin install <id>@nanlabs-agent-toolkit` for the other group plugins. Optional: `/plugin install nanlabs-agents@nanlabs-agent-toolkit`.
-
-<details>
-<summary><strong>Cursor IDE</strong></summary>
-
-- **Local:** copy or symlink `plugins/nanlabs-core` under `~/.cursor/plugins/local/`, then reload the window ([Cursor plugins](https://cursor.com/docs/plugins))
-- **Team:** an org admin imports this repository as a Team Marketplace
-
-Install **each** `nanlabs-*` group plugin (recommended start: **`nanlabs-core`**), optionally **`nanlabs-agents`**.
+<!-- /generated:claude-install -->
 
 </details>
 
 <details>
-<summary><strong>Cursor Agent CLI</strong> — equal priority; see certification matrix</summary>
+<summary><strong>GitHub Copilot CLI</strong></summary>
 
+<!-- generated:copilot-install -->
 ```bash
-agent --version
-agent plugin marketplace add https://github.com/nanlabs/agent-toolkit
+copilot plugin install nanlabs/agent-toolkit:plugins/nanlabs-core
+copilot plugin install nanlabs/agent-toolkit:plugins/nanlabs-data
+copilot plugin install nanlabs/agent-toolkit:plugins/nanlabs-delivery
+copilot plugin install nanlabs/agent-toolkit:plugins/nanlabs-design
+copilot plugin install nanlabs/agent-toolkit:plugins/nanlabs-forge
+copilot plugin install nanlabs/agent-toolkit:plugins/nanlabs-integrations
+copilot plugin install nanlabs/agent-toolkit:plugins/nanlabs-ops
+copilot plugin install nanlabs/agent-toolkit:plugins/nanlabs-tooling
+copilot plugin install nanlabs/agent-toolkit:plugins/nanlabs-workflow
+copilot plugin install nanlabs/agent-toolkit:plugins/nanlabs-agents
 ```
-
-`marketplace add` registers the catalog; it does not install a plugin. For the
-documented local load path, use `--plugin-dir` (see [`docs/CURSOR_CLI.md`](docs/CURSOR_CLI.md)).
+<!-- /generated:copilot-install -->
 
 </details>
 
 <details>
-<summary><strong>Skills-only</strong> — Agent Skills CLI (skills alone)</summary>
+<summary><strong>Cursor IDE</strong> — local plugins (or Team Marketplace import)</summary>
+
+<!-- generated:cursor-install -->
+```bash
+mkdir -p ~/.cursor/plugins/local
+REPO=/path/to/agent-toolkit
+ln -sfn "$REPO/plugins/nanlabs-core" ~/.cursor/plugins/local/nanlabs-core
+ln -sfn "$REPO/plugins/nanlabs-data" ~/.cursor/plugins/local/nanlabs-data
+ln -sfn "$REPO/plugins/nanlabs-delivery" ~/.cursor/plugins/local/nanlabs-delivery
+ln -sfn "$REPO/plugins/nanlabs-design" ~/.cursor/plugins/local/nanlabs-design
+ln -sfn "$REPO/plugins/nanlabs-forge" ~/.cursor/plugins/local/nanlabs-forge
+ln -sfn "$REPO/plugins/nanlabs-integrations" ~/.cursor/plugins/local/nanlabs-integrations
+ln -sfn "$REPO/plugins/nanlabs-ops" ~/.cursor/plugins/local/nanlabs-ops
+ln -sfn "$REPO/plugins/nanlabs-tooling" ~/.cursor/plugins/local/nanlabs-tooling
+ln -sfn "$REPO/plugins/nanlabs-workflow" ~/.cursor/plugins/local/nanlabs-workflow
+ln -sfn "$REPO/plugins/nanlabs-agents" ~/.cursor/plugins/local/nanlabs-agents
+```
+<!-- /generated:cursor-install -->
+
+Reload the window after linking.
+
+</details>
+
+<details>
+<summary><strong>Skills-only</strong> — Agent Skills CLI, no plugins / MCP / agents</summary>
 
 ```bash
 npx skills add nanlabs/agent-toolkit -g
 ```
 
-Uses the [`vercel-labs/skills`](https://github.com/vercel-labs/skills) CLI to
-install the canonical Agent Skills tree. It does **not** install plugins,
-agents, MCP, or setup automation.
-
-Install a **group pack** (subdirectory) or a **domain pack** (skill filter):
-
-```bash
-npx skills add nanlabs/agent-toolkit/plugins/nanlabs-delivery/skills
-npx skills add nanlabs/agent-toolkit --skill github-cli-workflow --skill gh-address-comments
-```
-
-Pack catalog: [`catalogs/pack-catalog.yaml`](catalogs/pack-catalog.yaml) ·
-[`docs/PACKS.md`](docs/PACKS.md). Helper: `bash scripts/install-pack.sh delivery`.
-Group packs are the same directories as [Agent Plugins](https://agent-plugins.org/specification)
-packages (closed `plugin.json`, immediate `skills/<name>/`).
+Group or domain pack: [`docs/PACKS.md`](docs/PACKS.md).
 
 </details>
 
 <details>
-<summary><strong>GitHub Copilot</strong></summary>
+<summary><strong>VS Code · Codex · Kiro · rest of the Agent Plugins roster</strong></summary>
 
-- **CLI plugin surface:** install a plugin from this repository or a checkout:
+| Client | How |
+| --- | --- |
+| VS Code | `"chat.plugins.marketplaces": ["nanlabs/agent-toolkit"]` then install each `nanlabs-*` |
+| ChatGPT / Codex | `codex plugin marketplace add nanlabs/agent-toolkit` then install from the Plugins Directory |
+| Kiro | Powers → Import from folder → `plugins/nanlabs-<group>` (not the repo root) |
+| Grok / Hermes / OpenClaw / NanoClaw | Point the client at `plugins/nanlabs-<group>/` (`plugin.json` + `skills/`) |
+| Cursor Agent CLI | `agent plugin marketplace add https://github.com/nanlabs/agent-toolkit` then `--plugin-dir` — [`docs/CURSOR_CLI.md`](docs/CURSOR_CLI.md) |
 
-  ```bash
-  copilot plugin install nanlabs/agent-toolkit:plugins/nanlabs-core
-  copilot plugin install nanlabs/agent-toolkit:plugins/nanlabs-delivery
-  # …repeat per group plugin
-  copilot plugin install nanlabs/agent-toolkit:plugins/nanlabs-agents
-  ```
-
-- **Repository customization surface:** `.github/copilot-instructions.md`, `.github/agents/`
-- **VS Code Copilot agents:** `plugins/<id>/com.github.copilot/agents/`
-- **Bundled typecheck skill:** `nanlabs-pyrightination` in `nanlabs-core`
+Full matrix: [`docs/ADOPTION.md`](docs/ADOPTION.md).
 
 </details>
 
-Full paths: [`docs/ADOPTION.md`](docs/ADOPTION.md) · lifecycle: [`docs/LIFECYCLE.md`](docs/LIFECYCLE.md)
+Start with **`nanlabs-core`** if you want a smaller first install. Run **`/nanlabs-core:setup`** after Claude Code install.
 
-## What's included
+## Catalog
 
-| Area | Notes |
-| --- | --- |
-| Skills | 49 under `plugins/nanlabs-<group>/skills/` — [catalog](catalogs/skill-catalog.yaml) · [packs](docs/PACKS.md) · [index](docs/SKILLS.md) |
-| Group plugins | nine `nanlabs-*` packages (`nanlabs-core` v0.4.0 includes setup doctor + `/nanlabs-core:setup`) |
-| Agents plugin | `nanlabs-agents` v0.2.1 (optional) — 18 personas via `gen-surfaces` |
-| Copilot | Agent Plugins manifests + `.github/` instructions/agents + `com.github.copilot/agents/` |
-| MCP | Official remote servers in `nanlabs-design` / `nanlabs-forge` / `nanlabs-integrations` |
+Tables below are generated from [`products/plugins.yaml`](products/plugins.yaml), [`catalogs/mcp-catalog.yaml`](catalogs/mcp-catalog.yaml), and [`catalogs/skills-layout.json`](catalogs/skills-layout.json). Do not hand-edit them — run `python3 scripts/gen-surfaces.py`. Full dump: [`docs/generated/catalog.md`](docs/generated/catalog.md).
 
-## Repository layout
+### Plugins
 
-| Path | Purpose |
-| --- | --- |
-| `plugins/nanlabs-<group>/skills/<skill>/` | Canonical [Agent Skills](https://agentskills.io/specification) + [Agent Plugins](https://agent-plugins.org/specification) tree |
-| `plugins/` | One package per group + optional `nanlabs-agents` |
-| `.claude-plugin/` · `.cursor-plugin/` · `.agents/plugins/` | Marketplace catalogs |
-| `.github/copilot-instructions.md` · `.github/agents/` | GitHub Copilot repository customization |
-| `agents/` | Canonical personas |
-| `products/plugins.yaml` | Plugin version + assembly SoT |
-| `mcp/templates/` | Official MCP URL docs (same URLs shipped in plugin `mcp.json`) |
-| `docs/` · `docs/wiki/` | Repo docs + GitHub Wiki source |
-| `static/` | README artwork |
-| `scripts/` | Validation + `gen-surfaces` |
+<!-- generated:plugins -->
+| Plugin | Version | Skills | MCP | Role |
+| --- | --- | --- | --- | --- |
+| `nanlabs-core` | 0.4.0 | 7 | — | Recommended first install. Setup doctor + `/nanlabs-core:setup`. |
+| `nanlabs-data` | 0.1.0 | 2 | — | dbt and Snowflake validation skills |
+| `nanlabs-delivery` | 0.1.0 | 19 | — | PRD, TRD, ADR, work items, assessments, and delivery process |
+| `nanlabs-design` | 0.2.0 | 6 | `figma` | Figma MCP and UI/UX intelligence (not a full designer workflow) |
+| `nanlabs-forge` | 0.2.0 | 4 | `github`, `gitlab` | GitHub and GitLab CLI automation plus official GitHub and GitLab MCP |
+| `nanlabs-integrations` | 0.2.0 | 4 | `atlassian`, `clickup`, `linear`, `notion`, `shortcut`, `slack` | ClickUp, Slack, Linear, Shortcut, Notion, and Atlassian (Jira/Confluence) MCP plus CLI skills |
+| `nanlabs-ops` | 0.1.0 | 3 | — | Workstation triage, presentations ops, and skill contribution |
+| `nanlabs-tooling` | 0.1.0 | 2 | — | Playwright CLI and Jupyter notebook scaffolding |
+| `nanlabs-workflow` | 0.1.0 | 2 | — | Client delivery workflows and bootstrap |
+| `nanlabs-agents` | 0.2.1 | — | — | Optional. Full 18-persona roster. |
+<!-- /generated:plugins -->
 
-## Start here
+### Official MCP
+
+Authenticate in the client. No tokens in the plugin. Slack may need workspace admin approval.
+
+<!-- generated:mcp -->
+| Server | Plugin | Official URL | Notes |
+| --- | --- | --- | --- |
+| `atlassian` | `nanlabs-integrations` | `https://mcp.atlassian.com/v2/mcp` | Covers Jira, Confluence, Jira Service Management, Bitbucket, Loom. Official Atlassian Rovo MCP v2. One server covers Jira and Confluence. |
+| `clickup` | `nanlabs-integrations` | `https://mcp.clickup.com/mcp` | Official ClickUp hosted MCP. OAuth only; API tokens are not supported. |
+| `figma` | `nanlabs-design` | `https://mcp.figma.com/mcp` | Official Figma remote MCP. OAuth. Figma allowlists MCP clients. |
+| `github` | `nanlabs-forge` | `https://api.githubcopilot.com/mcp/` | Official GitHub hosted MCP. OAuth in VS Code / Copilot; some Cursor setups still prompt for a PAT in user MCP config, not in this plugin. |
+| `gitlab` | `nanlabs-forge` | `https://gitlab.com/api/v4/mcp` | Official GitLab.com MCP. Self-managed instances use `https://<host>/api/v4/mcp` in user config instead. |
+| `linear` | `nanlabs-integrations` | `https://mcp.linear.app/mcp` | Official Linear hosted MCP. OAuth 2.1. SSE at /sse is deprecated. |
+| `notion` | `nanlabs-integrations` | `https://mcp.notion.com/mcp` | Official Notion hosted MCP. OAuth. Open-source notion-mcp-server is unmaintained. |
+| `shortcut` | `nanlabs-integrations` | `https://mcp.shortcut.com/mcp` | Official Shortcut hosted MCP. OAuth; no API token. |
+| `slack` | `nanlabs-integrations` | `https://mcp.slack.com/mcp` | Official Slack hosted MCP. OAuth. Slack does not support Dynamic Client Registration; workspace admin approval is required. Slack's own client plugins may still be needed for client-id-bound OAuth. |
+<!-- /generated:mcp -->
+
+## How it fits
+
+<div align="center">
+  <img alt="L1 workstation and L1.5 agent-toolkit layers" src="static/architecture.svg" width="1080">
+</div>
+
+| Layer | Repo | Owns |
+| --- | --- | --- |
+| L1 | `nanlabs/internal-workstation` (private) | Machine, secrets, chezmoi |
+| L1.5 | **this repository** (public) | Skills, agents, plugins, MCP |
+
+## Docs
 
 | Need | Go to |
 | --- | --- |
-| Install by surface | [Adoption](docs/ADOPTION.md) |
+| Install by client | [Adoption](docs/ADOPTION.md) · [wiki Installation](docs/wiki/Installation.md) |
+| Plugin / MCP / skill tables | [Generated catalog](docs/generated/catalog.md) · [wiki](docs/wiki/Home.md) |
 | In / out of scope | [Scope](docs/SCOPE.md) |
 | Common questions | [FAQ](docs/FAQ.md) |
-| Cursor Agent CLI matrix | [CURSOR_CLI](docs/CURSOR_CLI.md) |
-| Docs map | [docs/README.md](docs/README.md) |
-| Add a skill / plugin | [Authoring](docs/AUTHORING.md) |
-| Install a domain pack | [Packs](docs/PACKS.md) |
-| Propose a skill | [Contribution](docs/CONTRIBUTION.md) |
-| Public safety | [Public content policy](docs/PUBLIC_CONTENT_POLICY.md) |
+| Add a skill | [Contribution](docs/CONTRIBUTION.md) · [Authoring](docs/AUTHORING.md) |
+| Packs | [PACKS](docs/PACKS.md) |
+| Release / pin / rollback | [RELEASE](docs/RELEASE.md) · [LIFECYCLE](docs/LIFECYCLE.md) |
 
 ## Quality bar
 
 ```bash
-bash scripts/validate-repo-structure.sh
-python3 scripts/validate-manifests.py
-python3 scripts/validate-agent-plugins.py
-python3 scripts/validate-skill-inventory.py
-python3 scripts/validate-public-content.py
-python3 scripts/validate-skills.py
-python3 scripts/validate-agents.py
-python3 scripts/validate-pack-catalog.py
-python3 scripts/validate-mcp.py
-python3 scripts/validate-contracts.py
 python3 scripts/gen-surfaces.py --check
-python3 scripts/gen-copilot-surfaces.py --check
-bash scripts/secret-scan.sh
+python3 scripts/validate-manifests.py
+python3 scripts/validate-mcp.py
+python3 scripts/validate-skill-inventory.py
 pre-commit run --all-files
 ```
 
-## Contributing
-
-See [`CONTRIBUTING.md`](CONTRIBUTING.md) and [`AGENTS.md`](AGENTS.md). Use the PR template; link an issue (`Fixes #N` / `Refs #N`).
-
-Wiki pages are edited under [`docs/wiki/`](docs/wiki/) and synced to the GitHub Wiki on `main`.
-
-## Security
-
-[`SECURITY.md`](SECURITY.md) · [`docs/PUBLIC_CONTENT_POLICY.md`](docs/PUBLIC_CONTENT_POLICY.md)
+CI on `main`: Validate, MegaLinter, wiki sync. See [`CONTRIBUTING.md`](CONTRIBUTING.md).
 
 ## License
 
-[MIT](LICENSE)
+[MIT](LICENSE) · [`SECURITY.md`](SECURITY.md) · [`docs/PUBLIC_CONTENT_POLICY.md`](docs/PUBLIC_CONTENT_POLICY.md)
+
+<sub>Brand: [NaNLABS Octonan](https://github.com/nanlabs/.github/blob/main/profile/octonan.png) from public `nanlabs/.github`. README artwork: [`static/`](static/README.md).</sub>

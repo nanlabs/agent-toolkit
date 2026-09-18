@@ -1,43 +1,41 @@
 # nanlabs-agents
 
-Claude Code / Cursor / GitHub Copilot CLI plugin bundling all public agent
-personas from `agents/`.
+Optional full set of NaNLABS agent / subagent personas (reviewers, architect, planner, e2e, …)
 
-Canonical bodies live under repository-root `agents/`. Core skills live under `plugins/nanlabs-core/skills/`. Agent files in this plugin are
-**generated** by:
-
-```bash
-python3 scripts/gen-surfaces.py
-python3 scripts/gen-copilot-surfaces.py
-python3 scripts/gen-surfaces.py --check   # CI drift gate
-```
-
-Do not hand-edit files under `plugins/nanlabs-agents/agents/` or `plugins/nanlabs-agents/resources/` — change
-`agents/<name>/` and regenerate. Agent files are flat `agents/<name>.md` (Claude/Cursor discovery-safe); references
-ship under `resources/agents/<name>/`.
+This plugin ships agent personas generated from repo-root `agents/`. Skill bodies live in the group plugins. Do not hand-edit `plugins/nanlabs-agents/agents/` — change `agents/<name>/` and regenerate.
 
 ## Install
+
+Complete client matrix: [docs/ADOPTION.md](../../docs/ADOPTION.md). Generated catalog: [docs/generated/catalog.md](../../docs/generated/catalog.md).
+
+### Claude Code
 
 ```text
 /plugin marketplace add nanlabs/agent-toolkit
 /plugin install nanlabs-agents@nanlabs-agent-toolkit
 ```
 
-For Cursor IDE, copy or symlink this directory under
-`~/.cursor/plugins/local/`, or install it from the Team Marketplace. For the
-Cursor Agent CLI, load the checkout with:
-
-```bash
-agent --plugin-dir /path/to/agent-toolkit/plugins/nanlabs-agents
-```
-
-For GitHub Copilot CLI, install directly from GitHub:
+### GitHub Copilot CLI
 
 ```bash
 copilot plugin install nanlabs/agent-toolkit:plugins/nanlabs-agents
 ```
 
-## Contents
+### Cursor IDE
 
-See [`agents/README.md`](../../agents/README.md) and
-[`catalogs/agent-catalog.yaml`](../../catalogs/agent-catalog.yaml).
+```bash
+mkdir -p ~/.cursor/plugins/local
+ln -sfn /path/to/agent-toolkit/plugins/nanlabs-agents ~/.cursor/plugins/local/nanlabs-agents
+```
+
+Then reload the window. Team Marketplace import of this repository also works.
+
+### Cursor Agent CLI
+
+```bash
+agent --plugin-dir /path/to/agent-toolkit/plugins/nanlabs-agents
+```
+
+### Agent Plugins folder import
+
+Point the client at `plugins/nanlabs-agents` (`plugin.json` + `skills/<name>/SKILL.md`). Kiro, Grok Bot, Hermes Agent, OpenClaw, and NanoClaw use this path.

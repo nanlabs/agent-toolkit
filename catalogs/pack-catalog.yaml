@@ -54,7 +54,7 @@ packs:
   - id: integrations
     kind: group
     path: plugins/nanlabs-integrations/skills
-    description: ClickUp, Slack, and Linear integrations
+    description: ClickUp, Slack, Linear CLI skills (Notion/Atlassian/Shortcut MCP ship on the same group plugin)
     coverage: medium
     domains: [operations, delivery]
     cloud: skills-only

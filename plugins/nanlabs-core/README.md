@@ -1,14 +1,25 @@
 # nanlabs-core
 
-Baseline NaNLABS harness plugin — **recommended first install**.
+Recommended install: setup/onboarding, orchestrator, companion, handshake, Pyright report-only typing, PR fallback, knowledge sync, and code-reviewer agent
 
-Includes bundled setup: contract doctor, `nanlabs-setup` skill, and `/nanlabs-core:setup` command.
+Canonical skills live under `skills/<name>/` (layout group `core`). There is no second tree under `skills/<group>/`.
 
-Canonical skills for this group live **in this directory** under `skills/<name>/`. There is no second tree at repo-root `skills/core/`.
+## Skills
+
+`nanlabs-assistant`, `nanlabs-dev-companion`, `nanlabs-output-handshake`, `nanlabs-pyrightination`, `nanlabs-pr-fallback`, `nanlabs-setup`, `nanlabs-workspace-knowledge-sync`
+
+## Setup
+
+After install, run **`/nanlabs-core:setup`** (or ask the agent to run the bundled `nanlabs-setup` skill). Setup is no longer a separate marketplace plugin.
+
+| Area | Notes |
+| --- | --- |
+| Agent | `nanlabs-code-reviewer` |
+| Doctor | `scripts/doctor-contracts.py` + `commands/setup.md` |
 
 ## Install
 
-See [docs/ADOPTION.md](../../docs/ADOPTION.md) for the full client matrix (Agent Plugins roster + Claude Code).
+Complete client matrix: [docs/ADOPTION.md](../../docs/ADOPTION.md). Generated catalog: [docs/generated/catalog.md](../../docs/generated/catalog.md).
 
 ### Claude Code
 
@@ -17,38 +28,27 @@ See [docs/ADOPTION.md](../../docs/ADOPTION.md) for the full client matrix (Agent
 /plugin install nanlabs-core@nanlabs-agent-toolkit
 ```
 
-Then run setup via **`/nanlabs-core:setup`** or ask Claude to run the `nanlabs-setup` skill.
-
 ### GitHub Copilot CLI
 
 ```bash
 copilot plugin install nanlabs/agent-toolkit:plugins/nanlabs-core
 ```
 
-### Cursor
+### Cursor IDE
+
+```bash
+mkdir -p ~/.cursor/plugins/local
+ln -sfn /path/to/agent-toolkit/plugins/nanlabs-core ~/.cursor/plugins/local/nanlabs-core
+```
+
+Then reload the window. Team Marketplace import of this repository also works.
+
+### Cursor Agent CLI
 
 ```bash
 agent --plugin-dir /path/to/agent-toolkit/plugins/nanlabs-core
 ```
 
-Or Team Marketplace / `~/.cursor/plugins/local/`.
-
 ### Agent Plugins folder import
 
-Point the client at this directory (`plugin.json` + `skills/<name>/SKILL.md`).
-Kiro, Grok Bot, Hermes Agent, OpenClaw, and NanoClaw use this path.
-
-Optional: install `nanlabs-agents` for the full agent roster, and the other
-`nanlabs-*` group plugins for a complete skill install.
-
-> **Deprecated:** the standalone `nanlabs-setup` plugin is no longer listed in the marketplace. Setup ships here.
-
-## Contents
-
-| Area | Notes |
-| --- | --- |
-| Skills | `nanlabs-assistant`, `nanlabs-dev-companion`, `nanlabs-output-handshake`, `nanlabs-pr-fallback`, `nanlabs-workspace-knowledge-sync`, `nanlabs-setup`, `nanlabs-pyrightination` |
-| Agent | `nanlabs-code-reviewer` (also under `com.github.copilot/agents/`) |
-| Setup | `scripts/doctor-contracts.py`, `contracts/requirements/nanlabs-core.yaml`, `commands/setup.md` |
-
-Agent files are generated from repo-root `agents/`. Skill bodies in `skills/` are the source of truth — `gen-surfaces` does not copy them.
+Point the client at `plugins/nanlabs-core` (`plugin.json` + `skills/<name>/SKILL.md`). Kiro, Grok Bot, Hermes Agent, OpenClaw, and NanoClaw use this path.

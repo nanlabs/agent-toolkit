@@ -1,45 +1,38 @@
-# 🎯 Scope
+# Scope
 
-What this repository **is** and **is not**. Inspired by broader agent-toolkit ecosystems, but intentionally smaller for NaNLABS production use.
+What this repository **is** and **is not**. Intentionally smaller than multi-tool personal forks.
 
-## In scope (production surfaces)
+## In scope (clients)
 
 | Surface | Role |
 | --- | --- |
 | Agent Plugins roster | VS Code, Copilot, Cursor, ChatGPT/Codex, Kiro, Grok Bot, Hermes, OpenClaw, NanoClaw |
 | Claude Code | Native marketplace (not on the AP roster) |
+| `npx skills` | Skills-only from `plugins/nanlabs-<group>/skills` |
 
 ## In scope (content)
 
-- Agent Skills (`SKILL.md`) under `plugins/nanlabs-<group>/skills/`
+- Agent Skills under `plugins/nanlabs-<group>/skills/`
 - Agent personas under `agents/`
 - Nine group plugins plus optional `nanlabs-agents`
+- Official hosted MCP (`mcp.json` / `.mcp.json` on design, forge, integrations)
 - GitHub Copilot CLI manifests + `.github/` repository surface
-- `nanlabs-pyrightination` as a report-only typing skill in `nanlabs-core`
-- Official hosted MCP servers (`mcp.json` on design / forge / integrations)
-- Validation scripts + CI gates
-- Domain pack catalog (`catalogs/pack-catalog.yaml`) and GitHub contribution flow
-- Dependency contracts for setup/doctor
+- Validation scripts, catalogs, contribution flow
 
-## Explicitly out of scope (plugin targets)
+## Out of scope (plugin targets)
 
-OpenCode, Windsurf, Gemini CLI, Pi, and similar — portable skills may still work via `npx skills`; we do **not** maintain plugin/profile targets for them.
+OpenCode, Windsurf, Gemini CLI, Pi, and similar — portable skills may still work via `npx skills`.
 
-## Explicitly out of scope (product features)
+## Out of scope (product)
 
-Compared to larger personal forks, NaNLABS **does not** ship here:
-
-- Consumer CLI (`agent-toolkit install` / multi-tool compiler)
-- Loop engineering runtime / scheduled loops
-- Multi-tool profile matrix (6+ IDEs)
-- Org RAG / telemetry backends (L1 / Part III)
-- Workstation provisioning (chezmoi) — that stays in `internal-workstation`
+- Consumer CLI / multi-target compiler
+- Loop engineering runtime
+- Org RAG / telemetry backends
+- Workstation provisioning (chezmoi) — `internal-workstation`
 
 ## Layers
 
 | Layer | Repo | Owns |
 | --- | --- | --- |
-| L1 | `internal-workstation` | OS tools, secrets (`env.d`), doctor fleet, machine identity |
-| L1.5 | **this repo** | Public skills, agents, plugins, MCP stubs, catalogs |
-
-Dual-rail until workstation cutover (Waves 3–4). See epic tracking on [AI Native Workbench](https://github.com/orgs/nanlabs/projects/12).
+| L1 | `internal-workstation` (private) | OS tools, secrets, doctor fleet |
+| L1.5 | **this repo** (public) | Skills, agents, plugins, official MCP, catalogs |

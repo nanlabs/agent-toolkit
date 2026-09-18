@@ -1,5 +1,5 @@
 > [!NOTE]
-> 📘 **Repo-Only Doc** — last reviewed **2026-09-17**
+> 📘 **Repo-Only Doc** — last reviewed **2026-09-18**
 >
 > This document lives only in the repo. It is public-ready and self-contained.
 
@@ -7,13 +7,17 @@
 
 # FAQ
 
+## How do I install everything?
+
+Use the generated complete-install blocks in [`generated/catalog.md`](generated/catalog.md) (also on the wiki [Plugin marketplace](wiki/Plugin-Marketplace.md)). Start with `nanlabs-core` for a smaller first install, then add group plugins. After Claude Code install, run `/nanlabs-core:setup`.
+
 ## Is this only for Claude Code?
 
 No. Production is the [Agent Plugins roster](https://agent-plugins.org/compatible-clients) (VS Code, Copilot, Cursor, ChatGPT/Codex, Kiro, Grok Bot, Hermes, OpenClaw, NanoClaw) **plus** Claude Code.
 
 ## How does this differ from `ulises-jeremias/agent-toolkit`?
 
-That project is a broad multi-tool toolkit (CLI, loops, many targets). **This repo** is NaNLABS L1.5 production distribution for Claude, Claude Code, Cursor IDE, Cursor Agent CLI, and GitHub Copilot, with a skills-only packaging path and no consumer CLI/loops compiler.
+That project is a broad multi-tool toolkit (CLI, loops, many targets). **This repo** is NaNLABS L1.5 production distribution: no consumer CLI/loops compiler.
 
 ## Do I need `internal-workstation`?
 
@@ -22,6 +26,8 @@ Not to install public plugins/skills. Yes for NaNLABS machine provisioning and s
 ## Why no MCP tools after plugin install?
 
 Install the group plugin that ships that server (`nanlabs-design`, `nanlabs-forge`, or `nanlabs-integrations`), reload, and complete OAuth. Skills-only (`npx skills`) does not register MCP. Slack may still need Slack’s own client plugin because Slack does not support Dynamic Client Registration.
+
+If Cursor already lists ClickUp / Shortcut / Linear in `~/.cursor/mcp.json`, plugin MCP can duplicate those servers — keep one of each.
 
 ## Where is `nanlabs-setup`?
 

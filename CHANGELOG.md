@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- README hero SVG, architecture diagram, and generated catalog tables (`docs/generated/`, wiki Plugin-Marketplace / Skills-Reference / MCP-Setup) so plugin/MCP/skill counts cannot drift from YAML sources of truth.
+- Complete copy-paste install for every group plugin on Claude Code, Copilot CLI, and Cursor local.
+
 ## [0.4.0] — 2026-09-17
 
 Distribution tag matches `nanlabs-core` **0.4.0**. Marketplace metadata **0.7.0**.

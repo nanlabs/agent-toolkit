@@ -22,9 +22,11 @@ bash scripts/validate-repo-structure.sh
 python3 scripts/validate-manifests.py
 python3 scripts/validate-agent-plugins.py
 python3 scripts/validate-skill-inventory.py
+python3 scripts/validate-public-content.py
 python3 scripts/validate-skills.py
 python3 scripts/validate-agents.py
 python3 scripts/validate-pack-catalog.py
+python3 scripts/validate-mcp.py
 python3 scripts/gen-surfaces.py --check
 python3 scripts/gen-copilot-surfaces.py --check
 bash scripts/secret-scan.sh
@@ -35,8 +37,8 @@ CI on non-draft PRs:
 
 | Workflow | Job |
 | --- | --- |
-| `validate.yml` | Structure, manifests, Agent Plugins, skills, pack catalog, secret-scan, pre-commit |
-| `mega-linter.yml` | MegaLinter v9 (cupcake allowlist) |
+| `validate.yml` | Structure, manifests, Agent Plugins, skills, MCP, catalog docs, secret-scan, pre-commit |
+| `mega-linter.yml` | MegaLinter v10 (cupcake allowlist) |
 | `pr-review.yml` | Danger JS (TypeScript) under `tools/danger/` |
 
 Danger expects the PR template sections and an issue reference (`Fixes #N` / `Refs #N`).

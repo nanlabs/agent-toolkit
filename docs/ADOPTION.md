@@ -1,5 +1,5 @@
 > [!NOTE]
-> 📘 **Repo-Only Doc** — last reviewed **2026-09-17**
+> 📘 **Repo-Only Doc** — last reviewed **2026-09-18**
 >
 > This document lives only in the repo. It is public-ready and self-contained.
 > If a ClickUp mirror is created later, update this banner with the link.
@@ -10,17 +10,24 @@
 
 How to install and use `nanlabs/agent-toolkit`.
 
-Also see [SCOPE.md](SCOPE.md), [FAQ.md](FAQ.md), and the [wiki source](wiki/) (companion PR: wiki sync).
+Also see [SCOPE.md](SCOPE.md), [FAQ.md](FAQ.md), the [generated catalog](generated/catalog.md), and the [wiki source](wiki/).
 
 **Production:** [Agent Plugins](https://agent-plugins.org/compatible-clients) roster (9 clients) **plus** Claude Code (native marketplace; not on that roster). Group plugins ship official hosted MCP in `mcp.json` (Agent Plugins / Cursor) and `.mcp.json` (Claude Code). Authenticate in the client — no tokens in the plugin. Cursor Agent CLI certification evidence lives in [`CURSOR_CLI.md`](CURSOR_CLI.md) — evidence gap ≠ lower product priority.
 
 There is **no** root `plugin.json`. Each package is `plugins/nanlabs-<group>/` (plus optional `nanlabs-agents`). Canonical skills live there under `skills/<name>/`.
 
+## Complete install
+
+Copy-paste for every plugin is generated from [`products/plugins.yaml`](../products/plugins.yaml):
+
+- [Generated catalog](generated/catalog.md) (repo)
+- [Wiki Plugin marketplace](wiki/Plugin-Marketplace.md)
+
 **Complete install** = the nine group plugins, then optionally `nanlabs-agents`:
 
 `nanlabs-core` · `nanlabs-data` · `nanlabs-delivery` · `nanlabs-design` · `nanlabs-forge` · `nanlabs-integrations` · `nanlabs-ops` · `nanlabs-tooling` · `nanlabs-workflow`
 
-Repeat the install command per plugin id. Domain packs (`code-review`, `qa`, …) are `npx skills` aliases, not extra plugin packages.
+Start with **`nanlabs-core`** if you want a smaller first install. Domain packs (`code-review`, `qa`, …) are `npx skills` aliases, not extra plugin packages.
 
 Roster snapshot (compatible-clients page is JS-only; last checked 2026-09-17 against the 2026-08-13 listing): VS Code, GitHub Copilot, Cursor, ChatGPT & Codex (one entry), Kiro, Grok Bot, Hermes Agent, OpenClaw, NanoClaw. **Not on the roster:** Claude Code (still supported here), Gemini / Antigravity / OpenCode.
 
@@ -50,7 +57,7 @@ CLI installs land in `~/.copilot/installed-plugins/` and then show up in VS Code
 
 ## Cursor IDE and Cursor Agent CLI
 
-**IDE:** Team Marketplace import of `nanlabs/agent-toolkit`, or copy/symlink each `plugins/nanlabs-*` under `~/.cursor/plugins/local/` and reload. Marketplace entries use only `name`, `source`, `description` (official schema). Shipped MCP servers are remote HTTPS URLs (no `${PLUGIN_ROOT}`). Cursor does **not** expand `${PLUGIN_ROOT}` / `${PLUGIN_DATA}` if a future stdio server is added.
+**IDE:** Team Marketplace import of `nanlabs/agent-toolkit`, or symlink each `plugins/nanlabs-*` under `~/.cursor/plugins/local/` and reload (generated commands: [`generated/catalog.md`](generated/catalog.md)). Marketplace entries use only `name`, `source`, `description` (official schema). Shipped MCP servers are remote HTTPS URLs (no `${PLUGIN_ROOT}`). Cursor does **not** expand `${PLUGIN_ROOT}` / `${PLUGIN_DATA}` if a future stdio server is added.
 
 **CLI:**
 

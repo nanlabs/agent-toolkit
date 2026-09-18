@@ -1,5 +1,5 @@
 > [!NOTE]
-> 📘 **Repo-Only Doc** — last reviewed **2026-09-17**
+> 📘 **Repo-Only Doc** — last reviewed **2026-09-18**
 >
 > This document lives only in the repo. It is public-ready and self-contained.
 >
@@ -19,6 +19,7 @@ Consumer-facing and maintainer docs for `nanlabs/agent-toolkit` (**L1.5**). Mach
 | Location | Purpose |
 | --- | --- |
 | `docs/` | Adoption, scope, lifecycle, authoring, certification |
+| `docs/generated/` | Plugin / MCP / skill tables assembled from catalogs |
 | `docs/wiki/` | GitHub Wiki source (synced on `main`) |
 | `docs/adrs/` | Architecture Decision Records |
 | `static/` | README artwork |
@@ -27,7 +28,8 @@ Consumer-facing and maintainer docs for `nanlabs/agent-toolkit` (**L1.5**). Mach
 
 | Doc | Audience |
 | --- | --- |
-| [ADOPTION.md](ADOPTION.md) | Install by surface |
+| [ADOPTION.md](ADOPTION.md) | Install by client |
+| [generated/catalog.md](generated/catalog.md) | Generated plugin, MCP, and skill tables |
 | [SCOPE.md](SCOPE.md) | In / out of product scope |
 | [FAQ.md](FAQ.md) | Common questions |
 | [LIFECYCLE.md](LIFECYCLE.md) | Update / pin / rollback |
@@ -65,6 +67,7 @@ Consumer-facing and maintainer docs for `nanlabs/agent-toolkit` (**L1.5**). Mach
 | Path | Topic |
 | --- | --- |
 | [`../catalogs/`](../catalogs/) | Skill / agent / pack / MCP indexes |
+| [`../docs/generated/`](generated/) | Generated plugin / MCP / skill tables |
 | [`../contracts/`](../contracts/) | Dependency contracts |
 | GitHub issues `#24`, `#25`, `#28` | Remaining outcome-pack content (catalog is in `pack-catalog.yaml`) |
 | [`../mcp/templates/`](../mcp/templates/) | Official MCP URL docs (shipped via plugin `mcp.json`) |

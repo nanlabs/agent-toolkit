@@ -39,7 +39,7 @@ servers:
     plugin: nanlabs-forge
     url: https://gitlab.com/api/v4/mcp
     docs: https://docs.gitlab.com/user/model_context_protocol/mcp_server/
-    notes: Official GitLab.com MCP. Self-managed instances use https://<host>/api/v4/mcp in user config instead.
+    notes: Official GitLab.com MCP. Self-managed instances use `https://<host>/api/v4/mcp` in user config instead.
 
   linear:
     plugin: nanlabs-integrations

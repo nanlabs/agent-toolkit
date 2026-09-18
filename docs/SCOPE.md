@@ -1,5 +1,5 @@
 > [!NOTE]
-> 📘 **Repo-Only Doc** — last reviewed **2026-09-17**
+> 📘 **Repo-Only Doc** — last reviewed **2026-09-18**
 >
 > This document lives only in the repo. It is public-ready and self-contained.
 
@@ -33,6 +33,7 @@ NaNLABS production distribution for AI coding assistants — **smaller** than mu
 - CI validators, contracts, catalogs (including domain packs), release policy docs
 - Contribution flow for proposing skills via GitHub pull request
 - Domain packs (`catalogs/pack-catalog.yaml`) as `npx skills --skill` aliases
+- Generated catalog docs (`docs/generated/`, wiki Plugin-Marketplace / Skills-Reference / MCP-Setup)
 
 ## Out of scope (plugin targets)
 

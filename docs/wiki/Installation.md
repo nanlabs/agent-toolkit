@@ -1,131 +1,71 @@
-# 📦 Installation
+# Installation
 
-Production surfaces: **Claude · Claude Code · Cursor IDE · Cursor Agent CLI · GitHub Copilot**.
+Canonical long-form: [`docs/ADOPTION.md`](https://github.com/nanlabs/agent-toolkit/blob/main/docs/ADOPTION.md) · complete copy-paste: [Plugin marketplace](Plugin-Marketplace) · lifecycle: [Lifecycle](Lifecycle).
 
-Canonical long-form: [`docs/ADOPTION.md`](https://github.com/nanlabs/agent-toolkit/blob/main/docs/ADOPTION.md) · lifecycle: [`docs/LIFECYCLE.md`](https://github.com/nanlabs/agent-toolkit/blob/main/docs/LIFECYCLE.md).
+Production = [Agent Plugins roster](https://agent-plugins.org/compatible-clients) **plus** Claude Code.
 
 ## Prerequisites
 
 - **git** (clone / marketplace fetch)
-- At least one target client (Claude Code, Cursor IDE, and/or Cursor Agent CLI)
+- At least one target client
 - For skills-only: **Node.js** + `npx`
 - For local validation (maintainers): **Python 3.10+**
 
-## Claude Code (plugin marketplace)
+## Complete install
 
-```text
-/plugin marketplace add nanlabs/agent-toolkit
-/plugin install nanlabs-core@nanlabs-agent-toolkit
-```
+The generated plugin list and copy-paste blocks live on [Plugin marketplace](Plugin-Marketplace). They are assembled from [`products/plugins.yaml`](https://github.com/nanlabs/agent-toolkit/blob/main/products/plugins.yaml).
 
-Run setup:
+Recommended first plugin: **`nanlabs-core`**. Then install the other group plugins. Optional: **`nanlabs-agents`**.
 
-```text
-/nanlabs-core:setup
-```
-
-Optional full agent roster:
-
-```text
-/plugin install nanlabs-agents@nanlabs-agent-toolkit
-```
-
-> `nanlabs-setup` as a **separate** marketplace plugin is deprecated. Setup ships inside `nanlabs-core` (v0.3.0+).
+After Claude Code install, run **`/nanlabs-core:setup`**.
 
 ## Cursor IDE
 
-1. **Local:** symlink or copy `plugins/nanlabs-core` under `~/.cursor/plugins/local/` and reload.
-2. **Team:** org admin imports `nanlabs/agent-toolkit` as a Team Marketplace, then install `nanlabs-core`.
+1. **Local:** symlink each `plugins/nanlabs-*` under `~/.cursor/plugins/local/` and reload (see [Plugin marketplace](Plugin-Marketplace)).
+2. **Team:** org admin imports `nanlabs/agent-toolkit` as a Team Marketplace.
 
 See [Cursor plugins](https://cursor.com/docs/plugins).
 
 ## Cursor Agent CLI
 
-Same product priority as Cursor IDE. Do not assume IDE behavior.
+Equal product priority with Cursor IDE.
 
 ```bash
 agent --version
 agent plugin marketplace add https://github.com/nanlabs/agent-toolkit
-```
-
-`marketplace add` registers the catalog; it does not install a plugin. Use
-`--plugin-dir` for the documented local load and smoke path:
-
-```bash
 agent --plugin-dir /path/to/agent-toolkit/plugins/nanlabs-core \
   -p --mode ask --output-format text \
   "List skills and slash commands from the loaded plugin"
 ```
 
-The repository snapshot does not certify a non-interactive CLI marketplace
-install. Use Cursor's interactive plugin dashboard or Team Marketplace for
-marketplace installation.
+`marketplace add` registers the catalog; it does not install a plugin. Parity matrix: [Cursor Agent CLI](Cursor-Agent-CLI).
 
-Parity matrix: [Cursor Agent CLI](Cursor-Agent-CLI) · repo [`docs/CURSOR_CLI.md`](https://github.com/nanlabs/agent-toolkit/blob/main/docs/CURSOR_CLI.md).
+## Other clients
 
-## GitHub Copilot
+| Client | How |
+| --- | --- |
+| VS Code | `"chat.plugins.marketplaces": ["nanlabs/agent-toolkit"]` then install each `nanlabs-*` |
+| ChatGPT / Codex | `codex plugin marketplace add nanlabs/agent-toolkit` |
+| Kiro | Powers → Import from folder → `plugins/nanlabs-<group>` (not repo root) |
+| Grok / Hermes / OpenClaw / NanoClaw | Point at `plugins/nanlabs-<group>/` |
 
-**Prerequisite:** [GitHub Copilot CLI](https://docs.github.com/en/copilot/how-tos/set-up/install-copilot-cli) installed and authenticated.
-
-Two supported surfaces:
-
-1. **CLI plugin surface** — Agent Plugins v1.0.0 portable manifests in each
-   `plugins/nanlabs-*` directory. Copilot uses `agents/` and `skills/` as the
-   default component paths in additive Open Plugin Spec mode.
-
-   Install each group plugin from GitHub, or use the equivalent path in a checkout:
-
-   ```bash
-   copilot plugin install nanlabs/agent-toolkit:plugins/nanlabs-core
-   copilot plugin install nanlabs/agent-toolkit:plugins/nanlabs-delivery
-   # …repeat for data, design, forge, integrations, ops, tooling, workflow
-   copilot plugin install nanlabs/agent-toolkit:plugins/nanlabs-agents
-   ```
-
-   The `OWNER/REPO:PATH` form is documented in the
-   [Copilot CLI plugin reference](https://docs.github.com/en/copilot/reference/copilot-cli-reference/cli-plugin-reference).
-
-2. **Repository customization** — committed in:
-   - `.github/copilot-instructions.md`
-   - `.github/agents/*.agent.md`
-
-The recommended baseline remains `nanlabs-core`, which also bundles the
-report-only `nanlabs-pyrightination` skill for Python type-check reporting.
-
-Honesty rules:
-
-- Hooks are not bundled for Copilot yet.
-- MCP ships with `nanlabs-design`, `nanlabs-forge`, and `nanlabs-integrations` (authenticate after install).
-- Repository customization is repo-scoped, not a machine-global install.
-
-## Skills-only (Agent Skills CLI)
+## Skills-only
 
 ```bash
 npx skills add nanlabs/agent-toolkit -g
 ```
 
-Uses the [`vercel-labs/skills`](https://github.com/vercel-labs/skills) CLI to
-install `plugins/nanlabs-<group>/skills/<skill>/` only. Does **not** install plugins as Claude/Cursor packages, agents,
-MCP, or `/nanlabs-core:setup`.
+Does **not** install plugins, agents, MCP, or `/nanlabs-core:setup`. Packs: [`docs/PACKS.md`](https://github.com/nanlabs/agent-toolkit/blob/main/docs/PACKS.md).
 
-Group pack (subdirectory) or named domain pack:
+## MCP
 
-```bash
-npx skills add nanlabs/agent-toolkit/plugins/nanlabs-delivery/skills
-npx skills add nanlabs/agent-toolkit --skill github-cli-workflow --skill gh-address-comments
-```
-
-See [`docs/PACKS.md`](https://github.com/nanlabs/agent-toolkit/blob/main/docs/PACKS.md).
+Install `nanlabs-design`, `nanlabs-forge`, and/or `nanlabs-integrations`, reload, complete OAuth. Details: [Official MCP](MCP-Setup).
 
 ## Verify
 
 | Path | Check |
 | --- | --- |
-| Claude Code | Ask “what NaNLABS skills are available?” after installing `nanlabs-core` |
-| Cursor IDE | Skills / commands discoverable after local or team install |
-| Cursor Agent CLI | Inventory via `--plugin-dir` print mode (see matrix) |
+| Claude Code | Ask “what NaNLABS skills are available?” after `nanlabs-core` |
+| Cursor IDE | Skills / MCP discoverable after local or team install |
+| Copilot CLI | `copilot plugin list` shows `nanlabs-*` |
 | Skills-only | `npx skills check` lists nested skills |
-
-## Update / uninstall
-
-See [Lifecycle](Lifecycle).
