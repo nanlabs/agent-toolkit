@@ -55,7 +55,7 @@ Source: [compatible-clients](https://agent-plugins.org/compatible-clients)
 
 **Out of production scope:** Gemini, Antigravity, OpenCode.
 
-Complete install = nine group plugins + optional `nanlabs-agents`.
+Complete install = the group plugins + optional `nanlabs-agents`.
 
 ## Client notes
 

@@ -26,7 +26,7 @@ NaNLABS production distribution for AI coding assistants — **smaller** than mu
 
 - Agent Skills under `plugins/nanlabs-<group>/skills/<name>/`
 - Agent personas (`agents/`) + generated plugin agent files (`gen-surfaces`)
-- Nine group plugins plus optional `nanlabs-agents`
+- Group plugins plus optional `nanlabs-agents`
 - Agent Plugins v1.0.0 portable manifests; Copilot `com.github.copilot/agents/`
 - `nanlabs-pyrightination` as a report-only typing skill in `nanlabs-core`
 - Official hosted MCP servers in group plugins (`mcp.json` / `.mcp.json`)

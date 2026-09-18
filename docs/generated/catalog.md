@@ -4,7 +4,7 @@
 
 Source of truth: [`products/plugins.yaml`](../../products/plugins.yaml), [`catalogs/mcp-catalog.yaml`](../../catalogs/mcp-catalog.yaml), [`catalogs/skills-layout.json`](../../catalogs/skills-layout.json).
 
-Marketplace metadata **0.7.0**. **10** plugins · **49** skills · **18** agents · **9** official MCP servers.
+Marketplace metadata **0.7.0**. **+10** plugins · **+45** skills · **+18** agents · **+9** official MCP servers.
 
 ## Plugins
 
@@ -19,7 +19,7 @@ Marketplace metadata **0.7.0**. **10** plugins · **49** skills · **18** agents
 | `nanlabs-ops` | 0.1.0 | 3 | — | Workstation triage, presentations ops, and skill contribution |
 | `nanlabs-tooling` | 0.1.0 | 2 | — | Playwright CLI and Jupyter notebook scaffolding |
 | `nanlabs-workflow` | 0.1.0 | 2 | — | Client delivery workflows and bootstrap |
-| `nanlabs-agents` | 0.2.1 | — | — | Optional. Full 18-persona roster. |
+| `nanlabs-agents` | 0.2.1 | — | — | Optional. Full agent roster. |
 
 ## Official MCP
 

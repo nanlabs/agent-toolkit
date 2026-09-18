@@ -6,10 +6,10 @@ These files are assembled from YAML/JSON catalogs. Edit the catalogs, then run `
 
 | Metric | Count |
 | --- | --- |
-| Plugins | 10 |
-| Skills | 49 |
-| Agents | 18 |
-| Official MCP servers | 9 |
+| Plugins | +10 |
+| Skills | +45 |
+| Agents | +18 |
+| Official MCP servers | +9 |
 
 | File | Contents |
 | --- | --- |

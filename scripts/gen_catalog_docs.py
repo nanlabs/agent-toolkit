@@ -43,6 +43,30 @@ def skill_count(layout_groups: dict[str, list[str]]) -> int:
     return sum(len(names) for names in layout_groups.values())
 
 
+def plus_count(n: int) -> str:
+    """Headline count as +N so marketing copy stays stable across small adds.
+
+    Values >= 20 floor to a multiple of 5 (49 → +45). Smaller catalogs stay +N.
+    """
+    if n <= 0:
+        return "0"
+    if n >= 20:
+        n = (n // 5) * 5
+    return f"+{n}"
+
+
+def plus_badge(label: str, n: int, color: str, message_extra: str = "") -> str:
+    msg = plus_count(n)
+    if message_extra:
+        msg = f"{msg} {message_extra}"
+    encoded = msg.replace("+", "%2B").replace(" ", "%20")
+    alt = msg if message_extra else f"{plus_count(n)} {label}"
+    return (
+        f'  <img src="https://img.shields.io/badge/{label}-{encoded}-{color}" '
+        f'alt="{alt}"/>'
+    )
+
+
 def mcp_for_plugin(plugin_id: str, mcp_catalog: dict[str, dict[str, Any]]) -> list[str]:
     names = [
         name
@@ -88,7 +112,7 @@ def plugins_table(
         if plugin_id == "nanlabs-core":
             role = "Recommended first install. Setup doctor + `/nanlabs-core:setup`."
         elif plugin_id == "nanlabs-agents":
-            role = "Optional. Full 18-persona roster."
+            role = "Optional. Full agent roster."
         lines.append(
             f"| `{plugin_id}` | {version} | {skills_cell} | {mcp_cell} | {role} |"
         )
@@ -174,8 +198,8 @@ def generated_catalog_page(
         "[`catalogs/skills-layout.json`](../../catalogs/skills-layout.json).\n"
         "\n"
         f"Marketplace metadata **{meta_version}**. "
-        f"**{n['plugins']}** plugins · **{n['skills']}** skills · "
-        f"**{n['agents']}** agents · **{n['mcp']}** official MCP servers.\n"
+        f"**{plus_count(n['plugins'])}** plugins · **{plus_count(n['skills'])}** skills · "
+        f"**{plus_count(n['agents'])}** agents · **{plus_count(n['mcp'])}** official MCP servers.\n"
         "\n"
         "## Plugins\n"
         "\n"
@@ -290,7 +314,7 @@ def wiki_skills_reference(layout_groups: dict[str, list[str]]) -> str:
         "\n"
         "# Skills reference\n"
         "\n"
-        f"{n} public skills under `plugins/nanlabs-<group>/skills/<skill>/SKILL.md` "
+        f"{plus_count(n)} public skills under `plugins/nanlabs-<group>/skills/<skill>/SKILL.md` "
         "([Agent Skills](https://agentskills.io/specification)).\n"
         "\n"
         f"Machine catalog: [`catalogs/skill-catalog.yaml`]({REPO_BLOB}/catalogs/skill-catalog.yaml) · "
@@ -375,7 +399,7 @@ def docs_skills_md(layout_groups: dict[str, list[str]]) -> str:
         "\n"
         "# Skills index\n"
         "\n"
-        f"{n} public skills follow the [Agent Skills](https://agentskills.io/specification) "
+        f"{plus_count(n)} public skills follow the [Agent Skills](https://agentskills.io/specification) "
         "format (`SKILL.md`).\n"
         "\n"
         "Install: [`npx skills`](https://github.com/vercel-labs/skills) — "
@@ -451,10 +475,10 @@ def generated_index(
         "\n"
         f"| Metric | Count |\n"
         f"| --- | --- |\n"
-        f"| Plugins | {n['plugins']} |\n"
-        f"| Skills | {n['skills']} |\n"
-        f"| Agents | {n['agents']} |\n"
-        f"| Official MCP servers | {n['mcp']} |\n"
+        f"| Plugins | {plus_count(n['plugins'])} |\n"
+        f"| Skills | {plus_count(n['skills'])} |\n"
+        f"| Agents | {plus_count(n['agents'])} |\n"
+        f"| Official MCP servers | {plus_count(n['mcp'])} |\n"
         "\n"
         "| File | Contents |\n"
         "| --- | --- |\n"
@@ -485,10 +509,10 @@ def readme_regions(
     ids = plugin_ids(products)
     n = counts(products, layout_groups, mcp_catalog, agent_count)
     badges = (
-        f'  <img src="https://img.shields.io/badge/skills-{n["skills"]}-ff6b35" alt="{n["skills"]} skills"/>\n'
-        f'  <img src="https://img.shields.io/badge/agents-{n["agents"]}-58a6ff" alt="{n["agents"]} agents"/>\n'
-        f'  <img src="https://img.shields.io/badge/plugins-{n["plugins"]}-f7c948" alt="{n["plugins"]} plugins"/>\n'
-        f'  <img src="https://img.shields.io/badge/MCP-{n["mcp"]}%20official-7ee787" alt="{n["mcp"]} official MCP"/>'
+        f"{plus_badge('skills', n['skills'], 'ff6b35')}\n"
+        f"{plus_badge('agents', n['agents'], '58a6ff')}\n"
+        f"{plus_badge('plugins', n['plugins'], 'f7c948')}\n"
+        f"{plus_badge('MCP', n['mcp'], '7ee787', 'official')}"
     )
     return {
         "badges": badges,

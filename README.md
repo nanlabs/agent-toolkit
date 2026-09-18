@@ -18,10 +18,10 @@ NaNLABS skills, agents, and plugins — install once, use in Claude Code, Cursor
 
 <p>
 <!-- generated:badges -->
-  <img src="https://img.shields.io/badge/skills-49-ff6b35" alt="49 skills"/>
-  <img src="https://img.shields.io/badge/agents-18-58a6ff" alt="18 agents"/>
-  <img src="https://img.shields.io/badge/plugins-10-f7c948" alt="10 plugins"/>
-  <img src="https://img.shields.io/badge/MCP-9%20official-7ee787" alt="9 official MCP"/>
+  <img src="https://img.shields.io/badge/skills-%2B45-ff6b35" alt="+45 skills"/>
+  <img src="https://img.shields.io/badge/agents-%2B18-58a6ff" alt="+18 agents"/>
+  <img src="https://img.shields.io/badge/plugins-%2B10-f7c948" alt="+10 plugins"/>
+  <img src="https://img.shields.io/badge/MCP-%2B9%20official-7ee787" alt="+9 official"/>
 <!-- /generated:badges -->
 </p>
 
@@ -147,7 +147,7 @@ Tables below are generated from [`products/plugins.yaml`](products/plugins.yaml)
 | `nanlabs-ops` | 0.1.0 | 3 | — | Workstation triage, presentations ops, and skill contribution |
 | `nanlabs-tooling` | 0.1.0 | 2 | — | Playwright CLI and Jupyter notebook scaffolding |
 | `nanlabs-workflow` | 0.1.0 | 2 | — | Client delivery workflows and bootstrap |
-| `nanlabs-agents` | 0.2.1 | — | — | Optional. Full 18-persona roster. |
+| `nanlabs-agents` | 0.2.1 | — | — | Optional. Full agent roster. |
 <!-- /generated:plugins -->
 
 ### Official MCP

@@ -23,7 +23,7 @@ Copy-paste for every plugin is generated from [`products/plugins.yaml`](../produ
 - [Generated catalog](generated/catalog.md) (repo)
 - [Wiki Plugin marketplace](wiki/Plugin-Marketplace.md)
 
-**Complete install** = the nine group plugins, then optionally `nanlabs-agents`:
+**Complete install** = the group plugins, then optionally `nanlabs-agents`:
 
 `nanlabs-core` · `nanlabs-data` · `nanlabs-delivery` · `nanlabs-design` · `nanlabs-forge` · `nanlabs-integrations` · `nanlabs-ops` · `nanlabs-tooling` · `nanlabs-workflow`
 
@@ -117,7 +117,7 @@ npx skills add nanlabs/agent-toolkit -g
 
 This uses the [`vercel-labs/skills`](https://github.com/vercel-labs/skills)
 CLI. It recurses to depth ≤ 5 and finds `SKILL.md` under
-`plugins/nanlabs-<group>/skills/<name>/` (49 skills).
+`plugins/nanlabs-<group>/skills/<name>/`.
 
 Install one group or a named domain pack instead of the whole tree:
 
@@ -133,7 +133,7 @@ Skill index: [`SKILLS.md`](SKILLS.md) · packs: [`PACKS.md`](PACKS.md) · machin
 
 ## Agents and MCP
 
-- Agents: [`../agents/README.md`](../agents/README.md) (18 personas; plugin `nanlabs-agents`)
+- Agents: [`../agents/README.md`](../agents/README.md) (plugin `nanlabs-agents`)
 - MCP: [`../mcp/templates/README.md`](../mcp/templates/README.md) and [`../catalogs/mcp-catalog.yaml`](../catalogs/mcp-catalog.yaml) — official URLs shipped by `nanlabs-design`, `nanlabs-forge`, `nanlabs-integrations`
 - Dependency contracts: [`../contracts/README.md`](../contracts/README.md)
 - Domain packs: [`PACKS.md`](PACKS.md). Remaining outcome-pack **content** is tracked in GitHub issues `#24`, `#25`, and `#28` (no placeholder directories)

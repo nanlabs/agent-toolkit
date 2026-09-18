@@ -2,7 +2,7 @@
 
 # Skills reference
 
-49 public skills under `plugins/nanlabs-<group>/skills/<skill>/SKILL.md` ([Agent Skills](https://agentskills.io/specification)).
++45 public skills under `plugins/nanlabs-<group>/skills/<skill>/SKILL.md` ([Agent Skills](https://agentskills.io/specification)).
 
 Machine catalog: [`catalogs/skill-catalog.yaml`](https://github.com/nanlabs/agent-toolkit/blob/main/catalogs/skill-catalog.yaml) · packs: [`docs/PACKS.md`](https://github.com/nanlabs/agent-toolkit/blob/main/docs/PACKS.md) · human index: [`docs/SKILLS.md`](https://github.com/nanlabs/agent-toolkit/blob/main/docs/SKILLS.md).
 

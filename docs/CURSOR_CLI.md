@@ -30,7 +30,7 @@ Official references: [Cursor plugins](https://cursor.com/docs/plugins) ·
 | --- | --- | --- | --- |
 | Skills from installed plugins | yes | **pass** | `--plugin-dir` + print ask listed all 7 `nanlabs-core` skills |
 | Slash commands from plugins | yes | **pass** | `/nanlabs-core:setup`, `/nanlabs-core:core-help` |
-| Subagents / agents | yes | **pass** | `nanlabs-code-reviewer` from core; all 18 with `nanlabs-agents` |
+| Subagents / agents | yes | **pass** | `nanlabs-code-reviewer` from core; full `nanlabs-agents` roster |
 | Rules | if shipped | n/a | not shipped |
 | Hooks | if shipped | n/a | not shipped |
 | MCP from plugin | if shipped | n/a | MCP not packaged in plugins |

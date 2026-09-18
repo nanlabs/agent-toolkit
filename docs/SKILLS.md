@@ -7,7 +7,7 @@
 
 # Skills index
 
-49 public skills follow the [Agent Skills](https://agentskills.io/specification) format (`SKILL.md`).
++45 public skills follow the [Agent Skills](https://agentskills.io/specification) format (`SKILL.md`).
 
 Install: [`npx skills`](https://github.com/vercel-labs/skills) — `npx skills add nanlabs/agent-toolkit -g`
 Group plugin or domain pack: [`PACKS.md`](PACKS.md)

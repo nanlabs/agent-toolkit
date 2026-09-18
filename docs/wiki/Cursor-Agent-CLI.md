@@ -19,7 +19,7 @@ On CLI `2026.07.23-e383d2b` with `--plugin-dir`:
 
 - Skills from `nanlabs-core` (7)
 - Commands `/nanlabs-core:setup`, `/nanlabs-core:core-help`
-- Agents from core + full 18-agent roster with `nanlabs-agents`
+- Agents from core + full `nanlabs-agents` roster
 - Marketplace **add** works
 
 Known limitation: this CLI build does not expose non-interactive marketplace `plugin install`; use `--plugin-dir` or IDE/Team installation. Sandbox/`--force` behavior is documented in the repo matrix.

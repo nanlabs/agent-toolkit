@@ -19,7 +19,7 @@ Version source of truth: [`products/plugins.yaml`](https://github.com/nanlabs/ag
 | `nanlabs-ops` | 0.1.0 | 3 | — | Workstation triage, presentations ops, and skill contribution |
 | `nanlabs-tooling` | 0.1.0 | 2 | — | Playwright CLI and Jupyter notebook scaffolding |
 | `nanlabs-workflow` | 0.1.0 | 2 | — | Client delivery workflows and bootstrap |
-| `nanlabs-agents` | 0.2.1 | — | — | Optional. Full 18-persona roster. |
+| `nanlabs-agents` | 0.2.1 | — | — | Optional. Full agent roster. |
 
 Deprecated: standalone `nanlabs-setup` (not listed in the marketplace). Setup ships inside `nanlabs-core`.
 

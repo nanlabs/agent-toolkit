@@ -4,7 +4,7 @@ Canonical agent / subagent personas for Claude Code, Cursor, and compatible clie
 
 Machine-readable index: [`catalogs/agent-catalog.yaml`](../catalogs/agent-catalog.yaml).
 
-## Bundled (18)
+## Bundled
 
 | Agent | Role |
 | --- | --- |

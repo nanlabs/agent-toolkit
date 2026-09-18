@@ -14,7 +14,7 @@ What this repository **is** and **is not**. Intentionally smaller than multi-too
 
 - Agent Skills under `plugins/nanlabs-<group>/skills/`
 - Agent personas under `agents/`
-- Nine group plugins plus optional `nanlabs-agents`
+- Group plugins plus optional `nanlabs-agents`
 - Official hosted MCP (`mcp.json` / `.mcp.json` on design, forge, integrations)
 - GitHub Copilot CLI manifests + `.github/` repository surface
 - Validation scripts, catalogs, contribution flow
