@@ -4,6 +4,9 @@
 
 Catalog: [`catalogs/mcp-catalog.yaml`](https://github.com/nanlabs/agent-toolkit/blob/main/catalogs/mcp-catalog.yaml). Templates: [`mcp/templates/`](https://github.com/nanlabs/agent-toolkit/blob/main/mcp/templates).
 
+> [!TIP]
+> Install the plugin, reload, then complete OAuth in the client. Walkthrough: [Installation](Installation) → [Using the toolkit](Using).
+
 Installing **`nanlabs-design`**, **`nanlabs-forge`**, or **`nanlabs-integrations`** registers these hosted servers. Authenticate in the client (OAuth). Plugins never contain tokens.
 
 `nanlabs-core` / `nanlabs-agents` do **not** ship MCP. Skills-only (`npx skills`) does not either.

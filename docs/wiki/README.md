@@ -1,6 +1,6 @@
 # Wiki source (`docs/wiki/`)
 
-Markdown here is the **source of truth** for the [GitHub Wiki](https://github.com/nanlabs/agent-toolkit/wiki).
+Markdown here is the **source of truth** for the live [GitHub Wiki](https://github.com/nanlabs/agent-toolkit/wiki).
 
 This `README.md` stays in the git tree for contributors; the sync workflow **does not** publish it as a Wiki page.
 
@@ -17,4 +17,24 @@ Until the wiki exists, the workflow logs “Wiki not initialized yet” and exit
 
 Edit files in this directory (not the wiki UI) so changes stay reviewable in PRs.
 
-**Generated (do not hand-edit):** `Plugin-Marketplace.md`, `Skills-Reference.md`, `MCP-Setup.md` — assembled by `python3 scripts/gen-surfaces.py` from `products/plugins.yaml` and catalogs. Keep NaNLABS scope smaller than personal multi-tool forks — see [Scope.md](Scope.md).
+Artwork used by wiki pages lives in [`static/`](https://github.com/nanlabs/agent-toolkit/tree/main/static) and is referenced via `raw.githubusercontent.com` (the wiki git repo only receives Markdown).
+
+### Hand-written (users and contributors)
+
+| Page | Audience |
+| --- | --- |
+| `Home.md` | Landing |
+| `Installation.md` | Install plugins |
+| `Using.md` | Day-to-day use |
+| `Add-a-Skill.md` | Propose / author a skill |
+| `Testing.md` | Match CI locally |
+| `Contributing.md` | PR flow |
+| `FAQ.md` · `Scope.md` · `Lifecycle.md` | Support |
+| `Agents-Reference.md` · `Cursor-Agent-CLI.md` | Reference |
+| `_Sidebar.md` | Wiki sidebar |
+
+### Generated (do not hand-edit)
+
+`Plugin-Marketplace.md`, `Skills-Reference.md`, `MCP-Setup.md` — assembled by `python3 scripts/gen-surfaces.py` from `products/plugins.yaml` and catalogs.
+
+Keep NaNLABS scope smaller than personal multi-tool forks — see [Scope.md](Scope.md).

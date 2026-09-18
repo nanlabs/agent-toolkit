@@ -4,6 +4,9 @@
 
 +45 public skills under `plugins/nanlabs-<group>/skills/<skill>/SKILL.md` ([Agent Skills](https://agentskills.io/specification)).
 
+> [!TIP]
+> To **add** a skill, follow [Add a skill](Add-a-Skill). To **install** one, use the matching group plugin or `npx skills` below.
+
 Machine catalog: [`catalogs/skill-catalog.yaml`](https://github.com/nanlabs/agent-toolkit/blob/main/catalogs/skill-catalog.yaml) · packs: [`docs/PACKS.md`](https://github.com/nanlabs/agent-toolkit/blob/main/docs/PACKS.md) · human index: [`docs/SKILLS.md`](https://github.com/nanlabs/agent-toolkit/blob/main/docs/SKILLS.md).
 
 ## Groups

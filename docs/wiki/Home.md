@@ -1,66 +1,75 @@
-> **Note:** Canonical documentation lives under [`docs/`](https://github.com/nanlabs/agent-toolkit/tree/main/docs). This wiki is synced from `docs/wiki/` via GitHub Actions and may lag briefly after merges.
+<div align="center">
 
-# NaNLABS agent-toolkit
+<img alt="NaNLABS agent-toolkit" src="https://raw.githubusercontent.com/nanlabs/agent-toolkit/main/static/hero-banner.svg" width="900">
 
-Public **L1.5** distribution: one plugin per skill group, official hosted MCP, Agent Plugins roster + Claude Code.
+# NaNLABS agent-toolkit wiki
 
-**Install everything** (copy-paste): [Plugin marketplace](Plugin-Marketplace) · generated catalog: [`docs/generated/catalog.md`](https://github.com/nanlabs/agent-toolkit/blob/main/docs/generated/catalog.md)
+Public skills, agents, plugins, and official MCP for Claude Code, Cursor, Copilot, and the [Agent Plugins](https://agent-plugins.org/compatible-clients) roster.
 
-Machine provisioning stays in private [`internal-workstation`](https://github.com/nanlabs/internal-workstation). This repo does **not** ship a consumer CLI or loop runtime.
+[![Wiki](https://img.shields.io/badge/share_this-wiki-58a6ff?style=for-the-badge&logo=github)](https://github.com/nanlabs/agent-toolkit/wiki)
+[![Install](https://img.shields.io/badge/start-install_plugins-ff6b35?style=for-the-badge)](Installation)
+[![Contribute](https://img.shields.io/badge/next-add_a_skill-f7c948?style=for-the-badge)](Add-a-Skill)
 
----
+</div>
 
-## Quick start
+> [!TIP]
+> When someone asks how to install this, connect ClickUp, or propose a skill, send them **this wiki**: [github.com/nanlabs/agent-toolkit/wiki](https://github.com/nanlabs/agent-toolkit/wiki).
 
-### Claude Code
+<img alt="Install, use, then contribute" src="https://raw.githubusercontent.com/nanlabs/agent-toolkit/main/static/wiki-journey.svg" width="900">
 
-```text
-/plugin marketplace add nanlabs/agent-toolkit
-/plugin install nanlabs-core@nanlabs-agent-toolkit
-```
+## Pick a path
 
-Then **`/nanlabs-core:setup`**. Repeat install for the other group plugins, or paste the complete block on [Plugin marketplace](Plugin-Marketplace).
-
-### Cursor IDE
-
-Symlink each `plugins/nanlabs-*` under `~/.cursor/plugins/local/` and reload, or import this repo as a Team Marketplace.
-
-### GitHub Copilot
-
-```bash
-copilot plugin install nanlabs/agent-toolkit:plugins/nanlabs-core
-```
-
----
-
-## Navigation
-
-### Getting started
-
-- [Installation](Installation) — all clients
-- [Plugin marketplace](Plugin-Marketplace) — versions, complete install
-- [Official MCP](MCP-Setup) — ClickUp, Linear, GitHub, Figma, …
-- [Scope](Scope) · [FAQ](FAQ)
-
-### Reference
-
-- [Skills](Skills-Reference) · [Agents](Agents-Reference)
-- [Lifecycle](Lifecycle) · [Cursor Agent CLI](Cursor-Agent-CLI)
-
-### Contributing
-
-- [Contributing](Contributing)
-
----
-
-## Repo docs
-
-| Doc | Topic |
+| I want to… | Page |
 | --- | --- |
-| [`docs/ADOPTION.md`](https://github.com/nanlabs/agent-toolkit/blob/main/docs/ADOPTION.md) | Adoption by client |
-| [`docs/generated/catalog.md`](https://github.com/nanlabs/agent-toolkit/blob/main/docs/generated/catalog.md) | Generated plugin / MCP / skill tables |
-| [`docs/RELEASE.md`](https://github.com/nanlabs/agent-toolkit/blob/main/docs/RELEASE.md) | Versions, tags, rollback |
-| [`README.md`](https://github.com/nanlabs/agent-toolkit/blob/main/README.md) | Hero + architecture artwork |
+| Install plugins in my AI client | [Installation](Installation) |
+| Know which plugin to install | [Using the toolkit](Using) |
+| Connect ClickUp, GitHub, Figma, Linear… | [Official MCP](MCP-Setup) |
+| See every plugin and copy-paste install | [Plugin marketplace](Plugin-Marketplace) |
+| Propose or author a new skill | [Add a skill](Add-a-Skill) |
+| Run the same checks as CI | [Testing](Testing) |
+| Open a pull request | [Contributing](Contributing) |
+
+```mermaid
+flowchart LR
+  A[Pick your client] --> B[Install plugins]
+  B --> C[Reload and OAuth]
+  C --> D[Use skills and MCP]
+  D --> E[Optional: propose a skill]
+```
+
+## Two audiences
+
+### You use the toolkit
+
+You want skills and MCP in Claude Code, Cursor, Copilot, or another Agent Plugins client. You do **not** need to clone this repo.
+
+1. [Installation](Installation) — marketplace or local plugins
+2. [Using the toolkit](Using) — setup doctor, verify, pick a group
+3. [Official MCP](MCP-Setup) — authenticate in the client (no tokens in the plugin)
+4. [FAQ](FAQ) — common snags
+
+NaNLABS laptops are provisioned separately by private `internal-workstation`. You can still install this public repo without that machine baseline.
+
+### You want to contribute
+
+You want to add a skill, fix docs, or change a plugin.
+
+1. [Add a skill](Add-a-Skill) — issue template, layout, review bar
+2. [Testing](Testing) — validators that match CI
+3. [Contributing](Contributing) — branch, PR template, public-safety rules
+
+Canonical long-form stays in the [docs/ tree](https://github.com/nanlabs/agent-toolkit/tree/main/docs). This wiki is the shareable map.
+
+## What you get
+
+| Piece | What it is |
+| --- | --- |
+| **Group plugins** | One plugin per skill group (`nanlabs-core`, `nanlabs-delivery`, …) |
+| **Skills** | Agent Skills (`SKILL.md`) inside each plugin |
+| **Agents** | Personas; core ships a reviewer, `nanlabs-agents` ships the full roster |
+| **Official MCP** | Hosted OAuth servers on design / forge / integrations plugins |
+
+Catalog tables are generated from YAML so they cannot drift. See [Plugin marketplace](Plugin-Marketplace) and [Skills](Skills-Reference).
 
 ## License
 

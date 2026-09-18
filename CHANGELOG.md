@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- User-facing GitHub Wiki: install plugins, using the toolkit, add a skill, testing, and contributing. README and docs index send people to [the live wiki](https://github.com/nanlabs/agent-toolkit/wiki).
+
 ### Removed
 
 - Deprecated standalone `nanlabs-setup` plugin stub. Setup remains the `nanlabs-setup` skill inside `nanlabs-core` (`/nanlabs-core:setup`).

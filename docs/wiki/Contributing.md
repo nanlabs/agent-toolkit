@@ -1,6 +1,17 @@
-# 🤝 Contributing
+# Contributing
+
+Thanks for contributing to **nanlabs/agent-toolkit**. This repo is public. PRs must stay free of secrets, private URLs, and client data.
 
 Canonical: [`CONTRIBUTING.md`](https://github.com/nanlabs/agent-toolkit/blob/main/CONTRIBUTING.md) · agent contract: [`AGENTS.md`](https://github.com/nanlabs/agent-toolkit/blob/main/AGENTS.md).
+
+```mermaid
+flowchart LR
+  A[Branch from main] --> B[Make a focused change]
+  B --> C[Run Testing validators]
+  C --> D[Open ready PR]
+  D --> E[CI + CODEOWNERS]
+  E --> F[Squash-merge]
+```
 
 ## Setup
 
@@ -11,33 +22,33 @@ python3 -m pip install pre-commit
 pre-commit install
 ```
 
-## Validate
+## Pull requests
 
-Match CI (`.github/workflows/validate.yml`) as closely as practical:
+1. Branch from `main`.
+2. Keep the PR focused and link an issue: `Fixes #N` or `Refs #N` (Danger fails without it).
+3. Fill the PR template, including the **public-repo** checklist.
+4. New or changed skills/agents also fill the Skill/Agent checklist.
+5. Open the PR as **ready** (not draft) so Validate actually runs.
+6. Prefer squash merges.
 
-```bash
-bash scripts/validate-repo-structure.sh
-python3 scripts/validate-manifests.py
-python3 scripts/validate-skills.py
-python3 scripts/validate-agents.py
-python3 scripts/validate-pack-catalog.py
-python3 scripts/validate-mcp.py
-python3 scripts/gen-surfaces.py --check
-python3 scripts/validate-contracts.py
-python3 scripts/doctor-contracts.py --contract nanlabs-core
-python3 plugins/nanlabs-core/scripts/doctor-contracts.py --contract nanlabs-core
-bash scripts/secret-scan.sh
-pre-commit run --all-files
-```
+English for commits, PR titles, tickets, and docs. Conversation with reviewers can be any language.
 
 ## Propose a skill
 
-Open a **Propose skill** issue, then follow [`docs/CONTRIBUTION.md`](https://github.com/nanlabs/agent-toolkit/blob/main/docs/CONTRIBUTION.md) and skill `nanlabs-propose-skill`. Maintainers review for security, duplication, quality, and pack membership.
+Follow [Add a skill](Add-a-Skill). Use the **Propose skill** issue template, then the `nanlabs-propose-skill` skill.
+
+## How to test
+
+Full command list and local plugin smokes: [Testing](Testing).
 
 ## Wiki source
 
-Edit pages under `docs/wiki/` in git. After merge to `main`, the **Sync Wiki** workflow copies them to the GitHub Wiki (wiki must be initialized once on GitHub).
+Edit pages under [`docs/wiki/`](https://github.com/nanlabs/agent-toolkit/tree/main/docs/wiki) in git — **not** the GitHub Wiki UI — so changes stay reviewable.
+
+On push to `main`, [Sync Wiki](https://github.com/nanlabs/agent-toolkit/blob/main/.github/workflows/wiki-sync.yml) copies `*.md` (except this tree’s `README.md`) to [the live wiki](https://github.com/nanlabs/agent-toolkit/wiki).
+
+Generated pages (do not hand-edit): `Plugin-Marketplace.md`, `Skills-Reference.md`, `MCP-Setup.md`. Change YAML catalogs and run `python3 scripts/gen-surfaces.py`.
 
 ## Public safety
 
-No secrets, private URLs, or client data. See [`docs/PUBLIC_CONTENT_POLICY.md`](https://github.com/nanlabs/agent-toolkit/blob/main/docs/PUBLIC_CONTENT_POLICY.md).
+See [`docs/PUBLIC_CONTENT_POLICY.md`](https://github.com/nanlabs/agent-toolkit/blob/main/docs/PUBLIC_CONTENT_POLICY.md). Code owners: [`.github/CODEOWNERS`](https://github.com/nanlabs/agent-toolkit/blob/main/.github/CODEOWNERS).

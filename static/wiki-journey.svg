@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="240" viewBox="0 0 1080 240" role="img" aria-labelledby="journey-title">
+  <title id="journey-title">Install plugins, use skills and MCP, then contribute</title>
+  <defs>
+    <linearGradient id="j-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0d1117"/>
+      <stop offset="100%" stop-color="#161b22"/>
+    </linearGradient>
+    <linearGradient id="j-bar" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ff6b35"/>
+      <stop offset="50%" stop-color="#f7c948"/>
+      <stop offset="100%" stop-color="#58a6ff"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1080" height="240" rx="14" fill="url(#j-bg)"/>
+  <rect x="0" y="0" width="1080" height="4" fill="url(#j-bar)"/>
+  <text x="540" y="36" text-anchor="middle" fill="#8b949e" font-family="Arial, Helvetica, sans-serif" font-size="13">HOW PEOPLE USE THIS REPO</text>
+
+  <rect x="40" y="58" width="300" height="140" rx="12" fill="#21262d" stroke="#ff6b35"/>
+  <text x="190" y="96" text-anchor="middle" fill="#ff6b35" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700">1. Install</text>
+  <text x="190" y="128" text-anchor="middle" fill="#c9d1d9" font-family="Arial, Helvetica, sans-serif" font-size="14">Add the marketplace</text>
+  <text x="190" y="150" text-anchor="middle" fill="#c9d1d9" font-family="Arial, Helvetica, sans-serif" font-size="14">Install group plugins</text>
+  <text x="190" y="172" text-anchor="middle" fill="#8b949e" font-family="Arial, Helvetica, sans-serif" font-size="12">Claude, Cursor, Copilot, ...</text>
+
+  <path d="M355 128 L385 128" stroke="#484f58" stroke-width="2"/>
+  <path d="M377 120 L389 128 L377 136" fill="none" stroke="#484f58" stroke-width="2"/>
+
+  <rect x="390" y="58" width="300" height="140" rx="12" fill="#21262d" stroke="#f7c948"/>
+  <text x="540" y="96" text-anchor="middle" fill="#f7c948" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700">2. Use</text>
+  <text x="540" y="128" text-anchor="middle" fill="#c9d1d9" font-family="Arial, Helvetica, sans-serif" font-size="14">Skills, agents, setup doctor</text>
+  <text x="540" y="150" text-anchor="middle" fill="#c9d1d9" font-family="Arial, Helvetica, sans-serif" font-size="14">Official MCP OAuth</text>
+  <text x="540" y="172" text-anchor="middle" fill="#8b949e" font-family="Arial, Helvetica, sans-serif" font-size="12">No tokens in the plugin</text>
+
+  <path d="M705 128 L735 128" stroke="#484f58" stroke-width="2"/>
+  <path d="M727 120 L739 128 L727 136" fill="none" stroke="#484f58" stroke-width="2"/>
+
+  <rect x="740" y="58" width="300" height="140" rx="12" fill="#21262d" stroke="#58a6ff"/>
+  <text x="890" y="96" text-anchor="middle" fill="#58a6ff" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700">3. Contribute</text>
+  <text x="890" y="128" text-anchor="middle" fill="#c9d1d9" font-family="Arial, Helvetica, sans-serif" font-size="14">Propose a skill or fix</text>
+  <text x="890" y="150" text-anchor="middle" fill="#c9d1d9" font-family="Arial, Helvetica, sans-serif" font-size="14">Validate, then open a PR</text>
+  <text x="890" y="172" text-anchor="middle" fill="#8b949e" font-family="Arial, Helvetica, sans-serif" font-size="12">Public repo, no secrets</text>
+</svg>

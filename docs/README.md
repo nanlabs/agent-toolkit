@@ -20,7 +20,7 @@ Consumer-facing and maintainer docs for `nanlabs/agent-toolkit` (**L1.5**). Mach
 | --- | --- |
 | `docs/` | Adoption, scope, lifecycle, authoring, certification |
 | `docs/generated/` | Plugin / MCP / skill tables assembled from catalogs |
-| `docs/wiki/` | GitHub Wiki source (synced on `main`) |
+| `docs/wiki/` | GitHub Wiki source (synced on `main` → [live wiki](https://github.com/nanlabs/agent-toolkit/wiki)) |
 | `docs/adrs/` | Architecture Decision Records |
 | `static/` | README artwork |
 
@@ -35,7 +35,7 @@ Consumer-facing and maintainer docs for `nanlabs/agent-toolkit` (**L1.5**). Mach
 | [LIFECYCLE.md](LIFECYCLE.md) | Update / pin / rollback |
 | [CURSOR_CLI.md](CURSOR_CLI.md) | Cursor Agent CLI certification matrix |
 | [AGENT_PLUGINS.md](AGENT_PLUGINS.md) | Portable versus native plugin surfaces |
-| [wiki/Home.md](wiki/Home.md) | Wiki landing (synced) |
+| [wiki/Home.md](wiki/Home.md) | Wiki source · **live:** [github.com/nanlabs/agent-toolkit/wiki](https://github.com/nanlabs/agent-toolkit/wiki) |
 
 ## Operators / certification
 
@@ -68,4 +68,4 @@ Consumer-facing and maintainer docs for `nanlabs/agent-toolkit` (**L1.5**). Mach
 
 ## GitHub Wiki
 
-Human-browsable mirror synced from [`wiki/`](wiki/) via [`.github/workflows/wiki-sync.yml`](../.github/workflows/wiki-sync.yml) (initialize the wiki once on GitHub). Prefer editing `docs/wiki/` in PRs.
+Human-browsable wiki: **[github.com/nanlabs/agent-toolkit/wiki](https://github.com/nanlabs/agent-toolkit/wiki)**. Source is [`wiki/`](wiki/), synced via [`.github/workflows/wiki-sync.yml`](../.github/workflows/wiki-sync.yml). Prefer editing `docs/wiki/` in PRs. User-facing pages: Installation, Using, Add-a-Skill, Testing, Contributing.

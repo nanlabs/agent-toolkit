@@ -2,6 +2,9 @@
 
 # Plugin marketplace
 
+> [!TIP]
+> New here? Start at [Installation](Installation), then come back for the complete copy-paste blocks. Day-to-day use: [Using the toolkit](Using).
+
 Catalogs: [Claude](https://github.com/nanlabs/agent-toolkit/blob/main/.claude-plugin/marketplace.json) · [Cursor](https://github.com/nanlabs/agent-toolkit/blob/main/.cursor-plugin/marketplace.json) · [ChatGPT/Codex](https://github.com/nanlabs/agent-toolkit/blob/main/.agents/plugins/marketplace.json).
 
 Version source of truth: [`products/plugins.yaml`](https://github.com/nanlabs/agent-toolkit/blob/main/products/plugins.yaml). Regenerate with `python3 scripts/gen-surfaces.py`.

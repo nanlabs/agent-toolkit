@@ -1,21 +1,24 @@
 ## NaNLABS agent-toolkit
 
-### Getting started
+### Using
 
 - [Home](Home)
 - [Installation](Installation)
-- [Plugin marketplace](Plugin-Marketplace)
+- [Using the toolkit](Using)
 - [Official MCP](MCP-Setup)
-- [Scope](Scope)
+- [Plugin marketplace](Plugin-Marketplace)
 - [FAQ](FAQ)
 
 ### Reference
 
 - [Skills](Skills-Reference)
 - [Agents](Agents-Reference)
+- [Updates and rollback](Lifecycle)
 - [Cursor Agent CLI](Cursor-Agent-CLI)
-- [Lifecycle](Lifecycle)
+- [Scope](Scope)
 
 ### Contributing
 
+- [Add a skill](Add-a-Skill)
+- [Testing](Testing)
 - [Contributing](Contributing)

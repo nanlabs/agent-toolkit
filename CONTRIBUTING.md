@@ -63,6 +63,6 @@ See `.github/CODEOWNERS`.
 
 - Repo docs: `docs/` (index: `docs/README.md`)
 - Packs: `docs/PACKS.md` · contribution: `docs/CONTRIBUTION.md`
-- GitHub Wiki source: `docs/wiki/` — synced to the wiki on push to `main` (see `.github/workflows/wiki-sync.yml`). Initialize the wiki once on GitHub before the first sync succeeds.
+- GitHub Wiki source: `docs/wiki/` — live wiki: [github.com/nanlabs/agent-toolkit/wiki](https://github.com/nanlabs/agent-toolkit/wiki) — synced on push to `main` (see `.github/workflows/wiki-sync.yml`). Initialize the wiki once on GitHub before the first sync succeeds.
 - Prefer editing `docs/wiki/` in PRs rather than the wiki UI.
 - README artwork lives under `static/` (NaNLABS dark + orange/gold palette).

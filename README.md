@@ -6,9 +6,10 @@
 
 NaNLABS skills, agents, and plugins — install once, use in Claude Code, Cursor, Copilot, and the [Agent Plugins](https://agent-plugins.org/compatible-clients) roster.
 
-[Docs](docs/README.md) · [Catalog](docs/generated/catalog.md) · [Adoption](docs/ADOPTION.md) · [Wiki](docs/wiki/Home.md) · [Contributing](CONTRIBUTING.md)
+[Wiki](https://github.com/nanlabs/agent-toolkit/wiki) · [Install plugins](https://github.com/nanlabs/agent-toolkit/wiki/Installation) · [Add a skill](https://github.com/nanlabs/agent-toolkit/wiki/Add-a-Skill) · [Contribute](https://github.com/nanlabs/agent-toolkit/wiki/Contributing)
 
 <p>
+  <a href="https://github.com/nanlabs/agent-toolkit/wiki"><img src="https://img.shields.io/badge/GitHub-Wiki-58a6ff?logo=github" alt="GitHub Wiki"/></a>
   <a href="https://github.com/nanlabs/agent-toolkit/actions/workflows/validate.yml"><img src="https://img.shields.io/github/actions/workflow/status/nanlabs/agent-toolkit/validate.yml?branch=main&label=validate&color=58a6ff" alt="Validate"/></a>
   <a href="https://github.com/nanlabs/agent-toolkit/actions/workflows/mega-linter.yml"><img src="https://img.shields.io/github/actions/workflow/status/nanlabs/agent-toolkit/mega-linter.yml?branch=main&label=megalinter&color=f7c948" alt="MegaLinter"/></a>
   <a href="https://agentskills.io/specification"><img src="https://img.shields.io/badge/Agent%20Skills-compatible-7ee787" alt="Agent Skills compatible"/></a>
@@ -30,6 +31,7 @@ NaNLABS skills, agents, and plugins — install once, use in Claude Code, Cursor
 > [!IMPORTANT]
 > **This repo is the public product** (L1.5): skills, agents, plugins, official MCP.
 > **NaNLABS laptops** are provisioned by private **`nanlabs/internal-workstation`** (L1). Employees run `nan-ai-enable` after chezmoi. You do **not** need the workstation to install plugins from here.
+> **How do I use this?** The [GitHub Wiki](https://github.com/nanlabs/agent-toolkit/wiki) is the shareable guide: [install plugins](https://github.com/nanlabs/agent-toolkit/wiki/Installation), [day-to-day use](https://github.com/nanlabs/agent-toolkit/wiki/Using), [add a skill](https://github.com/nanlabs/agent-toolkit/wiki/Add-a-Skill), [testing](https://github.com/nanlabs/agent-toolkit/wiki/Testing).
 
 ## Install everything
 
@@ -181,15 +183,20 @@ Authenticate in the client. No tokens in the plugin. Slack may need workspace ad
 
 ## Docs
 
+Start at the **[GitHub Wiki](https://github.com/nanlabs/agent-toolkit/wiki)** (synced from `docs/wiki/`). Long-form repo docs stay under `docs/`.
+
 | Need | Go to |
 | --- | --- |
-| Install by client | [Adoption](docs/ADOPTION.md) · [wiki Installation](docs/wiki/Installation.md) |
-| Plugin / MCP / skill tables | [Generated catalog](docs/generated/catalog.md) · [wiki](docs/wiki/Home.md) |
-| In / out of scope | [Scope](docs/SCOPE.md) |
-| Common questions | [FAQ](docs/FAQ.md) |
-| Add a skill | [Contribution](docs/CONTRIBUTION.md) · [Authoring](docs/AUTHORING.md) |
+| Install plugins | [Wiki: Installation](https://github.com/nanlabs/agent-toolkit/wiki/Installation) |
+| Use skills and MCP | [Wiki: Using](https://github.com/nanlabs/agent-toolkit/wiki/Using) · [Official MCP](https://github.com/nanlabs/agent-toolkit/wiki/MCP-Setup) |
+| Add a skill / open a PR | [Wiki: Add a skill](https://github.com/nanlabs/agent-toolkit/wiki/Add-a-Skill) · [Wiki: Contributing](https://github.com/nanlabs/agent-toolkit/wiki/Contributing) |
+| Run the same checks as CI | [Wiki: Testing](https://github.com/nanlabs/agent-toolkit/wiki/Testing) |
+| Plugin / MCP / skill tables | [Wiki: Plugin marketplace](https://github.com/nanlabs/agent-toolkit/wiki/Plugin-Marketplace) · [Generated catalog](docs/generated/catalog.md) |
+| Install matrix by client | [Adoption](docs/ADOPTION.md) |
+| In / out of scope | [Wiki: Scope](https://github.com/nanlabs/agent-toolkit/wiki/Scope) · [SCOPE.md](docs/SCOPE.md) |
+| Common questions | [Wiki: FAQ](https://github.com/nanlabs/agent-toolkit/wiki/FAQ) |
 | Packs | [PACKS](docs/PACKS.md) |
-| Release / pin / rollback | [RELEASE](docs/RELEASE.md) · [LIFECYCLE](docs/LIFECYCLE.md) |
+| Release / pin / rollback | [Wiki: Lifecycle](https://github.com/nanlabs/agent-toolkit/wiki/Lifecycle) · [RELEASE](docs/RELEASE.md) |
 
 ## Quality bar
 

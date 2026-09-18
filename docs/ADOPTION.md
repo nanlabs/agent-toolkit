@@ -10,7 +10,7 @@
 
 How to install and use `nanlabs/agent-toolkit`.
 
-Also see [SCOPE.md](SCOPE.md), [FAQ.md](FAQ.md), the [generated catalog](generated/catalog.md), and the [wiki source](wiki/).
+Also see [SCOPE.md](SCOPE.md), [FAQ.md](FAQ.md), the [generated catalog](generated/catalog.md), and the live **[GitHub Wiki](https://github.com/nanlabs/agent-toolkit/wiki)** (source: [`wiki/`](wiki/)).
 
 **Production:** [Agent Plugins](https://agent-plugins.org/compatible-clients) roster (9 clients) **plus** Claude Code (native marketplace; not on that roster). Group plugins ship official hosted MCP in `mcp.json` (Agent Plugins / Cursor) and `.mcp.json` (Claude Code). Authenticate in the client — no tokens in the plugin. Cursor Agent CLI certification evidence lives in [`CURSOR_CLI.md`](CURSOR_CLI.md) — evidence gap ≠ lower product priority.
 
@@ -21,7 +21,7 @@ There is **no** root `plugin.json`. Each package is `plugins/nanlabs-<group>/` (
 Copy-paste for every plugin is generated from [`products/plugins.yaml`](../products/plugins.yaml):
 
 - [Generated catalog](generated/catalog.md) (repo)
-- [Wiki Plugin marketplace](wiki/Plugin-Marketplace.md)
+- [Live wiki: Plugin marketplace](https://github.com/nanlabs/agent-toolkit/wiki/Plugin-Marketplace)
 
 **Complete install** = the group plugins, then optionally `nanlabs-agents`:
 

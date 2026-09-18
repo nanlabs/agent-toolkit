@@ -2,6 +2,8 @@
 
 What this repository **is** and **is not**. Intentionally smaller than multi-tool personal forks.
 
+<img alt="L1 workstation and L1.5 agent-toolkit" src="https://raw.githubusercontent.com/nanlabs/agent-toolkit/main/static/architecture.svg" width="800">
+
 ## In scope (clients)
 
 | Surface | Role |
@@ -36,3 +38,5 @@ OpenCode, Windsurf, Gemini CLI, Pi, and similar — portable skills may still wo
 | --- | --- | --- |
 | L1 | `internal-workstation` (private) | OS tools, secrets, doctor fleet |
 | L1.5 | **this repo** (public) | Skills, agents, plugins, official MCP, catalogs |
+
+Long-form: [`docs/SCOPE.md`](https://github.com/nanlabs/agent-toolkit/blob/main/docs/SCOPE.md).
