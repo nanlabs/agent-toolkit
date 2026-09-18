@@ -1,4 +1,5 @@
-<svg width="1080" height="420" viewBox="0 0 1080 420" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="arch-title">
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="420" viewBox="0 0 1080 420" role="img" aria-labelledby="arch-title">
   <title id="arch-title">L1 workstation and L1.5 agent-toolkit layers</title>
   <defs>
     <linearGradient id="arch-panel" x1="0%" y1="0%" x2="0%" y2="100%">
@@ -13,58 +14,54 @@
   </defs>
 
   <rect width="1080" height="420" rx="14" fill="#0d1117"/>
-  <text x="540" y="36" text-anchor="middle" fill="#8b949e" font-family="ui-sans-serif, system-ui, Segoe UI, sans-serif" font-size="13" letter-spacing="1.4">DISTRIBUTION LAYERS</text>
+  <text x="540" y="36" text-anchor="middle" fill="#8b949e" font-family="Arial, Helvetica, sans-serif" font-size="13">DISTRIBUTION LAYERS</text>
 
   <rect x="40" y="52" width="1000" height="70" rx="12" fill="url(#arch-panel)" stroke="#30363d"/>
-  <text x="64" y="82" fill="#ff6b35" font-family="ui-sans-serif, system-ui, Segoe UI, sans-serif" font-size="15" font-weight="700">L1 - internal-workstation (private)</text>
-  <text x="64" y="104" fill="#8b949e" font-family="ui-sans-serif, system-ui, Segoe UI, sans-serif" font-size="13">Machine provisioning, secrets, chezmoi. nan-ai-enable pins this repo.</text>
+  <text x="64" y="82" fill="#ff6b35" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="700">L1 - internal-workstation (private)</text>
+  <text x="64" y="104" fill="#8b949e" font-family="Arial, Helvetica, sans-serif" font-size="13">Machine provisioning, secrets, chezmoi. nan-ai-enable pins this repo.</text>
 
   <path d="M540 130 L540 150" stroke="#484f58" stroke-width="2"/>
   <path d="M532 142 L540 154 L548 142" fill="none" stroke="#484f58" stroke-width="2"/>
 
   <rect x="40" y="158" width="1000" height="148" rx="12" fill="url(#arch-focus)" stroke="#f7c948" stroke-width="1.6"/>
-  <text x="64" y="190" fill="#f7c948" font-family="ui-sans-serif, system-ui, Segoe UI, sans-serif" font-size="15" font-weight="700">L1.5 - nanlabs/agent-toolkit (this public repo)</text>
-  <text x="64" y="214" fill="#c9d1d9" font-family="ui-sans-serif, system-ui, Segoe UI, sans-serif" font-size="13">One plugin per skill group. Official hosted MCP. Catalogs are the source of truth.</text>
-  <text x="64" y="236" fill="#8b949e" font-family="ui-sans-serif, system-ui, Segoe UI, sans-serif" font-size="12">products/plugins.yaml · catalogs/mcp-catalog.yaml · catalogs/skills-layout.json</text>
+  <text x="64" y="190" fill="#f7c948" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="700">L1.5 - nanlabs/agent-toolkit (this public repo)</text>
+  <text x="64" y="214" fill="#c9d1d9" font-family="Arial, Helvetica, sans-serif" font-size="13">One plugin per skill group. Official hosted MCP. Catalogs are the source of truth.</text>
+  <text x="64" y="236" fill="#8b949e" font-family="Arial, Helvetica, sans-serif" font-size="12">products/plugins.yaml - catalogs/mcp-catalog.yaml - catalogs/skills-layout.json</text>
 
-  <g font-family="ui-sans-serif, system-ui, Segoe UI, sans-serif" font-size="11" font-weight="600">
-    <rect x="64" y="256" width="86" height="26" rx="8" fill="#0d1117" stroke="#f7c948"/>
-    <text x="107" y="273" text-anchor="middle" fill="#f7c948">core</text>
-    <rect x="158" y="256" width="86" height="26" rx="8" fill="#0d1117" stroke="#30363d"/>
-    <text x="201" y="273" text-anchor="middle" fill="#c9d1d9">data</text>
-    <rect x="252" y="256" width="94" height="26" rx="8" fill="#0d1117" stroke="#30363d"/>
-    <text x="299" y="273" text-anchor="middle" fill="#c9d1d9">delivery</text>
-    <rect x="354" y="256" width="86" height="26" rx="8" fill="#0d1117" stroke="#58a6ff"/>
-    <text x="397" y="273" text-anchor="middle" fill="#58a6ff">design</text>
-    <rect x="448" y="256" width="86" height="26" rx="8" fill="#0d1117" stroke="#58a6ff"/>
-    <text x="491" y="273" text-anchor="middle" fill="#58a6ff">forge</text>
-    <rect x="542" y="256" width="110" height="26" rx="8" fill="#0d1117" stroke="#58a6ff"/>
-    <text x="597" y="273" text-anchor="middle" fill="#58a6ff">integrations</text>
-    <rect x="660" y="256" width="70" height="26" rx="8" fill="#0d1117" stroke="#30363d"/>
-    <text x="695" y="273" text-anchor="middle" fill="#c9d1d9">ops</text>
-    <rect x="738" y="256" width="86" height="26" rx="8" fill="#0d1117" stroke="#30363d"/>
-    <text x="781" y="273" text-anchor="middle" fill="#c9d1d9">tooling</text>
-    <rect x="832" y="256" width="94" height="26" rx="8" fill="#0d1117" stroke="#30363d"/>
-    <text x="879" y="273" text-anchor="middle" fill="#c9d1d9">workflow</text>
-    <rect x="934" y="256" width="86" height="26" rx="8" fill="#0d1117" stroke="#7ee787"/>
-    <text x="977" y="273" text-anchor="middle" fill="#7ee787">agents</text>
-  </g>
+  <rect x="64" y="256" width="86" height="26" rx="8" fill="#0d1117" stroke="#f7c948"/>
+  <text x="107" y="273" text-anchor="middle" fill="#f7c948" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="700">core</text>
+  <rect x="158" y="256" width="86" height="26" rx="8" fill="#0d1117" stroke="#30363d"/>
+  <text x="201" y="273" text-anchor="middle" fill="#c9d1d9" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="700">data</text>
+  <rect x="252" y="256" width="94" height="26" rx="8" fill="#0d1117" stroke="#30363d"/>
+  <text x="299" y="273" text-anchor="middle" fill="#c9d1d9" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="700">delivery</text>
+  <rect x="354" y="256" width="86" height="26" rx="8" fill="#0d1117" stroke="#58a6ff"/>
+  <text x="397" y="273" text-anchor="middle" fill="#58a6ff" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="700">design</text>
+  <rect x="448" y="256" width="86" height="26" rx="8" fill="#0d1117" stroke="#58a6ff"/>
+  <text x="491" y="273" text-anchor="middle" fill="#58a6ff" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="700">forge</text>
+  <rect x="542" y="256" width="110" height="26" rx="8" fill="#0d1117" stroke="#58a6ff"/>
+  <text x="597" y="273" text-anchor="middle" fill="#58a6ff" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="700">integrations</text>
+  <rect x="660" y="256" width="70" height="26" rx="8" fill="#0d1117" stroke="#30363d"/>
+  <text x="695" y="273" text-anchor="middle" fill="#c9d1d9" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="700">ops</text>
+  <rect x="738" y="256" width="86" height="26" rx="8" fill="#0d1117" stroke="#30363d"/>
+  <text x="781" y="273" text-anchor="middle" fill="#c9d1d9" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="700">tooling</text>
+  <rect x="832" y="256" width="94" height="26" rx="8" fill="#0d1117" stroke="#30363d"/>
+  <text x="879" y="273" text-anchor="middle" fill="#c9d1d9" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="700">workflow</text>
+  <rect x="934" y="256" width="86" height="26" rx="8" fill="#0d1117" stroke="#7ee787"/>
+  <text x="977" y="273" text-anchor="middle" fill="#7ee787" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="700">agents</text>
 
-  <text x="64" y="338" fill="#8b949e" font-family="ui-sans-serif, system-ui, Segoe UI, sans-serif" font-size="12" font-weight="700" letter-spacing="0.8">CLIENTS (equal priority)</text>
-  <g font-family="ui-sans-serif, system-ui, Segoe UI, sans-serif" font-size="12" font-weight="600">
-    <rect x="64" y="352" width="140" height="30" rx="8" fill="#21262d" stroke="#30363d"/>
-    <text x="134" y="372" text-anchor="middle" fill="#ff6b35">Claude Code</text>
-    <rect x="216" y="352" width="120" height="30" rx="8" fill="#21262d" stroke="#30363d"/>
-    <text x="276" y="372" text-anchor="middle" fill="#58a6ff">Cursor IDE</text>
-    <rect x="348" y="352" width="150" height="30" rx="8" fill="#21262d" stroke="#30363d"/>
-    <text x="423" y="372" text-anchor="middle" fill="#7ee787">Cursor Agent CLI</text>
-    <rect x="510" y="352" width="140" height="30" rx="8" fill="#21262d" stroke="#30363d"/>
-    <text x="580" y="372" text-anchor="middle" fill="#79c0ff">GitHub Copilot</text>
-    <rect x="662" y="352" width="100" height="30" rx="8" fill="#21262d" stroke="#30363d"/>
-    <text x="712" y="372" text-anchor="middle" fill="#f7c948">VS Code</text>
-    <rect x="774" y="352" width="110" height="30" rx="8" fill="#21262d" stroke="#30363d"/>
-    <text x="829" y="372" text-anchor="middle" fill="#c9d1d9">Codex / Kiro</text>
-    <rect x="896" y="352" width="140" height="30" rx="8" fill="#21262d" stroke="#30363d"/>
-    <text x="966" y="372" text-anchor="middle" fill="#8b949e">+ AP roster</text>
-  </g>
+  <text x="64" y="338" fill="#8b949e" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700">CLIENTS (equal priority)</text>
+  <rect x="64" y="352" width="140" height="30" rx="8" fill="#21262d" stroke="#30363d"/>
+  <text x="134" y="372" text-anchor="middle" fill="#ff6b35" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700">Claude Code</text>
+  <rect x="216" y="352" width="120" height="30" rx="8" fill="#21262d" stroke="#30363d"/>
+  <text x="276" y="372" text-anchor="middle" fill="#58a6ff" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700">Cursor IDE</text>
+  <rect x="348" y="352" width="150" height="30" rx="8" fill="#21262d" stroke="#30363d"/>
+  <text x="423" y="372" text-anchor="middle" fill="#7ee787" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700">Cursor Agent CLI</text>
+  <rect x="510" y="352" width="140" height="30" rx="8" fill="#21262d" stroke="#30363d"/>
+  <text x="580" y="372" text-anchor="middle" fill="#79c0ff" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700">GitHub Copilot</text>
+  <rect x="662" y="352" width="100" height="30" rx="8" fill="#21262d" stroke="#30363d"/>
+  <text x="712" y="372" text-anchor="middle" fill="#f7c948" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700">VS Code</text>
+  <rect x="774" y="352" width="110" height="30" rx="8" fill="#21262d" stroke="#30363d"/>
+  <text x="829" y="372" text-anchor="middle" fill="#c9d1d9" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700">Codex / Kiro</text>
+  <rect x="896" y="352" width="140" height="30" rx="8" fill="#21262d" stroke="#30363d"/>
+  <text x="966" y="372" text-anchor="middle" fill="#8b949e" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700">+ AP roster</text>
 </svg>

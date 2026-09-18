@@ -1,6 +1,6 @@
-<svg width="1280" height="320" viewBox="0 0 1280 320" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="320" viewBox="0 0 1280 320" role="img" aria-labelledby="title">
   <title id="title">NaNLABS agent-toolkit</title>
-  <desc id="desc">Public L1.5 distribution: one plugin per skill group, official hosted MCP, Agent Plugins roster plus Claude Code.</desc>
   <defs>
     <linearGradient id="hero-bg" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#0d1117"/>
@@ -21,56 +21,40 @@
       <stop offset="0%" stop-color="#21262d"/>
       <stop offset="100%" stop-color="#161b22"/>
     </linearGradient>
-    <pattern id="hero-grid" width="32" height="32" patternUnits="userSpaceOnUse">
-      <path d="M32 0H0V32" fill="none" stroke="#30363d" stroke-width="0.6" opacity="0.45"/>
-    </pattern>
   </defs>
 
   <rect width="1280" height="320" rx="18" fill="url(#hero-bg)"/>
-  <rect width="1280" height="320" rx="18" fill="url(#hero-grid)" opacity="0.35"/>
   <ellipse cx="980" cy="80" rx="280" ry="140" fill="url(#hero-wash)"/>
   <ellipse cx="220" cy="260" rx="220" ry="90" fill="#58a6ff" opacity="0.05"/>
   <rect x="0" y="0" width="1280" height="5" rx="2.5" fill="url(#hero-accent)"/>
 
-  <!-- Plugin stack -->
-  <g font-family="ui-sans-serif, system-ui, Segoe UI, sans-serif">
-    <rect x="48" y="54" width="228" height="72" rx="12" fill="url(#card-fill)" stroke="#f7c948" stroke-width="1.4"/>
-    <text x="68" y="84" fill="#f7c948" font-size="13" font-weight="700" letter-spacing="0.8">PLUGIN</text>
-    <text x="68" y="108" fill="#f0f6fc" font-size="18" font-weight="700">nanlabs-core</text>
+  <rect x="48" y="54" width="228" height="72" rx="12" fill="url(#card-fill)" stroke="#f7c948" stroke-width="1.4"/>
+  <text x="68" y="84" fill="#f7c948" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700">PLUGIN</text>
+  <text x="68" y="108" fill="#f0f6fc" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700">nanlabs-core</text>
 
-    <rect x="64" y="138" width="228" height="72" rx="12" fill="url(#card-fill)" stroke="#58a6ff" stroke-width="1.2"/>
-    <text x="84" y="168" fill="#58a6ff" font-size="13" font-weight="700" letter-spacing="0.8">MCP</text>
-    <text x="84" y="192" fill="#f0f6fc" font-size="18" font-weight="700">official OAuth</text>
+  <rect x="64" y="138" width="228" height="72" rx="12" fill="url(#card-fill)" stroke="#58a6ff" stroke-width="1.2"/>
+  <text x="84" y="168" fill="#58a6ff" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700">MCP</text>
+  <text x="84" y="192" fill="#f0f6fc" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700">official OAuth</text>
 
-    <rect x="80" y="222" width="228" height="56" rx="12" fill="url(#card-fill)" stroke="#30363d"/>
-    <text x="100" y="256" fill="#8b949e" font-size="16" font-weight="600">9 groups + agents</text>
-  </g>
+  <rect x="80" y="222" width="228" height="56" rx="12" fill="url(#card-fill)" stroke="#30363d"/>
+  <text x="100" y="256" fill="#8b949e" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="600">group plugins</text>
 
-  <!-- Title -->
-  <text x="360" y="108" fill="#f0f6fc" font-family="ui-sans-serif, system-ui, Segoe UI, sans-serif" font-size="48" font-weight="800" letter-spacing="-0.5">agent-toolkit</text>
-  <text x="360" y="148" fill="#8b949e" font-family="ui-sans-serif, system-ui, Segoe UI, sans-serif" font-size="20">NaNLABS L1.5 · skills · agents · plugins · MCP</text>
-  <text x="360" y="180" fill="#c9d1d9" font-family="ui-sans-serif, system-ui, Segoe UI, sans-serif" font-size="16">Install the group plugins. Authenticate MCP in the client. No tokens in git.</text>
+  <text x="360" y="108" fill="#f0f6fc" font-family="Arial, Helvetica, sans-serif" font-size="48" font-weight="700">agent-toolkit</text>
+  <text x="360" y="148" fill="#8b949e" font-family="Arial, Helvetica, sans-serif" font-size="20">NaNLABS L1.5 - skills, agents, plugins, MCP</text>
+  <text x="360" y="180" fill="#c9d1d9" font-family="Arial, Helvetica, sans-serif" font-size="16">Install the group plugins. Authenticate MCP in the client. No tokens in git.</text>
 
-  <!-- Client pills -->
-  <g font-family="ui-sans-serif, system-ui, Segoe UI, sans-serif" font-size="13" font-weight="600">
-    <rect x="360" y="210" width="118" height="32" rx="16" fill="#21262d" stroke="#30363d"/>
-    <text x="419" y="231" text-anchor="middle" fill="#ff6b35">Claude Code</text>
-
-    <rect x="490" y="210" width="96" height="32" rx="16" fill="#21262d" stroke="#30363d"/>
-    <text x="538" y="231" text-anchor="middle" fill="#58a6ff">Cursor</text>
-
-    <rect x="598" y="210" width="100" height="32" rx="16" fill="#21262d" stroke="#30363d"/>
-    <text x="648" y="231" text-anchor="middle" fill="#7ee787">Copilot</text>
-
-    <rect x="710" y="210" width="128" height="32" rx="16" fill="#21262d" stroke="#30363d"/>
-    <text x="774" y="231" text-anchor="middle" fill="#f7c948">Agent Plugins</text>
-
-    <rect x="850" y="210" width="92" height="32" rx="16" fill="#21262d" stroke="#30363d"/>
-    <text x="896" y="231" text-anchor="middle" fill="#79c0ff">Codex</text>
-
-    <rect x="954" y="210" width="70" height="32" rx="16" fill="#21262d" stroke="#30363d"/>
-    <text x="989" y="231" text-anchor="middle" fill="#8b949e">Kiro</text>
-  </g>
+  <rect x="360" y="210" width="118" height="32" rx="16" fill="#21262d" stroke="#30363d"/>
+  <text x="419" y="231" text-anchor="middle" fill="#ff6b35" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700">Claude Code</text>
+  <rect x="490" y="210" width="96" height="32" rx="16" fill="#21262d" stroke="#30363d"/>
+  <text x="538" y="231" text-anchor="middle" fill="#58a6ff" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700">Cursor</text>
+  <rect x="598" y="210" width="100" height="32" rx="16" fill="#21262d" stroke="#30363d"/>
+  <text x="648" y="231" text-anchor="middle" fill="#7ee787" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700">Copilot</text>
+  <rect x="710" y="210" width="128" height="32" rx="16" fill="#21262d" stroke="#30363d"/>
+  <text x="774" y="231" text-anchor="middle" fill="#f7c948" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700">Agent Plugins</text>
+  <rect x="850" y="210" width="92" height="32" rx="16" fill="#21262d" stroke="#30363d"/>
+  <text x="896" y="231" text-anchor="middle" fill="#79c0ff" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700">Codex</text>
+  <rect x="954" y="210" width="70" height="32" rx="16" fill="#21262d" stroke="#30363d"/>
+  <text x="989" y="231" text-anchor="middle" fill="#8b949e" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700">Kiro</text>
 
   <rect x="0" y="315" width="1280" height="5" rx="2.5" fill="url(#hero-accent)"/>
 </svg>

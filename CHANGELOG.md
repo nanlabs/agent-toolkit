@@ -15,7 +15,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- Headline counts use a stable **+N** floor (skills round down to a multiple of 5) so README badges and catalog summaries do not tick on every add.
+- README hero SVG is GitHub-safe (no pattern fills, no invalid UTF-8) so GitHub renders the image instead of "Invalid image source".
+- Cursor Agent CLI matrix: official MCP now ships in design/forge/integrations plugins; CLI MCP load remains uncertified.
 - README hero SVG, architecture diagram, and generated catalog tables (`docs/generated/`, wiki Plugin-Marketplace / Skills-Reference / MCP-Setup) so plugin/MCP/skill counts cannot drift from YAML sources of truth.
 - Complete copy-paste install for every group plugin on Claude Code, Copilot CLI, and Cursor local.
 

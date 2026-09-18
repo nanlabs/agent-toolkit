@@ -33,7 +33,7 @@ Official references: [Cursor plugins](https://cursor.com/docs/plugins) ·
 | Subagents / agents | yes | **pass** | `nanlabs-code-reviewer` from core; full `nanlabs-agents` roster |
 | Rules | if shipped | n/a | not shipped |
 | Hooks | if shipped | n/a | not shipped |
-| MCP from plugin | if shipped | n/a | MCP not packaged in plugins |
+| MCP from plugin | yes on design/forge/integrations | **uncertified on CLI** | Official hosted MCP ships in those group plugins as of v0.4.0. This snapshot did not record CLI MCP load. |
 | Local `--plugin-dir` | yes | **pass** | flag works; repeatable |
 | Marketplace add (git URL) | team/admin in IDE | **pass** | registers `nanlabs-agent-toolkit` |
 | Marketplace install | yes | **uncertified** | Current Cursor documentation exposes interactive `/plugin` installation; this repository's snapshot did not record a CLI install command or smoke result. Use `--plugin-dir` for CLI certification |
