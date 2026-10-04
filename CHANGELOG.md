@@ -7,8 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.4.1] — 2026-10-04
+
+Distribution tag matches `nanlabs-core` **0.4.1**. Marketplace metadata **0.8.0**.
+
 ### Added
 
+- Public-safe HOL Guard runtime safety skill in `nanlabs-ops` for setup, status checks, protected harness launch, troubleshooting, and approval review.
 - User-facing GitHub Wiki: install plugins, using the toolkit, add a skill, testing, and contributing. README and docs index send people to [the live wiki](https://github.com/nanlabs/agent-toolkit/wiki).
 
 ### Removed
@@ -23,6 +28,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Cursor Agent CLI matrix: official MCP now ships in design/forge/integrations plugins; CLI MCP load remains uncertified.
 - README hero SVG, architecture diagram, and generated catalog tables (`docs/generated/`, wiki Plugin-Marketplace / Skills-Reference / MCP-Setup) so plugin/MCP/skill counts cannot drift from YAML sources of truth.
 - Complete copy-paste install for every group plugin on Claude Code, Copilot CLI, and Cursor local.
+- `nanlabs-core` **0.4.1**, `nanlabs-ops` **0.2.0**, and marketplace metadata **0.8.0**.
 
 ## [0.4.0] — 2026-09-17
 

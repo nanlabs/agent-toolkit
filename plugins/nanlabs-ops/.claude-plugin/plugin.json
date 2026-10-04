@@ -1,7 +1,7 @@
 {
   "name": "nanlabs-ops",
-  "version": "0.1.0",
-  "description": "Workstation triage, presentations ops, and skill contribution",
+  "version": "0.2.0",
+  "description": "Workstation triage, presentations ops, skill contribution, and HOL Guard local runtime safety",
   "author": {
     "name": "NaNLABS",
     "email": "technology@nanlabs.com"
