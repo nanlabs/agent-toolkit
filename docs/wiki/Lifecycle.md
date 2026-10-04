@@ -49,7 +49,7 @@ npx skills remove <skill-name> -g
 Pin a tag:
 
 ```bash
-npx skills add nanlabs/agent-toolkit#v0.4.1 -g -y
+npx skills add nanlabs/agent-toolkit#v0.4.0 -g -y
 ```
 
 NaNLABS workstations set `NAN_AGENT_TOOLKIT_VERSION` in `~/.config/nanlabs/agent-toolkit.env`.
