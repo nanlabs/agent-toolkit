@@ -13,13 +13,13 @@ Version source of truth: [`products/plugins.yaml`](https://github.com/nanlabs/ag
 
 | Plugin | Version | Skills | MCP | Role |
 | --- | --- | --- | --- | --- |
-| `nanlabs-core` | 0.4.0 | 7 | — | Recommended first install. Setup doctor + `/nanlabs-core:setup`. |
+| `nanlabs-core` | 0.4.1 | 7 | — | Recommended first install. Setup doctor + `/nanlabs-core:setup`. |
 | `nanlabs-data` | 0.1.0 | 2 | — | dbt and Snowflake validation skills |
 | `nanlabs-delivery` | 0.1.0 | 19 | — | PRD, TRD, ADR, work items, assessments, and delivery process |
 | `nanlabs-design` | 0.2.0 | 6 | `figma` | Figma MCP and UI/UX intelligence (not a full designer workflow) |
 | `nanlabs-forge` | 0.2.0 | 4 | `github`, `gitlab` | GitHub and GitLab CLI automation plus official GitHub and GitLab MCP |
 | `nanlabs-integrations` | 0.2.0 | 4 | `atlassian`, `clickup`, `linear`, `notion`, `shortcut`, `slack` | ClickUp, Slack, Linear, Shortcut, Notion, and Atlassian (Jira/Confluence) MCP plus CLI skills |
-| `nanlabs-ops` | 0.1.0 | 4 | — | Workstation triage, presentations ops, and skill contribution |
+| `nanlabs-ops` | 0.2.0 | 4 | — | Workstation triage, presentations ops, skill contribution, and HOL Guard local runtime safety |
 | `nanlabs-tooling` | 0.1.0 | 2 | — | Playwright CLI and Jupyter notebook scaffolding |
 | `nanlabs-workflow` | 0.1.0 | 2 | — | Client delivery workflows and bootstrap |
 | `nanlabs-agents` | 0.2.1 | — | — | Optional. Full agent roster. |

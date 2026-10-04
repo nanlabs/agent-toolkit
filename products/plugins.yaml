@@ -5,12 +5,12 @@ version: 1
 
 marketplace:
   metadata:
-    version: "0.7.0"
+    version: "0.8.0"
     description: "NaNLABS skills, agents, and plugins for Agent Plugins clients and Claude Code"
 
 plugins:
   nanlabs-core:
-    version: "0.4.0"
+    version: "0.4.1"
     description: "Recommended install: setup/onboarding, orchestrator, companion, handshake, Pyright report-only typing, PR fallback, knowledge sync, and code-reviewer agent"
     skills_group: core
     keywords:
@@ -83,8 +83,8 @@ plugins:
       - mcp
 
   nanlabs-ops:
-    version: "0.1.0"
-    description: "Workstation triage, presentations ops, and skill contribution"
+    version: "0.2.0"
+    description: "Workstation triage, presentations ops, skill contribution, and HOL Guard local runtime safety"
     skills_group: ops
     keywords:
       - nanlabs
