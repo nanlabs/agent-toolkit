@@ -18,6 +18,12 @@ importers:
       danger:
         specifier: ^13.0.10
         version: 13.0.10
+      qs:
+        specifier: '>=6.15.2'
+        version: 6.16.0
+      undici:
+        specifier: '>=6.27.0'
+        version: 8.11.2
 
 packages:
 
@@ -309,7 +315,7 @@ packages:
 
   picomatch@2.3.2:
     resolution: {integrity: sha512-V7+vQEJ06Z+c5tSye8S+nHUfI51xoXIXjHQ99cQtKUkQqqO1kO/KCJUfZXuB47h/YBlDhah2H3hdUGXn8ie0oA==}
-    engines: {node: ">=8.6"}
+    engines: {node: '>=8.6'}
 
   pinpoint@1.1.0:
     resolution: {integrity: sha512-+04FTD9x7Cls2rihLlo57QDCcHoLBGn5Dk51SwtFBWkUWLxZaBXyNVpCw1S+atvE7GmnFjeaRZ0WLq3UYuqAdg==}

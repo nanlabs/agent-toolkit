@@ -8,7 +8,9 @@
     "danger": "danger ci"
   },
   "dependencies": {
-    "danger": "^13.0.10"
+    "danger": "^13.0.10",
+    "qs": "^6.16.0",
+    "undici": "^8.11.2"
   },
   "pnpm": {
     "overrides": {
