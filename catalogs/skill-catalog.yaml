@@ -326,6 +326,13 @@ skills:
     domain: slack
     responsibility: HOW
     role: slack_app_cli
+  - name: hol-guard
+    group: ops
+    path: plugins/nanlabs-ops/skills/hol-guard
+    public: true
+    domain: operations
+    responsibility: HOW
+    role: runtime_safety
   - name: nanlabs-presentations-reconciliation
     group: ops
     path: plugins/nanlabs-ops/skills/nanlabs-presentations-reconciliation

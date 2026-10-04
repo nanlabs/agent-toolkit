@@ -19,7 +19,7 @@ Version source of truth: [`products/plugins.yaml`](https://github.com/nanlabs/ag
 | `nanlabs-design` | 0.2.0 | 6 | `figma` | Figma MCP and UI/UX intelligence (not a full designer workflow) |
 | `nanlabs-forge` | 0.2.0 | 4 | `github`, `gitlab` | GitHub and GitLab CLI automation plus official GitHub and GitLab MCP |
 | `nanlabs-integrations` | 0.2.0 | 4 | `atlassian`, `clickup`, `linear`, `notion`, `shortcut`, `slack` | ClickUp, Slack, Linear, Shortcut, Notion, and Atlassian (Jira/Confluence) MCP plus CLI skills |
-| `nanlabs-ops` | 0.1.0 | 3 | — | Workstation triage, presentations ops, and skill contribution |
+| `nanlabs-ops` | 0.1.0 | 4 | — | Workstation triage, presentations ops, and skill contribution |
 | `nanlabs-tooling` | 0.1.0 | 2 | — | Playwright CLI and Jupyter notebook scaffolding |
 | `nanlabs-workflow` | 0.1.0 | 2 | — | Client delivery workflows and bootstrap |
 | `nanlabs-agents` | 0.2.1 | — | — | Optional. Full agent roster. |

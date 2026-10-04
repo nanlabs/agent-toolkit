@@ -2,7 +2,7 @@
 
 # Skills reference
 
-+45 public skills under `plugins/nanlabs-<group>/skills/<skill>/SKILL.md` ([Agent Skills](https://agentskills.io/specification)).
++50 public skills under `plugins/nanlabs-<group>/skills/<skill>/SKILL.md` ([Agent Skills](https://agentskills.io/specification)).
 
 > [!TIP]
 > To **add** a skill, follow [Add a skill](Add-a-Skill). To **install** one, use the matching group plugin or `npx skills` below.
@@ -19,7 +19,7 @@ Machine catalog: [`catalogs/skill-catalog.yaml`](https://github.com/nanlabs/agen
 | `design` | `nanlabs-design` | 6 | `figma`, `figma-code-connect-components`, `figma-create-design-system-rules`, `figma-create-new-file`, `figma-implement-design`, `ui-ux-pro-max` |
 | `forge` | `nanlabs-forge` | 4 | `gh-address-comments`, `gh-fix-ci`, `github-cli-workflow`, `gitlab-cli-workflow` |
 | `integrations` | `nanlabs-integrations` | 4 | `clickup-cli`, `linear`, `nan-slack-assistant`, `slack-cli` |
-| `ops` | `nanlabs-ops` | 3 | `nanlabs-presentations-reconciliation`, `nanlabs-propose-skill`, `nanlabs-workstation-triage` |
+| `ops` | `nanlabs-ops` | 4 | `hol-guard`, `nanlabs-presentations-reconciliation`, `nanlabs-propose-skill`, `nanlabs-workstation-triage` |
 | `tooling` | `nanlabs-tooling` | 2 | `jupyter-notebook`, `playwright-cli` |
 | `workflow` | `nanlabs-workflow` | 2 | `nanlabs-workflow-client-bootstrap`, `nanlabs-workflow-generic-project` |
 
