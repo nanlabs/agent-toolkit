@@ -6,7 +6,7 @@
   },
   "metadata": {
     "description": "NaNLABS skills, agents, and plugins for Agent Plugins clients and Claude Code",
-    "version": "0.7.0",
+    "version": "0.8.0",
     "pluginRoot": "plugins"
   },
   "plugins": [
@@ -43,7 +43,7 @@
     {
       "name": "nanlabs-ops",
       "source": "nanlabs-ops",
-      "description": "Workstation triage, presentations ops, and skill contribution"
+      "description": "Workstation triage, presentations ops, skill contribution, and HOL Guard local runtime safety"
     },
     {
       "name": "nanlabs-tooling",

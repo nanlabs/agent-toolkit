@@ -45,7 +45,7 @@
     },
     {
       "name": "nanlabs-ops",
-      "description": "Workstation triage, presentations ops, and skill contribution",
+      "description": "Workstation triage, presentations ops, skill contribution, and HOL Guard local runtime safety",
       "source": {
         "path": "./plugins/nanlabs-ops"
       }

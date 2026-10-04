@@ -1,6 +1,6 @@
 # nanlabs-ops
 
-Workstation triage, presentations ops, and skill contribution
+Workstation triage, presentations ops, skill contribution, and HOL Guard local runtime safety
 
 Canonical skills live under `skills/<name>/` (layout group `ops`). There is no second tree under `skills/<group>/`.
 
