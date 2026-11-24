@@ -41,7 +41,8 @@
       "figma-create-design-system-rules",
       "figma-create-new-file",
       "figma-implement-design",
-      "ui-ux-pro-max"
+      "ui-ux-pro-max",
+      "architecture-diagram"
     ],
     "forge": [
       "gh-address-comments",
@@ -240,6 +241,11 @@
       "name": "ui-ux-pro-max",
       "group": "design",
       "path": "plugins/nanlabs-design/skills/ui-ux-pro-max"
+    },
+    {
+      "name": "architecture-diagram",
+      "group": "design",
+      "path": "plugins/nanlabs-design/skills/architecture-diagram"
     },
     {
       "name": "gh-address-comments",

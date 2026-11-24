@@ -16,7 +16,7 @@ Machine catalog: [`catalogs/skill-catalog.yaml`](https://github.com/nanlabs/agen
 | `core` | `nanlabs-core` | 7 | `nanlabs-assistant`, `nanlabs-dev-companion`, `nanlabs-output-handshake`, `nanlabs-pyrightination`, `nanlabs-pr-fallback`, `nanlabs-setup`, `nanlabs-workspace-knowledge-sync` |
 | `data` | `nanlabs-data` | 2 | `dbt-validation`, `snowflake-validation` |
 | `delivery` | `nanlabs-delivery` | 19 | `nanlabs-adr`, `nanlabs-agreement`, `nanlabs-bug`, `nanlabs-decision-log`, `nanlabs-development-workflow`, `nanlabs-epic`, `nanlabs-incident`, `nanlabs-management-unit-assessment`, `nanlabs-meeting-minutes`, `nanlabs-planning`, `nanlabs-prd`, `nanlabs-project-assessment`, `nanlabs-project-assessment-evidence`, `nanlabs-spike`, `nanlabs-task`, `nanlabs-technical-unit-assessment`, `nanlabs-trd`, `nanlabs-user-story`, `nanlabs-work-item` |
-| `design` | `nanlabs-design` | 6 | `figma`, `figma-code-connect-components`, `figma-create-design-system-rules`, `figma-create-new-file`, `figma-implement-design`, `ui-ux-pro-max` |
+| `design` | `nanlabs-design` | 7 | `figma`, `figma-code-connect-components`, `figma-create-design-system-rules`, `figma-create-new-file`, `figma-implement-design`, `ui-ux-pro-max`, `architecture-diagram` |
 | `forge` | `nanlabs-forge` | 4 | `gh-address-comments`, `gh-fix-ci`, `github-cli-workflow`, `gitlab-cli-workflow` |
 | `integrations` | `nanlabs-integrations` | 4 | `clickup-cli`, `linear`, `nan-slack-assistant`, `slack-cli` |
 | `ops` | `nanlabs-ops` | 4 | `hol-guard`, `nanlabs-presentations-reconciliation`, `nanlabs-propose-skill`, `nanlabs-workstation-triage` |

@@ -1,12 +1,12 @@
 # nanlabs-design
 
-Figma MCP and UI/UX intelligence (not a full designer workflow)
+Figma MCP, UI/UX intelligence and architecture diagrams (not a full designer workflow)
 
 Canonical skills live under `skills/<name>/` (layout group `design`). There is no second tree under `skills/<group>/`.
 
 ## Skills
 
-`figma`, `figma-code-connect-components`, `figma-create-design-system-rules`, `figma-create-new-file`, `figma-implement-design`, `ui-ux-pro-max`
+`figma`, `figma-code-connect-components`, `figma-create-design-system-rules`, `figma-create-new-file`, `figma-implement-design`, `ui-ux-pro-max`, `architecture-diagram`
 
 ## MCP
 

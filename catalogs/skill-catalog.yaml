@@ -270,6 +270,13 @@ skills:
     domain: ui
     responsibility: HOW
     role: design_intelligence
+  - name: architecture-diagram
+    group: design
+    path: plugins/nanlabs-design/skills/architecture-diagram
+    public: true
+    domain: design
+    responsibility: HOW
+    role: architecture_diagram
   - name: gh-address-comments
     group: forge
     path: plugins/nanlabs-forge/skills/gh-address-comments
