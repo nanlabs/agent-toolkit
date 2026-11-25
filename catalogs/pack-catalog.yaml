@@ -119,12 +119,13 @@ packs:
 
   - id: architect
     kind: domain
-    description: Structural design, ADRs, and technical requirements
+    description: Structural design, ADRs, architecture diagrams, and technical requirements
     coverage: medium
     domains: [architecture]
     skills:
       - nanlabs-adr
       - nanlabs-trd
+      - architecture-diagram
     agents:
       - nanlabs-architect
     cloud: skills-only

@@ -24,7 +24,7 @@ find_chrome() {
   esac
   # Playwright's bundled Chromium, newest first.
   local p
-  p="$(ls -d "$HOME"/.cache/ms-playwright/chromium-*/chrome-*/chrome 2>/dev/null | sort -V | tail -1 || true)"
+  p="$(find "$HOME/.cache/ms-playwright" -maxdepth 3 -path '*/chromium-*/chrome-*/chrome' -type f 2>/dev/null | sort -V | tail -1 || true)"
   [[ -n "$p" ]] && { echo "$p"; return; }
   echo ""
 }

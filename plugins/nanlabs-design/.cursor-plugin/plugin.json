@@ -1,6 +1,6 @@
 {
   "name": "nanlabs-design",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Figma MCP, UI/UX intelligence and architecture diagrams (not a full designer workflow)",
   "author": {
     "name": "NaNLABS",
@@ -14,6 +14,8 @@
     "design",
     "figma",
     "ui",
+    "architecture",
+    "diagrams",
     "mcp"
   ]
 }

@@ -6,7 +6,7 @@
   },
   "metadata": {
     "description": "NaNLABS skills, agents, and plugins for Agent Plugins clients and Claude Code",
-    "version": "0.8.0",
+    "version": "0.9.0",
     "pluginRoot": "./plugins"
   },
   "plugins": [
@@ -55,13 +55,15 @@
       "name": "nanlabs-design",
       "source": "./plugins/nanlabs-design",
       "description": "Figma MCP, UI/UX intelligence and architecture diagrams (not a full designer workflow)",
-      "version": "0.2.0",
+      "version": "0.3.0",
       "category": "productivity",
       "tags": [
         "nanlabs",
         "design",
         "figma",
         "ui",
+        "architecture",
+        "diagrams",
         "mcp"
       ]
     },

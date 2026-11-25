@@ -4,7 +4,7 @@
 
 Source of truth: [`products/plugins.yaml`](../../products/plugins.yaml), [`catalogs/mcp-catalog.yaml`](../../catalogs/mcp-catalog.yaml), [`catalogs/skills-layout.json`](../../catalogs/skills-layout.json).
 
-Marketplace metadata **0.8.0**. **+10** plugins · **+50** skills · **+18** agents · **+9** official MCP servers.
+Marketplace metadata **0.9.0**. **+10** plugins · **+50** skills · **+18** agents · **+9** official MCP servers.
 
 ## Plugins
 
@@ -13,7 +13,7 @@ Marketplace metadata **0.8.0**. **+10** plugins · **+50** skills · **+18** age
 | `nanlabs-core` | 0.4.1 | 7 | — | Recommended first install. Setup doctor + `/nanlabs-core:setup`. |
 | `nanlabs-data` | 0.1.0 | 2 | — | dbt and Snowflake validation skills |
 | `nanlabs-delivery` | 0.1.0 | 19 | — | PRD, TRD, ADR, work items, assessments, and delivery process |
-| `nanlabs-design` | 0.2.0 | 7 | `figma` | Figma MCP, UI/UX intelligence and architecture diagrams (not a full designer workflow) |
+| `nanlabs-design` | 0.3.0 | 7 | `figma` | Figma MCP, UI/UX intelligence and architecture diagrams (not a full designer workflow) |
 | `nanlabs-forge` | 0.2.0 | 4 | `github`, `gitlab` | GitHub and GitLab CLI automation plus official GitHub and GitLab MCP |
 | `nanlabs-integrations` | 0.2.0 | 4 | `atlassian`, `clickup`, `linear`, `notion`, `shortcut`, `slack` | ClickUp, Slack, Linear, Shortcut, Notion, and Atlassian (Jira/Confluence) MCP plus CLI skills |
 | `nanlabs-ops` | 0.2.0 | 4 | — | Workstation triage, presentations ops, skill contribution, and HOL Guard local runtime safety |
