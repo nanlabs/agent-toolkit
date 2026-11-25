@@ -252,6 +252,8 @@ function setFlow(id){document.querySelectorAll('.toolbar .fbtn').forEach(b=>b.se
   edgeEls.forEach(([g,lg,f])=>{g.classList.toggle('on',f===id);lg.classList.toggle('on',f===id);lg.querySelectorAll('.solo').forEach(s=>s.style.display=(id==='all')?'':'none')});
   const fl=FLOWS.find(f=>f.id===id);
   Object.entries(nodeEls).forEach(([nid,g])=>g.classList.toggle('on',!!fl&&(fl.nodes||[]).includes(nid)));
+  // Keep the URL in sync so the current flow can be shared as a deep link (#flow-id).
+  if(history.replaceState)history.replaceState(null,'',id==='all'?location.pathname+location.search:'#'+id);
 }
 const hf=location.hash.slice(1);setFlow((hf==='all'||FLOWS.some(f=>f.id===hf))?hf:(M.defaultFlow||(FLOWS[0]?FLOWS[0].id:'all')));
 const fc=document.getElementById('flowCards');
