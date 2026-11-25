@@ -1,8 +1,8 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "nanlabs-design",
-  "version": "0.2.0",
-  "description": "Figma MCP and UI/UX intelligence (not a full designer workflow)",
+  "version": "0.3.0",
+  "description": "Figma MCP, UI/UX intelligence and architecture diagrams (not a full designer workflow)",
   "author": {
     "name": "NaNLABS",
     "email": "technology@nanlabs.com",
@@ -16,6 +16,8 @@
     "design",
     "figma",
     "ui",
+    "architecture",
+    "diagrams",
     "mcp"
   ]
 }

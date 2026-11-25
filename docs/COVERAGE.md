@@ -19,7 +19,7 @@ Packs: [`PACKS.md`](PACKS.md) · skills: [`SKILLS.md`](SKILLS.md).
 | Engineering — code review | `code-review` | Forge skills + `nanlabs-pr-fallback`; agents `nanlabs-code-reviewer`, `nanlabs-security-reviewer`, `nanlabs-typescript-reviewer` | Medium-high. Reviewer must post on the PR ([`HANDOFFS.md`](HANDOFFS.md)). |
 | QA | `qa` | `playwright-cli` (browser drive) + agent `nanlabs-e2e-runner` (test authoring) | **Low.** No QA process, test strategy, or case-design skill. |
 | Architect | `architect` | Agent `nanlabs-architect` + `nanlabs-adr` / `nanlabs-trd` | Medium. No system-context or C4 skill. |
-| Design | `design` (group) | Figma MCP skills + `ui-ux-pro-max` | Medium. Figma connection, not a designer workflow (critique, visual system, presentation layout). |
+| Design | `design` (group) | Figma MCP skills + `ui-ux-pro-max` + `architecture-diagram` | Medium. Figma connection, not a designer workflow (critique, visual system, presentation layout). |
 | Staff / comms | `staff` | `nanlabs-presentations-reconciliation` (ClickUp list vs calendar) | **Low.** No style, tone, or slide-layout consistency skill. |
 | Commercial | `delivery` + `workflow` | Work-item and generic-project skills | Medium. No commercial-specific pack (proposals, SOW). Delivery skills are the closest fit. |
 | Operations | `ops`, `integrations` | Workstation triage, ClickUp/Slack/Linear, propose-skill | Medium. Ops is tools, not an operations playbook. |

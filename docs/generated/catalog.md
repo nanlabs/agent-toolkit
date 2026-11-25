@@ -4,7 +4,7 @@
 
 Source of truth: [`products/plugins.yaml`](../../products/plugins.yaml), [`catalogs/mcp-catalog.yaml`](../../catalogs/mcp-catalog.yaml), [`catalogs/skills-layout.json`](../../catalogs/skills-layout.json).
 
-Marketplace metadata **0.8.0**. **+10** plugins · **+50** skills · **+18** agents · **+9** official MCP servers.
+Marketplace metadata **0.9.0**. **+10** plugins · **+50** skills · **+18** agents · **+9** official MCP servers.
 
 ## Plugins
 
@@ -13,7 +13,7 @@ Marketplace metadata **0.8.0**. **+10** plugins · **+50** skills · **+18** age
 | `nanlabs-core` | 0.4.1 | 7 | — | Recommended first install. Setup doctor + `/nanlabs-core:setup`. |
 | `nanlabs-data` | 0.1.0 | 2 | — | dbt and Snowflake validation skills |
 | `nanlabs-delivery` | 0.1.0 | 19 | — | PRD, TRD, ADR, work items, assessments, and delivery process |
-| `nanlabs-design` | 0.2.0 | 6 | `figma` | Figma MCP and UI/UX intelligence (not a full designer workflow) |
+| `nanlabs-design` | 0.3.0 | 7 | `figma` | Figma MCP, UI/UX intelligence and architecture diagrams (not a full designer workflow) |
 | `nanlabs-forge` | 0.2.0 | 4 | `github`, `gitlab` | GitHub and GitLab CLI automation plus official GitHub and GitLab MCP |
 | `nanlabs-integrations` | 0.2.0 | 4 | `atlassian`, `clickup`, `linear`, `notion`, `shortcut`, `slack` | ClickUp, Slack, Linear, Shortcut, Notion, and Atlassian (Jira/Confluence) MCP plus CLI skills |
 | `nanlabs-ops` | 0.2.0 | 4 | — | Workstation triage, presentations ops, skill contribution, and HOL Guard local runtime safety |
@@ -44,7 +44,7 @@ Authenticate in the client (OAuth). Plugins never contain tokens.
 | `core` | `nanlabs-core` | 7 | `nanlabs-assistant`, `nanlabs-dev-companion`, `nanlabs-output-handshake`, `nanlabs-pyrightination`, `nanlabs-pr-fallback`, `nanlabs-setup`, `nanlabs-workspace-knowledge-sync` |
 | `data` | `nanlabs-data` | 2 | `dbt-validation`, `snowflake-validation` |
 | `delivery` | `nanlabs-delivery` | 19 | `nanlabs-adr`, `nanlabs-agreement`, `nanlabs-bug`, `nanlabs-decision-log`, `nanlabs-development-workflow`, `nanlabs-epic`, `nanlabs-incident`, `nanlabs-management-unit-assessment`, `nanlabs-meeting-minutes`, `nanlabs-planning`, `nanlabs-prd`, `nanlabs-project-assessment`, `nanlabs-project-assessment-evidence`, `nanlabs-spike`, `nanlabs-task`, `nanlabs-technical-unit-assessment`, `nanlabs-trd`, `nanlabs-user-story`, `nanlabs-work-item` |
-| `design` | `nanlabs-design` | 6 | `figma`, `figma-code-connect-components`, `figma-create-design-system-rules`, `figma-create-new-file`, `figma-implement-design`, `ui-ux-pro-max` |
+| `design` | `nanlabs-design` | 7 | `figma`, `figma-code-connect-components`, `figma-create-design-system-rules`, `figma-create-new-file`, `figma-implement-design`, `ui-ux-pro-max`, `architecture-diagram` |
 | `forge` | `nanlabs-forge` | 4 | `gh-address-comments`, `gh-fix-ci`, `github-cli-workflow`, `gitlab-cli-workflow` |
 | `integrations` | `nanlabs-integrations` | 4 | `clickup-cli`, `linear`, `nan-slack-assistant`, `slack-cli` |
 | `ops` | `nanlabs-ops` | 4 | `hol-guard`, `nanlabs-presentations-reconciliation`, `nanlabs-propose-skill`, `nanlabs-workstation-triage` |

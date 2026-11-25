@@ -5,7 +5,7 @@ version: 1
 
 marketplace:
   metadata:
-    version: "0.8.0"
+    version: "0.9.0"
     description: "NaNLABS skills, agents, and plugins for Agent Plugins clients and Claude Code"
 
 plugins:
@@ -44,14 +44,16 @@ plugins:
       - adr
 
   nanlabs-design:
-    version: "0.2.0"
-    description: "Figma MCP and UI/UX intelligence (not a full designer workflow)"
+    version: "0.3.0"
+    description: "Figma MCP, UI/UX intelligence and architecture diagrams (not a full designer workflow)"
     skills_group: design
     keywords:
       - nanlabs
       - design
       - figma
       - ui
+      - architecture
+      - diagrams
       - mcp
 
   nanlabs-forge:

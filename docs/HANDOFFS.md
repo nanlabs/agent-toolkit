@@ -29,7 +29,7 @@ install. This page is the output contract between those pieces.
 | Implementer | repo workflow + forge skills | (harness implementer / builder) | Code + tests; no plan rewrite |
 | Architect | `nanlabs-adr`, `nanlabs-trd` | `nanlabs-architect` | ADR/TRD-shaped design, then handshake |
 | Reviewer | `github-cli-workflow`, `gh-address-comments` | `nanlabs-code-reviewer` | Review **on the pull request**, not only in chat |
-| Designer | `figma`, `ui-ux-pro-max` | — | Design-to-code or Figma MCP; no separate designer agent |
+| Designer | `figma`, `ui-ux-pro-max`, `architecture-diagram` | — | Design-to-code or Figma MCP; no separate designer agent |
 
 If a harness has no handoff primitive, write the artifact in markdown (or HTML
 for plans) and say what the next skill should do with it.
